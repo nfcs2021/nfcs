@@ -1,9 +1,0 @@
-test file
-Modified krishna
-<<<<<<< HEAD
-Durga modified
-=======
-Again modified
->>>>>>> cf183625751cf693c3639b0cec546f3c38f03
-Durga is modified this file
-
