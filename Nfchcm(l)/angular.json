@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "leave"
+  "defaultProject": "leave",
+  "cli": {
+    "analytics": false
+  }
 }
