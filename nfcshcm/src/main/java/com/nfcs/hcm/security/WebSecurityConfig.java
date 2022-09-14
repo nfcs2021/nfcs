@@ -10,9 +10,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -48,6 +50,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
+//	@Bean
+//	public UserDetailsService userDetailsService() {
+//
+//		User.UserBuilder users = User.withDefaultPasswordEncoder();
+//		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//		manager.createUser(users.username("user").password("password").roles("USER").build());
+//		manager.createUser(users.username("Durga").password("password").roles("USER").build());
+//		manager.createUser(users.username("Krishna").password("password").roles("USER").build());
+//		manager.createUser(users.username("Venu").password("password").roles("USER").build());
+//		manager.createUser(users.username("admin").password("password").roles("USER", "ADMIN").build());
+//		return manager;
+//	}
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
@@ -62,4 +76,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
+
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.inMemoryAuthentication().withUser("user").password("{noop}pass") // Spring Security 5 requires specifying
+//																				// the password storage format
+//				.roles("USER");
+//	}
 }
