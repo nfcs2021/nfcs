@@ -3,17 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
 
-import { LoginComponent } from './login/login.component';
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { PasswordGenerationComponent } from './components/password-generation/password-generation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent,
-   
-    LoginComponent
+    LoginComponent,
+    PasswordGenerationComponent
   ],
   imports: [
     BrowserModule,

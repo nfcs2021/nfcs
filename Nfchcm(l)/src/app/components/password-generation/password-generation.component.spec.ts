@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistrationComponent } from './registration.component';
+import { PasswordGenerationComponent } from './password-generation.component';
 
-describe('RegistrationComponent', () => {
-  let component: RegistrationComponent;
-  let fixture: ComponentFixture<RegistrationComponent>;
+describe('PasswordGenerationComponent', () => {
+  let component: PasswordGenerationComponent;
+  let fixture: ComponentFixture<PasswordGenerationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegistrationComponent ]
+      declarations: [ PasswordGenerationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegistrationComponent);
+    fixture = TestBed.createComponent(PasswordGenerationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

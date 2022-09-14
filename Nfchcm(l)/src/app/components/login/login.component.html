@@ -18,7 +18,7 @@
     <div class="card-body col-md-15">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="username" style="color:  blue;">Username or ID</label>
+          <label for="username" style="color:  blue;">Login ID</label>
           <input type="text" formControlName="name" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
           <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
