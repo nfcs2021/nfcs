@@ -1,0 +1,89 @@
+
+    <div class="container my-3 text-center bg-light btn-group-toggle">
+        <div class="  ">
+           <span class="col-10"> <button type="button" class="btn btn-primary  active col-md-1 "><a >Apply</a></button></span>
+           <span class="col-10"> <button type="button" class="btn btn-primary col-md-1 "><a >Status</a></button></span>
+           <span class="col-10"> <button type="button" class="btn btn-primary col-md-1 "><a >History</a></button></span>
+        </div>
+        </div>
+      
+<form class="  container offset-md-3 " [formGroup]="contactForm" (ngSubmit)="onClick()"  >
+    <div class="card  " style="width: 60rem;">
+    <div class="row ml-3 ">
+        <div class="col-md-4 ">
+            <label for="validationTooltip04" class="form-group mt-3"><span>*</span>Leave Type</label><br>
+            <select class="form-select col-md-12 py-1 pb-2" id="validationTooltip04" formControlName="leavetype" >
+              <option selected disabled value="">Choose</option>
+              <option>Causal Leave</option>
+              <option>Sick Leave</option>
+              <option>Paid Leave</option>
+              <option>Others</option>
+            </select>
+            <!-- <span class="text-danger"
+      *ngIf="(registerFormControl.leavefrom.touched || submitted) && registerFormControl.leavefrom.errors?.required">
+              
+  </span> -->
+  
+          </div>
+</div><br>
+<div class="row ml-3">
+    <div class="col-md-4 ">
+      <label for="validationDefault02" class="form-group"><span>*</span>Leave From</label>
+      <input type="date" class="form-control " id="validationDefault02" formControlName="leavefrom" >
+     
+    </div><br>
+    <div class="col-md-4 ">
+    <label for="validationTooltip04" class="form-group"><span>*</span>Session</label><br>
+    <select class="form-select col-md-12 py-1 pb-2" id="validationTooltip04"  formControlName="session1" >
+      <option selected disabled value="">Choose</option>
+      <option>session1</option>
+      <option>session2</option>
+    </select>
+   
+  </div>
+     </div><br>
+     <div class="row ml-3">
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-group"><span>*</span>Leave To</label>
+          <input type="date" class="form-control" id="validationDefault02" formControlName="leaveto" >
+          <!-- <span class="text-danger"
+          *ngIf="(registerFormControl.leavefrom.touched || submitted) && registerFormControl.leavefrom.errors?.required">
+          Feild is required
+      </span> -->
+        </div><br>
+        <div class="col-md-4 ">
+        <label for="validationTooltip04" class="form-group"><span>*</span>Session</label><br>
+        <select class="form-select col-md-12 py-1 pb-2" id="validationTooltip04" formControlName="session2" required>
+          <option selected disabled value="">Choose</option>
+          <option>session1</option>
+          <option>session2</option>
+        </select>
+        
+      </div>
+         </div><br>
+         <div class="row ml-3 ">
+            <div class="col-md-4">
+                <label for="w3review">Reason</label>
+  <textarea id="w3review" name="w3review" rows="4" cols="80" formControlName="reason"></textarea>
+                
+              </div> 
+            </div>
+             <br>
+
+<div class="row ml-3">
+    <div class="col-md-4">
+      <label for="w3review">Attach File</label>
+        <input type="file" class="form-control py-1" id="customFile" formControlName="file"/>
+        
+      </div> 
+    </div><br>
+    
+    
+
+    <div class="col-12 ml-3">
+      <button class="btn btn-primary" type="submit" [disabled]="contactForm.invalid">Submit</button>
+      
+    </div><br>
+</div>
+  </form>
+ 

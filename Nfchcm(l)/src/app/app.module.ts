@@ -9,16 +9,22 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordGenerationComponent } from './components/password-generation/password-generation.component';
+import { LeaveComponent } from './components/leave/leave.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PasswordGenerationComponent
+    PasswordGenerationComponent,
+    LeaveComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, FormsModule,ReactiveFormsModule
+    AppRoutingModule, 
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

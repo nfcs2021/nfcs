@@ -1,0 +1,16 @@
+input, date,textarea,#validationTooltip04 {
+
+   border-color: black;
+   border-radius: 5px;
+   
+  }
+  span{
+    color: red;
+  }
+  .card{
+    border-radius: 10px;
+  }
+a{
+  text-decoration: none;
+  color: white;
+}
