@@ -10,7 +10,7 @@ import { AuthService } from '../dashboard/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup 
+  loginForm: FormGroup
   name: string;
   password: string;
   submitted = false;
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     console.log(this.f['name'].value, this.f['password'].value)
 
-  
+
 
   };
 }
