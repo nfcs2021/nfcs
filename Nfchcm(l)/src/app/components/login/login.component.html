@@ -1,22 +1,11 @@
 
-
-<link rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-
-<img src="\assets\logo3.jpg " class=" pr-1 mt-5 col-md-1 offset-md-1 "><br>
-<br><br>
-<Br>
-
-<div class="row ">
-  <div class="col-md-3 offset-md-2 ">
-
-
+<img src="\assets\logo3.jpg " class=" pr-1 mt-5 col-md-1 offset-md-1 mb-3">
+<div class="row mt-5">
+  <div class="col-md-3 offset-md-2">
     <div class="">
-      <img src="\assets\logo4(1).jpg" class="rounded mx-auto d-block w-50 ml-5
-        ">
+      <img src="\assets\logo4(1).jpg" class="rounded mx-auto d-block w-50 ml-5">
       <h3 class="card-header mt-4" style="text-align: center; color:
         blue;padding-bottom: 20px; "> Welcome</h3>
-
       <div class="card-body col-md-15">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -45,7 +34,6 @@
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
           </button>
-          <!-- <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div> -->
         </form>
       </div>
     </div>
