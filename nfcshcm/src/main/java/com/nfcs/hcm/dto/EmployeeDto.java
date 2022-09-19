@@ -2,8 +2,6 @@ package com.nfcs.hcm.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class EmployeeDto {
 
-	private long empId;
+	private int empId;
 	private String empNoSeries;
-	private long empNo;
+	private int empNo;
 	private String empname;
 	private LocalDate dateOfBirth;
 	private String gender;
@@ -30,10 +28,4 @@ public class EmployeeDto {
 	private String emergencyContactNumber;
 	private String fatherName;
 	private String spouseName;
-	private String division;
-	private String costCenter;
-	private String grade;
-	private String designation;
-	private String location;
-	private String department;
 }
