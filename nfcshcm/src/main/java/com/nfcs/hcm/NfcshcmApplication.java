@@ -33,3 +33,4 @@ public class NfcshcmApplication {
 		return bean;
 	}
 }
+ 
