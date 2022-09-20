@@ -47,6 +47,7 @@ import { EventsMainComponent } from './eventsContents/events-main/events-main.co
 import { EventDetailsComponent } from './eventsContents/event-details/event-details.component';
 import { EventListComponent } from './eventsContents/event-list/event-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 
 @NgModule({
   imports: [
@@ -90,6 +91,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     EventsMainComponent,
     EventDetailsComponent,
     EventListComponent,
+    EmployeeAddressComponent,
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
