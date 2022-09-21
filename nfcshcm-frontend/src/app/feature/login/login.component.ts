@@ -16,11 +16,16 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loading = false;
   subscription: any;
-  constructor(private formBuilder: FormBuilder) { }
+  login_user_msg: string;
+  has_error = false;
+  constructor(private formBuilder: FormBuilder,
+    private authService:AuthService,
+    private route:Router
+    ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      empId: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -42,9 +47,20 @@ export class LoginComponent implements OnInit {
     }
     this.loading = true;
 
-    console.log(this.f['name'].value, this.f['password'].value)
-
-  
+    console.log(this.loginForm.value)
+    this.authService.loginUser(this.loginForm.value).subscribe(
+      res =>{
+        this.login_user_msg = 'Login in, Please wait... !!!';
+        localStorage.setItem('token',res.token);
+        this.route.navigate(['/home']);
+      },
+      error =>{
+        console.log(error);
+        
+        this.has_error = true;
+        this.login_user_msg = 'Invalid Username and Password !!!';
+      }
+    )
 
   };
 }

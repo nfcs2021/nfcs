@@ -17,12 +17,13 @@
 
   <div class="card-body col-md-15">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="!!login_user_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{login_user_msg}}</div>
       <div class="form-group">
         <label for="username" style="color:  blue;">Login ID</label>
-        <input type="text" formControlName="name" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
-        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-          <div *ngIf="f['name'].errors['required']">Username is required</div>
+        <input type="text" formControlName="empId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['empId'].errors }" />
+        <div *ngIf="submitted && f['empId'].errors" class="invalid-feedback">
+          <div *ngIf="f['empId'].errors['required']">EmpId is required</div>
         </div>
       </div>
       <div class="form-group">
@@ -37,8 +38,7 @@
       <a href="" >Forget Password?</a></div><br>
       
 
-      <button [disabled]="loading" class="btn btn-primary d-grid gap-2 col-12 mx-auto " routerLink="/home"
-       >
+      <button [disabled]="loading" class="btn btn-primary d-grid gap-2 col-12 mx-auto ">
         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
        Login
       </button>

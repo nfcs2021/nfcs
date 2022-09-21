@@ -34,8 +34,12 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler));
   }
 
-  createEmployee(EmployeeData): Observable<Employee[]> {
-    return this.http.post<any>(Constant.API_ENDPOINT + '/rest/employees', EmployeeData)
+  createEmployee(EmployeeData): Observable<any> {
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+    return this.http.post<any>('http://localhost:8081/data/employee', EmployeeData,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 

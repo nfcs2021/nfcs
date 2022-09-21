@@ -48,8 +48,11 @@ import { EventDetailsComponent } from './eventsContents/event-details/event-deta
 import { EventListComponent } from './eventsContents/event-list/event-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
+<<<<<<< HEAD
 import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 
+=======
+>>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
 
 @NgModule({
   imports: [
@@ -95,8 +98,11 @@ import { EmployeeAddressComponent } from './employee-contents/employee-address/e
     EventDetailsComponent,
     EventListComponent,
     LeaveBalanceComponent,
+<<<<<<< HEAD
     EmployeeAddressComponent,
 
+=======
+>>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
