@@ -35,21 +35,21 @@ public class EmployeeController {
 	}
 
 	@GetMapping(path = "/getEmployees")
-	public ResponseEntity<List<EmployeeDto>> getAllEmployeeData() {
-		List<EmployeeDto> employeeDtos = employeeService.getAllEmpoyees();
-		return new ResponseEntity<List<EmployeeDto>>(employeeDtos, HttpStatus.OK);
+	public ResponseEntity<List<Employee>> getAllEmployeeData() {
+		List<Employee> employeeDtos = employeeService.getAllEmpoyees();
+		return new ResponseEntity<List<Employee>>(employeeDtos, HttpStatus.OK);
 	}
 
 	@GetMapping(path = "email/{email}")
-	public ResponseEntity<EmployeeDto> findEmpByEmail(@PathVariable String email) {
-		EmployeeDto employeeDto = employeeService.findEmployeeByEmail(email);
-		return new ResponseEntity<EmployeeDto>(employeeDto, HttpStatus.OK);
+	public ResponseEntity<Employee> findEmpByEmail(@PathVariable String email) {
+		Employee employee = employeeService.findEmployeeByEmail(email);
+		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{empNo}")
-	public ResponseEntity<EmployeeDto> findEmpByEmpNo(@PathVariable long empNo) {
-		EmployeeDto dto = employeeService.findEmpByNo(empNo);
-		return new ResponseEntity<EmployeeDto>(dto, HttpStatus.OK);
+	public ResponseEntity<Employee> findEmpByEmpNo(@PathVariable String empNo) {
+		Employee dto = employeeService.findEmpByNo(empNo);
+		return new ResponseEntity<Employee>(dto, HttpStatus.OK);
 	}
 //	@GetMapping(path = "/{id}")
 //	public ResponseEntity<Optional<EmployeeDto>> findEmpById(@PathVariable long id) {

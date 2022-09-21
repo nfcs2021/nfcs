@@ -19,9 +19,8 @@ public class EmployeeService {
 
 	public EmployeeDto insertEmployeeData(EmployeeDto employeeDto) {
 		Employee employee = new Employee();
-		employee.setEmpNoSeries(employeeDto.getEmpNoSeries());
 		employee.setEmpname(employeeDto.getEmpname());
-		employee.setEmpNo(employeeDto.getEmpNo());
+		employee.setEmpId(employeeDto.getEmpId());
 		employee.setDateOfBirth(employee.getDateOfBirth());
 		employee.setGender(employeeDto.getGender());
 		employee.setReportingManager(employeeDto.getReportingManager());
@@ -46,18 +45,18 @@ public class EmployeeService {
 		return employeeDto;
 	}
 
-	public List<EmployeeDto> getAllEmpoyees() {
+	public List<Employee> getAllEmpoyees() {
 		List<Employee> employees = employeeRepository.findAll();
-		return CommonUtility.getEmployeeDtos(employees);
+		return employees;
 	}
 
-	public EmployeeDto findEmployeeByEmail(String email) {
-		EmployeeDto employeeDto = CommonUtility.getEmployee(employeeRepository.findByEmail(email));
+	public Employee findEmployeeByEmail(String email) {
+		Employee employeeDto =employeeRepository.findByEmail(email);
 		return employeeDto;
 	}
 
-	public EmployeeDto findEmpByNo(long empNo) {
-		EmployeeDto dto = CommonUtility.getEmployee(employeeRepository.findByEmpNo(empNo));
+	public Employee findEmpByNo(String empNo) {
+		Employee dto=employeeRepository.findByEmpId(empNo);
 		return dto;
 	}
 

@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class EmployeeDto {
 
-	private long empId;
-	private String empNoSeries;
-	private long empNo;
+	private long id;
+	private String empId;
 	private String empname;
 	private LocalDate dateOfBirth;
 	private String gender;
@@ -36,4 +35,5 @@ public class EmployeeDto {
 	private String designation;
 	private String location;
 	private String department;
+	private String password;
 }

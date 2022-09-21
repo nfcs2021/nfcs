@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,12 +21,9 @@ import lombok.NoArgsConstructor;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "employee_Id")
-	private long empId;
-	@Column(name = "emp_no_series")
-	private String empNoSeries;
-	@Column(name = "empNo")
-	private long empNo;
+	private long id;
+	@Column(name = "empId")
+	private String empId;
 	@Column(name = "emp_name")
 	private String empname;
 	@Column(name = "Date_of_Birth")
@@ -68,5 +66,8 @@ public class Employee {
 	private String location;
 	@Column(name = "department")
 	private String department;
+	@Column
+	@JsonIgnore
+	private String password;
 
 }

@@ -6,24 +6,24 @@ public class JwtRequest implements Serializable {
 
 	private static final long serialVersionUID = 5926468583005150707L;
 
-	private String email;
+	private String empId;
 	private String password;
 
 	// default constructor for JSON Parsing
 	public JwtRequest() {
 	}
 
-	public JwtRequest(String email, String password) {
-		this.setEmail(email);
+	public JwtRequest(String empId, String password) {
+		this.setEmpNo(empId);
 		this.setPassword(password);
 	}
 
-	public String getEmail() {
-		return this.email;
+	public String getEmpId() {
+		return this.empId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmpNo(String empId) {
+		this.empId = empId;
 	}
 
 	public String getPassword() {
