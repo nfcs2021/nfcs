@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-// import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
@@ -14,7 +13,11 @@ import 'hammerjs';
 
 @NgModule({
   declarations: [
+<<<<<<< HEAD
     AppComponent
+=======
+    AppComponent,
+>>>>>>> 4602c720447449cf23c094fafa72281bb3f55941
   ],
   imports: [
     BrowserAnimationsModule,
