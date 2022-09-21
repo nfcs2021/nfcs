@@ -6,7 +6,7 @@ import { PageNotfoundComponent } from './core/page-notfound/page-notfound.compon
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  {path: 'home', loadChildren: './feature/dashboard/dashboard.module#DashboardModule', },
+  {path: 'home', loadChildren: './feature/dashboard/dashboard.module#DashboardModule',canActivate:[AuthGuard] },
   {path: '**', component: PageNotfoundComponent},
 ];
 

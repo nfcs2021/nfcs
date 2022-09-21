@@ -23,7 +23,7 @@ export class EmployeeManageComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private _employeeService: EmployeeService) { }
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService) { }
 
   ngOnInit() {
 
@@ -51,13 +51,14 @@ export class EmployeeManageComponent implements OnInit {
   }
 
   private loadEmployee() {
+   
     this.supervisorEmployees = concat(
       of([]), // default items
       this.employeeinput$.pipe(
         debounceTime(200),
         distinctUntilChanged(),
         tap(() => this.isSelectLoading = true),
-        switchMap(term => this._employeeService.getEmployeeByFullName(term).pipe(
+        switchMap(term => this.employeeService.getEmployeeByFullName(term).pipe(
           catchError(() => of([])), // empty list on error
           tap(() => this.isSelectLoading = false)
         ))
@@ -74,18 +75,37 @@ export class EmployeeManageComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    // console.log("success ", this.registerForm.value);
-console.log(this.registerForm);
+    const data ={
+      'empname':this.registerForm.value['name'],
+      'empId':this.registerForm.value['employeeno'],
+      'dateOfBirth':this.registerForm.value['dob'],
+      'gender':this.registerForm.value['gender'],
+      'reportingManager':this.registerForm.value['reportingManager'],
+      'status':this.registerForm.value['status'],
+      'dateOfJoining':this.registerForm.value['dateOfJoining'],
+      'probationPeriod':this.registerForm.value['probationPeriod'],
+      'confirmationDate':this.registerForm.value['conformationDate'],
+      'email':this.registerForm.value['email'],
+      'phoneNumber':this.registerForm.value['mobileNumber'],
+      'emergencyContactName':this.registerForm.value['emergencyContactName'],
+      'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
+      'fatherName':this.registerForm.value['fatherName'],
+      'spouseName':this.registerForm.value['spouseName'],
+      'position':this.registerForm.value['position'],
+    }
+   
+console.log(data);
 
-    // this._employeeService.createEmployee(this.registerForm.value).subscribe(res => {
-    //   this.has_error = false;
-    //   this.create_employee_msg = 'Registration Successful';
-    //   this.registerForm.reset();
-    //   this.submitted = false;
-    // }, error => {
-    //   this.has_error = true;
-    //   this.create_employee_msg = error.error.message;
-    // });
+    this.employeeService.createEmployee(data).subscribe(res => {
+      this.has_error = false;
+      this.create_employee_msg = 'Registration Successful';
+      this.registerForm.reset();
+      this.submitted = false;
+    }, error => {
+      console.log(error);
+      this.has_error = true;
+      this.create_employee_msg = error.error.message;
+    });
 
 
   }
