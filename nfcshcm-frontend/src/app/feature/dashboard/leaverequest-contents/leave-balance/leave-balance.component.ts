@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leave-balance',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leave-balance.component.css']
 })
 export class LeaveBalanceComponent implements OnInit {
-
-  constructor() { }
+ 
+  
+  constructor( private router: Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/home/leaverequests/leavebalance']);
   }
 
 }

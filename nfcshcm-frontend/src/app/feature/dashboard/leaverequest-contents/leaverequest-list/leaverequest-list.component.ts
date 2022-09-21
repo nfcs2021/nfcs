@@ -24,7 +24,7 @@ export class LeaverequestListComponent implements OnInit {
 
   allEmployees: Observable<any>;
   employeeinput$ = new Subject<string>();
-  isSelectLoading = false;
+   isSelectLoading = false;
 
   constructor(private _employeeLeaveService: EmployeeLeaveService, private _employeeService: EmployeeService) { }
 

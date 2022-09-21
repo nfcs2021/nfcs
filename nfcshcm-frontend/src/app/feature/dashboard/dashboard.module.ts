@@ -47,11 +47,9 @@ import { EventsMainComponent } from './eventsContents/events-main/events-main.co
 import { EventDetailsComponent } from './eventsContents/event-details/event-details.component';
 import { EventListComponent } from './eventsContents/event-list/event-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-<<<<<<< HEAD
 import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
-=======
 import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
->>>>>>> 985a3a3a498a0d812bc9c9db97ba62412e082817
+
 
 @NgModule({
   imports: [
@@ -63,6 +61,7 @@ import { EmployeeAddressComponent } from './employee-contents/employee-address/e
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    
     MaterialModule,
     NgxPaginationModule,
     NgxChartsModule,
@@ -95,11 +94,9 @@ import { EmployeeAddressComponent } from './employee-contents/employee-address/e
     EventsMainComponent,
     EventDetailsComponent,
     EventListComponent,
-<<<<<<< HEAD
     LeaveBalanceComponent,
-=======
     EmployeeAddressComponent,
->>>>>>> 985a3a3a498a0d812bc9c9db97ba62412e082817
+
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
