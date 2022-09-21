@@ -1,0 +1,11 @@
+
+.card{
+    align-items: center;
+    border-radius: 10px;
+    border-color:   rgb(119, 118, 118);
+    
+}
+.card-text{
+    font-size: medium;
+    margin-left: 25%
+}

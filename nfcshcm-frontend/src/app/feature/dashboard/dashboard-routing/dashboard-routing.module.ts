@@ -21,6 +21,7 @@ import { LeavetypeManageComponent } from '../leavetype-contents/leavetype-manage
 import { LeaverequestListComponent } from '../leaverequest-contents/leaverequest-list/leaverequest-list.component';
 import { LeaverequestDetailsComponent } from '../leaverequest-contents/leaverequest-details/leaverequest-details.component';
 import { EventsMainComponent } from '../eventsContents/events-main/events-main.component';
+import { LeaveBalanceComponent } from '../leaverequest-contents/leave-balance/leave-balance.component';
 
 const routes: Routes = [
   {
@@ -45,7 +46,8 @@ const routes: Routes = [
             {path: '', redirectTo: 'details', pathMatch: 'full'},
             {path: 'details', component: LeaverequestListComponent},
             {path: 'details/:id', component: LeaverequestDetailsComponent},
-            {path: 'new', component: LeaverequestManageComponent}
+            {path: 'new', component: LeaverequestManageComponent},
+            {path:'leavebalance',component:LeaveBalanceComponent}
           ]
         },
         {

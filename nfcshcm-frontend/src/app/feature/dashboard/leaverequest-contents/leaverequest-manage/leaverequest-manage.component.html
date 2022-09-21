@@ -1,3 +1,5 @@
+
+
 <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-6 offset-md-4 form-box">
 
   <div *ngIf="!!create_leave_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_leave_req_msg}}</div>
