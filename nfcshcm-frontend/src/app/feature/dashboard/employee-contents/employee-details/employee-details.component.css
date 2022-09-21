@@ -1,9 +1,10 @@
-.employee-profile-img{
-    width: 60%;
-    border-radius: 5%;
-    /* border: 4px solid #28a745; */
+table{
+    background-color: rgb(223, 245, 237);
 }
-.expansion-header {
-    color: #6363fc;
-    border-bottom: 1px solid #0000ff;
-}
+ span{
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: justify;
+    -moz-text-align-last: right;
+    text-align-last:right ;
+ }
