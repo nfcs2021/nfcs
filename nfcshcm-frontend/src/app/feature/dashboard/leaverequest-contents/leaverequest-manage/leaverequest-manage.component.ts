@@ -31,8 +31,8 @@ export class LeaverequestManageComponent implements OnInit {
     this.leaveTypes = this._leaveTypeService.getAllLeaveTypes();
 
     this.leaveForm = this.formBuilder.group({
-      leaveType: [, Validators.required],
-      leaveReason: ['', [Validators.required, Validators.minLength(3)]],
+      leaveType: ['', Validators.required],
+      leaveReason: ['', Validators.required],
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required]
     });
@@ -42,6 +42,8 @@ export class LeaverequestManageComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    // this.leaveForm.reset();
+    // console.log(this.leaveForm);
 
     // stop here if form is invalid
     if (this.leaveForm.invalid) {
