@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nfcs.hcm.dto.EmployeeDto;
 import com.nfcs.hcm.dto.UserDto;
 import com.nfcs.hcm.model.JwtRequest;
 import com.nfcs.hcm.model.JwtResponse;
@@ -42,8 +43,8 @@ public class JwtAuthenticationController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UserDto user) throws Exception {
-		return ResponseEntity.ok(userDetailsService.save(user));
+	public ResponseEntity<?> saveUser(@RequestBody EmployeeDto employeeDto) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(employeeDto));
 	}
 
 	private void authenticate(String username, String password) throws Exception {

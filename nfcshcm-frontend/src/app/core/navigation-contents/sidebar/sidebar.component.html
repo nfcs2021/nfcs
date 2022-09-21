@@ -1,0 +1,97 @@
+<!-- <nav id="sidebar" [ngClass]="isOpen ? 'active' : ''">
+
+  <ul class="list-unstyled sidebar-items">
+    <p class="sidebar-header">Leave Management</p>
+    <li>
+      <a routerLink="/home/employees" routerLinkActive="active">Employee</a>
+    </li>
+    <li>
+      <a routerLink="/home/leaverequests" routerLinkActive="active">Leave Request</a>
+    </li>
+    <li>
+      <a routerLink="/home/leavetypes" routerLinkActive="active">Leave Type</a>
+    </li>
+    <li>
+      <a routerLink="/home/event" routerLinkActive="active">Event</a>
+    </li>
+  </ul>
+
+</nav> -->
+<div class="nav-side-menu">
+
+  <div class="sidebar-profile">
+    <div class="user-pic">
+      <img class="img-responsive img-rounded" src="assets/user.jpg" alt="User picture">
+    </div>
+    <div class="user-info ml-5">
+      <span class="user-name">Jhon
+        <strong>Smith</strong>
+      </span>
+      <span class="user-role mt-1">Administrator</span>
+      <span class="user-status mt-1">
+        <i class="fa fa-circle"></i>
+        <span>Online</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out p-3">
+      <li class="pt-2 pb-2">
+        <a href="#">
+          <i class="fa fa-home fa-lg"></i> Home
+        </a>
+      </li>
+
+      <li data-toggle="collapse" data-target="#products" class="collapsed  pt-2 pb-2">
+        <a><i class="fa fa-users fa-lg"></i> Employee <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="products">
+        <li class="p-2"><a  routerLink="/home/employees/new"> Add Employee</a></li>
+        <li class="p-2"><a href="#">Information</a></li>
+        <li><a href="#">Buttons</a></li>
+        <li><a href="#">Tabs & Accordions</a></li>
+        <li><a href="#">Typography</a></li>
+        <li><a href="#">FontAwesome</a></li>
+        <li><a href="#">Slider</a></li>
+        <li><a href="#">Panels</a></li>
+        <li><a href="#">Widgets</a></li>
+        <li><a href="#">Bootstrap Model</a></li>
+      </ul>
+
+
+      <li data-toggle="collapse" data-target="#service" class="collapsed pt-2 pb-2">
+        <a ><i class="fa fa-calendar fa-lg"></i> Leave Request <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="service">
+        <li> <a routerLink="/home/leaverequests/details"> Apply Leave </a></li>
+        <li><a routerLink="/home/leaverequests/leavebalance"> Leave Balance </a></li>
+        <li>New Service 3</li>
+      </ul>
+
+
+      <!-- <li data-toggle="collapse" data-target="#new" class="collapsed">
+        <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+      </li>
+      <ul class="sub-menu collapse" id="new">
+        <li>New New 1</li>
+        <li>New New 2</li>
+        <li>New New 3</li>
+      </ul> -->
+
+
+      <!-- <li>
+        <a href="#">
+          <i class="fa fa-user fa-lg"></i> Profile
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa fa-users fa-lg"></i> Users
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>

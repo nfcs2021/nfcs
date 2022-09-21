@@ -32,4 +32,5 @@ public class UserDao {
 	@Column
 	@JsonIgnore
 	private String password;
+	
 }
