@@ -4,6 +4,7 @@ import { Observable, concat, of, Subject } from 'rxjs';
 import { EmployeeService } from './../../services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../model/employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-manage',
@@ -21,7 +22,9 @@ export class EmployeeManageComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private _employeeService: EmployeeService) { }
+  constructor(private formBuilder: FormBuilder, 
+    private employeeService: EmployeeService,
+    private route:Router) { }
 
   ngOnInit() {
 
@@ -49,13 +52,14 @@ export class EmployeeManageComponent implements OnInit {
   }
 
   private loadEmployee() {
+   
     this.supervisorEmployees = concat(
       of([]), // default items
       this.employeeinput$.pipe(
         debounceTime(200),
         distinctUntilChanged(),
         tap(() => this.isSelectLoading = true),
-        switchMap(term => this._employeeService.getEmployeeByFullName(term).pipe(
+        switchMap(term => this.employeeService.getEmployeeByFullName(term).pipe(
           catchError(() => of([])), // empty list on error
           tap(() => this.isSelectLoading = false)
         ))
@@ -69,22 +73,41 @@ export class EmployeeManageComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-    // console.log("success ", this.registerForm.value);
-console.log(this.registerForm);
+//     if (this.registerForm.invalid) {
+//       return;
+//     }
+//     const data ={
+//       'empname':this.registerForm.value['name'],
+//       'empId':this.registerForm.value['employeeno'],
+//       'dateOfBirth':this.registerForm.value['dob'],
+//       'gender':this.registerForm.value['gender'],
+//       'reportingManager':this.registerForm.value['reportingManager'],
+//       'status':this.registerForm.value['status'],
+//       'dateOfJoining':this.registerForm.value['dateOfJoining'],
+//       'probationPeriod':this.registerForm.value['probationPeriod'],
+//       'confirmationDate':this.registerForm.value['conformationDate'],
+//       'email':this.registerForm.value['email'],
+//       'phoneNumber':this.registerForm.value['mobileNumber'],
+//       'emergencyContactName':this.registerForm.value['emergencyContactName'],
+//       'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
+//       'fatherName':this.registerForm.value['fatherName'],
+//       'spouseName':this.registerForm.value['spouseName'],
+//       'position':this.registerForm.value['position'],
+//     }
+   
+// console.log(data);
 
-    // this._employeeService.createEmployee(this.registerForm.value).subscribe(res => {
+    // this.employeeService.createEmployee(data).subscribe(res => {
     //   this.has_error = false;
     //   this.create_employee_msg = 'Registration Successful';
     //   this.registerForm.reset();
     //   this.submitted = false;
     // }, error => {
+    //   console.log(error);
     //   this.has_error = true;
     //   this.create_employee_msg = error.error.message;
     // });
-
+this.route.navigate(['/home/employees/details']);
 
   }
 

@@ -41,12 +41,11 @@ export class AuthService {
     localStorage.removeItem('access_token');
 
     const data = {
-      'username': user.username,
-      'password': user.password,
-      'grant_type': 'password'
+      'empId': user.empId,
+      'password': user.password
     };
 
-    return this.http.post<any>(this._loginUrl, this.getFormUrlEncoded(data), { headers: this.tokenHeader });
+    return this.http.post<any>("http://localhost:8081/authenticate",user);
   }
 
   refreshToken(request: HttpRequest<any>, next: HttpHandler) {

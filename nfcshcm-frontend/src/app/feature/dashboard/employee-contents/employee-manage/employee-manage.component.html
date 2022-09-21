@@ -4,10 +4,9 @@
 
     <div *ngIf="!!create_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_employee_msg}}</div>
 
-    <h4 class=" mb-3 form-title"> Employee Registration </h4>
-    <div class="form-group row">
-      <label for="employeeno" class="control-label col-sm-2 text-right">Employee
-        No&nbsp;<span class="text-danger">*</span></label>
+    <h4 class=" mb-3 form-title"> Add Employee  </h4>
+    <div class="form-group  row">
+      <label for="employeeno" class="control-label col-sm-2 text-right">Employee No&nbsp;<span class="text-danger">*</span></label>
       <div class="col-sm-3 mr-5">
         <input type="text" id="employeeno" formControlName="employeeno"
           class="form-control " placeholder="Employee No"
@@ -201,6 +200,18 @@
           submitted && f.spouseName.errors }"/>
       </div>
     </div>
+
+    <!-- <div class="form-group row">
+      <label for="file" class="col-sm-2 col-form-label text-right">Profile&nbsp;<span class="text-danger">*</span></label>
+      <div class="col-sm-3 mr-5">
+        <input type="file" id="file" formControlName="file" class="form-control" placeholder="" [ngClass]="{ 'is-invalid': submitted && f.file.errors }"/>
+        <div *ngIf="submitted && f.position.errors" class="invalid-feedback">
+          <div *ngIf="f.position.errors.required">file is required</div>
+        </div>
+      </div>
+    </div> -->
+
+    
 
     <!-- <div class="form-group row">
       <label for="supervisor" class="col-sm-3 col-form-label">Supervisor Employee&nbsp;<span class="text-danger">
