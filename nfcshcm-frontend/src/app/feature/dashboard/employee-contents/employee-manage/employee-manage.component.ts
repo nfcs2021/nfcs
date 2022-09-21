@@ -14,12 +14,10 @@ export class EmployeeManageComponent implements OnInit {
 
   has_error = false;
   create_employee_msg: String;
-
   supervisorEmployees: Observable<any>;
   employeeinput$ = new Subject<string>();
   employeeSupervisor: Employee = null;
   isSelectLoading = false;
-
   submitted = false;
   registerForm: FormGroup;
 
