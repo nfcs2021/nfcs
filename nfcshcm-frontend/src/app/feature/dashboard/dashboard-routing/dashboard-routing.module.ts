@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
-=======
->>>>>>> 54e63c5107b0bbd5c685da3884714026dd0c2f27
 import { EventDetailsComponent } from "./../eventsContents/event-details/event-details.component";
 import { EventListComponent } from "./../eventsContents/event-list/event-list.component";
 import { EventsManageComponent } from "./../eventsContents/events-manage/events-manage.component";
@@ -33,10 +24,7 @@ import { EventsMainComponent } from "../eventsContents/events-main/events-main.c
 import { LeaveBalanceComponent } from "../leaverequest-contents/leave-balance/leave-balance.component";
 import { EmployeeAddressComponent } from "../employee-contents/employee-address/employee-address.component";
 import { EmployeeDocumentsComponent } from "../employee-contents/employee-documents/employee-documents.component";
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 4602c720447449cf23c094fafa72281bb3f55941
+
 import { EventDetailsComponent } from './../eventsContents/event-details/event-details.component';
 import { EventListComponent } from './../eventsContents/event-list/event-list.component';
 import { EventsManageComponent } from './../eventsContents/events-manage/events-manage.component';
@@ -61,14 +49,9 @@ import { LeaverequestListComponent } from '../leaverequest-contents/leaverequest
 import { LeaverequestDetailsComponent } from '../leaverequest-contents/leaverequest-details/leaverequest-details.component';
 import { EventsMainComponent } from '../eventsContents/events-main/events-main.component';
 import { LeaveBalanceComponent } from '../leaverequest-contents/leave-balance/leave-balance.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import { EmployeeAddressComponent } from '../employee-contents/employee-address/employee-address.component';
-=======
-=======
->>>>>>> 4602c720447449cf23c094fafa72281bb3f55941
->>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
->>>>>>> 54e63c5107b0bbd5c685da3884714026dd0c2f27
+
 
 const routes: Routes = [
   {
@@ -130,25 +113,20 @@ const routes: Routes = [
       { path: "profile", component: MyProfileComponent },
     ],
   },
-<<<<<<< HEAD
-=======
-=======
+
         { path: '', component: DashHomeComponent },
         {
           path: 'employees',
           component: EmployeeMainComponent,
           children: [
             {path: '', redirectTo: 'details', pathMatch: 'full'},
-<<<<<<< HEAD
             {path: 'details', component: EmployeeListComponent},
             {path: 'details/:id', component: EmployeeDetailsComponent},
             {path: 'new', component: EmployeeManageComponent, },
-            { path: "employee-address", component: EmployeeAddressComponent }
-=======
+            { path: "employee-address", component: EmployeeAddressComponent },
             {path: 'list', component: EmployeeListComponent},
             {path: 'details', component: EmployeeDetailsComponent},
             {path: 'new', component: EmployeeManageComponent, }
->>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
           ]
         },
         {
@@ -184,15 +162,7 @@ const routes: Routes = [
         },
         { path: 'profile', component: MyProfileComponent },
     ]
-<<<<<<< HEAD
-}]     
-=======
-}
->>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
->>>>>>> 54e63c5107b0bbd5c685da3884714026dd0c2f27
-];
 
->>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
   declarations: [],
