@@ -15,12 +15,13 @@ export class LeaverequestManageComponent implements OnInit {
 
   create_leave_req_msg: string;
   public has_error = false;
-
+ 
   leaveTypes: Observable<any>;
   selectedLeaveType: LeaveType = null;
   leaveForm: FormGroup;
   minDate: Date;
   submitted = false;
+  mdb: any;
 
   constructor(private formBuilder: FormBuilder, private _employeeLeaveService: EmployeeLeaveService,
      private _leaveTypeService: LeaveTypeService) {
@@ -36,7 +37,19 @@ export class LeaverequestManageComponent implements OnInit {
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required]
     });
-  }
+
+  //   const basicAutocomplete = document.querySelector('#search-autocomplete');
+  //   const data = ['One', 'Two', 'Three', 'Four', 'Five'];
+  //   const dataFilter = (value: any) => {
+  //     return data.filter((item) => {
+  //       return item.toLowerCase().startsWith(value.toLowerCase());
+  //     });
+  //   };
+    
+  //   new this.mdb.Autocomplete(basicAutocomplete, {
+  //     filter: dataFilter
+  //   });
+   }
 
   get f() { return this.leaveForm.controls; }
 

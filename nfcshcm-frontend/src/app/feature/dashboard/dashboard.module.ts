@@ -49,6 +49,11 @@ import { EventListComponent } from './eventsContents/event-list/event-list.compo
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
+<<<<<<< HEAD
+import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
+
+=======
+>>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
 
 import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 import { EmployeeDocumentsComponent } from './employee-contents/employee-documents/employee-documents.component';
@@ -64,6 +69,7 @@ import { EmployeeDocumentsComponent } from './employee-contents/employee-documen
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    
     MaterialModule,
     NgxPaginationModule,
     NgxChartsModule,
@@ -98,7 +104,16 @@ import { EmployeeDocumentsComponent } from './employee-contents/employee-documen
     EventListComponent,
     LeaveBalanceComponent,
     EmployeeAddressComponent,
+<<<<<<< HEAD
+
+=======
     EmployeeDocumentsComponent,
+<<<<<<< HEAD
+=======
+>>>>>>> 4602c720447449cf23c094fafa72281bb3f55941
+=======
+>>>>>>> 047131476919339f83a4490b43a8ff09d0adae27
+>>>>>>> 54e63c5107b0bbd5c685da3884714026dd0c2f27
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
