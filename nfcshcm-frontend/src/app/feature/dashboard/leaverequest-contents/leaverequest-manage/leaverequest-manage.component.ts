@@ -12,7 +12,7 @@ import { EmployeeLeave } from '../../model/EmployeeLeave';
   styleUrls: ['./leaverequest-manage.component.css']
 })
 export class LeaverequestManageComponent implements OnInit {
-
+ 
   create_leave_req_msg: string;
   public has_error = false;
  
@@ -38,25 +38,15 @@ export class LeaverequestManageComponent implements OnInit {
       toDate: ['', Validators.required]
     });
 
-  //   const basicAutocomplete = document.querySelector('#search-autocomplete');
-  //   const data = ['One', 'Two', 'Three', 'Four', 'Five'];
-  //   const dataFilter = (value: any) => {
-  //     return data.filter((item) => {
-  //       return item.toLowerCase().startsWith(value.toLowerCase());
-  //     });
-  //   };
-    
-  //   new this.mdb.Autocomplete(basicAutocomplete, {
-  //     filter: dataFilter
-  //   });
+  
    }
 
   get f() { return this.leaveForm.controls; }
 
   onSubmit() {
     this.submitted = true;
-    // this.leaveForm.reset();
-    // console.log(this.leaveForm);
+  //    this.leaveForm.reset();
+  // console.log(this.leaveForm);
 
     // stop here if form is invalid
     if (this.leaveForm.invalid) {
@@ -76,6 +66,6 @@ export class LeaverequestManageComponent implements OnInit {
     });
   }
 
-
+ 
 
 }

@@ -13,6 +13,7 @@ export class LeaveBalanceComponent implements OnInit {
 
   ngOnInit() {
     this.router.navigate(['/home/leaverequests/leavebalance']);
+    
   }
 
 }
