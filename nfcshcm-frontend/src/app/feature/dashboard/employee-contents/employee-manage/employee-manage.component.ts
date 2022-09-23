@@ -75,41 +75,47 @@ export class EmployeeManageComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-//     if (this.registerForm.invalid) {
-//       return;
-//     }
-//     const data ={
-//       'empname':this.registerForm.value['name'],
-//       'empId':this.registerForm.value['employeeno'],
-//       'dateOfBirth':this.registerForm.value['dob'],
-//       'gender':this.registerForm.value['gender'],
-//       'reportingManager':this.registerForm.value['reportingManager'],
-//       'status':this.registerForm.value['status'],
-//       'dateOfJoining':this.registerForm.value['dateOfJoining'],
-//       'probationPeriod':this.registerForm.value['probationPeriod'],
-//       'confirmationDate':this.registerForm.value['conformationDate'],
-//       'email':this.registerForm.value['email'],
-//       'phoneNumber':this.registerForm.value['mobileNumber'],
-//       'emergencyContactName':this.registerForm.value['emergencyContactName'],
-//       'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
-//       'fatherName':this.registerForm.value['fatherName'],
-//       'spouseName':this.registerForm.value['spouseName'],
-//       'position':this.registerForm.value['position'],
-//     }
-   
-// console.log(data);
+    if (this.registerForm.invalid) {
+      return;
+    }
+    const data ={
+      'empname':this.registerForm.value['name'],
+      'empId':this.registerForm.value['employeeno'],
+      'dateOfBirth':this.registerForm.value['dob'],
+      'gender':this.registerForm.value['gender'],
+      'reportingManager':this.registerForm.value['reportingManager'],
+      'status':this.registerForm.value['status'],
+      'dateOfJoining':this.registerForm.value['dateOfJoining'],
+      'probationPeriod':this.registerForm.value['probationPeriod'],
+      'confirmationDate':this.registerForm.value['conformationDate'],
+      'email':this.registerForm.value['email'],
+      'phoneNumber':this.registerForm.value['mobileNumber'],
+      'emergencyContactName':this.registerForm.value['emergencyContactName'],
+      'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
+      'fatherName':this.registerForm.value['fatherName'],
+      'spouseName':this.registerForm.value['spouseName'],
+      'position':this.registerForm.value['position'],
+    }
 
-    // this.employeeService.createEmployee(data).subscribe(res => {
-    //   this.has_error = false;
-    //   this.create_employee_msg = 'Registration Successful';
-    //   this.registerForm.reset();
-    //   this.submitted = false;
-    // }, error => {
-    //   console.log(error);
-    //   this.has_error = true;
-    //   this.create_employee_msg = error.error.message;
-    // });
-this.route.navigate(['/home/employees/details']);
+   
+   
+console.log(data);
+
+    this.employeeService.createEmployee(data).subscribe(res => {
+      console.log(res);
+      this.has_error = false;
+      this.create_employee_msg = 'Registration Successful';
+      this.route.navigate(['/home/employees/details/'+res.id]);
+      this.registerForm.reset();
+      this.submitted = false;
+      
+
+    }, error => {
+      console.log(error);
+      this.has_error = true;
+      this.create_employee_msg = error.error.message;
+    });
+
 
   }
 

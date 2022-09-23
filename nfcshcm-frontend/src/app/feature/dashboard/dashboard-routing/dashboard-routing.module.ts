@@ -22,6 +22,7 @@ import { LeaverequestListComponent } from '../leaverequest-contents/leaverequest
 import { LeaverequestDetailsComponent } from '../leaverequest-contents/leaverequest-details/leaverequest-details.component';
 import { EventsMainComponent } from '../eventsContents/events-main/events-main.component';
 import { LeaveBalanceComponent } from '../leaverequest-contents/leave-balance/leave-balance.component';
+import { EmployeePasswordGenerationComponent } from '../../employee-password-generation/employee-password-generation.component';
 
 const routes: Routes = [
   {
@@ -34,8 +35,8 @@ const routes: Routes = [
           component: EmployeeMainComponent,
           children: [
             {path: '', redirectTo: 'details', pathMatch: 'full'},
-            {path: 'list', component: EmployeeListComponent},
-            {path: 'details', component: EmployeeDetailsComponent},
+            {path: 'list/:id', component: EmployeeListComponent},
+            {path: 'details/:id', component: EmployeeDetailsComponent},
             {path: 'new', component: EmployeeManageComponent, }
           ]
         },

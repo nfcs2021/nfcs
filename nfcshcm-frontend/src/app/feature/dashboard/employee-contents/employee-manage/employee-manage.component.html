@@ -2,8 +2,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto
     col-md-11 offset-md-3 form-box form-horizontal">
 
-    <div *ngIf="!!create_employee_msg" [ngClass]="has_error ? 'alert
-      alert-danger': 'alert alert-info'">{{create_employee_msg}}</div>
+    <div *ngIf="!!create_employee_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{create_employee_msg}}</div>
 
     <h4 class=" mb-3 form-title"> Add Employee  </h4>
     <div class="form-group  row">
@@ -17,8 +16,7 @@
         </div>
       </div>
 
-      <label for="probationPeriod" class="col-sm-2 col-form-label ml-5
-        text-right">Probation Period &nbsp;<span class="text-danger">*</span></label>
+      <label for="probationPeriod" class="col-sm-2 col-form-label ml-5 text-right">Probation Period &nbsp;<span class="text-danger">*</span></label>
       <div class="col-sm-2">
         <input type="number" id="probationPeriod"
           formControlName="probationPeriod" class=" w-50 form-control"
@@ -41,15 +39,15 @@
           class="form-control"
           placeholder="Name" [ngClass]="{ 'is-invalid': submitted &&
           f.name.errors }" />
-        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="submitted && f.name.errors"
+          class="invalid-feedback">
           <div *ngIf="f.name.errors.required">First Name is required</div>
           <div *ngIf="f.name.errors.minlength">First Name must be at least 2
             characters</div>
         </div>
       </div>
 
-      <label for="conformationDate" class="col-sm-2 ml-5 col-form-label
-        text-right">Conformation Date&nbsp;<span class="text-danger">* </span></label>
+      <label for="conformationDate" class="col-sm-2 ml-5 col-form-label text-right">Conformation Date&nbsp;<span class="text-danger">* </span></label>
       <div class="col-sm-2">
         <input type="text" id="conformationDate"
           formControlName="conformationDate" class="form-control w-50"

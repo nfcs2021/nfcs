@@ -9,6 +9,7 @@ import { Employee } from '../model/employee';
 
 @Injectable()
 export class EmployeeService {
+ 
 
   constructor(private http: HttpClient) { }
 
@@ -30,9 +31,24 @@ export class EmployeeService {
   }
 
   getEmployeeById(id): Observable<Employee[]> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + '/rest/employees/' + id)
+
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+    return this.http.get<Employee[]>('http://localhost:8081/data/employee/'+ id,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
+
+  sendEmail(data):Observable<object>{
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+    return this.http.post<object>('http://localhost:8081/data/register-employee',data,{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+  
 
   createEmployee(EmployeeData): Observable<any> {
     const httpheaders = new HttpHeaders(

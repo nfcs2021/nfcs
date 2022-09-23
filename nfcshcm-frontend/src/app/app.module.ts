@@ -10,13 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
 import 'hammerjs';
-import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EmployeeAddressComponent,
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,

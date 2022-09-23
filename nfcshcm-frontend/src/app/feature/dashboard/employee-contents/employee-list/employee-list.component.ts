@@ -1,7 +1,8 @@
 import { EmployeeService } from './../../services/employee.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactory, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,66 +11,43 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees;
-  errorMsg;
-
-  loading = true;
-  currentPage = 1;
-  totalElements;
-  numberOfElements;
-  size = 10;
-  sortKey = 'firstName';
-  reverse = false;
-
-  constructor(private _employeeService: EmployeeService) { }
+  private sub: any;
+  private id: any;
+  employeeData: any;
+  constructor(private employeeService: EmployeeService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
-    this.getAllEmployees();
+   this.routeId();
   }
 
-  createFormGroup() {
-    return new FormGroup({
-      fullName: new FormControl(),
-      username: new FormControl(),
-      email: new FormControl(),
-      contact: new FormControl()
+  routeId() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.getEmployeeById(this.id);
+      console.log(this.id);
+      
     });
   }
 
-  getPage(page: number) {
-    this.loading = true;
-    this.currentPage = page;
-    this.getAllEmployees();
-  }
-  sort(key: string) {
-    this.loading = true;
-    this.sortKey = key + ','.concat(this.reverse ? 'DESC' : 'ASC');
-    this.reverse = !this.reverse;
-    this.getAllEmployees();
+  
+
+ 
+  getEmployeeById(id: number) {
+    if (id !=null) {
+      this.employeeService.getEmployeeById(id)
+        .subscribe(
+          data => {
+           console.log(data);
+           this.employeeData=data;
+          },
+          error => {
+          
+          });
+    } else {
+    }
   }
 
-  getAllEmployees() {
-    this._employeeService.getAllEmployees(this.currentPage - 1, this.size, this.sortKey)
-      .subscribe(
-        data => {
-          this.employees = data.content;
-          this.totalElements = data.totalElements;
-          this.size = data.size;
-          this.numberOfElements = data.numberOfElements;
-          this.loading = false;
-          // console.log('employees data: ', data);
-        },
-        error => this.errorMsg = error);
-  }
-
-  searchEmployee(form) {
-    this.loading = true;
-    this._employeeService.getEmployeeByFullName(form.value.q).subscribe(data => {
-      this.employees = data;
-      this.loading = false;
-    }, error => {
-      this.errorMsg = error;
-    });
-  }
-
+  
 }
