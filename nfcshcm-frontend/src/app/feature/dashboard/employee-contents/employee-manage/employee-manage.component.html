@@ -39,15 +39,15 @@
           class="form-control"
           placeholder="Name" [ngClass]="{ 'is-invalid': submitted &&
           f.name.errors }" />
-        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="submitted && f.name.errors"
+          class="invalid-feedback">
           <div *ngIf="f.name.errors.required">First Name is required</div>
           <div *ngIf="f.name.errors.minlength">First Name must be at least 2
             characters</div>
         </div>
       </div>
 
-      <label for="conformationDate" class="col-sm-2 ml-5 col-form-label
-        text-right">Conformation Date&nbsp;<span class="text-danger">* </span></label>
+      <label for="conformationDate" class="col-sm-2 ml-5 col-form-label text-right">Conformation Date&nbsp;<span class="text-danger">* </span></label>
       <div class="col-sm-2">
         <input type="date" id="conformationDate"
           formControlName="conformationDate" class="form-control w-50"

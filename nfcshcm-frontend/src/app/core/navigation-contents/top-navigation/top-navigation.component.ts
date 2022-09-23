@@ -16,5 +16,8 @@ export class TopNavigationComponent {
   toggleSidebar() {
     this._sideBarService.toggle();
   }
+  logout(){
+    this._auth.logout();
+  }
 
 }

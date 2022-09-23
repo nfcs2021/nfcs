@@ -6,35 +6,35 @@
 
   <table class="table table-bordered w-50">
     <tr >
-        <td><span >EmployeeNo</span>  0011 </td>
-        <td><span>DOJ</span>  01-01-2001</td>
+        <td><span >EmployeeNo</span>  {{employeeData.empId}} </td>
+        <td><span>DOJ</span>  {{employeeData.dateOfJoining}}</td>
     </tr>
     <tr>
-        <td><span>Status</span>  0011</td>
-        <td> <span>DOB</span>  01-01-2001</td>
+        <td><span>Status</span>  {{employeeData.status}}</td>
+        <td> <span>DOB</span>  {{employeeData.dateOfBirth}}</td>
     </tr>
     <tr>
-        <td> <span>Location</span>  0011</td>
-        <td> <span>Department</span>  01-01-2001</td>
+        <td> <span>Location</span>  null</td>
+        <td> <span>Department</span>  {{employeeData.position}}</td>
     </tr>
     <tr>
-        <td> <span>Designation</span>  0011</td>
+        <td> <span>Designation</span>  {{employeeData.position}}</td>
         <td></td>
     </tr>
   </table>
 
   <div class="row w-50 ml-5">
     <div class="col-3 mr-2">
-        <button mat-raised-button color="primary">Add Another Employee</button>
+        <button mat-raised-button color="primary" routerLink="/home/employees/new">Add Another Employee</button>
 
     </div>
     <div class="col-2">
-        <button mat-raised-button color="primary" routerLink="/home/employees/list">View Profile</button>
+        <button mat-raised-button color="primary" routerLink="/home/employees/list/{{employeeData.id}}">View Profile</button>
 
     </div>
 
     <div class="col-2">
-        <button mat-raised-button color="primary">Close</button>
+        <button mat-raised-button color="primary" routerLink="/home">Close</button>
 
     </div>
 

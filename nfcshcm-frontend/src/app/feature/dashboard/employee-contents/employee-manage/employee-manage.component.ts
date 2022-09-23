@@ -90,6 +90,46 @@ export class EmployeeManageComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+<<<<<<< HEAD
+    const data ={
+      'empname':this.registerForm.value['name'],
+      'empId':this.registerForm.value['employeeno'],
+      'dateOfBirth':this.registerForm.value['dob'],
+      'gender':this.registerForm.value['gender'],
+      'reportingManager':this.registerForm.value['reportingManager'],
+      'status':this.registerForm.value['status'],
+      'dateOfJoining':this.registerForm.value['dateOfJoining'],
+      'probationPeriod':this.registerForm.value['probationPeriod'],
+      'confirmationDate':this.registerForm.value['conformationDate'],
+      'email':this.registerForm.value['email'],
+      'phoneNumber':this.registerForm.value['mobileNumber'],
+      'emergencyContactName':this.registerForm.value['emergencyContactName'],
+      'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
+      'fatherName':this.registerForm.value['fatherName'],
+      'spouseName':this.registerForm.value['spouseName'],
+      'position':this.registerForm.value['position'],
+    }
+
+   
+   
+console.log(data);
+
+    this.employeeService.createEmployee(data).subscribe(res => {
+      console.log(res);
+      this.has_error = false;
+      this.create_employee_msg = 'Registration Successful';
+      this.route.navigate(['/home/employees/details/'+res.id]);
+      this.registerForm.reset();
+      this.submitted = false;
+      
+
+    }, error => {
+      console.log(error);
+      this.has_error = true;
+      this.create_employee_msg = error.error.message;
+    });
+
+=======
     const data = {
       empname: this.registerForm.value["name"],
       empNo: this.registerForm.value["employeeno"],
@@ -110,6 +150,7 @@ export class EmployeeManageComponent implements OnInit {
     };
 
     console.log(data);
+>>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
 
     this.employeeService.createEmployee(data).subscribe(
       (res) => {

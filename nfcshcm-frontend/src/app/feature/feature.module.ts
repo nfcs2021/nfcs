@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../shared/material/material.module';
+import { EmployeePasswordGenerationComponent } from './employee-password-generation/employee-password-generation.component';
 
 @NgModule({
   imports: [
@@ -17,10 +18,11 @@ import { MaterialModule } from '../shared/material/material.module';
     MaterialModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent,EmployeePasswordGenerationComponent],
   exports: [
     CommonModule,
-    LoginComponent
+    LoginComponent,
+    EmployeePasswordGenerationComponent
   ],
   providers: [AuthService]
 })
