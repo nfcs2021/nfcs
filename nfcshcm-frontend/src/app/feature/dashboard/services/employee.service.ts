@@ -1,42 +1,56 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+  HttpParams,
+} from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
-import { Constant } from '../constant/constant';
-import { Employee } from '../model/employee';
+import { Constant } from "../constant/constant";
+import { Employee } from "../model/employee";
 
 @Injectable()
 export class EmployeeService {
+<<<<<<< HEAD
  
 
   constructor(private http: HttpClient) { }
+=======
+  constructor(private http: HttpClient) {}
+>>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
 
   errorHandler(error: any) {
-    console.log('Employee api error ', error);
+    console.log("Employee api error ", error);
     return throwError(error);
   }
 
   getAllEmployees(page, size, sort): Observable<any> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + '/rest/employees',
-      {
+    return this.http
+      .get<Employee[]>(Constant.API_ENDPOINT + "/rest/employees", {
         params: {
           page: page,
           size: size,
-          sort: sort
-        }
+          sort: sort,
+        },
       })
       .pipe(catchError(this.errorHandler));
   }
 
   getEmployeeById(id): Observable<Employee[]> {
+<<<<<<< HEAD
 
     const httpheaders = new HttpHeaders(
       {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       });
     return this.http.get<Employee[]>('http://localhost:8081/data/employee/'+ id,{ headers: httpheaders })
+=======
+    return this.http
+      .get<Employee[]>(Constant.API_ENDPOINT + "/rest/employees/" + id)
+>>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
       .pipe(catchError(this.errorHandler));
   }
 
@@ -51,47 +65,54 @@ export class EmployeeService {
   
 
   createEmployee(EmployeeData): Observable<any> {
-    const httpheaders = new HttpHeaders(
-      {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-      });
-    return this.http.post<any>('http://localhost:8081/data/employee', EmployeeData,{ headers: httpheaders })
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
+    return this.http
+      .post<any>("http://localhost:8080/data/employee", EmployeeData, {
+        headers: httpheaders,
+      })
       .pipe(catchError(this.errorHandler));
   }
+
 
   updateEmployee(EmployeeData): Observable<Employee[]> {
-    return this.http.put<any>(Constant.API_ENDPOINT + '/rest/employees', EmployeeData)
+    return this.http
+      .put<any>(Constant.API_ENDPOINT + "/rest/employees", EmployeeData)
       .pipe(catchError(this.errorHandler));
   }
-
   getEmployeeUnderSupervision(id): Observable<Employee[]> {
-    return this.http.get<Employee[]>(Constant.API_ENDPOINT + '/rest/employees/employees-under-supervision/' + id)
+    return this.http
+      .get<Employee[]>(
+        Constant.API_ENDPOINT +
+          "/rest/employees/employees-under-supervision/" +
+          id
+      )
       .pipe(catchError(this.errorHandler));
   }
-
   getEmployeeByFullName(inputvalue): Observable<Employee> {
-    return this.http.get<Employee>(Constant.API_ENDPOINT + '/rest/employees/employee-by-fullname',
-      {
-        params: {
-          fullname: inputvalue
+    return this.http
+      .get<Employee>(
+        Constant.API_ENDPOINT + "/rest/employees/employee-by-fullname",
+        {
+          params: {
+            fullname: inputvalue,
+          },
         }
-      }
-    )
+      )
       .pipe(catchError(this.errorHandler));
   }
-
   updatePassword(oldPassword, newPassword): Observable<Employee> {
     const body = new FormData();
-    body.append('oldPassword', oldPassword);
-    body.append('newPassword', newPassword);
-    return this.http.put<any>(Constant.API_ENDPOINT + '/rest/employees/update-password', body )
+    body.append("oldPassword", oldPassword);
+    body.append("newPassword", newPassword);
+    return this.http
+      .put<any>(Constant.API_ENDPOINT + "/rest/employees/update-password", body)
       .pipe(catchError(this.errorHandler));
   }
-
   getCurrentEmployee(): Observable<Employee> {
-    return this.http.get<Employee>(Constant.API_ENDPOINT + '/rest/employees/me')
+    return this.http
+      .get<Employee>(Constant.API_ENDPOINT + "/rest/employees/me")
       .pipe(catchError(this.errorHandler));
   }
-
-
 }
