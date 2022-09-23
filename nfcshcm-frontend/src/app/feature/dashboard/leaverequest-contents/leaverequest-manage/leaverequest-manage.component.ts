@@ -1,10 +1,12 @@
 import { LeaveType } from './../../model/leaveType';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable, Subject, concat, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { EmployeeLeaveService } from './../../services/employeeLeave.service';
 import { Component, OnInit } from '@angular/core';
 import { LeaveTypeService } from '../../services/leaveType.service';
-import { EmployeeLeave } from '../../model/EmployeeLeave';
+import { IDropdownSettings } from 'ngu-multiselect-dropdown';
+
+
 
 @Component({
   selector: 'app-leaverequest-manage',
@@ -22,12 +24,15 @@ export class LeaverequestManageComponent implements OnInit {
   minDate: Date;
   submitted = false;
   mdb: any;
-
+ 
+  dropdownList = [];
+  selectedItems = [];
+  //dropdownSettings = {};
   constructor(private formBuilder: FormBuilder, private _employeeLeaveService: EmployeeLeaveService,
      private _leaveTypeService: LeaveTypeService) {
       this.minDate = new Date();
       }
-
+      dropdownSettings:IDropdownSettings;
   ngOnInit() {
     this.leaveTypes = this._leaveTypeService.getAllLeaveTypes();
 
@@ -38,9 +43,32 @@ export class LeaverequestManageComponent implements OnInit {
       toDate: ['', Validators.required]
     });
 
-  
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Mumbai' },
+      { item_id: 2, item_text: 'Bangaluru' },
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' },
+      { item_id: 5, item_text: 'New Delhi' }
+    ];
+    // this.selectedItems = [
+    //   { item_id: 3, item_text: 'Pune' },
+    //   { item_id: 4, item_text: 'Navsari' }
+    // ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      
+      allowSearchFilter: true
+    };
+    
    }
-
+   onItemSelect(item: any) {
+    console.log(item);
+  }
+  
   get f() { return this.leaveForm.controls; }
 
   onSubmit() {

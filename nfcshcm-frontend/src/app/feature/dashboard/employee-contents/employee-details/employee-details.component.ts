@@ -20,14 +20,12 @@ export class EmployeeDetailsComponent implements OnInit {
   supervisorEmployees: Observable<any>;
   employeeinput$ = new Subject<string>();
   isSelectLoading = false;
-
   expanded = false;
   isEmployeeSelected = false;
   selectedEmployee;
   selected_employee_msg;
   errorMsg;
   employeesUnderSupervision;
-
   update_employee_msg;
   has_error = false;
   submitted = false;

@@ -48,17 +48,19 @@ import { EventDetailsComponent } from './eventsContents/event-details/event-deta
 import { EventListComponent } from './eventsContents/event-list/event-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-
 import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
 import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 
 
 // import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 import { EmployeeDocumentsComponent } from './employee-contents/employee-documents/employee-documents.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
+
+
 
 
 // import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
-
 
 @NgModule({
   imports: [
@@ -70,7 +72,7 @@ import { EmployeeDocumentsComponent } from './employee-contents/employee-documen
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    
+    NuMultiSelectDropDownModule.forRoot(),
     MaterialModule,
     NgxPaginationModule,
     NgxChartsModule,
@@ -104,8 +106,16 @@ import { EmployeeDocumentsComponent } from './employee-contents/employee-documen
     EventDetailsComponent,
     EventListComponent,
     LeaveBalanceComponent,
+
     EmployeeDocumentsComponent,
     EmployeeAddressComponent,
+
+
+
+    EmployeeAddressComponent,
+
+
+    EmployeeDocumentsComponent,
 
 
   ],
