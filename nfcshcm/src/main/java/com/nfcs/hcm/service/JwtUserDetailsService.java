@@ -3,6 +3,7 @@ package com.nfcs.hcm.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -41,17 +42,25 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return employeeRepository.save(newUser);
 	}
 
+	public EmployeeDao savePassword(String empNo, EmployeeDto dto) {
+
+		return null;
+	}
+
 	public List<EmployeeDao> getEmployees() {
 		List<EmployeeDao> empDto = (List<EmployeeDao>) employeeRepository.findAll();
 		return empDto;
 	}
 
-//	public EmployeeDao getByEmpNo(String empNo) {
-//		return employeeRepository.findByEmpNo(empNo);
-//	}
 	public EmployeeDto getByEmpNo(String empNo) {
-		// TODO Auto-generated method stub
 		return CommonUtility.getUsers(employeeRepository.findByEmpNo(empNo));
+	}
+
+	public EmployeeDao generateEmployeePassword(String empNo, String password) {
+		EmployeeDao newEmpDao = employeeRepository.findByEmpNo(empNo);
+		newEmpDao.setEmpNo(empNo);
+		newEmpDao.setPassword(bcryptEncoder.encode(password));
+		return employeeRepository.save(newEmpDao);
 	}
 
 }

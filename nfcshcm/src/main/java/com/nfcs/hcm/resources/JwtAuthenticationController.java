@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nfcs.hcm.dto.EmployeeDto;
+import com.nfcs.hcm.model.EmployeeDao;
 import com.nfcs.hcm.model.JwtRequest;
 import com.nfcs.hcm.model.JwtResponse;
 import com.nfcs.hcm.security.JwtTokenUtil;
@@ -65,15 +66,17 @@ public class JwtAuthenticationController {
 		return ResponseEntity.ok(userDetailsService.getEmployees());
 	}
 
-//	@RequestMapping(value = "/employee/{empNo}", method = RequestMethod.GET)
-//	public ResponseEntity<?> getEmployeeByNo(@RequestParam String empNo) throws Exception {
-//		return ResponseEntity.ok(userDetailsService.getByEmpNo(empNo));
-//	}
-
 	@RequestMapping(value = "/employee/{empNo}", method = RequestMethod.GET)
-	public ResponseEntity<EmployeeDto> findByProject(@PathVariable String empNo) {
+	public ResponseEntity<EmployeeDto> findByEmpNo(@PathVariable String empNo) {
 		EmployeeDto employeeDto = userDetailsService.getByEmpNo(empNo);
 		return new ResponseEntity(employeeDto, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/generate-password", method = RequestMethod.POST)
+	public ResponseEntity<?> generateEmployeePassword(@RequestBody EmployeeDto emplyeeDto) throws Exception {
+		System.out.println(emplyeeDto.getEmpNo() + emplyeeDto.getPassword());
+		return ResponseEntity
+				.ok(userDetailsService.generateEmployeePassword(emplyeeDto.getEmpNo(), emplyeeDto.getPassword()));
 	}
 
 }

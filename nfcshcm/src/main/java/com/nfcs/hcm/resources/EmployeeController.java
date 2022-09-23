@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nfcs.hcm.dto.EmployeeDto;
 import com.nfcs.hcm.model.EmployeeDao;
@@ -23,9 +24,8 @@ public class EmployeeController {
 
 	@PostMapping("/employee")
 	public ResponseEntity<EmployeeDto> saveEmployeeDetails(@RequestBody EmployeeDto emp) {
-	EmployeeDto dto	=employeeService.saveEmployeeDetails(emp);
-	return new ResponseEntity<EmployeeDto>(dto, HttpStatus.CREATED);
-//		return ResponseEntity.ok(employeeService.saveEmployeeDetails(emp));
+		EmployeeDto dto = employeeService.saveEmployeeDetails(emp);
+		return new ResponseEntity<EmployeeDto>(dto, HttpStatus.CREATED);
 
 	}
 
@@ -34,4 +34,5 @@ public class EmployeeController {
 		return ResponseEntity.ok(employeeService.getEmployeeDetails(id));
 
 	}
+
 }

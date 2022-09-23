@@ -50,7 +50,6 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler));
   }
 
-
   updateEmployee(EmployeeData): Observable<Employee[]> {
     return this.http
       .put<any>(Constant.API_ENDPOINT + "/rest/employees", EmployeeData)
