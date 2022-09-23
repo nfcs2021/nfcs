@@ -50,9 +50,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
 import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
+<<<<<<< HEAD
 
 
 // import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
+=======
+>>>>>>> 0a561249f5d860605cc6740de246f19efe9e967b
 import { EmployeeDocumentsComponent } from './employee-contents/employee-documents/employee-documents.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
@@ -72,7 +75,11 @@ import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+<<<<<<< HEAD
     NuMultiSelectDropDownModule.forRoot(),
+=======
+
+>>>>>>> 0a561249f5d860605cc6740de246f19efe9e967b
     MaterialModule,
     NgxPaginationModule,
     NgxChartsModule,
@@ -106,6 +113,7 @@ import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
     EventDetailsComponent,
     EventListComponent,
     LeaveBalanceComponent,
+<<<<<<< HEAD
 
     EmployeeDocumentsComponent,
     EmployeeAddressComponent,
@@ -118,6 +126,11 @@ import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
     EmployeeDocumentsComponent,
 
 
+=======
+    EmployeeAddressComponent,
+
+    EmployeeDocumentsComponent,
+>>>>>>> 0a561249f5d860605cc6740de246f19efe9e967b
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
