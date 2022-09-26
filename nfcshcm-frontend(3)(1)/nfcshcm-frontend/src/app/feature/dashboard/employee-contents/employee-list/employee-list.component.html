@@ -1,0 +1,579 @@
+<div class="container ">
+  <div class="container ">
+    <div class="row mt-1 p-3 bg-info">
+
+      <div class="col-1">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="assets/user.jpg" alt="User picture">
+        </div>
+      </div>
+      <div class="col-3">
+        <h6>{{employeeData.empname}}</h6>
+        <h6>#{{employeeData.empId}}</h6>
+      </div>
+
+      <div class="col  ">
+        <div class="form-group float-right">
+
+
+
+          <input type="file" name="file" id="file" class="input-file">
+
+          <label for="file" class="btn btn-tertiary js-labelFile">
+
+            <i class="icon fa fa-camera"></i>
+
+            <span class="js-fileName ml-2">Choose a file</span>
+
+          </label>
+
+        </div>
+      </div>
+    </div>
+
+  <div class="row mt-3">
+    <h6><b>Employee Information <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Title</dt>
+        <dd class="mb-4">Mrs</dd>
+
+        <dt>Mobile</dt>
+        <dd>{{employeeData.phoneNumber}}</dd>
+      </ul>
+    </div>
+
+    <div class="col-3  ml-3 ">
+      <ul>
+        <dt>Nick Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Email</dt>
+        <dd>{{employeeData.email}}</dd>
+      </ul>
+    </div>
+
+    <div class="col-2  ml-3 ">
+      <ul>
+        <dt>Gender</dt>
+        <dd class="mb-4">{{employeeData.gender}}</dd>
+
+        <dt>Extension</dt>
+        <dd>-</dd>
+      </ul>
+    </div>
+
+    <div class="col-2  ml-3 ">
+      <ul>
+        <dt>Name</dt>
+        <dd class="mb-5">{{employeeData.empname}}</dd>
+
+      </ul>
+    </div>
+  </div>
+<hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Personal Information <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>DOB</dt>
+        <dd class="mb-4">{{employeeData.dateOfBirth}}</dd>
+
+        <dt>Marital Status</dt>
+        <dd class="mb-4">Married</dd>
+
+        <dt>Residential Status</dt>
+        <dd class="mb-4">9876543210</dd>
+
+        <dt>International Employee</dt>
+        <dd>9876543210</dd>
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Birthday</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Marriage Date</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Place of Birth</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+        <dt>Physically Challenged</dt>
+        <dd>xxxxxx</dd>
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>Blood Group</dt>
+        <dd class="mb-4">A +ve</dd>
+
+        <dt>Spouse Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Country Of Origin</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Is Director</dt>
+        <dd>No</dd>
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>Father's Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Nationality</dt>
+        <dd class="mb-4">Indian</dd>
+
+        <dt>Religion</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Personal Email</dt>
+        <dd>-</dd>
+      </ul>
+    </div>
+  </div>
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Employee Address</b> </h6>
+
+  </div>
+  <div class="row mt-3">
+    <h6><b>Present <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Country</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Ext</dt>
+        <dd class="mb-4">-</dd>
+
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Address</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Pincode</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Fax</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>City</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone1</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Mobile no</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>State</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone2</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Email</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <h6><b>Permanent <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Country</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Ext</dt>
+        <dd class="mb-4">-</dd>
+
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Address</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Pincode</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Fax</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>City</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone1</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Mobile no</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>State</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone2</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Email</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="row mt-3">
+    <h6><b>Contact <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Country</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Ext</dt>
+        <dd class="mb-4">-</dd>
+
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Address</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Pincode</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Fax</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>City</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone1</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Mobile no</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>State</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone2</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Email</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <h6><b>Emergency Contact <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Name</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Country</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Ext</dt>
+        <dd class="mb-4">-</dd>
+
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Address</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Pincode</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Fax</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>City</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone1</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Mobile no</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>State</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Phone2</dt>
+        <dd class="mb-4">-</dd>
+
+        <dt>Email</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+  </div>
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Permanent Account Number <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dd class="mb-4">adcd124563f</dd>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Joining Details <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Joined On</dt>
+        <dd class="mb-4">11-11-2011</dd>
+
+        <dt>Notice Period</dt>
+        <dd class="mb-4">30 days</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Conformation Date</dt>
+        <dd class="mb-4">11-Nov-2022</dd>
+
+        <dt>Current Company Experience</dt>
+        <dd class="mb-4">11M</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>Status</dt>
+        <dd class="mb-4">pending</dd>
+
+        <dt>Privious Experience</dt>
+        <dd class="mb-4">-</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>Probation Period</dt>
+        <dd class="mb-4">180 days</dd>
+
+        <dt>Total Experience</dt>
+        <dd class="mb-4">11M</dd>
+
+      </ul>
+    </div>
+  </div>
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Current Position <a href="" style="text-decoration: none;font-size: 20px;"> <i
+            class="fa fa-pencil-square" aria-hidden="true"></i></a> </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>Department</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+      </ul>
+    </div>
+
+    <div class="col-3 ml-3 ">
+      <ul>
+        <dt>Designation</dt>
+        <dd class="mb-4">yyyyyyy</dd>
+
+
+      </ul>
+    </div>
+
+    <div class="col-2 ml-3 ">
+      <ul>
+        <dt>Location</dt>
+        <dd class="mb-4">Bangalore</dd>
+
+      </ul>
+    </div>
+
+  </div>
+
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Employee Identity  </b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>AADHAAR <a href="" style="text-decoration: none;font-size: 20px;"> <i
+          class="fa fa-pencil-square" aria-hidden="true"></i></a></dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+      </ul>
+    </div>
+
+  </div>
+
+  <hr style="opacity: 0.50">
+  <div class="row mt-3">
+    <h6><b>Education</b> </h6>
+
+  </div>
+  <div class="row ">
+    <h6><b>Education Qualification <a href="" style="text-decoration: none;font-size: 20px;"> <i
+      class="fa fa-pencil-square" aria-hidden="true"></i></a></b> </h6>
+
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <dt>From</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+        <dt>Qualification Area</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+        <dt>Remarks</dt>
+        <dd class="mb-4">xxxxxx</dd>
+      </ul>
+    </div>
+    <div class="col-3 ml-3">
+      <ul>
+        <dt>To</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+      </ul>
+    </div>
+    <div class="col-2 ml-3">
+      <ul>
+        <dt>Institute</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+      </ul>
+    </div>
+    <div class="col-2 ml-3">
+      <ul>
+        <dt>Grade</dt>
+        <dd class="mb-4">xxxxxx</dd>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+
