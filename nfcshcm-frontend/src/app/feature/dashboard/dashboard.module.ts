@@ -54,8 +54,13 @@ import { EmployeeAddressComponent } from './employee-contents/employee-address/e
 
 // import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 import { EmployeeDocumentsComponent } from './employee-contents/employee-documents/employee-documents.component';
+<<<<<<< HEAD
 
 import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
+=======
+import { NgxBootstrapMultiselectModule } from 'ngx-bootstrap-multiselect';
+
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
 
 
 
@@ -72,9 +77,13 @@ import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+<<<<<<< HEAD
     NuMultiSelectDropDownModule.forRoot(),
+=======
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
     MaterialModule,
     NgxPaginationModule,
+    NgxBootstrapMultiselectModule,
     NgxChartsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -110,8 +119,11 @@ import { NuMultiSelectDropDownModule } from 'ngu-multiselect-dropdown';
     EmployeeAddressComponent,
     EmployeeAddressComponent,
     EmployeeDocumentsComponent,
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,

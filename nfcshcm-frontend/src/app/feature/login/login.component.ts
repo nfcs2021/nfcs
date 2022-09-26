@@ -39,10 +39,18 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+const data={
+  empId:this.loginForm.value['empNo'],
+  password:this.loginForm.value['password']
+}
+
     this.loading = true;
     console.log(this.loginForm.value);
-    this.authService.loginUser(this.loginForm.value).subscribe(
+    this.authService.loginUser(data).subscribe(
       (res) => {
+        console.log(res);
+        
+        localStorage.setItem("loginEmployeeData",res.emp.empId)
         this.login_user_msg = "Login in, Please wait... !!!";
         localStorage.setItem("token", res.token);
         this.route.navigate(["/home"]);

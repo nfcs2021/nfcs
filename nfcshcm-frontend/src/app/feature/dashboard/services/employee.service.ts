@@ -14,15 +14,21 @@ import { Employee } from "../model/employee";
 
 @Injectable()
 export class EmployeeService {
+<<<<<<< HEAD
 
 
   constructor(private http: HttpClient) { }
+=======
+ 
+  constructor(private http: HttpClient) {}
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
 
   errorHandler(error: any) {
     console.log("Employee api error ", error);
     return throwError(error);
   }
 
+<<<<<<< HEAD
   getAllEmployees(page, size, sort): Observable<any> {
     return this.http
       .get<Employee[]>(Constant.API_ENDPOINT + "/rest/employees", {
@@ -37,11 +43,41 @@ export class EmployeeService {
 
   getEmployeeById(id): Observable<Employee[]> {
 
+=======
+  getAllEmployees(): Observable<any> {
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
     const httpheaders = new HttpHeaders(
       {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       });
+<<<<<<< HEAD
     return this.http.get<Employee[]>('http://localhost:8081/data/employee/'+ id,{ headers: httpheaders })
+=======
+    return this.http
+      .get<Employee[]>("http://localhost:8081/data/employee",{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+
+  getEmployeeById(id): Observable<Employee[]> {
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+    return this.http
+      .get<Employee[]>("http://localhost:8081/data/employee/" + id,{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+
+  getEmployeeByEmpId(id): Observable<Employee[]> {
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+    return this.http
+      .get<Employee[]>("http://localhost:8081/data/employeeByEmpId/" + id,{ headers: httpheaders })
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
       .pipe(catchError(this.errorHandler));
   }
 
@@ -60,7 +96,7 @@ export class EmployeeService {
       Authorization: "Bearer " + localStorage.getItem("token"),
     });
     return this.http
-      .post<any>("http://localhost:8080/data/employee", EmployeeData, {
+      .post<any>("http://localhost:8081/data/employee", EmployeeData, {
         headers: httpheaders,
       })
       .pipe(catchError(this.errorHandler));

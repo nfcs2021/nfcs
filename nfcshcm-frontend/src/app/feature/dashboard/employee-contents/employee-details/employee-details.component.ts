@@ -16,6 +16,19 @@ export class EmployeeDetailsComponent implements OnInit {
   private id: any;
   private sub: any;
   private isEdit = false;
+<<<<<<< HEAD
+=======
+  employeeEditForm: FormGroup;
+  supervisorEmployees: Observable<any>;
+  employeeinput$ = new Subject<string>();
+  isSelectLoading = false;
+  expanded = false;
+  isEmployeeSelected = false;
+  selectedEmployee;
+  selected_employee_msg;
+  errorMsg;
+  employeesUnderSupervision;
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
   update_employee_msg;
   has_error = false;
   submitted = false;
@@ -41,7 +54,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
 
   getEmployeeById(id: number) {
-    if (id !=null) {
+    if (id!=null) {
       this.employeeService.getEmployeeById(id)
         .subscribe(
           data => {

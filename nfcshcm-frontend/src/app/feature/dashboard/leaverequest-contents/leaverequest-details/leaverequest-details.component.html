@@ -10,25 +10,24 @@
     </div> -->
 
     <div class="row col-md-12">
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="employeeData.position=='hr' || employeeData.position=='admin' ">
         <button class="btn btn-info float-right" (click)="toggleEdit()">
           {{isRequestEdit ? "View Request" : "Approve Request"}}
         </button>
       </div>
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="profile-img text-center">
           <img src="assets/image/placehold450.png" class="leave-emp-profile-img" alt="profile image" />
         </div>
-      </div>
+      </div> -->
       <div class="col-md-8">
         <div class="profile-head">
-          <h5><span class="font-weight-bold text-success">
-              <a routerLink="/home/employees/details/{{selectedLeaveRequest.employeeDTO.employeeId}}">
-                {{selectedLeaveRequest.employeeDTO.firstName}} {{selectedLeaveRequest.employeeDTO.middleName}}
-                {{selectedLeaveRequest.employeeDTO.lastName}}</a>
+          <!-- <h5><span class="font-weight-bold text-success">
+              <a routerLink="/home/employees/details/{{selectedLeaveRequest.empId}}">
+                {{employeeData.empname}}</a>
             </span>
-          </h5>
-          <h6>{{selectedLeaveRequest.leaveTypeDTO.typeName}}</h6>
+          </h5> -->
+          <h6>{{selectedLeaveRequest.leaveType}}</h6>
           <p>Submitted On : <span>{{selectedLeaveRequest.createdAt | date :'medium'}}</span></p>
         </div>
 
@@ -38,24 +37,21 @@
 
         <div class="row font-italic mt-3">
           <div class="col-md-6 border-right">
-            <p>LeaveRequest Id: {{selectedLeaveRequest.leaveId}}</p>
-            <p>Employee Name: {{selectedLeaveRequest.employeeDTO.firstName}}
-              {{selectedLeaveRequest.employeeDTO.middleName}}
-              {{selectedLeaveRequest.employeeDTO.lastName}}</p>
+            <p>LeaveRequest Id: {{selectedLeaveRequest.id}}</p>
+            <!-- <p>Employee Name: {{employeeData.empId}}</p> -->
             <p>Reason : {{selectedLeaveRequest.leaveReason}}</p>
-            <p>Leave Type: {{selectedLeaveRequest.leaveTypeDTO.typeName}}</p>
-            <p>From: {{selectedLeaveRequest.fromDate}}</p>
-            <p>To: {{selectedLeaveRequest.toDate}}</p>
+            <p>Leave Type: {{selectedLeaveRequest.leaveType}}</p>
+            <p>From: {{selectedLeaveRequest.dateFrom}}</p>
+            <p>To: {{selectedLeaveRequest.dateTo}}</p>
             <p>Status: {{selectedLeaveRequest.status}}</p>
           </div>
 
           <div *ngIf="selectedLeaveRequest.reviewedBy && !isRequestEdit" class="col-md-6">
-            <p>Reviewed By: <a routerLink="/home/employees/details/{{selectedLeaveRequest.reviewedBy.employeeId}}">
-                {{selectedLeaveRequest.reviewedBy.firstName}} {{selectedLeaveRequest.reviewedBy.middleName}}
-                {{selectedLeaveRequest.reviewedBy.lastName}}
+            <p>Reviewed By: <a routerLink="/home/employees/details/{{selectedLeaveRequest.empId}}">
+              {{employeeData.empname}}
               </a></p>
               <p>Request: {{selectedLeaveRequest.status}}</p>
-            <p *ngIf="!selectedLeaveRequest.approved">Denied Reason: {{selectedLeaveRequest.deniedReason}}</p>
+            <p *ngIf="!selectedLeaveRequest.status=='APPROVED'">Denied Reason: {{selectedLeaveRequest.deniedReason}}</p>
           </div>
 
           <div *ngIf="isRequestEdit" class="col-md-6">

@@ -25,10 +25,10 @@
         picture">
     </div>
     <div class="user-info ml-5">
-      <span class="user-name">Jhon
-        <strong>Smith</strong>
+      <span class="user-name">
+        <strong>{{employeeData.empname | uppercase}}</strong>
       </span>
-      <span class="user-role mt-1">Administrator</span>
+      <span class="user-role mt-1">{{employeeData.position | uppercase}}</span>
       <span class="user-status mt-1">
         <i class="fa fa-circle"></i>
         <span>Online</span>
@@ -50,7 +50,9 @@
         <a><i class="fa fa-users fa-lg"></i> Employee <span class="arrow"></span></a>
       </li>
       <ul class="sub-menu collapse" id="products">
+        <ng-container *ngIf="employeeData.position=='admin'">
         <li class="p-2"><a routerLink="/home/employees/new"> Add Employee</a></li>
+      </ng-container>
         <li class="p-2"><a href="#">Information</a></li>
         <li class="p-2"><a routerLink="/home/employees/employee-address">Emplyee-Address</a></li>
         <li class="p-2"><a routerLink="/home/employees/employee-documents">Employee-documents</a></li>

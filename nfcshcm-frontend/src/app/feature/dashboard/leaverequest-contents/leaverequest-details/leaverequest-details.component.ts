@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeLeaveService } from './../../services/employeeLeave.service';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeLeave } from '../../model/EmployeeLeave';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-leaverequest-details',
@@ -17,17 +18,23 @@ export class LeaverequestDetailsComponent implements OnInit {
   isRequestEdit = false;
 
   isLeaveRequestSelected = false;
-  selectedLeaveRequest: EmployeeLeave;
+  selectedLeaveRequest: any;
   selected_leave_msg: String;
   requestApproveForm: FormGroup;
   has_error = false;
   approve_leave_update_msg: String;
   submitted = false;
-
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _employeeLeaveService: EmployeeLeaveService) { }
+  employeeData:any;
+  employeeLeaveData:any;
+  constructor(private route: ActivatedRoute,
+     private formBuilder: FormBuilder,
+     private employeeService:EmployeeService,
+      private _employeeLeaveService: EmployeeLeaveService) { }
 
   ngOnInit() {
+    this.getEmployeeByEmpId(localStorage.getItem("loginEmployeeData"));
     this.routeId();
+    
   }
 
   routeId() {
@@ -37,9 +44,38 @@ export class LeaverequestDetailsComponent implements OnInit {
     });
   }
 
+//   getEmployeeLeaveById(id: any) {
+//     if (id > 0) {
+//       this._employeeLeaveService.getEmployeeLeaveById(id)
+//         .subscribe(
+//           data => {
+// this.employeeLeaveData=data;
+//            console.log(data);
+//             // console.log('selectedEmployee data: ', data);
+//           }, error => {
+//             this.errorMsg = error;
+//             console.log(error);
+            
+//           });
+//     } else {
+      
+//     }
+//   }
+
+  getEmployeeByEmpId(empId: any) {
+    this.employeeService.getEmployeeByEmpId(empId).subscribe(
+      data => {
+        this.employeeData=data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+
+      }
+    )
+  }
   initRequestApproveForm() {
     this.requestApproveForm = this.formBuilder.group({
-      leaveId: [this.selectedLeaveRequest.leaveId],
+      leaveId: [this.selectedLeaveRequest.id],
       deniedReason: [this.selectedLeaveRequest.deniedReason],
       status: [this.selectedLeaveRequest.status, Validators.required]
     });
@@ -53,6 +89,8 @@ export class LeaverequestDetailsComponent implements OnInit {
   get f() { return this.requestApproveForm.controls; }
 
   onSubmit() {
+    console.log(this.requestApproveForm.value);
+    
     this.submitted = true;
 
     // stop here if form is invalid
@@ -78,9 +116,11 @@ export class LeaverequestDetailsComponent implements OnInit {
 
   getEmployeeLeaveById(id: number) {
     if (id > 0) {
-      this._employeeLeaveService.getEmployeeLeaveById(id)
+      this._employeeLeaveService.getEmployeeLeaveByLeaveId(id)
         .subscribe(
           data => {
+            console.log(data);
+            
             this.selectedLeaveRequest = data;
             this.isLeaveRequestSelected = true;
             // console.log('selectedEmployee data: ', data);

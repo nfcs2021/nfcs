@@ -1,7 +1,7 @@
 <div class="row content-box">
-  <div class="col-md-12">
+  <div class="col-md-10">
 
-    <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> -->
+     <mat-progress-bar *ngIf="loading" mode="indeterminate" class="p-1"></mat-progress-bar> 
 
     <table class="table table-hover">
       <thead>
@@ -16,31 +16,55 @@
         </th>
         <th (click)="sort('status')">Status <mat-icon>swap_vert</mat-icon>
         </th>
+        <th (click)="sort('status')">Reason <mat-icon>swap_vert</mat-icon>
+        </th>
         <th>Options</th>
       </thead>
-      <tbody *ngIf="leaveRequests">
-        <tr *ngFor="let leaverequest of leaveRequests | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
+      <tbody >
+        <ng-container *ngIf="employeeData.position=='admin' || employeeData.position=='hr'; else elsecondition" >
+        <tr *ngFor="let leaverequest of employeeLeaveData | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
           <td>{{i+1}}</td>
-          <td><a routerLink="/home/employees/details/{{leaverequest.employeeDTO.employeeId}}">
-              {{leaverequest.employeeDTO.firstName}} {{leaverequest.employeeDTO.middleName}}
-              {{leaverequest.employeeDTO.lastName}}
+          <ng-container *ngFor="let empData of allEmployees">
+            <ng-container *ngIf="leaverequest.empId==empData.empId">
+          <td><a routerLink='/home/employees/list/{{leaverequest.empId}}'>
+              {{empData.empname}}
             </a></td>
-          <td>{{leaverequest.leaveTypeDTO.typeName}}</td>
-          <td>{{leaverequest.fromDate}}</td>
-          <td>{{leaverequest.toDate}}</td>
+            </ng-container>
+          </ng-container>
+          <td>{{leaverequest.leaveType}}</td>
+          <td>{{leaverequest.dateFrom}}</td>
+          <td>{{leaverequest.dateTo}}</td>
           <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
-          <td><a routerLink="/home/leaverequests/details/{{leaverequest.leaveId}}">
+          <td>{{leaverequest.description}}</td>
+          <td><a routerLink="/home/leaverequests/details/{{leaverequest.id}}">
               <button mat-raised-button>View</button></a></td>
         </tr>
+      </ng-container>
+      <ng-template #elsecondition>
+      <tr *ngFor="let leaverequest of employeeLeaveData | paginate: { itemsPerPage: size, currentPage: currentPage,  totalItems: totalElements }; let i = index">
+        <td>{{i+1}}</td>
+        
+        <td><a routerLink='/home/employees/list/{{leaverequest.empId}}'>
+            {{employeeData.empname}}
+          </a></td>
+        <td>{{leaverequest.leaveType}}</td>
+        <td>{{leaverequest.dateFrom}}</td>
+        <td>{{leaverequest.dateTo}}</td>
+        <td [ngClass]="(leaverequest.status=='APPROVED')?'text-success':'text-danger'">{{leaverequest.status}}</td>
+        <td>{{leaverequest.description}}</td>
+        <td><a routerLink="/home/leaverequests/details/{{leaverequest.id}}">
+            <button mat-raised-button>View</button></a></td>
+      </tr>
+    </ng-template>
       </tbody>
     </table>
 
     <div class="row col-md-12 mt-4">
-      <div class="col-md-auto">
+      <!-- <div class="col-md-auto">
         <span *ngIf="leaveRequests" class="table-details">Showing {{(currentPage-1) * size +1}} to {{(currentPage-1) *
           size
           + numberOfElements }} of {{totalElements}}</span>
-      </div>
+      </div> -->
       <div class="col">
         <pagination-controls class="float-right" (pageChange)="getPage($event)"></pagination-controls>
       </div>

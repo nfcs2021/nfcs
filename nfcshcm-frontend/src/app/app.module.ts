@@ -8,7 +8,16 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FeatureModule } from './feature/feature.module';
+<<<<<<< HEAD
 import 'hammerjs';
+=======
+ 
+
+import 'hammerjs';
+
+
+
+>>>>>>> 5732391d08cd9fc75787a1bc9798773ddf8f8d6a
 
 
 @NgModule({
@@ -22,6 +31,8 @@ import 'hammerjs';
     CoreModule,
     FeatureModule,
     SharedModule,
+   
+    
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
