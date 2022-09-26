@@ -54,4 +54,8 @@ public class EmployeeDTO {
 //	
 	private String password;
 
+<<<<<<< HEAD:spring-boot-backend/src/main/java/com/nfcs/model/EmployeeDTO.java
 }
+=======
+}
+>>>>>>> 1e07062e0c8fe89cbb56cdaf4a303d10db051526:nfcshcm/src/main/java/com/nfcs/hcm/dto/EmployeeDto.java

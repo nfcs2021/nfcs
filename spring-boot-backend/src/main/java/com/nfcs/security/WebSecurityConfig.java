@@ -50,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
+<<<<<<< HEAD:spring-boot-backend/src/main/java/com/nfcs/security/WebSecurityConfig.java
 		// We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
@@ -62,6 +63,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 		// Add a filter to validate the tokens with every request
+=======
+		httpSecurity.csrf().disable()
+				.authorizeRequests().antMatchers("/authenticate", "/register", "/generate-password").permitAll().
+				anyRequest().authenticated().and().
+				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+>>>>>>> 1e07062e0c8fe89cbb56cdaf4a303d10db051526:nfcshcm/src/main/java/com/nfcs/hcm/security/WebSecurityConfig.java
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }
