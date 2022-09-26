@@ -1,0 +1,10 @@
+table{
+    background-color: rgb(223, 245, 237);
+}
+ span{
+    font-weight: bold;
+    margin-right: 20px;
+    text-align: justify;
+    -moz-text-align-last: right;
+    text-align-last:right ;
+ }
