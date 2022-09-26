@@ -14,13 +14,9 @@ import { Employee } from "../model/employee";
 
 @Injectable()
 export class EmployeeService {
-<<<<<<< HEAD
- 
+
 
   constructor(private http: HttpClient) { }
-=======
-  constructor(private http: HttpClient) {}
->>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
 
   errorHandler(error: any) {
     console.log("Employee api error ", error);
@@ -40,17 +36,12 @@ export class EmployeeService {
   }
 
   getEmployeeById(id): Observable<Employee[]> {
-<<<<<<< HEAD
 
     const httpheaders = new HttpHeaders(
       {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       });
     return this.http.get<Employee[]>('http://localhost:8081/data/employee/'+ id,{ headers: httpheaders })
-=======
-    return this.http
-      .get<Employee[]>(Constant.API_ENDPOINT + "/rest/employees/" + id)
->>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
       .pipe(catchError(this.errorHandler));
   }
 
@@ -62,7 +53,7 @@ export class EmployeeService {
     return this.http.post<object>('http://localhost:8081/data/register-employee',data,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
-  
+
 
   createEmployee(EmployeeData): Observable<any> {
     const httpheaders = new HttpHeaders({
