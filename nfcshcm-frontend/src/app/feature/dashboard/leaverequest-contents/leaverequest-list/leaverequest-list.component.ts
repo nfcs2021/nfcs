@@ -21,52 +21,105 @@ export class LeaverequestListComponent implements OnInit {
   size = 10;
   sortKey = 'fromDate';
   reverse = false;
-
-  allEmployees: Observable<any>;
+  employeeData:any;
+  employeeLeaveData:any;
+  allEmployees:any;
   employeeinput$ = new Subject<string>();
    isSelectLoading = false;
 
-  constructor(private _employeeLeaveService: EmployeeLeaveService, private _employeeService: EmployeeService) { }
+
+  constructor(private _employeeLeaveService: EmployeeLeaveService,
+     private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.getAllEmployeeLeaves();
-    this.loadEmployee();
+    this.getEmployeeByEmpId(localStorage.getItem("loginEmployeeData"));
   }
+  getEmployeeByEmpId(empId: any) {
+    this.employeeService.getEmployeeByEmpId(empId).subscribe(
+      data => {
+        this.employeeData=data;
+        if(this.employeeData.position=='admin' || this.employeeData.position=='hr')
+            {
+              this.getAllEmployeeLeaves(); 
+              this.getAllEmployees();
+            }else{
+              this.getEmployeeLeaveById(this.employeeData.empId);
+              this.getAllEmployeeLeaves();
+              var data1:any[]=data;
+              this.allEmployees=data1;
+            }
+        
+        console.log(data);
+      }, error => {
+        console.log(error);
 
+      }
+    )
+  }
   getPage(page: number) {
     this.loading = true;
     this.currentPage = page;
-    this.getAllEmployeeLeaves();
+   
   }
   sort(key: string) {
     this.loading = true;
     this.sortKey = key + ','.concat(this.reverse ? 'DESC' : 'ASC');
     this.reverse = !this.reverse;
-    this.getAllEmployeeLeaves();
+    
   }
 
   getAllEmployeeLeaves() {
-    this._employeeLeaveService.getAllEmployeeLeaves(this.currentPage - 1, this.size, this.sortKey)
+    this._employeeLeaveService.getAllEmployeeLeaves()
       .subscribe(
         data => {
-          this.leaveRequests = data.content;
-          this.totalElements = data.totalElements;
-          this.size = data.size;
-          this.numberOfElements = data.numberOfElements;
+          console.log('employeesLeavedata: ', data);
+          this.employeeLeaveData=data;
           this.loading = false;
-          // console.log('employees data: ', data);
         },
         error => this.errorMsg = error);
   }
-
+  getEmployeeLeaveById(id: number) {
+    if (id > 0) {
+      this._employeeLeaveService.getEmployeeLeaveById(id)
+        .subscribe(
+          data => {
+this.employeeLeaveData=data;
+           console.log(data);
+           this.loading = false;
+            // console.log('selectedEmployee data: ', data);
+          }, error => {
+            this.errorMsg = error;
+            console.log(error);
+            
+          });
+    } else {
+      
+    }
+  }
+  getAllEmployees() {
+    this.employeeService.getAllEmployees()
+      .subscribe(
+        data => {
+        this.allEmployees=data;
+        console.log(data);
+        
+        },
+        error => {
+        this.errorMsg = error
+        console.log(error);
+  });
+       
+  
+  }
+  
   private loadEmployee() {
-    this.allEmployees = concat(
+    concat(
       of([]), // default items
       this.employeeinput$.pipe(
         debounceTime(200),
         distinctUntilChanged(),
         tap(() => this.isSelectLoading = true),
-        switchMap(term => this._employeeService.getEmployeeByFullName(term).pipe(
+        switchMap(term => this.employeeService.getEmployeeByFullName(term).pipe(
           catchError(() => of([])), // empty list on error
           tap(() => this.isSelectLoading = false)
         ))

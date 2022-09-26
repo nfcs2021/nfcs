@@ -34,7 +34,12 @@ export class AuthService {
     console.log("Auth Service api error ", error);
     return throwError(error);
   }
-
+  passwordGenaration(data: any) {
+    
+    return this.http
+      .post<any>("http://localhost:8081/password-generate",data)
+      .pipe(catchError(this.errorHandler));
+  }
   loginUser(user) {
     localStorage.removeItem("token");
     localStorage.removeItem("access_token");
@@ -43,7 +48,7 @@ export class AuthService {
       empNo: user.empId,
       password: user.password,
     };
-    return this.http.post<any>("http://localhost:8080/authenticate", user);
+    return this.http.post<any>("http://localhost:8081/authenticate", user);
   }
 
   // employeeLogin(data: any): Observable<any> {

@@ -35,7 +35,7 @@ export class EmployeeManageComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.minLength(2)]],
+      enpName: ["", [Validators.required, Validators.minLength(2)]],
       employeeno: ["", [Validators.required]],
       probationPeriod: ["", [Validators.required]],
       conformationDate: ["", [Validators.required]],
@@ -85,54 +85,15 @@ export class EmployeeManageComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.registerForm.value);
     this.submitted = true;
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-<<<<<<< HEAD
-    const data ={
-      'empname':this.registerForm.value['name'],
-      'empId':this.registerForm.value['employeeno'],
-      'dateOfBirth':this.registerForm.value['dob'],
-      'gender':this.registerForm.value['gender'],
-      'reportingManager':this.registerForm.value['reportingManager'],
-      'status':this.registerForm.value['status'],
-      'dateOfJoining':this.registerForm.value['dateOfJoining'],
-      'probationPeriod':this.registerForm.value['probationPeriod'],
-      'confirmationDate':this.registerForm.value['conformationDate'],
-      'email':this.registerForm.value['email'],
-      'phoneNumber':this.registerForm.value['mobileNumber'],
-      'emergencyContactName':this.registerForm.value['emergencyContactName'],
-      'emergencyContactNumber':this.registerForm.value['emergencyContactNumber'],
-      'fatherName':this.registerForm.value['fatherName'],
-      'spouseName':this.registerForm.value['spouseName'],
-      'position':this.registerForm.value['position'],
-    }
-
-   
-   
-console.log(data);
-
-    this.employeeService.createEmployee(data).subscribe(res => {
-      console.log(res);
-      this.has_error = false;
-      this.create_employee_msg = 'Registration Successful';
-      this.route.navigate(['/home/employees/details/'+res.id]);
-      this.registerForm.reset();
-      this.submitted = false;
-      
-
-    }, error => {
-      console.log(error);
-      this.has_error = true;
-      this.create_employee_msg = error.error.message;
-    });
-
-=======
+    // if (this.registerForm.invalid) {
+    //   return;
+    // }
     const data = {
-      empname: this.registerForm.value["name"],
-      empNo: this.registerForm.value["employeeno"],
+      empname: this.registerForm.value["enpName"],
+      empId: this.registerForm.value["employeeno"],
       dateOfBirth: this.registerForm.value["dob"],
       gender: this.registerForm.value["gender"],
       reportingManager: this.registerForm.value["reportingManager"],
@@ -150,7 +111,6 @@ console.log(data);
     };
 
     console.log(data);
->>>>>>> 6d47aa7dc5dbfd05252e1e9899f08e288c890ee2
 
     this.employeeService.createEmployee(data).subscribe(
       (res) => {
@@ -158,6 +118,7 @@ console.log(data);
         this.create_employee_msg = "Registration Successful";
         this.registerForm.reset();
         this.submitted = false;
+        this.route.navigate(["/home/employees/details/"+res.id]);
       },
       (error) => {
         console.log(error);
@@ -165,6 +126,6 @@ console.log(data);
         this.create_employee_msg = error.error.message;
       }
     );
-    this.route.navigate(["/home/employees/details"]);
+    
   }
 }

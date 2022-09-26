@@ -16,25 +16,44 @@ export class EmployeeLeaveService {
     return throwError(error);
   }
 
-  getAllEmployeeLeaves(page, size, sort): Observable<any> {
-    return this.http.get<EmployeeLeave[]>(Constant.API_ENDPOINT + '/rest/employee-leaves',
-    {
-      params: {
-        page: page,
-        size: size,
-        sort: sort
-      }
-    })
+  getAllEmployeeLeaves(): Observable<any> {
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+    return this.http.get<EmployeeLeave[]>("http://localhost:8081/employee/leavedata",{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+
+  getEmployeeLeaveByLeaveId(id): Observable<EmployeeLeave> {
+
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+    return this.http.get<EmployeeLeave>("http://localhost:8081/employee/leavedata/" + id,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 
   getEmployeeLeaveById(id): Observable<EmployeeLeave> {
-    return this.http.get<EmployeeLeave>(Constant.API_ENDPOINT + '/rest/employee-leaves/' + id)
+
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+    return this.http.get<EmployeeLeave>("http://localhost:8081/employee/leavedataEmpId/" + id,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 
   createEmployeeLeave(EmployeeLeaveData): Observable<EmployeeLeave> {
-    return this.http.post<EmployeeLeave>(Constant.API_ENDPOINT + '/rest/employee-leaves', EmployeeLeaveData)
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+    return this.http.post<EmployeeLeave>('http://localhost:8081/employee/leavedata', EmployeeLeaveData,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 
@@ -44,7 +63,11 @@ export class EmployeeLeaveService {
   }
 
   approveEmployeeLeave(EmployeeLeaveData): Observable<EmployeeLeave> {
-    return this.http.put<EmployeeLeave>(Constant.API_ENDPOINT + '/rest/employee-leaves/approve-employee-leave', EmployeeLeaveData)
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+    return this.http.put<EmployeeLeave>('http://localhost:8081/employee/leavedata',EmployeeLeaveData,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 
