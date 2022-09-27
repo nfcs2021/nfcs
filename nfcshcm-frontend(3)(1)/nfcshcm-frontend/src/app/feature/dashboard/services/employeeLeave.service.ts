@@ -15,6 +15,16 @@ export class EmployeeLeaveService {
     console.log('EmployeeLeave api error ', error);
     return throwError(error);
   }
+    
+  getHolidaysList(): Observable<any>{
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+      return this.http.get<any>("http://localhost:8081/holidays",{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
 
   getAllEmployeeLeaves(): Observable<any> {
     const httpheaders = new HttpHeaders(

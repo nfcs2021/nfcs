@@ -1,9 +1,19 @@
 package com.nfcs.service;
 
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.temporal.TemporalAdjuster;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.EnumSet;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -19,8 +29,10 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import com.nfcs.model.EmployeeLeaveData;
 import com.nfcs.model.EmployeeLeaveDataDto;
+import com.nfcs.model.HolidaysCalender;
 import com.nfcs.model.LeaveRequestDataDto;
 import com.nfcs.repository.EmployeeLeaveDataRepository;
+import com.nfcs.repository.HolidaysCalenderRepository;
 
 @Service
 public class EmployeeLeaveDataService {
@@ -35,20 +47,28 @@ public class EmployeeLeaveDataService {
 	@Autowired
 	EmployeeLeaveDataRepository employeeLeaveDataRepository;
 	
-	
+	@Autowired
+	HolidaysCalenderService holidaysCalenderService;
 	
 	public EmployeeLeaveData saveData(EmployeeLeaveDataDto leaveData) throws MessagingException {
+		
+		 List<HolidaysCalender> holidaysData = holidaysCalenderService.getHolidaysList();
+		 
+		long leaveCount=getLeaveDaysBetweenTwoDates(leaveData.getDateFrom(),leaveData.getDateTo(),holidaysData);
+		
 		EmployeeLeaveData  employeeLeaveData =new EmployeeLeaveData();
 		employeeLeaveData.setLeaveType(leaveData.getLeaveType());
 		employeeLeaveData.setDateTo(leaveData.getDateTo());
 		employeeLeaveData.setDateFrom(leaveData.getDateFrom());
 		employeeLeaveData.setLeaveReason(leaveData.getLeaveReason());
 		employeeLeaveData.setStatus("pending");
+		employeeLeaveData.setLeaveCount(leaveCount);
 		employeeLeaveData.setEmpId(leaveData.getEmpId());
 		
 		EmployeeLeaveData empLeaveData = employeeLeaveDataRepository.save(employeeLeaveData);
 		sendMail(leaveData);
 		return empLeaveData;
+	
 	}
 
 	
@@ -114,9 +134,52 @@ public EmployeeLeaveData leaveUpdate(LeaveRequestDataDto leaveDta) {
 public List<EmployeeLeaveData> getLeaveData() {
 	// TODO Auto-generated method stub
 	return employeeLeaveDataRepository.findAll();
+} 
+
+public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List<HolidaysCalender> holidaysData) {
+
+    
+    Calendar startCal = Calendar.getInstance();
+    startCal.setTime(startDate);        
+
+    Calendar endCal = Calendar.getInstance();
+    endCal.setTime(endDate);
+
+    int workDays = 0;
+
+    //Return 0 if start and end are the same
+    if (startCal.getTimeInMillis() == endCal.getTimeInMillis()) {
+        return 0;
+    }
+
+    if (startCal.getTimeInMillis() > endCal.getTimeInMillis()) {
+        startCal.setTime(endDate);
+        endCal.setTime(startDate);
+    }
+
+    do {
+       //excluding start date
+        startCal.add(Calendar.DAY_OF_MONTH, 1);
+        long millis=startCal.getTimeInMillis();
+        Date date = new Date(millis);
+        Date holidayDate = null;
+        for(HolidaysCalender data:holidaysData)
+        {
+        	
+        	if(data.getHolidayDate().equals(date)) {
+//        		System.out.println(data.getDescription());
+        		holidayDate=data.getHolidayDate();
+//        		System.out.println(holidayDate);
+        		break;
+        	}
+        }
+        if (startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && !(date.equals(holidayDate))) {
+            workDays++;
+        }
+        
+    } while (startCal.getTimeInMillis() <= endCal.getTimeInMillis()); //excluding end date
+
+    return workDays;
 }
-
-
-
 
 }

@@ -22,6 +22,7 @@ public class EmployeeLeaveDataDto {
 	String description;
 	Blob attachement;
 	String empId;
+	long leaveCount;
 	String toMail;
     List<String> toCc;
 	
