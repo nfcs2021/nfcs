@@ -38,9 +38,9 @@ const routes: Routes = [
             {path: 'list/:id', component: EmployeeListComponent},
             {path: 'details/:id', component: EmployeeDetailsComponent},
             {path: 'details', component: EmployeeListComponent},
-            {path: 'details/:id', component: EmployeeDetailsComponent},
             {path: 'new', component: EmployeeManageComponent, },
-            { path: "employee-address", component: EmployeeAddressComponent },
+            {path: 'employee-address', component: EmployeeAddressComponent },
+            {path:'employee-address/:id',component:EmployeeAddressComponent}
           ]
         },
         {

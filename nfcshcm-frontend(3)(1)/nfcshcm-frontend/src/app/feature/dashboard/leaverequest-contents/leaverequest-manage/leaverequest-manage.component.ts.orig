@@ -63,8 +63,12 @@ export class LeaverequestManageComponent implements OnInit {
     this.getEmployeeDataById(localStorage.getItem("loginEmployeeData"));
     this.getEmployeeLeaveById(this.empId);
     this.leaveTypes = this._leaveTypeService.getAllLeaveTypes();
+<<<<<<< HEAD
     this.getHolidaysList();
    
+
+=======
+>>>>>>> 057b8840736df4930fdcd257ca44b4b40c950fd8
     this.leaveForm = this.formBuilder.group({
       leaveType: ['', Validators.required],
       leaveReason: ['', Validators.required],
@@ -249,7 +253,12 @@ export class LeaverequestManageComponent implements OnInit {
       'toMail': this.leaveForm.value['selectedValue'],
       'toCc': this.leaveForm.value['ccMail'],
     };
+<<<<<<< HEAD
+
     this.employeeLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
+=======
+    this._employeeLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
+>>>>>>> 057b8840736df4930fdcd257ca44b4b40c950fd8
       this.has_error = false;
       this.create_leave_req_msg = 'Leave Request succesfully Submitted';
       this.leaveForm.reset();
