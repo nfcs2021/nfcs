@@ -27,13 +27,13 @@ export class EmployeeListComponent implements OnInit {
       this.id = +params['id']; // (+) converts string 'id' to a number
       this.getEmployeeById(this.id);
       console.log(this.id);
-      
+
     });
   }
 
-  
 
- 
+
+
   getEmployeeById(id: number) {
     if (id !=null) {
       this.employeeService.getEmployeeById(id)
@@ -43,11 +43,11 @@ export class EmployeeListComponent implements OnInit {
            this.employeeData=data;
           },
           error => {
-          
+
           });
     } else {
     }
   }
 
-  
+
 }

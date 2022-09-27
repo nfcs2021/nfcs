@@ -25,50 +25,46 @@ public class EmployeeService {
 
 	@Autowired
 	SpringTemplateEngine templateEngine;
-	
-    @Autowired
+
+	@Autowired
 	private JavaMailSender sender;
-	
+
 	@Autowired
 	private EmployeeRepository employeeRepository;
-	
+
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
-	
+
 	public Employee saveEmployeeDetails(Employee emp) throws MessagingException {
 		// TODO Auto-generated method stub
-		Employee empData= employeeRepository.save(emp);
-		if(empData!=null) {
-		
+		Employee empData = employeeRepository.save(emp);
+		if (empData != null) {
+
 			sendMail(empData);
 		}
-		 return empData ;
+		return empData;
 	}
 
 	private void sendMail(Employee emp) throws MessagingException {
-		
-		MimeMessage message = sender.createMimeMessage();
-		   MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
-				   StandardCharsets.UTF_8.name());
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("empId", emp.getEmpId());
-			model.put("empName", emp.getEmpname());
-		    Context context = new Context();
-			context.setVariables(model);
-			String html = templateEngine.process("email-template", context);
-		     try {
-			     helper.setTo(emp.getEmail());
-			     helper.setText(html, true);
-			      helper.setSubject("Please Generate New Password");
-			      }
-		     catch (javax.mail.MessagingException e) {
-		            e.printStackTrace(); 
-		              } 
-		     sender.send(message);
-			}
-	
 
-	
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+				StandardCharsets.UTF_8.name());
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("empId", emp.getEmpId());
+		model.put("empName", emp.getEmpname());
+		Context context = new Context();
+		context.setVariables(model);
+		String html = templateEngine.process("email-template", context);
+		try {
+			helper.setTo(emp.getEmail());
+			helper.setText(html, true);
+			helper.setSubject("Please Generate New Password");
+		} catch (javax.mail.MessagingException e) {
+			e.printStackTrace();
+		}
+		sender.send(message);
+	}
 
 	public Employee getEmployeeDetails(long id) {
 		// TODO Auto-generated method stub
@@ -84,7 +80,7 @@ public class EmployeeService {
 	}
 
 	public Employee getEmployeeByEmpId(String empId) {
-		
+
 		return employeeRepository.findByEmpId(empId);
 	}
 

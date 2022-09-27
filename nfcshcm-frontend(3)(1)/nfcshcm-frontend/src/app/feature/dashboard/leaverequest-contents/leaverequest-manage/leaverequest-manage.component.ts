@@ -44,7 +44,6 @@ export class LeaverequestManageComponent implements OnInit {
     this.empId = localStorage.getItem("loginEmployeeData");
     this.getEmployeeDataById(localStorage.getItem("loginEmployeeData"));
     this.leaveTypes = this._leaveTypeService.getAllLeaveTypes();
-
     this.leaveForm = this.formBuilder.group({
       leaveType: ['', Validators.required],
       leaveReason: ['', Validators.required],
@@ -85,9 +84,7 @@ export class LeaverequestManageComponent implements OnInit {
       'empId': this.empId,
       'toMail': this.leaveForm.value['selectedValue'],
       'toCc': this.leaveForm.value['ccMail'],
-
     };
-
     this._employeeLeaveService.createEmployeeLeave(submissionData).subscribe(res => {
       this.has_error = false;
       this.create_leave_req_msg = 'Leave Request succesfully Submitted';
