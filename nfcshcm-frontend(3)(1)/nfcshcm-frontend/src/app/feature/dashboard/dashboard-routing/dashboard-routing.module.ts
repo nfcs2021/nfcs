@@ -24,6 +24,7 @@ import { LeaverequestDetailsComponent } from "../leaverequest-contents/leaverequ
 import { EventsMainComponent } from "../eventsContents/events-main/events-main.component";
 import { LeaveBalanceComponent } from "../leaverequest-contents/leave-balance/leave-balance.component";
 import { EmployeeAddressComponent } from "../employee-contents/employee-address/employee-address.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -51,7 +52,8 @@ const routes: Routes = [
             {path: 'details', component: LeaverequestListComponent},
             {path: 'details/:id', component: LeaverequestDetailsComponent},
             {path: 'new', component: LeaverequestManageComponent},
-            {path:'leavebalance',component:LeaveBalanceComponent}
+            {path:'leavebalance',component:LeaveBalanceComponent},
+           
           ]
         },
         {

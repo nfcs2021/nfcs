@@ -60,6 +60,7 @@ import { NgxBootstrapMultiselectModule } from 'ngx-bootstrap-multiselect';
 
 
 
+
 // import { LeaveBalanceComponent } from './leaverequest-contents/leave-balance/leave-balance.component';
 
 @NgModule({
@@ -110,6 +111,7 @@ import { NgxBootstrapMultiselectModule } from 'ngx-bootstrap-multiselect';
     EmployeeAddressComponent,
     EmployeeAddressComponent,
     EmployeeDocumentsComponent,
+    
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,
