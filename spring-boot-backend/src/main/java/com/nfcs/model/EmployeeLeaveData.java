@@ -42,4 +42,6 @@ public class EmployeeLeaveData extends TimeStampe{
 	Blob attachement;
 	@Column
 	String empId;
+	@Column
+	long leaveCount;
 }

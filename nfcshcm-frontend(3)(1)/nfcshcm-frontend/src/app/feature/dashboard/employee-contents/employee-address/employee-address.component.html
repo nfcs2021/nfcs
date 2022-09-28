@@ -1,243 +1,24 @@
-<div class="row" *ngIf="!isCollapsed">
-  <form [formGroup]="registerForm" action="" class="mx-auto
+<div class="container">
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" action=""
+    class="mx-auto
     col-md-11 offset-md-3 form-box form-horizontal">
-    <div class="condition">
-      <div class="row mb-3">
-        <div class="col col-sm-5">
-          <h4>
-            Present Address
-          </h4>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col col-sm-5">
-          <label class="d-block form-label">
-            Your name &nbsp;<span
-              class="text-danger">*</span>
-          </label>
-          <input
-            name="name"
-            type="text"
-            class="form-control"
-            placeholder="Joe Bloggs"
-            formControlName="name"
-            [ngClass]="{
-            'is-invalid': submitted && f.name.errors }"
-            />
-          <div *ngIf="submitted && f.name.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.name.errors.required">name is required</div>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label class="d-block form-label">Address&nbsp;<span
-            class="text-danger">*</span></label>
-        <div class="col col-sm-3">
-          <input
-            name="address2"
-            type="text"
-            class="form-control w-100"
-            formControlName="addressLine1"
-            placeholder="Address line 1"
-            [ngClass]="{
-            'is-invalid': submitted && f.addressLine1.errors }"
-            />
-          <div *ngIf="submitted && f.addressLine1.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.addressLine1.errors.required">addressLine1 is required</div>
-          </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <input
-            name="address2"
-            type="text"
-            class="form-control"
-            formControlName="addressLine2"
-            placeholder="Address line 2"
-            [ngClass]="{
-            'is-invalid': submitted && f.addressLine2.errors }"
-            />
-          <div *ngIf="submitted && f.addressLine2.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.addressLine2.errors.required">addressLine2 is required</div>
-          </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <input
-            name="address2"
-            type="text"
-            class="form-control"
-            formControlName="addressLine3"
-            placeholder="Address line 3"
-            [ngClass]="{
-            'is-invalid': submitted && f.addressLine3.errors }"
-            />
-          <div *ngIf="submitted && f.addressLine3.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.addressLine3.errors.required">addressLine3 is required</div>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col col-sm-3">
-          <label class="d-block mb-2">City&nbsp;<span
-              class="text-danger">*</span>
-            <input name="city" type="text" class="form-control" placeholder=""
-              formControlName="city"
-              [ngClass]="{
-              'is-invalid': submitted && f.city.errors }" />
-          </label>
-          <div *ngIf="submitted && f.city.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.city.errors.required">city is required</div>
-          </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label for="inputState" class="form-label mb-2">State&nbsp;<span
-              class="text-danger">*</span></label>
-          <select id="inputState" class="form-select w-50"
-            formControlName="state">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label for="inputState" class="form-label mb-2">Country&nbsp;<span
-              class="text-danger">*</span></label>
-          <select id="inputState" class="form-select w-50"
-            formControlName="country">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col col-sm-3">
-          <label class="d-block mb-4 form-label">
-            <span class="form-label d-block">pin</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="pin"
-              [ngClass]="{
-              'is-invalid': submitted && f.pin.errors }" />
-          </label>
-          <div *ngIf="submitted && f.pin.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.pin.errors.required">pin is required</div>
-          </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label class="d-block mb-4">
-            <span class="form-label d-block">Phone1</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="phone1"
-              [ngClass]="{
-              'is-invalid': submitted && f.phone1.errors }" />
-          </label>
-          <div *ngIf="submitted && f.phone1.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.phone1.errors.required">phone1 is required</div>
-          </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label class="d-block mb-4">
-            <span class="form-label d-block">phone2</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="phone2"
-              />
-          </label>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col col-sm-3">
-          <label class="d-block mb-4">
-            <span class="form-label d-block">Ext</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="ext"
-              />
-          </label>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label class="d-block mb-4">
-            <span class="form-label d-block">Fax</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="fax"
-              />
-          </label>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col col-sm-3">
-          <label class="d-block mb-4">
-            <span class="form-label d-block">Mobile</span>
-            <input name="city" type="text" class="form-control w-75"
-              placeholder=""
-              formControlName="mobile"
-              />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-sm-5">
-          <label class="d-block">
-            <span class="form-label d-block">Email</span>
-            <input
-              name="name"
-              type="text"
-              class="form-control"
-              placeholder="example@gmail.com"
-              formControlName="email"
-              [ngClass]="{
-              'is-invalid': submitted && f.email.errors }"
-              />
-          </label>
-          <div *ngIf="submitted && f.email.errors"
-            class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">email is required</div>
-          </div>
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col col-sm-1 ml-md-auto d-md-flex">
-          <button type="submit" class="btn btn-default border-dark px-3
-            rounded-3" (click)="submit()">
-            Cancel
-          </button>
-        </div>
-        <div class="col col-sm-1 ml-2 mr-3">
-          <button type="submit" class="btn btn-primary px-3 rounded-3">
-            Save
-          </button>
-        </div>
-      </div>
+    <div class="col col-sm-6">
+      <label for="address_type" class="form-label mb-2">Address Type</label>
+      <select id="address_type" class="form-select w-50"
+        formControlName="address_type">
+        <option selected>Choose...</option>
+        <option>permanentAddress</option>
+        <option>presentAddress</option>
+        <option>emergencyAddress</option>
+        <option>spouseAaddress</option>
+      </select>
     </div>
-  </form>
-</div>
-<!-- ==========================================permanent address =================================================-->
-<!-- =================================================Ememrgency contact Address=========================================== -->
-<div *ngIf="isCollapsed">
-  <div class="row mb-3 mt-5">
-    <div class="col col-sm-5">
-      <h4>
-        Emergency Contact/Address
-      </h4>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col col-sm-5">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">Your name</span>
+    <div class="row mb-3 mt-1">
+      <div class="col col-sm-5">
+        <label class="d-block form-label">
+          Your name &nbsp;<span
+            class="text-danger">*</span>
+        </label>
         <input
           name="name"
           type="text"
@@ -247,173 +28,401 @@
           [ngClass]="{
           'is-invalid': submitted && f.name.errors }"
           />
-      </label>
+        <div *ngIf="submitted && f.name.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">name is required</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col col-sm-3">
-      <label for="inputState" class="form-label mb-2">Relationship</label>
-    </div>
-    <div class="col col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label class="d-block">
-        <span class="form-label d-block">Address</span> </label>
-    </div>
-    <div class="col col-sm-4"></div>
-    <div class="col col-sm-3">
-      <select id="inputState" class="form-select w-75">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <input
-        name="address2"
-        type="text"
-        class="form-control"
-        placeholder="Address line 1"
-        [ngClass]="{
-        'is-invalid': submitted && f.address.errors }"
-        />
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <input
-        name="address2"
-        type="text"
-        class="form-control"
-        placeholder="Address line 2"
-        [ngClass]="{
-        'is-invalid': submitted && f.email.errors }"
-        />
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col col-sm-4"></div>
-    <div class="col col-sm-3">
-      <label class="d-block mb-2">
-        <span class="form-label d-block">City</span>
-      </label>
-    </div>
-    <div class="col col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label for="inputState" class="form-label mb-2">State</label>
-    </div>
-    <div class="col col-sm-3">
-      <input name="city" type="text" class="form-control"
-        placeholder="Address
-        line 3"
-        [ngClass]="{
-        'is-invalid': submitted && f.email.errors }" />
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <select id="inputState" class="form-select w-50">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <select id="inputState" class="form-select w-50">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col col-sm-3">
-      <label for="inputState" class="form-label mb-2">State</label>
-      <select id="inputState" class="form-select w-50">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">pin</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          [ngClass]="{
-          'is-invalid': submitted && f.pin.errors }"/>
-      </label>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">Phone1</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          [ngClass]="{
-          'is-invalid': submitted && f.Phone1.errors }" />
-      </label>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">phone2</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          />
-      </label>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">Ext</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          />
-      </label>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">Fax</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          />
-      </label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-sm-3">
-      <label class="d-block mb-4">
-        <span class="form-label d-block">Mobile</span>
-        <input name="city" type="text" class="form-control w-75"
-          placeholder=""
-          />
-      </label>
-    </div>
-    <div class="col col-sm-1"></div>
-    <div class="col col-sm-5">
-      <label class="d-block">
-        <span class="form-label d-block">Email</span>
+    <div class="row mb-3">
+      <label class="d-block form-label">Address&nbsp;<span
+          class="text-danger">*</span></label>
+      <div class="col col-sm-3">
         <input
-          name="name"
+          name="address2"
           type="text"
-          class="form-control w-75"
-          placeholder="example@gmail.com"
+          class="form-control w-100"
+          formControlName="address_line1"
+          placeholder="Address line 1"
+          [ngClass]="{
+          'is-invalid': submitted && f.address_line1.errors }"
+          />
+        <div *ngIf="submitted && f.address_line1.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.addressLine1.errors.required">addressLine1 is required</div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <input
+          name="address2"
+          type="text"
+          class="form-control"
+          formControlName="address_line2"
+          placeholder="Address line 2"
+          [ngClass]="{
+          'is-invalid': submitted && f.address_line2.errors }"
+          />
+        <div *ngIf="submitted && f.address_line2.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.address_line2.errors.required">addressLine2 is required</div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <input
+          name="address2"
+          type="text"
+          class="form-control"
+          formControlName="address_line3"
+          placeholder="Address line 3"
+          [ngClass]="{
+          'is-invalid': submitted && f.address_line3.errors }"
+          />
+        <div *ngIf="submitted && f.address_line3.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.address_line3.errors.required">addressLine3 is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label class="d-block mb-2">City&nbsp;<span
+            class="text-danger">*</span>
+          <input name="city" type="text" class="form-control" placeholder=""
+            formControlName="city"
+            [ngClass]="{
+            'is-invalid': submitted && f.city.errors }" />
+        </label>
+        <div *ngIf="submitted && f.city.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">city is required</div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label for="inputState" class="form-label mb-2">State&nbsp;<span
+            class="text-danger">*</span></label>
+        <select id="inputState" class="form-select w-50"
+          formControlName="state">
+          <option selected>Choose...</option>
+          <option>...</option>
+          <option>Karnataka</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label for="inputState" class="form-label mb-2">Country&nbsp;<span
+            class="text-danger">*</span></label>
+        <select id="inputState" class="form-select w-50"
+          formControlName="country">
+          <option selected>Choose...</option>
+          <option>...</option>
+          <option>India</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label class="d-block mb-4 form-label">
+          <span class="form-label d-block">pin</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="pin"
+            [ngClass]="{
+            'is-invalid': submitted && f.pin.errors }" />
+        </label>
+        <div *ngIf="submitted && f.pin.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.pin.errors.required">pin is required</div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Phone1</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="phone1"
+            [ngClass]="{
+            'is-invalid': submitted && f.phone1.errors }" />
+        </label>
+        <div *ngIf="submitted && f.phone1.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.phone1.errors.required">phone1 is required</div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">phone2</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="phone2"
+            />
+        </label>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Ext</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="ext"
+            />
+        </label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Fax</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="fax"
+            />
+        </label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Mobile</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            formControlName="mobile"
+            />
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-sm-5">
+        <label class="d-block">
+          <span class="form-label d-block">Email</span>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="example@gmail.com"
+            formControlName="email"
+            [ngClass]="{
+            'is-invalid': submitted && f.email.errors }"
+            />
+        </label>
+        <div *ngIf="submitted && f.email.errors"
+          class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">email is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col col-sm-1 ml-md-auto d-md-flex">
+        <button type="submit" class="btn btn-default border-dark px-3
+          rounded-3" (click)="submit()">
+          Cancel
+        </button>
+      </div>
+      <div class="col col-sm-1 ml-2 mr-3">
+        <button type="submit" class="btn btn-primary px-3 rounded-3">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- ==========================================permanent address =================================================-->
+<!-- =================================================Ememrgency contact Address=========================================== -->
+<!-- <div class="container">
+  <form [formGroup]="registerForm" action="" class="mx-auto
+    col-md-11 offset-md-3 form-box form-horizontal">
+    <div class="row mb-3 mt-5">
+      <div class="col col-sm-5">
+        <h4>
+          Emergency Contact/Address
+        </h4>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col col-sm-5">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Your name</span>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="Joe Bloggs"
+            formControlName="name"
+            [ngClass]="{
+            'is-invalid': submitted && f.name.errors }"
+            />
+        </label>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label for="inputState" class="form-label mb-2">Relationship</label>
+      </div>
+      <div class="col col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block">
+          <span class="form-label d-block">Address</span> </label>
+      </div>
+      <div class="col col-sm-4"></div>
+      <div class="col col-sm-3">
+        <select id="inputState" class="form-select w-75">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <input
+          name="address2"
+          type="text"
+          class="form-control"
+          placeholder="Address line 1"
+          [ngClass]="{
+          'is-invalid': submitted && f.address.errors }"
+          />
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <input
+          name="address2"
+          type="text"
+          class="form-control"
+          placeholder="Address line 2"
           [ngClass]="{
           'is-invalid': submitted && f.email.errors }"
           />
-      </label>
+      </div>
     </div>
-  </div>
-  <div class="row ">
-    <div class="col col-sm-1 ml-md-auto d-md-flex">
-      <button type="submit" class="btn btn-default border-dark px-3
-        rounded-3">
-        Cancel
-      </button>
+    <div class="row mb-3">
+      <div class="col col-sm-4"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-2">
+          <span class="form-label d-block">City</span>
+        </label>
+      </div>
+      <div class="col col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label for="inputState" class="form-label mb-2">State</label>
+      </div>
+      <div class="col col-sm-3">
+        <input name="city" type="text" class="form-control"
+          placeholder="Address
+          line 3"
+          [ngClass]="{
+          'is-invalid': submitted && f.email.errors }" />
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <select id="inputState" class="form-select w-50">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <select id="inputState" class="form-select w-50">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
     </div>
-    <div class="col col-sm-1">
-      <button type="submit" class="btn btn-primary px-3 rounded-3">
-        Save
-      </button>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label for="inputState" class="form-label mb-2">State</label>
+        <select id="inputState" class="form-select w-50">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">pin</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            [ngClass]="{
+            'is-invalid': submitted && f.pin.errors }"/>
+        </label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Phone1</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            [ngClass]="{
+            'is-invalid': submitted && f.Phone1.errors }" />
+        </label>
+      </div>
     </div>
-  </div>
-</div>
+    <div class="row mb-3">
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">phone2</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            />
+        </label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Ext</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            />
+        </label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Fax</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            />
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-sm-3">
+        <label class="d-block mb-4">
+          <span class="form-label d-block">Mobile</span>
+          <input name="city" type="text" class="form-control w-75"
+            placeholder=""
+            />
+        </label>
+      </div>
+      <div class="col col-sm-1"></div>
+      <div class="col col-sm-5">
+        <label class="d-block">
+          <span class="form-label d-block">Email</span>
+          <input
+            name="name"
+            type="text"
+            class="form-control w-75"
+            placeholder="example@gmail.com"
+            [ngClass]="{
+            'is-invalid': submitted && f.email.errors }"
+            />
+        </label>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col col-sm-1 ml-md-auto d-md-flex">
+        <button type="submit" class="btn btn-default border-dark px-3
+          rounded-3">
+          Cancel
+        </button>
+      </div>
+      <div class="col col-sm-1">
+        <button type="submit" class="btn btn-primary px-3 rounded-3">
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div> -->

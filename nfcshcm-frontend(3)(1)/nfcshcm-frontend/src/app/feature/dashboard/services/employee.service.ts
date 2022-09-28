@@ -22,46 +22,49 @@ export class EmployeeService {
   }
 
   getAllEmployees(): Observable<any> {
-    const httpheaders = new HttpHeaders(
-      {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-      });
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
     return this.http
-      .get<Employee[]>("http://localhost:8081/data/employee",{ headers: httpheaders })
+      .get<Employee[]>("http://localhost:8081/data/employee", {
+        headers: httpheaders,
+      })
       .pipe(catchError(this.errorHandler));
   }
 
   getEmployeeById(id): Observable<Employee[]> {
-    const httpheaders = new HttpHeaders(
-      {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-      });
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
 
     return this.http
-      .get<Employee[]>("http://localhost:8081/data/employee/" + id,{ headers: httpheaders })
+      .get<Employee[]>("http://localhost:8081/data/employee/" + id, {
+        headers: httpheaders,
+      })
       .pipe(catchError(this.errorHandler));
   }
-
-  getEmployeeByEmpId(id): Observable<Employee[]> {
-    const httpheaders = new HttpHeaders(
-      {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-      });
+  getEmployeeByEmpId(empId): Observable<Employee[]> {
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
 
     return this.http
-      .get<Employee[]>("http://localhost:8081/data/employeeByEmpId/" + id,{ headers: httpheaders })
+      .get<Employee[]>("http://localhost:8081/data/employeeByEmpId/" + empId, {
+        headers: httpheaders,
+      })
       .pipe(catchError(this.errorHandler));
   }
 
-  sendEmail(data):Observable<object>{
-    const httpheaders = new HttpHeaders(
-      {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-      });
-    return this.http.post<object>('http://localhost:8081/data/register-employee',data,{ headers: httpheaders })
+  sendEmail(data): Observable<object> {
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
+    return this.http
+      .post<object>("http://localhost:8081/data/register-employee", data, {
+        headers: httpheaders,
+      })
       .pipe(catchError(this.errorHandler));
   }
-  
 
   createEmployee(EmployeeData): Observable<any> {
     const httpheaders = new HttpHeaders({
@@ -73,8 +76,27 @@ export class EmployeeService {
       })
       .pipe(catchError(this.errorHandler));
   }
-
-
+  saveEmployeeAddress(addressData): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authoriztion: "Bearer" + localStorage.getItem("token"),
+    });
+    return this.http
+      .post<any>("http://localhost:8081/address/saveAddress", addressData, {
+        headers: httpheaders,
+      })
+      .pipe(catchError(this.errorHandler));
+  }
+  getEmployeeAddressById(empId: any): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    });
+    return this.http
+      .get<any>("http://localhost:8081/getEmployeeAddress/" + empId, {
+        headers: httpheaders,
+      })
+      .pipe(catchError(this.errorHandler));
+  }
+  getEmployeeAddress;
   updateEmployee(EmployeeData): Observable<Employee[]> {
     return this.http
       .put<any>(Constant.API_ENDPOINT + "/rest/employees", EmployeeData)

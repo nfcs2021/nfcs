@@ -32,8 +32,14 @@ const modules = [
   MatProgressSpinnerModule,
   MatDialogModule,
   MatSelectModule,
+<<<<<<< HEAD
   MatOptionModule, MatDatepickerModule,
   MatNativeDateModule,
+=======
+  MatOptionModule,
+  MatDatepickerModule,
+  MatNativeDateModule
+>>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
 ];
 
 @NgModule({

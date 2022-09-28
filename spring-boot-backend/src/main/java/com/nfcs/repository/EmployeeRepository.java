@@ -11,5 +11,4 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 	
 	
 	Employee findByEmpId(String empId);
-	
 }

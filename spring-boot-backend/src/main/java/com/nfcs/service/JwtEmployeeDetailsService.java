@@ -46,8 +46,7 @@ public class JwtEmployeeDetailsService implements UserDetailsService {
 		
 		List<Employee> empDto =(List<Employee>) employeeRepository.findAll();
 		
-		return empDto;
-		
+		return empDto;	
 	}
 
 	public Employee getByEmpId(String empId) {
