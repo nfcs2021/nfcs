@@ -9,6 +9,7 @@ import { AuthService } from "../dashboard/auth/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+  currentYear:number=new Date().getFullYear();
   loginForm: FormGroup;
   name: string;
   password: string;

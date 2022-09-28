@@ -12,3 +12,14 @@
     font-weight: 400;
     color: #3f51b5;
 }
+.footer-copyright{
+ position: fixed;
+        /* background-color: #0f64af; */
+        color: #DADADA;
+         display: block;
+         line-height: 1.75;
+         font-size: 0.9700rem;
+         font-family: 'Roboto' ;
+         
+        
+      }
