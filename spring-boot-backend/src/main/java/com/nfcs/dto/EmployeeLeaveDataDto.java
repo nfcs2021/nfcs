@@ -1,4 +1,4 @@
-package com.nfcs.model;
+package com.nfcs.dto;
 
 import java.sql.Blob;
 import java.sql.Date;

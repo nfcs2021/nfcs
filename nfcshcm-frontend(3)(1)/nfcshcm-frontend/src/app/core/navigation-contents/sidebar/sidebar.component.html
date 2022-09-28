@@ -1,23 +1,6 @@
-<!-- <nav id="sidebar" [ngClass]="isOpen ? 'active' : ''">
+ 
 
-  <ul class="list-unstyled sidebar-items">
-    <p class="sidebar-header">Leave Management</p>
-    <li>
-      <a routerLink="/home/employees" routerLinkActive="active">Employee</a>
-    </li>
-    <li>
-      <a routerLink="/home/leaverequests" routerLinkActive="active">Leave Request</a>
-    </li>
-    <li>
-      <a routerLink="/home/leavetypes" routerLinkActive="active">Leave Type</a>
-    </li>
-    <li>
-      <a routerLink="/home/event" routerLinkActive="active">Event</a>
-    </li>
-  </ul>
-
-</nav> -->
-<div class="nav-side-menu">
+<nav class="nav-side-menu " >
 
   <div class="sidebar-profile">
     <div class="user-pic">
@@ -71,7 +54,7 @@
       <ul class="sub-menu collapse" id="service">
         <li> <a routerLink="/home/leaverequests/details"> Apply Leave </a></li>
         <!-- <li><a routerLink="/home/leaverequests/leavebalance"> Leave Balance </a></li> -->
-        <li>New Service 3</li>
+        <li> <a routerLink="/home/leaverequests/new-holiday"> Add Holidays </a></li>
       </ul>
 
       <!-- <li data-toggle="collapse" data-target="#new" class="collapsed">
@@ -95,4 +78,4 @@
       </li> -->
     </ul>
   </div>
-</div>
+</nav>

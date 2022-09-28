@@ -55,6 +55,7 @@ import { EmployeeAddressComponent } from './employee-contents/employee-address/e
 // import { EmployeeAddressComponent } from './employee-contents/employee-address/employee-address.component';
 import { EmployeeDocumentsComponent } from './employee-contents/employee-documents/employee-documents.component';
 import { NgxBootstrapMultiselectModule } from 'ngx-bootstrap-multiselect';
+import { HolidaysManageComponent } from './leaverequest-contents/holidays-manage/holidays-manage.component';
 
 
 
@@ -110,6 +111,7 @@ import { NgxBootstrapMultiselectModule } from 'ngx-bootstrap-multiselect';
     EmployeeAddressComponent,
     EmployeeAddressComponent,
     EmployeeDocumentsComponent,
+    HolidaysManageComponent,
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,

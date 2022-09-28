@@ -10,9 +10,13 @@
     </div> -->
 
     <div class="row col-md-12">
-      <div class="col-md-12" *ngIf="employeeData.position=='hr' || employeeData.position=='admin' ">
+      <div class="col-md-9 " *ngIf="employeeData.position=='hr' || employeeData.position=='admin' ">
         <button class="btn btn-info float-right" (click)="toggleEdit()">
           {{isRequestEdit ? "View Request" : "Approve Request"}}
+        </button>
+      </div>
+      <div class="col-3 " *ngIf="selectedLeaveRequest.status!='APPROVED'">
+        <button class="btn btn-info float-right " (click)="CancelLeaveRequest(selectedLeaveRequest.id)"> Cancel Request
         </button>
       </div>
       <!-- <div class="col-md-4">
