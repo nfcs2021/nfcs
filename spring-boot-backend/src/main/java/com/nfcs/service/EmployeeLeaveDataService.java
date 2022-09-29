@@ -45,7 +45,7 @@ public class EmployeeLeaveDataService {
 
 	@Autowired
 	EmployeeLeaveDataRepository employeeLeaveDataRepository;
-<<<<<<< HEAD
+
 	
 	@Autowired
 	HolidaysCalenderService holidaysCalenderService;
@@ -57,11 +57,10 @@ public class EmployeeLeaveDataService {
 		long leaveCount=getLeaveDaysBetweenTwoDates(leaveData.getDateFrom(),leaveData.getDateTo(),holidaysData);
 		
 		EmployeeLeaveData  employeeLeaveData =new EmployeeLeaveData();
-=======
 
-	public EmployeeLeaveData saveData(EmployeeLeaveDataDto leaveData) throws MessagingException {
-		EmployeeLeaveData employeeLeaveData = new EmployeeLeaveData();
->>>>>>> 057b8840736df4930fdcd257ca44b4b40c950fd8
+
+		
+
 		employeeLeaveData.setLeaveType(leaveData.getLeaveType());
 		employeeLeaveData.setDateTo(leaveData.getDateTo());
 		employeeLeaveData.setDateFrom(leaveData.getDateFrom());
@@ -118,28 +117,12 @@ public class EmployeeLeaveDataService {
 		return employeeLeaveDataRepository.findById(id).get();
 	}
 
-<<<<<<< HEAD
-public EmployeeLeaveData getLeaveDataById(long id) {
-	// TODO Auto-generated method stub
-	return employeeLeaveDataRepository.findById(id).get();
-}
 
 
 
 
-public EmployeeLeaveData leaveUpdate(LeaveRequestDataDto leaveDta) {
-	EmployeeLeaveData newLleaveData=employeeLeaveDataRepository.findById(leaveDta.getLeaveId()).get();
-	
-	newLleaveData.setStatus(leaveDta.getStatus());
-	newLleaveData.setDescription(leaveDta.getDeniedReason());
-	return employeeLeaveDataRepository.save(newLleaveData);
-}
 
 
-public List<EmployeeLeaveData> getLeaveData() {
-	// TODO Auto-generated method stub
-	return employeeLeaveDataRepository.findAll();
-} 
 
 public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List<HolidaysCalender> holidaysData) {
 
@@ -186,7 +169,7 @@ public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List
 
     return workDays;
 }
-=======
+
 	public EmployeeLeaveData leaveUpdate(LeaveRequestDataDto leaveDta) {
 		EmployeeLeaveData newLleaveData = employeeLeaveDataRepository.findById(leaveDta.getLeaveId()).get();
 
@@ -199,6 +182,6 @@ public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List
 		// TODO Auto-generated method stub
 		return employeeLeaveDataRepository.findAll();
 	}
->>>>>>> 057b8840736df4930fdcd257ca44b4b40c950fd8
+
 
 }
