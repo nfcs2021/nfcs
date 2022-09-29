@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nfcs.dto.EmployeeLeaveDataDto;
+import com.nfcs.dto.LeaveRequestDataDto;
 import com.nfcs.model.EmployeeLeaveData;
-import com.nfcs.model.EmployeeLeaveDataDto;
-import com.nfcs.model.LeaveRequestDataDto;
 import com.nfcs.service.EmployeeLeaveDataService;
 
 @RequestMapping("/employee")
@@ -59,6 +58,13 @@ public class EmployeeLeaveDataController {
 	public ResponseEntity<EmployeeLeaveData> leaveUpdate(@RequestBody LeaveRequestDataDto leaveDta) {
 		
 		return ResponseEntity.ok(employeeLeaveDataService.leaveUpdate(leaveDta));
+		
+	}
+	
+	@PutMapping("/CancelLeaveRequest/{id}")
+	public ResponseEntity<EmployeeLeaveData> CancelLeaveRequest(@PathVariable long id) {
+		
+		return ResponseEntity.ok(employeeLeaveDataService.CancelLeaveRequest(id));
 		
 	}
 }

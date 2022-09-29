@@ -2,37 +2,29 @@ package com.nfcs.service;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.time.temporal.TemporalAdjuster;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.EnumSet;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
+import com.nfcs.dto.EmployeeLeaveDataDto;
+import com.nfcs.dto.LeaveRequestDataDto;
 import com.nfcs.model.EmployeeLeaveData;
-import com.nfcs.model.EmployeeLeaveDataDto;
 import com.nfcs.model.HolidaysCalender;
-import com.nfcs.model.LeaveRequestDataDto;
 import com.nfcs.repository.EmployeeLeaveDataRepository;
-import com.nfcs.repository.HolidaysCalenderRepository;
 
 @Service
 public class EmployeeLeaveDataService {
@@ -45,11 +37,15 @@ public class EmployeeLeaveDataService {
 
 	@Autowired
 	EmployeeLeaveDataRepository employeeLeaveDataRepository;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 	
 	@Autowired
 	HolidaysCalenderService holidaysCalenderService;
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public EmployeeLeaveData saveData(EmployeeLeaveDataDto leaveData) throws MessagingException {
 		
 		 List<HolidaysCalender> holidaysData = holidaysCalenderService.getHolidaysList();
@@ -57,15 +53,18 @@ public class EmployeeLeaveDataService {
 		long leaveCount=getLeaveDaysBetweenTwoDates(leaveData.getDateFrom(),leaveData.getDateTo(),holidaysData);
 		
 		EmployeeLeaveData  employeeLeaveData =new EmployeeLeaveData();
+<<<<<<< HEAD
 
 
 		
 
+=======
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 		employeeLeaveData.setLeaveType(leaveData.getLeaveType());
 		employeeLeaveData.setDateTo(leaveData.getDateTo());
 		employeeLeaveData.setDateFrom(leaveData.getDateFrom());
 		employeeLeaveData.setLeaveReason(leaveData.getLeaveReason());
-		employeeLeaveData.setStatus("pending");
+		employeeLeaveData.setStatus("PENDING");
 		employeeLeaveData.setLeaveCount(leaveCount);
 		employeeLeaveData.setEmpId(leaveData.getEmpId());
 
@@ -117,12 +116,22 @@ public class EmployeeLeaveDataService {
 		return employeeLeaveDataRepository.findById(id).get();
 	}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 
 
 
 
 
-
+<<<<<<< HEAD
+=======
+public List<EmployeeLeaveData> getLeaveData() {
+	// TODO Auto-generated method stub
+	return employeeLeaveDataRepository.findAll(Sort.by("createdAt").descending());
+} 
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 
 public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List<HolidaysCalender> holidaysData) {
 
@@ -169,19 +178,27 @@ public static int getLeaveDaysBetweenTwoDates(Date startDate, Date endDate, List
 
     return workDays;
 }
+<<<<<<< HEAD
 
 	public EmployeeLeaveData leaveUpdate(LeaveRequestDataDto leaveDta) {
 		EmployeeLeaveData newLleaveData = employeeLeaveDataRepository.findById(leaveDta.getLeaveId()).get();
+=======
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 
-		newLleaveData.setStatus(leaveDta.getStatus());
-		newLleaveData.setDescription(leaveDta.getDeniedReason());
-		return employeeLeaveDataRepository.save(newLleaveData);
-	}
+public EmployeeLeaveData CancelLeaveRequest(long id) {
+	EmployeeLeaveData employeeLeaveData = employeeLeaveDataRepository.findById(id).get();
+	employeeLeaveData.setStatus("CANCEL");
+	
+	return employeeLeaveDataRepository.save(employeeLeaveData);
+}
 
+<<<<<<< HEAD
 	public List<EmployeeLeaveData> getLeaveData() {
 		// TODO Auto-generated method stub
 		return employeeLeaveDataRepository.findAll();
 	}
 
+=======
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
 
 }

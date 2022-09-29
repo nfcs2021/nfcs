@@ -8,9 +8,6 @@ import { IDropdownSettings } from 'ngu-multiselect-dropdown';
 import { EmployeeService } from '../../services/employee.service';
 import { IMultiSelectOption } from 'ngx-bootstrap-multiselect';
 import { moment } from 'ngx-bootstrap/chronos/test/chain';
-
-
-
 @Component({
   selector: 'app-leaverequest-manage',
   templateUrl: './leaverequest-manage.component.html',
@@ -28,18 +25,24 @@ export class LeaverequestManageComponent implements OnInit {
   loginEmployeeData: any;
   empId: any;
   //dropdownSettings = {};
+<<<<<<< HEAD
   foods: String[] = [
     "kvkrishna54@gmail.com","venureddy5656@gmail.com"
   ];
 
   toppingList: string[] = ["venunallamilli5656@gmail.com", "kollatiyaswanth@gmail.com", "Venu.Nallamilli@northfacein.com"];
 
+=======
+  foods: String[] = ["kvgmail.com", "venureddy5656@gmail.com"];
+  toppingList: string[] = ["venunall@gmail.com", "kollatiyaswanth@gmail.com", "Venu.Nallamilli@northfacein.com"];
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
   employeeLeaveDat: any;
   causalLeaveCout: number = 0;
   sickLeaveCount: number = 0;
   paidLeaveCount: number = 0;
   annualLeaveCount: number = 0;
   employeeLeaveData: any;
+  myHolidayList: any;
 
   constructor(private formBuilder: FormBuilder,
     private employeeLeaveService: EmployeeLeaveService,
@@ -54,7 +57,6 @@ export class LeaverequestManageComponent implements OnInit {
     this.getEmployeeLeaveById(this.empId);
     this.leaveTypes = this._leaveTypeService.getAllLeaveTypes();
     this.getHolidaysList();
-   
     this.leaveForm = this.formBuilder.group({
       leaveType: ['', Validators.required],
       leaveReason: ['', Validators.required],
@@ -95,24 +97,28 @@ export class LeaverequestManageComponent implements OnInit {
   getHolidaysList(){
     this.employeeLeaveService.getHolidaysList().subscribe(res => {
       console.log(res);
-      
-      console.log(this.myHolidayDates);
-      
+      this.myHolidayList=res;
     }, error => {
       console.log(error);
     });
    }
 
-  myHolidayFilter1 = (d: Date): boolean => {
-    const time = d.getTime();
-    const day = d.getDay();
-    return !this.myHolidayDates.find(x => x.getTime() == time) && day !== 0 && day !== 6
-  }
-  myHolidayFilter2 = (d: Date): boolean => {
-    const time = d.getTime();
-    const day = d.getDay();
-    return !this.myHolidayDates.find(x => x.getTime() == time) && day !== 0 && day !== 6
-  }
+   holidayDateFilter = (dt: Date): boolean => {
+    // check if date is weekend day
+    const date = dt.getDay();
+    if (date === 0 || date === 6) {
+      return false;
+    }
+  
+    // check if date is holiday
+    let dt1 = moment(dt);
+    if (this.myHolidayList) {
+      return !this.myHolidayList.find(x => {
+        return moment(x.holidayDate).isSame(dt1, 'day');
+      });
+    }
+  };
+
   get f() { return this.leaveForm.controls; }
 
   workday_count = () => {
@@ -121,15 +127,31 @@ export class LeaverequestManageComponent implements OnInit {
     let workday_count = 0;
     let totalDays = moment(end).diff(moment(start), "days");
     let date: any = start
+    let date1: any = start
+   
     for (let i = 0; i <= totalDays; i++) {
+      let holidayDate=false;
       if (i == 0) {
         date = moment(date)
       } else {
         date = moment(date).add(1, "d");
       }
+
+      for(let data of this.myHolidayList)
+      {
+        let holiday = moment(data.holidayDate).format(("YYYY-MM-DD"));
+        let compareDate = moment(date).format(("YYYY-MM-DD"));
+        if(holiday===compareDate)
+        {
+           holidayDate=true;
+           console.log(holidayDate);
+           break;
+        }
+      }
+      // console.log(moment(date).format(("YYYY-MM-DD")));
       date = new Date(date);
       let dayOfWeek = date.getDay();
-      let isWeekend = (dayOfWeek === 6) || (dayOfWeek === 0);
+      let isWeekend = (dayOfWeek === 6) || (dayOfWeek === 0) || holidayDate ;
       if (!isWeekend) {
         workday_count = workday_count + 1;
       }
@@ -254,18 +276,4 @@ export class LeaverequestManageComponent implements OnInit {
 
     });
   }
-  myHolidayFilter1 = (d: Date): boolean => {
-    const time=d.getTime();
-    const day = d.getDay();
-    return   !this.myHolidayDates.find(x=>x.getTime()==time) &&  day !== 0 && day !== 6 
-  }
-  
-  myHolidayFilter2 = (d: Date): boolean => {
-    const time=d.getTime();
-    const day = d.getDay();
-    return   !this.myHolidayDates.find(x=>x.getTime()==time) &&  day !== 0 && day !== 6 
-  }
-  
-
-
 }

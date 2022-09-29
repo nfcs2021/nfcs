@@ -22,4 +22,10 @@ public class HolidaysCalenderService {
 		
 		return holidaysData;
 	}
+
+
+	public HolidaysCalender save(HolidaysCalender holidaysCalender) {
+		// TODO Auto-generated method stub
+		return  holidaysCalenderRepository.save(holidaysCalender); 
+	}
 }

@@ -51,7 +51,32 @@
       <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date">
   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker ></mat-datepicker> -->
+<<<<<<< HEAD
   <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date"  id="leaveType" formControlName="toDate" class="form-control"    [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors  }"  >
+=======
+  <div class="form-group row">
+    <label for="leaveDateFrom" class="col-sm-3 col-form-label">Date From&nbsp;<span class="text-danger">*</span></label>
+    <div class="col-sm-9">
+  <input matInput [matDatepicker]="picker2" [matDatepickerFilter]="holidayDateFilter" placeholder="Choose a date" id="leaveType"  formControlName="fromDate" >
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2 ></mat-datepicker>
+      <div *ngIf="submitted && f.fromDate.errors" class="invalid-feedback">
+      <div *ngIf="f.fromDate.errors.required">Date From is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+<label for="leaveDateTo" class="col-sm-3 col-form-label">Date To&nbsp;<span class="text-danger">*</span></label>
+    <div class="col ">
+      <!-- <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date">
+
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+
+  <mat-datepicker #picker ></mat-datepicker> -->
+
+  <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="holidayDateFilter" placeholder="Choose a date"  id="leaveType" formControlName="toDate" >
+
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker1 ></mat-datepicker>
       <div *ngIf="submitted && f.toDate.errors" class="invalid-feedback">
@@ -83,6 +108,10 @@
   </div>
 
   <div class="form-group row">
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
     <label  class="col-sm-3 col-form-label">Apply To&nbsp;</label>
     <div class="col-sm-9">
       <mat-select placeholder="Select" formControlName="selectedValue" name="food">
@@ -91,10 +120,20 @@
         </mat-option>
       </mat-select>
     </div>
+<<<<<<< HEAD
     </div>
  
    <div class="form-group row">
     <label  class="col-sm-3 col-form-label">Cc To&nbsp;</label>
+=======
+
+    </div>
+ 
+   
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Cc To&nbsp;<span class="text-danger">*</span></label>
+>>>>>>> ce5626420b6c7501b8ef2589d8ff74c04a5607df
     <div class="col-sm-9">
       <mat-select formControlName="ccMail" multiple [(value)]="selected" placeholder="Select">
         <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>

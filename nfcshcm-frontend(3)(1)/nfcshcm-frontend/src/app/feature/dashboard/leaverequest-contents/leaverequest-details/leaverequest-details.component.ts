@@ -61,6 +61,20 @@ export class LeaverequestDetailsComponent implements OnInit {
       
 //     }
 //   }
+CancelLeaveRequest(id:any){
+  console.log(id);
+  
+  this._employeeLeaveService.CancelLeaveRequest(id).subscribe(
+    res =>{
+    console.log(res);
+    alert("Leave Request Canceld...!")
+    },
+    error =>{
+   console.log(error);
+   
+    }
+  )
+}
 
   getEmployeeByEmpId(empId: any) {
     this.employeeService.getEmployeeByEmpId(empId).subscribe(
