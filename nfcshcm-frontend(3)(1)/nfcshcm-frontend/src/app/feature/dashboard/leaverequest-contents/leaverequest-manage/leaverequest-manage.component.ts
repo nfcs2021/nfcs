@@ -8,9 +8,6 @@ import { IDropdownSettings } from 'ngu-multiselect-dropdown';
 import { EmployeeService } from '../../services/employee.service';
 import { IMultiSelectOption } from 'ngx-bootstrap-multiselect';
 import { moment } from 'ngx-bootstrap/chronos/test/chain';
-
-
-
 @Component({
   selector: 'app-leaverequest-manage',
   templateUrl: './leaverequest-manage.component.html',
@@ -28,46 +25,8 @@ export class LeaverequestManageComponent implements OnInit {
   loginEmployeeData: any;
   empId: any;
   //dropdownSettings = {};
-<<<<<<< HEAD
   foods: String[] = ["kvgmail.com", "venureddy5656@gmail.com"];
   toppingList: string[] = ["venunall@gmail.com", "kollatiyaswanth@gmail.com", "Venu.Nallamilli@northfacein.com"];
-=======
-<<<<<<< HEAD
-  foods: String[] = [
-    "kvkrishna54@gmail.com","venureddy5656@gmail.com"
-  ];
-  myHolidayDates = [
-    
-    new Date("12/20/2022"),
-    new Date("12/17/2022"),
-    new Date("12/25/2022"),
-    new Date("12/4/2022"),
-    new Date("12/7/2022"),
-    new Date("10/05/2022"),
-   
-    new Date("10/25/2022"),
-    new Date("12/25/2022")
-];
-
-=======
-  foods: String[] = ["kvkrishna54@gmail.com", "venureddy5656@gmail.com"];
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
-  toppingList: string[] = ["venunallamilli5656@gmail.com", "kollatiyaswanth@gmail.com", "Venu.Nallamilli@northfacein.com"];
-  myHolidayDates = [
-    new Date("12/20/2022"),
-    new Date("12/17/2022"),
-    new Date("12/25/2022"),
-    new Date("12/4/2022"),
-    new Date("12/7/2022"),
-    new Date("10/05/2022"),
-    new Date("10/10/2022"),
-    new Date("10/25/2022"),
-    new Date("12/25/2022")];
-  
-
-
- 
->>>>>>> 2d3c39470b3f2b405afdfd9db230daa2ce1a55b8
   employeeLeaveDat: any;
   causalLeaveCout: number = 0;
   sickLeaveCount: number = 0;
@@ -308,18 +267,4 @@ export class LeaverequestManageComponent implements OnInit {
 
     });
   }
-  myHolidayFilter1 = (d: Date): boolean => {
-    const time=d.getTime();
-    const day = d.getDay();
-    return   !this.myHolidayDates.find(x=>x.getTime()==time) &&  day !== 0 && day !== 6 
-  }
-  
-  myHolidayFilter2 = (d: Date): boolean => {
-    const time=d.getTime();
-    const day = d.getDay();
-    return   !this.myHolidayDates.find(x=>x.getTime()==time) &&  day !== 0 && day !== 6 
-  }
-  
-
-
 }

@@ -112,11 +112,7 @@ import { HolidaysManageComponent } from './leaverequest-contents/holidays-manage
     EmployeeAddressComponent,
     EmployeeAddressComponent,
     EmployeeDocumentsComponent,
-<<<<<<< HEAD
     HolidaysManageComponent,
-=======
-    
->>>>>>> 2d3c39470b3f2b405afdfd9db230daa2ce1a55b8
   ],
   providers: [EmployeeService, LeaveTypeService, EmployeeLeaveService, ReportService, EventService,
     DatePipe, AuthGuard, AdminAuthGuard, AuthService,

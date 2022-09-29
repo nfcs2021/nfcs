@@ -24,11 +24,7 @@ import { LeaverequestDetailsComponent } from "../leaverequest-contents/leaverequ
 import { EventsMainComponent } from "../eventsContents/events-main/events-main.component";
 import { LeaveBalanceComponent } from "../leaverequest-contents/leave-balance/leave-balance.component";
 import { EmployeeAddressComponent } from "../employee-contents/employee-address/employee-address.component";
-<<<<<<< HEAD
 import { HolidaysManageComponent } from "../leaverequest-contents/holidays-manage/holidays-manage.component";
-=======
-
->>>>>>> 2d3c39470b3f2b405afdfd9db230daa2ce1a55b8
 const routes: Routes = [
   {
     path: "",
@@ -57,11 +53,7 @@ const routes: Routes = [
             {path: 'details/:id', component: LeaverequestDetailsComponent},
             {path: 'new', component: LeaverequestManageComponent},
             {path:'leavebalance',component:LeaveBalanceComponent},
-<<<<<<< HEAD
             {path:'new-holiday',component:HolidaysManageComponent}
-=======
-           
->>>>>>> 2d3c39470b3f2b405afdfd9db230daa2ce1a55b8
           ]
         },
         {
