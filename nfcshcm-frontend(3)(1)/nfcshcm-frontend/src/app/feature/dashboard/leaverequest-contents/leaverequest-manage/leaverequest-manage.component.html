@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 <br>
 
-=======
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
 <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-6 offset-md-4 form-box">
 
   <div *ngIf="!!create_leave_req_msg" [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">
@@ -40,20 +37,9 @@
   <!-- <div class="form-group row">
     <label for="leaveDateFrom" class="col-sm-3 col-form-label">Date From&nbsp;<span class="text-danger">*</span></label>
     <div class="col-sm-9">
-<<<<<<< HEAD
       <input matInput [matDatepicker]="picker2" [matDatepickerFilter]="myHolidayFilter2" placeholder="Choose a date" id="leaveType"  formControlName="fromDate" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors  }" >
   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
   <mat-datepicker #picker2 ></mat-datepicker>
-=======
-      <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date"
-        id="leaveDateFrom" formControlName="fromDate">
-
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-
-      <mat-datepicker #picker1></mat-datepicker>
-       <input type="text" id="leaveDateFrom" formControlName="fromDate" class="form-control" bsDatepicker [minDate]="minDate" [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY' }" placeholder="Date From"
-        [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" /> 
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
       <div *ngIf="submitted && f.fromDate.errors" class="invalid-feedback">
         <div *ngIf="f.fromDate.errors.required">Date From is required</div>
       </div>
@@ -62,47 +48,10 @@
   <div class="form-group row">
     <label for="leaveDateTo" class="col-sm-3 col-form-label">Date To&nbsp;<span class="text-danger">*</span></label>
     <div class="col-sm-9">
-<<<<<<< HEAD
-      <!-- <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date">
+      <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date">
   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker ></mat-datepicker> -->
   <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date"  id="leaveType" formControlName="toDate" class="form-control"    [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors  }"  >
-=======
-      <input matInput [matDatepicker]="picker2" [matDatepickerFilter]="myHolidayFilter2" placeholder="Choose a date"
-      id="leaveDateTo" formControlName="toDate">
-
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-
-    <mat-datepicker #picker1></mat-datepicker>
-       <input type="text" id="leaveDateTo" formControlName="toDate" class="form-control" bsDatepicker [minDate]="minDate"
-        [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY' }" placeholder="Date To"
-        [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }" /> 
-      <div *ngIf="submitted && f.toDate.errors" class="invalid-feedback">
-        <div *ngIf="f.toDate.errors.required">Date To is required</div>
-      </div>
-    </div>
-  </div> -->
-  <div class="form-group row">
-    <label for="leaveDateFrom" class="col-sm-3 col-form-label">Date From&nbsp;<span class="text-danger">*</span></label>
-    <div class="col-sm-9">
-  <input matInput [matDatepicker]="picker2" [matDatepickerFilter]="myHolidayFilter2" placeholder="Choose a date" id="leaveType"  formControlName="fromDate" >
-  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-  <mat-datepicker #picker2 ></mat-datepicker>
-      <div *ngIf="submitted && f.fromDate.errors" class="invalid-feedback">
-      <div *ngIf="f.fromDate.errors.required">Date From is required</div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-<label for="leaveDateTo" class="col-sm-3 col-form-label">Date To&nbsp;<span class="text-danger">*</span></label>
-    <div class="col ">
-      <!-- <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date">
-
-  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-
-  <mat-datepicker #picker ></mat-datepicker> -->
-  <input matInput [matDatepicker]="picker1" [matDatepickerFilter]="myHolidayFilter1" placeholder="Choose a date"  id="leaveType" formControlName="toDate" >
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker1 ></mat-datepicker>
       <div *ngIf="submitted && f.toDate.errors" class="invalid-feedback">
@@ -134,11 +83,7 @@
   </div>
 
   <div class="form-group row">
-<<<<<<< HEAD
     <label  class="col-sm-3 col-form-label">Apply To&nbsp;</label>
-=======
-    <label class="col-sm-3 col-form-label">Apply To&nbsp;<span class="text-danger">*</span></label>
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
     <div class="col-sm-9">
       <mat-select placeholder="Select" formControlName="selectedValue" name="food">
         <mat-option *ngFor="let food of foods" [value]="food">
@@ -146,17 +91,10 @@
         </mat-option>
       </mat-select>
     </div>
-<<<<<<< HEAD
     </div>
  
    <div class="form-group row">
     <label  class="col-sm-3 col-form-label">Cc To&nbsp;</label>
-=======
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3 col-form-label">Cc To&nbsp;<span class="text-danger">*</span></label>
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
     <div class="col-sm-9">
       <mat-select formControlName="ccMail" multiple [(value)]="selected" placeholder="Select">
         <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>

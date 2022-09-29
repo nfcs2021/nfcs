@@ -28,41 +28,12 @@ export class LeaverequestManageComponent implements OnInit {
   loginEmployeeData: any;
   empId: any;
   //dropdownSettings = {};
-<<<<<<< HEAD
   foods: String[] = [
     "kvkrishna54@gmail.com","venureddy5656@gmail.com"
   ];
-  myHolidayDates = [
-    
-    new Date("12/20/2022"),
-    new Date("12/17/2022"),
-    new Date("12/25/2022"),
-    new Date("12/4/2022"),
-    new Date("12/7/2022"),
-    new Date("10/05/2022"),
-   
-    new Date("10/25/2022"),
-    new Date("12/25/2022")
-];
 
-=======
-  foods: String[] = ["kvkrishna54@gmail.com", "venureddy5656@gmail.com"];
->>>>>>> 766669da8a599ef7ff250598bfb1c3680c6059f2
   toppingList: string[] = ["venunallamilli5656@gmail.com", "kollatiyaswanth@gmail.com", "Venu.Nallamilli@northfacein.com"];
-  myHolidayDates = [
-    new Date("12/20/2022"),
-    new Date("12/17/2022"),
-    new Date("12/25/2022"),
-    new Date("12/4/2022"),
-    new Date("12/7/2022"),
-    new Date("10/05/2022"),
-    new Date("10/10/2022"),
-    new Date("10/25/2022"),
-    new Date("12/25/2022")];
-  
 
-
- 
   employeeLeaveDat: any;
   causalLeaveCout: number = 0;
   sickLeaveCount: number = 0;
