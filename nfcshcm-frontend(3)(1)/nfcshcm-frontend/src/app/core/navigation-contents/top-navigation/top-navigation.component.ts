@@ -21,8 +21,6 @@ employeeData:any;
     
   }
 
-
-
   toggleSidebar() {
     this._sideBarService.toggle();
   }

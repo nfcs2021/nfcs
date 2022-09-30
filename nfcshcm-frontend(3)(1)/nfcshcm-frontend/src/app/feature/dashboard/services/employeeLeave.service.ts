@@ -8,12 +8,33 @@ import { EmployeeLeave } from '../model/EmployeeLeave';
 
 @Injectable()
 export class EmployeeLeaveService {
+  
 
   constructor(private http: HttpClient) { }
 
   errorHandler(error: HttpErrorResponse) {
     console.log('EmployeeLeave api error ', error);
     return throwError(error);
+  }
+
+  saveHolidayDate(data: any) {
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+      return this.http.post<any>("http://localhost:8081/holidays",data,{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+    
+  getHolidaysList(): Observable<any>{
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+
+      return this.http.get<any>("http://localhost:8081/holidays",{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
   }
 
   getAllEmployeeLeaves(): Observable<any> {
@@ -34,6 +55,15 @@ export class EmployeeLeaveService {
       });
 
     return this.http.get<EmployeeLeave>("http://localhost:8081/employee/leavedata/" + id,{ headers: httpheaders })
+      .pipe(catchError(this.errorHandler));
+  }
+
+  CancelLeaveRequest(id:any):Observable<any>{
+    const httpheaders = new HttpHeaders(
+      {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      });
+      return this.http.put<EmployeeLeave>("http://localhost:8081/employee/CancelLeaveRequest/" +id,{ headers: httpheaders })
       .pipe(catchError(this.errorHandler));
   }
 

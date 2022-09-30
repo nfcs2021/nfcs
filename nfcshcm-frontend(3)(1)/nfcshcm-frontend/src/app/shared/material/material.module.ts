@@ -8,6 +8,8 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule,
   MatDialogModule,
   MatSelectModule,
   MatOptionModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   } from '@angular/material';
 
 const modules = [
@@ -30,7 +32,8 @@ const modules = [
   MatProgressSpinnerModule,
   MatDialogModule,
   MatSelectModule,
-  MatOptionModule
+  MatOptionModule, MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({

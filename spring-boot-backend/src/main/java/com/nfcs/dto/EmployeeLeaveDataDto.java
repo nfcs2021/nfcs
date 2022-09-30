@@ -1,4 +1,4 @@
-package com.nfcs.model;
+package com.nfcs.dto;
 
 import java.sql.Blob;
 import java.sql.Date;
@@ -22,6 +22,7 @@ public class EmployeeLeaveDataDto {
 	String description;
 	Blob attachement;
 	String empId;
+	long leaveCount;
 	String toMail;
     List<String> toCc;
 	

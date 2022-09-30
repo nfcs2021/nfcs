@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nfcs.dto.EmployeeDTO;
 import com.nfcs.model.Employee;
-import com.nfcs.model.EmployeeDTO;
 import com.nfcs.model.JwtRequest;
 import com.nfcs.model.JwtResponse;
 import com.nfcs.security.JwtTokenUtil;

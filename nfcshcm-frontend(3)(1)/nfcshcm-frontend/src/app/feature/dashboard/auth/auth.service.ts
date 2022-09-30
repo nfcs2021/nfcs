@@ -34,7 +34,9 @@ export class AuthService {
     console.log("Auth Service api error ", error);
     return throwError(error);
   }
-
+  passwordGerator(data: any) {
+    return this.http.post<any>("http://localhost:8081/password-generate", data);
+  }
   loginUser(user) {
     localStorage.removeItem("token");
     localStorage.removeItem("access_token");

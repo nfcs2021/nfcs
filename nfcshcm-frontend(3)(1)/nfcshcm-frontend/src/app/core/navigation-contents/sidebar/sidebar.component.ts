@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/feature/dashboard/services/employee.service';
 import { SidebarService } from '../service/sidebar.service';
 
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
   isOpen = false;
 
   constructor(private _sidebarService: SidebarService,
-    private employeeService:EmployeeService) { }
+    private employeeService:EmployeeService,private _router: Router) { }
 
   ngOnInit() {
     this.getEmployeeByEmpId(localStorage.getItem("loginEmployeeData"));
@@ -32,5 +33,7 @@ export class SidebarComponent implements OnInit {
       }
     )
   }
-
+  // navigate(toPath:String){
+  //   this._router.navigate(['/'+toPath], { skipLocationChange: true });
+  // }
 }
