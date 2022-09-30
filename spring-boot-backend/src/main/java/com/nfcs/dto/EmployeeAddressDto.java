@@ -1,5 +1,7 @@
 package com.nfcs.dto;
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +24,8 @@ public class EmployeeAddressDto {
 	private String extension;
 	private String fax;
 	private String empId;
+	private String city;
+	private String state;
+	private String country;
+	private String pin;
 }

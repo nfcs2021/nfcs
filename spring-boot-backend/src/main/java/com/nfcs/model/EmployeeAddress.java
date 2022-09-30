@@ -45,7 +45,15 @@ public class EmployeeAddress {
 	@Column
 	private String fax;
 	@Column
-	String empId;
+	private String empId;
+	@Column
+	private String city;
+	@Column
+	private String state;
+	@Column
+	private String country;
+	@Column
+	private String pin;
 //	@ManyToOne(fetch = FetchType.EAGER)
 //	private Employee employee;
 }

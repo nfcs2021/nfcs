@@ -29,7 +29,6 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 	@Column
 	private String empId;
 
@@ -57,8 +56,18 @@ public class Employee {
 	@Column(name = "confirmation_date")
 	private Date confirmationDate;
 
-//	@NotEmpty
-//	@Pattern(regexp = "^[a-zA-Z0-9]+[-_]?[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.+[a-zA-Z0-9]{2,4}$", message = "Email must be in email formate")
+	@Column(name = "notice_period")
+	private int noticePeriod;
+
+	@Column(name = "current_Company_Experience")
+	private String currentCompanyExperience;
+
+	@Column(name = "previous_experience")
+	private String previousExperience;
+
+	@Column(name = "total_experience")
+	private String totalExperience;
+
 	@Column(name = "email")
 	private String email;
 
@@ -74,31 +83,82 @@ public class Employee {
 	@Column(name = "father_name")
 	private String fatherName;
 
-	@Column
+	@Column(name = "position")
 	private String position;
 
-//	@Column(name = "spouse_name")
-//	private String spouseName;
-//	
-//	@Column(name = "division")
-//	private String division;
-//	
-//	@Column(name = "grade")
-//	private String grade;
-//	
-//	@Column(name = "designation")
-//	private String designation;
-//	
-//	@Column(name = "location")
-//	private String location;
-//	
-//	@Column(name = "department")
-//	private String department;
+	@Column(name = "nick_name")
+	private String nickName;
+
+	@Column(name = "blood_group")
+	private String bloodGroup;
+
+	@Column(name = "martial_status")
+	private String martialStatus;
+
+	@Column(name = "marriage_date")
+	private Date marriageDate;
+
+	@Column(name = "spouse_name")
+	private String spouseName;
+
+	@Column(name = "nationality")
+	private String nationality;
+
+	@Column(name = "residentialstatus")
+	private String residential_status;
+
+	@Column(name = "place_of_birth")
+	private String placeOfBirth;
+
+	@Column(name = "country_of_origin")
+	private String countryOfOrigin;
+
+	@Column(name = "religion")
+	private String religion;
+
+	@Column(name = "international_employee")
+	private String internationalEmployee;
+
+	@Column(name = "physically_challenged")
+	private String physicallyChallenged;
+
+	@Column(name = "is_director")
+	private String isDirector;
+
+	@Column(name = "personal_email")
+	private String personalEmail;
+
+	@Column(name = "grade")
+	private String grade;
+
+	@Column(name = "designation")
+	private String designation;
+
+	@Column(name = "location")
+	private String location;
+
+	@Column(name = "department")
+	private String department;
+
+	@Column(name = "aadhar_no")
+	private String aadharNo;
+
+	@Column(name = "from_date")
+	private Date fromDate;
+
+	@Column(name = "to_date")
+	private Date toDate;
+
+	@Column(name = "institute")
+	private String institute;
+
+	@Column(name = "qualification_area")
+	private String qualificationArea;
+
+	@Column(name = "remarks")
+	private String remarks;
+
 	@Column
 	private String password;
-
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "emp_id", referencedColumnName = "empId")
-//	private List<EmployeeAddress> employeeAddresses;
 
 }

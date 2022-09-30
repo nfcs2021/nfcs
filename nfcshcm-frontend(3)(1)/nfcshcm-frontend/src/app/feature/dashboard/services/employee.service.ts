@@ -86,12 +86,22 @@ export class EmployeeService {
       })
       .pipe(catchError(this.errorHandler));
   }
-  getEmployeeAddressById(empId: any): Observable<any> {
+  updateEmployeeAddressById(addressData): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authoriztion: "Bearer" + localStorage.getItem("token"),
+    });
+    return this.http
+      .patch<any>("http://localhost:8081/address/updateAddress", addressData, {
+        headers: httpheaders,
+      })
+      .pipe(catchError(this.errorHandler));
+  }
+  getEmployeeAddressById(empId): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: "Bearer " + localStorage.getItem("token"),
     });
     return this.http
-      .get<any>("http://localhost:8081/getEmployeeAddress/" + empId, {
+      .get<any>("http://localhost:8081/address/getEmployeeAddress/" + empId, {
         headers: httpheaders,
       })
       .pipe(catchError(this.errorHandler));

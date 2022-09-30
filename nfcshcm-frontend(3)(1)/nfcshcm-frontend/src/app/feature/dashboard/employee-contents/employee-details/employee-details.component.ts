@@ -38,7 +38,6 @@ export class EmployeeDetailsComponent implements OnInit {
   ngOnInit() {
     this.routeId();
   }
-
   routeId() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
@@ -47,9 +46,6 @@ export class EmployeeDetailsComponent implements OnInit {
 
     });
   }
-
-
-
   getEmployeeById(id: number) {
     if (id!=null) {
       this.employeeService.getEmployeeById(id)
@@ -64,7 +60,6 @@ export class EmployeeDetailsComponent implements OnInit {
     } else {
     }
   }
-
   ngOnDestroy() {
 
   }

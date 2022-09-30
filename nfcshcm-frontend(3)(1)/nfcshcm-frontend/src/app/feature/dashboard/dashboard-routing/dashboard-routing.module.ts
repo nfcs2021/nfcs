@@ -24,6 +24,7 @@ import { LeaverequestDetailsComponent } from "../leaverequest-contents/leaverequ
 import { EventsMainComponent } from "../eventsContents/events-main/events-main.component";
 import { LeaveBalanceComponent } from "../leaverequest-contents/leave-balance/leave-balance.component";
 import { EmployeeAddressComponent } from "../employee-contents/employee-address/employee-address.component";
+import { EmployeeDocumentsComponent } from '../employee-contents/employee-documents/employee-documents.component';
 const routes: Routes = [
   {
     path: "",
@@ -40,7 +41,8 @@ const routes: Routes = [
             {path: 'details', component: EmployeeListComponent},
             {path: 'new', component: EmployeeManageComponent, },
             {path: 'employee-address', component: EmployeeAddressComponent },
-            {path:'employee-address/:id',component:EmployeeAddressComponent}
+            {path:'employee-address/:id/:name',component:EmployeeAddressComponent},
+            {path:'documents',component:EmployeeDocumentsComponent}
           ]
         },
         {

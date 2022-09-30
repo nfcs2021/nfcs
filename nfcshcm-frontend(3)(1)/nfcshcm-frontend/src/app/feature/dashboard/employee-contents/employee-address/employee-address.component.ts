@@ -10,7 +10,7 @@ import { Observable, concat, of, Subject } from "rxjs";
 import { EmployeeService } from "./../../services/employee.service";
 import { Component, OnInit } from "@angular/core";
 import { Employee } from "../../model/employee";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-employee-address",
@@ -25,18 +25,70 @@ export class EmployeeAddressComponent implements OnInit {
   addressForm: FormGroup;
   isCollpased: boolean = false;
   empId: any;
+  empid: any;
   private sub: any;
   private id: any;
   employeeData: any;
+  addressType: any;
+  addressList: any;
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   ngOnInit() {
     // this.empId = localStorage.getItem("loginEmployeeData");
     this.routeId();
-    this.getEmployeeDataById(localStorage.getItem("loginEmployeeData"));
+    // this.getEmployeeDataById(localStorage.getItem("loginEmployeeData"));
+    console.log(this.addressList.address_type);
+  }
+  addressFormLoad() {
+    alert(1);
+    console.log("onitit", this.addressList.name);
+    this.addressForm = this.formBuilder.group({
+      address_type: [this.addressList.address_type],
+      name: [
+        this.addressList.name,
+        [Validators.required, Validators.minLength(2)],
+      ],
+      address_line1: [this.addressList.address_line1, [Validators.required]],
+      address_line2: [this.addressList.address_line2, [Validators.required]],
+      address_line3: [this.addressList.address_line2, [Validators.required]],
+      city: [this.addressList.city, [Validators.required]],
+      state: [this.addressList.state],
+      country: [this.addressList.country],
+      pin: [this.addressList.pin, [Validators.required]],
+      phone1: [
+        this.addressList.phone1,
+        [
+          Validators.required,
+          Validators.min(1000000000),
+          Validators.max(9999999999),
+        ],
+      ],
+      phone2: [
+        this.addressList.phone2,
+        [
+          Validators.required,
+          Validators.min(1000000000),
+          Validators.max(9999999999),
+        ],
+      ],
+      ext: [this.addressList.ext, [Validators.required]],
+      fax: [this.addressList.fax],
+      mobile: [
+        this.addressList.mobile,
+        [
+          Validators.required,
+          Validators.min(1000000000),
+          Validators.max(9999999999),
+        ],
+      ],
+      email: [this.addressList.email, [Validators.required]],
+    });
+  }
+  adressFormInitialixation() {
     this.addressForm = this.formBuilder.group({
       address_type: [""],
       name: ["", [Validators.required, Validators.minLength(2)]],
@@ -78,9 +130,11 @@ export class EmployeeAddressComponent implements OnInit {
   }
   routeId() {
     this.sub = this.route.params.subscribe((params) => {
-      this.empId = +params["id"]; // (+) converts string 'id' to a number
-      this.getEmployeeDataById(this.empId);
-      console.log(this.empId);
+      this.id = +params["id"]; // (+) converts string 'id' to a number
+      this.addressType = params["name"];
+      console.log(params["name"]);
+      this.getEmployeeById(this.id);
+      console.log(this.id);
     });
   }
   getEmployeeById(id: number) {
@@ -89,26 +143,17 @@ export class EmployeeAddressComponent implements OnInit {
         (data) => {
           console.log(data);
           this.employeeData = data;
-          // for (let empData of this.employeeData) {
-          // }
+          console.log(this.employeeData.empId);
+          this.empid = this.employeeData.empId;
+          this.getEmployeeAddressById(this.employeeData.empId);
+          console.log(this.empid);
         },
         (error) => {}
       );
     } else {
     }
   }
-  getEmployeeDataById(empId: any) {
-    this.employeeService.getEmployeeByEmpId(empId).subscribe(
-      (data) => {
-        this.employeeData = data;
-        console.log(this.empId);
-        console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
   get f() {
     return this.addressForm.controls;
   }
@@ -134,25 +179,70 @@ export class EmployeeAddressComponent implements OnInit {
       fax: this.addressForm.value["fax"],
       mobile: this.addressForm.value["mobile"],
       email: this.addressForm.value["email"],
-      empId: this.empId,
+      empId: this.employeeData.empId,
     };
-    this.employeeService.saveEmployeeAddress(submissionData).subscribe(
+    // this.employeeService.saveEmployeeAddress(submissionData).subscribe(
+    //   (res) => {
+    //     this.has_error = false;
+    //     console.log(res);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    console.log(this.empid);
+    this.employeeService.updateEmployeeAddressById(submissionData).subscribe(
       (res) => {
-        this.has_error = false;
-        // this.create_leave_req_msg = 'Leave Request succesfully Submitted';
-        // this.addressForm.reset();
-        // this.submitted = false;
         console.log(res);
       },
       (error) => {
-        // console.log("leave creation error", error.error);
-        // this.has_error = true;
-        // this.create_leave_req_msg = error.error.message;
         console.log(error);
       }
     );
     // console.log("success ", this.registerForm.value);
+    this.router.navigate(["/home/employees/list/" + this.id]);
     console.log(this.addressForm.value);
   }
-
+  getEmployeeAddressById(empId: any) {
+    console.log(empId);
+    this.employeeService
+      .getEmployeeAddressById(this.employeeData.empId)
+      .subscribe(
+        (data) => {
+          console.log(data);
+          console.log(data.length);
+          // if(data.length>0){
+          //   for (let addressData of data) {
+          //     if (addressData.address_type === this.addressType) {
+          //       console.log(addressData);
+          //       this.addressList = addressData;
+          //       this.addressFormLoad();
+          //     }
+          //   }
+          // }else{
+          //   this.adressFormInitialixation();
+          // }5
+          if (data === undefined) {
+            alert("first if");
+            this.adressFormInitialixation();
+          } else {
+            alert("else");
+            for (let addressData of data) {
+              if (addressData.address_type === this.addressType) {
+                console.log(addressData);
+                this.addressList = addressData;
+                this.addressFormLoad();
+              }
+            }
+          }
+          if (this.addressList === undefined) {
+            alert("second if");
+            this.adressFormInitialixation();
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }

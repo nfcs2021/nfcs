@@ -56,13 +56,9 @@ public class JwtAuthenticationController {
 	}
 	
 	@RequestMapping(value = "/password-generate", method = RequestMethod.POST)
-	public ResponseEntity<Employee> generateEmployeePassword(@RequestBody Employee emp) {
-		
+	public ResponseEntity<Employee> generateEmployeePassword(@RequestBody Employee emp) {	
 		System.out.println(emp.getEmpId()+emp.getPassword());
-		
 		return ResponseEntity.ok(employeeService.generateEmployeePassword(emp.getEmpId(),emp.getPassword()));
-	
-		
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
