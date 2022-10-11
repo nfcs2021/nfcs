@@ -1,0 +1,10 @@
+.nav-side-menu{
+    position: fixed;
+    top: 0px;
+    width: 60%;
+    margin-top: 100px;
+}
+img{
+    height: 80%;
+    width: 800px;
+}

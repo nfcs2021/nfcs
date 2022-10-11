@@ -1,0 +1,1170 @@
+
+<div class="row custom ">
+    <div class="col-4 "></div>
+
+    <form class="form ml-5 " #saveForm="ngForm" (ngSubmit)="saveForm.form.valid && onSubmit()" novalidate>
+        <fieldset [disabled]="disabled">
+            <!-- <div class="col-5 mt-5">
+                <h5>1.Body image(Select Body parts where there is pain).</h5>
+                <h6>If no pain - select check box.</h6>
+            </div> -->
+            <div class="col-19 ">
+                <div class="container ">
+                    <div class="row mt-5">
+                        <div class="col-15">
+                            <h4><b>BODY MAP</b> </h4>
+                            <h5 class="font-weight-bold">Select the areas where you are experriencing pain:</h5>
+                            <svg width="510" height="450" viewBox="315 300 620 130" fill="none"    
+                                xmlns="http://www.w3.org/2000/svg" >
+                                <!-- <rect width="1280" height="720" fill="white"/>
+                <rect x="559" y="650" width="22" height="22" fill="white" stroke="black" stroke-width="2"/> -->
+                                <path id="1" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 144.234V128H473.351L481.143 131.247L486.987 136.442L490.234 140.338L479.195 142.935L462.961 144.234Z"
+                                    cursor="pointer" stroke-opacity="0.5" stroke="black"
+                                    (click)="clickSelectedPart('1')" />
+                                <path id="2" fill="transparent" stroke="#8c8c8c"
+                                    d="M463.286 144.234V128H452.896L443.805 131.247L437.312 136.442L434.39 140.338L447.701 142.935L463.286 144.234Z"
+                                    stroke="black" (click)="clickSelectedPart('2')" />
+                                <path id="3" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 174.753V144.883L447.376 143.584L434.065 140.987L433.74 142.286V155.922L430.493 153.325L426.597 155.922V159.818L430.493 165.013L433.74 168.26L436.987 174.753L443.48 181.896L455.169 183.844H462.961V174.753ZM462.961 174.753L456.467 174.104M450.623 152.026L446.727 153.974L450.623 155.922L453.87 153.974L450.623 152.026Z"
+                                    stroke="black" (click)="clickSelectedPart('3')" />
+                                <path id="4" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 174.753V144.883L479.195 143.584L490.234 140.987L490.883 142.286V155.922L493.48 153.325L496.727 155.922V159.818L493.48 165.013L490.883 168.26L488.286 174.753L482.441 181.896L470.104 183.844H462.961V174.753ZM462.961 174.753L468.156 174.104M473.351 152.026L470.104 153.974L473.351 155.922L477.247 153.974L473.351 152.026Z"
+                                    stroke="black" (click)="clickSelectedPart('4')" />
+                                <path id="5" fill="transparent" stroke="#8c8c8c"
+                                    d="M463.61 204.623V184.494H455.818L444.13 182.545V199.429L448.026 203.325L463.61 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('5')" />
+                                <path id="6" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 204.623V184.494H470.104L482.441 182.545V199.429L477.247 203.325L462.961 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('6')" />
+                                <path id="7" fill="transparent" stroke="#8c8c8c"
+                                    d="M444.13 199.429L448.026 203.325L444.13 209.818L440.234 216.961L434.39 224.753L427.247 232.545L418.805 239.039L411.013 244.234L409.065 245.433L402.572 249.429L393.481 253.974L386.338 257.87L386.987 244.883L388.286 231.896L391.533 222.805L397.377 218.26L402.572 215.662L411.013 213.714L422.702 211.117L431.792 207.87L438.286 203.325L444.13 199.429Z"
+                                    stroke="black" (click)="clickSelectedPart('7')" />
+                                <path id="8" fill="transparent" stroke="#8c8c8c"
+                                    d="M476.597 203.325L481.792 199.429L485.688 203.325L493.48 207.87L501.922 211.117L513.61 213.714L522.701 215.662L527.896 218.26L533.091 222.805L536.987 231.896L538.935 244.883L540.234 257.87L530.493 253.974L520.753 249.429L513.76 245.433L511.662 244.234L503.87 239.039L496.727 232.545L490.234 224.753L485.039 216.961L479.844 209.818L476.597 203.325Z"
+                                    stroke="black" (click)="clickSelectedPart('8')" />
+                                <path id="9" fill="transparent" stroke="#8c8c8c"
+                                    d="M436.987 249.429V252.026M436.987 252.026V253.974M436.987 252.026H434.39M436.987 252.026H439.584M462.961 204.623V269.558L453.87 270.208L444.13 272.805L438.286 277.351L431.792 279.948H414.26L412.961 274.753L414.26 266.961V253.974L411.662 248.779L408.416 245.433L410.364 244.234L418.156 239.039L426.597 232.545L433.74 224.753L439.584 216.961L443.48 209.818L447.377 203.325L462.961 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('9')" />
+                                <path id="10" fill="transparent" stroke="#8c8c8c"
+                                    d="M492.831 249.429V252.026M492.831 252.026V253.974M492.831 252.026H490.234M492.831 252.026H495.428M462.961 204.623V269.558L472.701 270.208L481.143 272.805L487.636 277.351L493.48 279.948H509.714L511.013 274.753L509.714 266.961V253.974L512.312 248.779L514.409 245.433L512.312 244.234L504.519 239.039L497.377 232.545L490.883 224.753L485.688 216.961L480.493 209.818L477.247 203.325L462.961 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('10')" />
+                                <path id="11" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 305.922V269.558L472.701 270.208L481.143 272.805L487.636 277.351L493.48 279.948H509.714L506.467 292.286L503.87 300.727V305.922L507.766 313.065L512.312 322.805L506.467 328.649L501.273 335.143L499.974 340.338L502.571 348.779H492.182L486.338 346.831L481.143 342.935L476.597 338.39L472.701 335.792L466.857 333.195L462.961 332.545V305.922ZM462.961 305.922H466.857"
+                                    stroke="black" (click)="clickSelectedPart('11')" />
+                                <path id="12" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.312 305.922V269.558L453.221 270.208L443.481 272.805L437.637 277.351L431.143 279.948H413.611L417.507 292.286L419.455 300.727V305.922L416.208 313.065L411.013 322.805L417.507 328.649L422.052 335.143L423.351 340.338L422.701 348.779H433.74L438.935 346.831L443.481 342.935L448.026 338.39L452.572 335.792L457.766 333.195L462.312 332.545V305.922ZM462.312 305.922H457.766"
+                                    stroke="black" (click)="clickSelectedPart('12')" />
+                                <path id="13" fill="transparent" stroke="#8c8c8c"
+                                    d="M406.467 331.896L411.662 322.805L418.156 328.649L422.701 335.143L424 340.338L423.351 348.779L421.403 352.675L409.065 365.013L398.026 375.403V355.273L401.922 342.286L406.467 331.896Z"
+                                    stroke="black" (click)="clickSelectedPart('13')" />
+                                <path id="14" fill="transparent" stroke="#8c8c8c"
+                                    d="M505.818 328.649L511.662 322.805L517.507 331.896L522.052 342.286L525.948 355.273V375.403L514.26 365.013L503.221 352.675L501.922 348.779L499.325 340.338L500.623 335.143L505.818 328.649Z"
+                                    stroke="black" (click)="clickSelectedPart('14')" />
+                                <path id="15" fill="transparent" stroke="#8c8c8c"
+                                    d="M423.351 348.13L421.403 352.026L428.546 353.325L437.637 357.87L444.779 363.065L449.325 367.61L454.52 370.208L459.715 372.156H462.961V331.896L458.416 332.545L453.221 335.143L448.676 337.74L444.13 342.286L439.585 346.182L434.39 348.13H423.351Z"
+                                    stroke="black" (click)="clickSelectedPart('15')" />
+                                <path id="16" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 372.156V331.896L466.857 332.545L472.701 335.143L476.597 337.74L481.143 342.286L486.338 346.182L492.182 348.13H502.571L503.87 352.026L495.428 353.325L487.636 357.87L481.143 363.065L475.299 367.61L470.753 370.208L465.558 372.156H462.961Z"
+                                    stroke="black" (click)="clickSelectedPart('16')" />
+                                <path id="17" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 382.545V373.455V372.805H459.714L454.519 370.857L449.325 368.26L444.779 363.714L437.636 358.519L428.545 353.974L421.403 352.675L409.065 365.013L398.026 375.403V386.442L401.922 403.325L407.766 424.104L416.857 452.026L422.701 448.779H439.584L451.273 452.026L454.519 453.974L457.117 448.779L458.415 404.623L459.714 386.442L462.961 382.545Z"
+                                    stroke="black" (click)="clickSelectedPart('17')" />
+                                <path id="18" fill="transparent" stroke="#8c8c8c"
+                                    d="M462.961 382.545V373.455V372.805H465.558L470.753 370.857L475.299 368.26L481.143 363.714L487.636 358.519L495.428 353.974L503.87 352.675L514.909 365.013L526.597 375.403V386.442L522.052 403.325L516.857 424.104L507.766 452.026L502.571 448.779H485.688L474.649 452.026L471.402 453.974L469.454 448.779L467.506 404.623L465.558 386.442L462.961 382.545Z"
+                                    stroke="black" (click)="clickSelectedPart('18')" />
+                                <path id="19" fill="transparent" stroke="#8c8c8c"
+                                    d="M423.351 448.779L417.506 452.026V477.351L429.195 482.545H449.974L455.169 453.974L451.922 452.026L440.234 448.779H423.351Z"
+                                    stroke="black" (click)="clickSelectedPart('19')" />
+                                <path id="20" fill="transparent" stroke="#8c8c8c"
+                                    d="M429.195 482.545L417.506 477.351L412.961 489.039V506.571L424 540.987L433.091 537.091H443.48L449.974 539.039L451.922 508.519L449.974 482.545H429.195Z"
+                                    stroke="black" (click)="clickSelectedPart('20')" />
+                                <path id="21" fill="transparent" stroke="#8c8c8c"
+                                    d="M433.091 537.091L424 540.987L431.792 565.662L440.883 567.61L451.273 565.013L449.325 551.377L449.974 539.039L443.481 537.091H433.091Z"
+                                    stroke="black" (click)="clickSelectedPart('21')" />
+                                <path id="22" fill="transparent" stroke="#8c8c8c"
+                                    d="M436.987 590.987L440.883 592.286L444.779 590.987M436.987 590.987L431.792 592.286L429.844 590.338M436.987 590.987L437.637 586.442M429.844 590.338H425.299L423.026 589.364M429.844 590.338L431.792 585.792M444.779 590.987L449.325 593.584L455.169 588.39L451.273 581.247V572.805L453.87 568.26L451.273 565.013L440.883 567.61L431.792 565.662L429.195 576.701L420.753 585.792V588.39L423.026 589.364M444.779 590.987V586.442M423.026 589.364L425.948 585.792"
+                                    stroke="black" (click)="clickSelectedPart('22')" />
+                                <path id="23" fill="transparent" stroke="#8c8c8c"
+                                    d="M474 452.026L470.753 453.974L476.598 482.545H497.377L507.117 477.351V452.026L501.922 448.779H485.039L474 452.026Z"
+                                    stroke="black" (click)="clickSelectedPart('23')" />
+                                <path id="24" fill="transparent" stroke="#8c8c8c"
+                                    d="M498.026 482.545H477.247L474.649 508.519L477.247 539.039L483.74 537.091H492.182L500.623 540.987L512.312 506.571V489.039L507.766 477.351L498.026 482.545Z"
+                                    stroke="black" (click)="clickSelectedPart('24')" />
+                                <path id="25" fill="transparent" stroke="#8c8c8c"
+                                    d="M483.091 537.091L476.598 539.039L477.247 551.377L475.299 565.013L485.039 567.61L492.831 565.662L499.974 540.987L491.533 537.091H483.091Z"
+                                    stroke="black" (click)="clickSelectedPart('25')" />
+                                <path id="26" fill="transparent" stroke="#8c8c8c"
+                                    d="M487.636 591.636L483.74 592.935L479.844 591.636M487.636 591.636L492.831 592.935L494.779 590.987M487.636 591.636L486.987 587.091M494.779 590.987H499.325L501.597 590.013M494.779 590.987L492.831 586.442M479.844 591.636L475.299 594.234L469.455 589.039L473.351 581.896V573.455L470.753 568.909L474.649 565.662L484.39 568.26L492.182 566.312L495.429 577.351L503.87 586.442V589.039L501.597 590.013M479.844 591.636V587.091M501.597 590.013L498.675 586.442"
+                                    stroke="black" (click)="clickSelectedPart('26')" />
+                                <path id="27" fill="transparent" stroke="#8c8c8c"
+                                    d="M393.481 254.723L402.572 250.178L409.065 246.182L412.312 249.528L414.909 254.723V267.71L412.312 276.801L408.416 291.087L402.572 287.84L394.779 285.892L386.338 287.84L381.143 289.788L383.74 272.905L386.338 258.619L393.481 254.723Z"
+                                    stroke="black" (click)="clickSelectedPart('27')" />
+                                <path id="28" fill="transparent" stroke="#8c8c8c"
+                                    d="M401.922 288.39L407.766 291.636V300.727L405.818 303.974L393.481 306.571L379.844 304.623L375.948 300.727L380.494 294.234V290.338L385.689 288.39L394.13 286.442L401.922 288.39Z"
+                                    stroke="black" (click)="clickSelectedPart('28')" />
+                                <path id="29" fill="transparent" stroke="#8c8c8c"
+                                    d="M379.195 304.623L375.299 300.727L370.753 307.221L365.558 319.558L361.013 333.844L357.766 347.481H367.506L374 348.779L379.844 352.026L385.688 343.584L391.532 334.494L396.727 325.403L401.273 316.312L405.169 303.974L392.831 306.571L379.195 304.623Z"
+                                    stroke="black" (click)="clickSelectedPart('29')" />
+                                <path id="30" fill="transparent" stroke="#8c8c8c"
+                                    d="M368.156 347.481H358.415L355.169 353.974L352.571 363.714L357.117 368.26L364.26 369.558L370.753 368.909L375.948 361.117L380.493 352.026L374.649 348.779L368.156 347.481Z"
+                                    stroke="black" (click)="clickSelectedPart('30')" />
+                                <path id="31" fill="transparent" stroke="#8c8c8c"
+                                    d="M356.468 368.909L351.922 364.364L347.377 365.662L339.584 370.857L333.74 378L329.195 381.247L324 383.844L325.948 385.792H332.442L338.286 383.195L342.182 379.948V385.792L343.481 391.636L342.831 398.779L340.883 403.974L338.286 409.818H342.831L345.429 404.623L347.377 398.779L348.675 392.935H350.623V398.779L349.325 405.273L344.779 413.714H349.325L353.221 406.571L355.818 398.779V392.935H357.766V398.779L356.468 403.974L354.519 409.818H357.766L360.364 403.974L361.662 398.779L362.961 392.935H364.26L365.558 397.481L364.26 402.675L362.961 406.571H364.909L367.506 402.675L368.805 397.481V391.636L370.753 379.948L370.104 369.558L363.61 370.208L356.468 368.909Z"
+                                    stroke="black" (click)="clickSelectedPart('31')" />
+                                <path id="32" fill="transparent" stroke="#8c8c8c"
+                                    d="M531.143 254.723L540.883 258.619L543.481 276.801L545.429 291.087L539.584 287.84L531.143 285.892L521.403 287.84L516.857 291.087L512.312 276.801L509.714 267.71V254.723L512.312 249.528L514.41 246.182L521.403 250.178L531.143 254.723Z"
+                                    stroke="black" (click)="clickSelectedPart('32')" />
+                                <path id="33" fill="transparent" stroke="#8c8c8c"
+                                    d="M522.052 288.39L517.506 291.636V300.727L518.805 303.974L532.441 305.922L546.078 303.974L549.974 300.078L546.078 291.636L540.234 288.39L531.792 286.442L522.052 288.39Z"
+                                    stroke="black" (click)="clickSelectedPart('33')" />
+                                <path id="34" fill="transparent" stroke="#8c8c8c"
+                                    d="M546.078 304.623L549.974 300.727L554.519 307.221L559.714 319.558L564.26 333.844L567.506 347.481H557.766L551.273 348.779L545.429 352.026L539.584 343.584L533.74 334.494L529.195 326.052L523.351 316.961L518.805 304.623L532.442 306.571L546.078 304.623Z"
+                                    stroke="black" (click)="clickSelectedPart('34')" />
+                                <path id="35" fill="transparent" stroke="#8c8c8c"
+                                    d="M557.117 347.481H566.857L570.104 353.974L572.701 363.714L568.156 368.26L561.013 369.558L554.52 368.909L549.325 361.117L544.779 352.026L550.623 348.779L557.117 347.481Z"
+                                    stroke="black" (click)="clickSelectedPart('35')" />
+                                <path id="36" fill="transparent" stroke="#8c8c8c"
+                                    d="M568.156 368.909L572.701 364.364L577.247 365.662L585.039 370.857L590.883 378L595.429 381.247L600.623 383.844L598.675 385.792H592.182L586.338 383.195L582.442 379.948V385.792L581.143 391.636L581.792 398.779L583.74 403.974L586.338 409.818H581.792L579.195 404.623L577.247 398.779L575.948 392.935H574V398.779L575.299 405.273L579.844 413.714H575.299L571.403 406.571L568.805 398.779V392.935H566.857V398.779L568.156 403.974L570.104 409.818H566.857L564.26 403.974L562.961 398.779L561.662 392.935H560.364L559.065 397.481L560.364 402.675L561.662 406.571H559.714L557.117 402.675L555.818 397.481V391.636L553.87 379.948L554.519 369.558L561.013 370.208L568.156 368.909Z"
+                                    stroke="black" (click)="clickSelectedPart('36')" />
+                                <path id="37" fill="transparent" stroke="#8c8c8c"
+                                    d="M677.247 368.909L672.701 364.364L668.156 365.662L660.364 370.857L654.52 378L649.974 381.247L644.779 383.844L646.727 385.792H653.221L659.065 383.195L662.961 379.948V385.792L664.26 391.636L663.61 398.779L661.662 403.974L659.065 409.818H663.61L666.208 404.623L668.156 398.779L669.455 392.935H671.403V398.779L670.104 405.273L665.559 413.714H670.104L674 406.571L676.597 398.779V392.935H678.546V398.779L677.247 403.974L675.299 409.818H678.546L681.143 403.974L682.442 398.779L683.74 392.935H685.039L686.338 397.481L685.039 402.675L683.74 406.571H685.688L688.286 402.675L689.584 397.481V391.636L691.533 379.948L690.883 369.558L684.39 370.208L677.247 368.909Z"
+                                    stroke="black" (click)="clickSelectedPart('37')" />
+                                <path id="38" fill="transparent" stroke="#8c8c8c"
+                                    d="M757.766 537.091L748.675 540.987L756.468 565.662L765.558 567.61L775.948 565.013L774 551.377L774.649 539.039L768.156 537.091H757.766Z"
+                                    stroke="black" (click)="clickSelectedPart('38')" />
+                                <path id="39" fill="transparent" stroke="#8c8c8c"
+                                    d="M854.519 254.723L864.26 258.619L866.857 276.801L868.805 291.087L862.961 287.84L854.519 285.892L844.779 287.84L840.234 291.087L835.688 276.801L833.091 267.71V254.723L835.688 249.528L837.786 246.182L844.779 250.178L854.519 254.723Z"
+                                    stroke="black" (click)="clickSelectedPart('39')" />
+                                <path id="40" fill="transparent" stroke="#8c8c8c"
+                                    d="M757.766 141.636L758.091 140.338M758.091 140.338L761.013 136.442L767.506 131.247L776.597 128H786.987V144.234L771.402 142.935L758.091 140.338Z"
+                                    stroke="black" (click)="clickSelectedPart('40')" />
+                                <path id="41" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.337 204.623V184.494H778.545L766.857 182.545V199.429L770.753 203.325L786.337 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('41')" />
+                                <path id="42" fill="transparent" stroke="#8c8c8c"
+                                    d="M715.558 254.623L724.649 250.078L731.143 246.082L734.39 249.429L736.987 254.623V267.61L734.39 276.701L730.493 290.987L724.649 287.74L716.857 285.792L708.416 287.74L703.221 289.688L705.818 272.805L708.416 258.519L715.558 254.623Z"
+                                    stroke="black" (click)="clickSelectedPart('42')" />
+                                <path id="43" fill="transparent" stroke="#8c8c8c"
+                                    d="M721.403 387.091V376.052L741.533 381.896L762.961 384.493L786.338 383.195L783.091 387.091L781.792 405.273L780.494 449.429L777.896 454.623L774.65 452.675L762.961 449.429H746.078L740.234 452.675L731.143 424.753L725.299 403.974L721.403 387.091Z"
+                                    stroke="black" (click)="clickSelectedPart('43')" />
+                                <path id="44" fill="transparent" stroke="#8c8c8c"
+                                    d="M753.221 482.545L741.532 477.351L736.987 489.039V506.571L748.026 540.987L757.117 537.091H767.506L774 539.039L775.948 508.519L774 482.545H753.221Z"
+                                    stroke="black" (click)="clickSelectedPart('44')" />
+                                <path id="45" fill="transparent" stroke="#8c8c8c"
+                                    d="M764.909 568.26L755.818 566.312L753.221 577.351L744.779 585.143V590.338L746.727 593.584L778.546 594.234L779.195 587.74L775.299 581.896V573.455L777.896 568.909L775.299 565.662L764.909 568.26Z"
+                                    stroke="black" (click)="clickSelectedPart('45')" />
+                                <path id="46" fill="transparent" stroke="#8c8c8c"
+                                    d="M785.688 332.545V305.922V300.727H742.831V305.922L739.584 313.065L734.39 322.805L740.883 328.649L745.429 335.143L766.208 337.74H785.688V332.545Z"
+                                    stroke="black" (click)="clickSelectedPart('46')" />
+                                <path id="47" fill="transparent" stroke="#8c8c8c"
+                                    d="M701.273 304.623L697.377 300.727L692.831 307.221L687.636 319.558L683.091 333.844L679.844 347.481H689.584L696.078 348.779L701.922 352.026L707.766 343.584L713.61 334.494L718.805 325.403L723.351 316.312L727.247 303.974L714.909 306.571L701.273 304.623Z"
+                                    stroke="black" (click)="clickSelectedPart('47')" />
+                                <path id="48" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 174.753V144.883L770.753 143.584L757.442 140.987L757.117 142.286V155.922L753.87 153.325L749.974 155.922V159.818L753.87 165.013L757.117 168.26L760.364 174.753L766.857 181.896L778.546 183.844H786.338V174.753Z"
+                                    stroke="black" (click)="clickSelectedPart('48')" />
+                                <path id="49" fill="transparent" stroke="#8c8c8c"
+                                    d="M766.208 199.429L770.104 203.325L766.208 209.818L762.312 216.961L756.467 224.753L749.325 232.545L740.883 239.039L733.091 244.234L731.143 245.433L724.649 249.429L715.558 253.974L708.416 257.87L709.065 244.883L710.364 231.896L713.61 222.805L719.454 218.26L724.649 215.662L733.091 213.714L744.779 211.117L753.87 207.87L760.364 203.325L766.208 199.429Z"
+                                    stroke="black" (click)="clickSelectedPart('49')" />
+                                <path id="50" fill="transparent" stroke="#8c8c8c"
+                                    d="M724 288.39L729.844 291.636V300.727L727.896 303.974L715.558 306.571L701.922 304.623L698.026 300.727L702.571 294.234V290.338L707.766 288.39L716.208 286.442L724 288.39Z"
+                                    stroke="black" (click)="clickSelectedPart('50')" />
+                                <path id="51" fill="transparent" stroke="#8c8c8c"
+                                    d="M688.935 347.481H679.195L675.948 353.974L673.351 363.714L677.896 368.26L685.039 369.558L691.532 368.909L696.727 361.117L701.273 352.026L695.429 348.779L688.935 347.481Z"
+                                    stroke="black" (click)="clickSelectedPart('51')" />
+                                <path id="52" fill="transparent" stroke="#8c8c8c"
+                                    d="M800.624 203.325L805.818 199.429L809.714 203.325L817.507 207.87L825.948 211.117L837.637 213.714L846.727 215.662L851.922 218.26L857.117 222.805L861.013 231.896L862.961 244.883L864.26 257.87L854.52 253.974L844.779 249.429L837.786 245.433L835.688 244.234L827.896 239.039L820.753 232.545L814.26 224.753L809.065 216.961L803.87 209.818L800.624 203.325Z"
+                                    stroke="black" (click)="clickSelectedPart('52')" />
+                                <path id="53" fill="transparent" stroke="#8c8c8c"
+                                    d="M729.844 331.896L735.039 322.805L741.533 328.649L746.078 335.143L747.377 340.338L746.728 348.779L744.779 352.675L732.442 365.013L721.403 375.403V355.273L725.299 342.286L729.844 331.896Z"
+                                    stroke="black" (click)="clickSelectedPart('53')" />
+                                <path id="54" fill="transparent" stroke="#8c8c8c"
+                                    d="M746.727 448.779L740.883 452.026V477.351L752.572 482.545H773.351L778.546 453.974L775.299 452.026L763.611 448.779H746.727Z"
+                                    stroke="black" (click)="clickSelectedPart('54')" />
+                                <path id="55" fill="transparent" stroke="#8c8c8c"
+                                    d="M891.532 368.909L896.078 364.364L900.623 365.662L908.415 370.857L914.26 378L918.805 381.247L924 383.844L922.052 385.792H915.558L909.714 383.195L905.818 379.948V385.792L904.519 391.636L905.169 398.779L907.117 403.974L909.714 409.818H905.169L902.571 404.623L900.623 398.779L899.325 392.935H897.376V398.779L898.675 405.273L903.221 413.714H898.675L894.779 406.571L892.182 398.779V392.935H890.234V398.779L891.532 403.974L893.48 409.818H890.234L887.636 403.974L886.337 398.779L885.039 392.935H883.74L882.441 397.481L883.74 402.675L885.039 406.571H883.091L880.493 402.675L879.195 397.481V391.636L877.247 379.948L877.896 369.558L884.389 370.208L891.532 368.909Z"
+                                    stroke="black" (click)="clickSelectedPart('55')" />
+                                <path id="56" fill="transparent" stroke="#8c8c8c"
+                                    d="M829.195 328.649L835.039 322.805L840.883 331.896L845.428 342.286L849.325 355.273V375.403L837.636 365.013L826.597 352.675L825.299 348.779L822.701 340.338L824 335.143L829.195 328.649Z"
+                                    stroke="black" (click)="clickSelectedPart('56')" />
+                                <path id="57" fill="transparent" stroke="#8c8c8c"
+                                    d="M869.454 304.623L873.35 300.727L877.896 307.221L883.091 319.558L887.636 333.844L890.883 347.481H881.143L874.649 348.779L868.805 352.026L862.961 343.584L857.117 334.494L852.571 326.052L846.727 316.961L842.182 304.623L855.818 306.571L869.454 304.623Z"
+                                    stroke="black" (click)="clickSelectedPart('57')" />
+                                <path id="58" fill="transparent" stroke="#8c8c8c"
+                                    d="M797.377 452.026L794.13 453.974L799.974 482.545H820.753L830.494 477.351V452.026L825.299 448.779H808.416L797.377 452.026Z"
+                                    stroke="black" (click)="clickSelectedPart('58')" />
+                                <path id="59" fill="transparent" stroke="#8c8c8c"
+                                    d="M805.818 537.091L799.325 539.039L799.974 551.377L798.026 565.013L807.766 567.61L815.558 565.662L822.701 540.987L814.26 537.091H805.818Z"
+                                    stroke="black" (click)="clickSelectedPart('59')" />
+                                <path id="60" fill="transparent" stroke="#8c8c8c"
+                                    d="M770.753 203.325L786.337 204.623V249.429L735.039 248.779L731.792 245.433L733.74 244.234L741.532 239.039L749.974 232.545L757.117 224.753L762.961 216.961L766.857 209.818L770.753 203.325Z"
+                                    stroke="black" (click)="clickSelectedPart('60')" />
+                                <path id="61" fill="transparent" stroke="#8c8c8c"
+                                    d="M736.987 253.974L734.39 248.779L785.688 249.429V269.558V300.727H742.831L740.883 292.286L736.987 279.948L735.688 274.753L736.987 266.961V253.974Z"
+                                    stroke="black" (click)="clickSelectedPart('61')" />
+                                <path id="62" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 383.195V374.104V373.455V338.39H766.857L746.078 335.792L747.377 340.987L746.728 349.429L744.779 353.325L732.442 365.662L721.403 376.052L741.533 381.896L762.961 384.494L786.338 383.195Z"
+                                    stroke="black" (click)="clickSelectedPart('62')" />
+                                <path id="63" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 174.753V144.883L802.572 143.584L813.611 140.987L814.26 142.286V155.922L816.857 153.325L820.104 155.922V159.818L816.857 165.013L814.26 168.26L811.663 174.753L805.818 181.896L793.481 183.844H786.338V174.753Z"
+                                    stroke="black" (click)="clickSelectedPart('63')" />
+                                <path id="64" fill="transparent" stroke="#8c8c8c"
+                                    d="M808.416 568.26L798.675 565.662L794.779 568.909L797.377 573.455V581.896L794.13 588.39L794.779 594.234L825.948 593.584L827.896 590.338V585.143L819.455 577.351L816.208 566.312L808.416 568.26Z"
+                                    stroke="black" (click)="clickSelectedPart('64')" />
+                                <path id="65" fill="transparent" stroke="#8c8c8c"
+                                    d="M820.104 482.545H799.324L796.727 508.519L799.324 539.039L805.818 537.091H814.26L822.701 540.987L834.389 506.571V489.039L829.844 477.351L820.104 482.545Z"
+                                    stroke="black" (click)="clickSelectedPart('65')" />
+                                <path id="66" fill="transparent" stroke="#8c8c8c"
+                                    d="M788.935 387.091L786.338 383.195L810.364 384.493L831.792 383.195L849.974 376.052V387.091L845.429 403.974L840.234 424.753L831.143 452.675L825.948 449.429H809.065L798.026 452.675L794.779 454.623L792.831 449.429L790.883 405.273L788.935 387.091Z"
+                                    stroke="black" (click)="clickSelectedPart('66')" />
+                                <path id="67" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 383.195V374.104V373.455V338.39H803.87L824.65 335.792L823.351 340.987L825.948 349.429L827.247 353.325L838.286 365.662L849.974 376.052L831.792 383.195L810.364 384.494L786.338 383.195Z"
+                                    stroke="black" (click)="clickSelectedPart('67')" />
+                                <path id="68" fill="transparent" stroke="#8c8c8c"
+                                    d="M880.493 347.481H890.234L893.48 353.974L896.078 363.714L891.532 368.26L884.39 369.558L877.896 368.909L872.701 361.117L868.156 352.026L874 348.779L880.493 347.481Z"
+                                    stroke="black" (click)="clickSelectedPart('68')" />
+                                <path id="69" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 332.545V305.922V300.727H827.247V305.922L831.143 313.065L835.689 322.805L829.844 328.649L824.65 335.143L803.87 337.74H786.338V332.545Z"
+                                    stroke="black" (click)="clickSelectedPart('69')" />
+                                <path id="70" fill="transparent" stroke="#8c8c8c"
+                                    d="M845.429 288.39L840.883 291.636V300.727L842.182 303.974L855.818 305.922L869.455 303.974L873.351 300.078L869.455 291.636L863.611 288.39L855.169 286.442L845.429 288.39Z"
+                                    stroke="black" (click)="clickSelectedPart('70')" />
+                                <path id="71" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 204.623L800.624 203.325L803.87 209.818L809.065 216.961L814.26 224.753L820.753 232.545L827.896 239.039L835.689 244.234L837.786 245.433L835.689 248.779L786.338 249.429V204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('71')" />
+                                <path id="72" fill="transparent" stroke="#8c8c8c"
+                                    d="M833.091 253.974L835.689 248.779L786.338 249.429V269.558V300.727H827.247L829.844 292.286L833.091 279.948L834.39 274.753L833.091 266.961V253.974Z"
+                                    stroke="black" (click)="clickSelectedPart('72')" />
+                                <path id="73" fill="transparent" stroke="#8c8c8c"
+                                    d="M813.611 140.338L802.572 142.935L786.338 144.234V128H796.728L804.52 131.247L810.364 136.442L813.611 140.338ZM813.611 140.338L814.26 141.636"
+                                    stroke="black" (click)="clickSelectedPart('73')" />
+                                <path id="74" fill="transparent" stroke="#8c8c8c"
+                                    d="M786.338 204.623V184.494H793.481L805.818 182.545V199.429L800.624 203.325L786.338 204.623Z"
+                                    stroke="black" (click)="clickSelectedPart('74')" />
+                            </svg>
+                            
+                            <input type="checkbox" class="" name="checkbox" value="checkbox" id="checkbox"
+                                [(ngModel)]="checkbox" (click)="clickCheckbox()"><label for="checkbox" class="ml-3" #check> I
+                                have no pain</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- .....................................first question..................................... -->
+            <div *ngFor="let data of questions; ">
+                <div class="row mt-3" *ngIf="data.question_Id===1">
+                    <div class="col-8">
+                        <h5 class="font-weight-bold ">PAIN INTENSITY. <span>(IN THE PAST 7
+                                DAYS.)</span> </h5>
+                        <span class="font-weight-bold "> 1.{{data.questions}} ?.....</span> <br> <br>
+
+                        <div class="row ml-3 ">
+                            <div class="col-1 ">
+
+                                <label for="radioA"><input type="radio" class="form-control check" name="radio1"
+                                        value="1" [(ngModel)]="data.p_Options"> </label>
+                                <br>1 <br> <span> No
+                                    <br> pain</span>
+                            </div>
+                            <div class="col-1 ">
+                                <label for="radioB"><input type="radio" class="check" name="radio1" value="2"
+                                        [(ngModel)]="data.p_Options" />
+                                </label> <br>2
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="3"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>3
+                            </div>
+
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="4"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>4
+                            </div>
+                            <div class="col-1">
+                                <label for="radioA"><input type="radio" class="check" name="radio1" value="5"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>5
+                            </div>
+                            <div class="col-1">
+                                <label for="radioB"><input type="radio" class="check" name="radio1" value="6"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>6
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="7"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>7
+                            </div>
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="8"
+                                        [(ngModel)]="data.p_Options" />
+                                </label> <br>8
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="9"
+                                        [(ngModel)]="data.p_Options" /> </label>
+                                <br>9
+                            </div>
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="10"
+                                        [(ngModel)]="data.p_Options" />
+                                </label> <br>10 <br> <span>
+                                    Worst
+                                    <br> imaginable <br> pain</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................second question.....................................-->
+            <div *ngFor="let data of questions">
+                <div class="row mt-5" *ngIf="data.question_Id===2">
+                    <div class="col">
+                        <h5 class="font-weight-bold ">PAIN EXPERIENCE DURATION.</h5>
+                        <span class="font-weight-bold "> 2 .{{data.questions}}?</span> <br> <br>
+                        <div class="row ml-3">
+                            <div ><label class="font-weight-bold mr-1" for="years">years:</label> </div>
+                            <div class="col-1">
+                                <input type="text" id="years" class="form-control form-control-sm" name="years1"
+                                    #years1="ngModel" [(ngModel)]="data.text1" required pattern="[0-9]+" maxlength="2">
+                                <span class="text-danger "
+                                    *ngIf="(years1.touched || saveForm.submitted) && years1.errors?.['required']">
+                                    years are required
+                                </span>
+                                <div class="text-danger years " *ngIf="years1.errors?.['pattern']">Invalid years.</div>
+                            </div>
+                            <div ><label class="font-weight-bold mt-2" for="months">Months:</label>
+                            </div>
+                            <div class="col-1">
+                                <input type="text" id="months" class="form-control form-control-sm" name="months1"
+                                    #months1="ngModel" [(ngModel)]="data.text2" required pattern="[0-9]+" maxlength="2" appMonthValidator>
+                                <span class="text-danger "
+                                    *ngIf="(months1.touched || saveForm.submitted) && months1.errors?.['required']">
+                                    Months are required
+                                </span>
+                                <span class="text-danger "
+                                *ngIf="(months1.touched || saveForm.submitted) &&  months1.errors?.['monthInvalid']" >
+                                Months are Invalid
+                            </span>
+                                <div class="text-danger years " *ngIf="months1.errors?.['pattern']">Invalid Months.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................third question.....................................-->
+            <div *ngFor="let data of questions">
+                <div class="row mt-5 ml-3" *ngIf="data.question_Id===3">
+                    <div class="col-2">
+                        <label for="age">
+                            <h5 class="font-weight-bold mr-1">{{data.questions}}</h5>
+                        </label><input type="text" class="form-control" id="age" name="age1" [(ngModel)]="data.text1"
+                            #age1="ngModel" required pattern="[0-9]+" maxlength="2" [value]="age" >
+                        <span class="text-danger "
+                            *ngIf="(age1.touched || saveForm.submitted) && age1.errors?.['required']">
+                            Age is required
+                        </span>
+                        <span class="text-danger "
+                        *ngIf="(age1.touched || saveForm.submitted) &&  age1.errors?.['ageInvalid']" >
+                        Age is Invalid
+                    </span>
+                        <div class="text-danger " *ngIf="age1.errors?.['pattern']">Invalid age.</div>
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................FOURTH question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PROMIS ANXIETY. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let data of questions">
+
+                    <tr
+                        *ngIf="data.question_Id===4 || data.question_Id===5 || data.question_Id===6 || data.question_Id===7">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+
+                        <td>
+
+                            <div class="col-1 mr-3">
+
+                                <label for="radio1"><input type="radio" class="check0" name="{{data.question_Id}}"
+                                        value="NEVER" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">1</span>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio2"><input type="radio" class="check1" name="{{data.question_Id}}"
+                                        value="RARELY" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">2</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio3"><input type="radio" class="check1" name="{{data.question_Id}}"
+                                        value="SOMETIMES" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio4"><input type="radio" class="check1" name="{{data.question_Id}}"
+                                        value="OFTEN" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio5"><input type="radio" class="check1" name="{{data.question_Id}}"
+                                        value="ALWAYS" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <hr>
+
+            <!--  ..........................................FIFTH question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">DEPRESSION. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===8 || data.question_Id===9 || data.question_Id===10 || data.question_Id===11">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="NEVER"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="RARELY"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="SOMETIMES"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="OFTEN"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="ALWAYS"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--  ..........................................SIXTH question.....................................-->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PHYSICAL FUNCTION. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col" width="5%"></th>
+                        <th scope="col" width="1%">UNABLE TO DO</th>
+                        <th scope="col" width="1%">WITH MUCH DIFFICULTY</th>
+                        <th scope="col" width="1%">WITH SOME DFFICULTY</th>
+                        <th scope="col" width="1%">WITH A LITTLE DFFICULTY</th>
+                        <th scope="col" width="1%">WITHOUT ANY DIFFICULTY</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===12 || data.question_Id===13 || data.question_Id===14 || data.question_Id===15">
+                        <th scope="row">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="UNABLE TO DO"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}"
+                                        value="WITH MUCH DIFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}"
+                                        value="WITH SOME DFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}"
+                                        value="WITH A LITTLE DFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}"
+                                        value="WITHOUT ANY DIFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <!--  ..........................................SEVENTH question.....................................-->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PAIN BEHAVIOR.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===16 || data.question_Id===17 || data.question_Id===18 || data.question_Id===19 || data.question_Id===20 || data.question_Id===21 || data.question_Id===22">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="NEVER"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="RARELY"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="SOMETIMES"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="OFTEN"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="ALWAYS"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--  ..........................................eight question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PAIN INTERFERANCE.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Not at all</th>
+                        <th scope="col">A Little bit</th>
+                        <th scope="col">Somewhat</th>
+                        <th scope="col">Quite a bit</th>
+                        <th scope="col">Very much</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===23 || data.question_Id===24 || data.question_Id===25 || data.question_Id===26">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="A Little bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Somewhat"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Quite a bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very much"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--...........................................nineth question.......................................-->
+
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">SLEEP DISTRUBANCE.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Very poor</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===27">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Very much</th>
+                        <th scope="col">Quite a bit</th>
+                        <th scope="col">Somewhat</th>
+                        <th scope="col">A little bit</th>
+                        <th scope="col">Not at all</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===28 || data.question_Id===29 || data.question_Id===30">
+
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very much"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Quite a bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Somewhat"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="A little bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <hr>
+            <!--...........................................10th quation question.......................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">Global Mental Health.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Excellent</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===31 || data.question_Id===32 ">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Excellent"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <!--...........................................11th quation question.......................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">Global Physical Health.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===33">
+                        <th scope="col"></th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Excellent</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===33">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Excellent"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===34">
+                        <th scope="col"></th>
+                        <th scope="col">Not at all</th>
+                        <th scope="col">A little</th>
+                        <th scope="col">Moderately</th>
+                        <th scope="col">Mostly</th>
+                        <th scope="col">Completely</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===34">
+                        <th scope="row" class="col-4">{{data.questions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="A little"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Moderately"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Mostly"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.question_Id}}" value="Completely"
+                                        [(ngModel)]="data.p_Options"> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!-- ..........................................12th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===35">
+                    <div class="col-3">
+                        <h6 class="font-weight-bold ">Heal Positive Outlook</h6>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="positiveOutlook" name="positiveOutlook1"
+                            [(ngModel)]="data.text1" #positiveOutlook1="ngModel" required>
+                        <span class="text-danger "
+                            *ngIf="(positiveOutlook1.touched || saveForm.submitted) && positiveOutlook1.errors?.['required']">
+                            positiveOutlook is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................13th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===36">
+                    <div class="col-3">
+                        <h6 class="font-weight-bold ">Pain Detect</h6>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="PainDetect" name="PainDetect1"
+                            [(ngModel)]="data.text1" #PainDetect1="ngModel" required>
+                        <span class="text-danger "
+                            *ngIf="(PainDetect1.touched || saveForm.submitted) && PainDetect1.errors?.['required']">
+                            PainDetect is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................14th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===37">
+                    <div class="col-3">
+                        <h6 class="font-weight-bold ">Opioid Checklist</h6>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="OpioidChecklist" name="OpioidChecklist1"
+                            #OpioidChecklist1="ngModel" [(ngModel)]="data.text1" required>
+                        <span class="text-danger "
+                            *ngIf="(OpioidChecklist1.touched || saveForm.submitted) && OpioidChecklist1.errors?.['required']">
+                            OpioidChecklist is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................15th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===38">
+                    <div class="col-3">
+                        <h6 class="font-weight-bold ">Impression of Change</h6>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="ImpressionofChange" name="ImpressionofChange1"
+                            #ImpressionofChange1="ngModel" [(ngModel)]="data.text1" required>
+
+                        <span class="text-danger "
+                            *ngIf="(ImpressionofChange1.touched || saveForm.submitted) && ImpressionofChange1.errors?.['required']">
+                            ImpressionofChange is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-light border text-center bg-danger error" *ngIf="saveForm.submitted && saveForm.invalid">
+                Please Enter required fileds
+            </div>
+            <button type="submit" class="btn  mt-2" [hidden]="disabled">Save</button>
+        </fieldset>
+    </form>
+</div>
