@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,13 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PatientService {
-  apiUrl:string;
+  apiUrl='http://127.0.0.1:8000/api/patientData';
 
   constructor(private http:HttpClient) { }
 
   savePatientData(data: any):Observable<any> {
-    
-    return this.http.post<any>(this.apiUrl,data);
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.post<any>(this.apiUrl,data,{headers: httpheaders});
   }
   
   

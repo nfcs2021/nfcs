@@ -11,52 +11,128 @@ import { PatientService } from '../../services/patient.service';
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {
-  myData: any[]=[];
-  patientRegesterForm:FormGroup;
+  indianFormat = '12345 67890';
+  USFormat = '(000) 123-4567'
+  paceHolder = this.USFormat;
+  phoneNumberEntered = '';
+  formatLen: any;
+  myData: any[] = [];
+  patientRegesterForm: FormGroup;
   submitted = false;
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
+  countryId:any;
   constructor(private http: HttpClient,
     private service: AppService,
-    private formBuilder:FormBuilder,
-    private patientService:PatientService
-    ) { }
+    private formBuilder: FormBuilder,
+    private patientService: PatientService
+  ) { }
 
   ngOnInit(): void {
 
-  const phoneInputField = document.querySelector("#phone");
-  const phoneInput = (<any>window).intlTelInput(phoneInputField, {
-   utilsScript:
-       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-   });
+    // const phoneInputField = document.querySelector("#phone");
+    // const phoneInput = (<any>window).intlTelInput(phoneInputField, {
+    //   utilsScript:
+    //     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
     this.formInitilization();
     this.getCountries();
   }
-
   getCountries(){
-    this.service.allCountries().
-    subscribe(
-      data2 => {
-        this.countryInfo=data2.Countries;
-        //console.log('Data:', this.countryInfo);
-      },
-      err => console.log(err),
-      () => console.log('complete')
+    this.service.getCountry().subscribe(
+      data =>{
+        console.log(data);
+        this.countryInfo=data
+        
+      }
     )
   }
 
-  onChangeCountry(countryValue: any) {
-    const country:any[]=[];
-    for(let data of this.countryInfo)
-    {
-      country.push(data.CountryName)
+  onPhoneChange(event: any) {
+
+    let getIndexSpecialChar = [];
+    let getactualSpecialChar = [];
+    for (let i = 0; i < this.paceHolder.length; i++) {
+      if (this.paceHolder[i] === ' ' || this.paceHolder[i] === '(' || this.paceHolder[i] === ')' || this.paceHolder[i] === '-') {
+        getIndexSpecialChar.push(i);
+        getactualSpecialChar.push(this.paceHolder[i]);
+      }
     }
-    this.stateInfo=this.countryInfo[country.indexOf(countryValue.target.value)].States;
-    this.cityInfo=this.stateInfo[0]?.Cities;
+  console.log(getactualSpecialChar);
+  console.log(getIndexSpecialChar);
+  
+  
+    let len = event.target.value.length;
+    let backspace = event.keyCode;
+   
+    if (backspace === 8) {
+      len = len-1;
+    } else {
+      len = event.target.value.length;
+    }
+    let eventTargetValue = event.target.value
+    for (let i = 0; i < this.paceHolder.length; i++) {
+      if (len === getIndexSpecialChar[i]) {
+        this.phoneNumberEntered = eventTargetValue + getactualSpecialChar[i];
+        if (this.phoneNumberEntered.length === getIndexSpecialChar[i + 1]) {
+          this.phoneNumberEntered = this.phoneNumberEntered + getactualSpecialChar[i + 1];
+        }
+      }
+
+    }
+    console.log(event.target.value);
+    
   }
 
-  telInputObject(obj:any) {
+  // getCountries() {
+  //   this.service.allCountries().
+  //     subscribe(
+  //       data2 => {
+  //         this.countryInfo = data2.Countries;
+  //         //console.log('Data:', this.countryInfo);
+  //       },
+  //       err => console.log(err),
+  //       () => console.log('complete')
+  //     )
+  // }
+
+  onChangeCountry(countryValue: any) {
+    let countryIso:any;
+    for (let data of this.countryInfo) {
+      if(countryValue.target.value===data.name)
+      {
+        
+        countryIso=data.iso2
+        this.countryId=data.iso2
+      }
+    }
+    this.service.getStateOfSelectedCountry(countryIso).subscribe(
+      data =>{
+        console.log(data);
+        this.stateInfo=data;
+        
+      }
+    )
+    
+  }
+  onChangeState(stateValue:any) {
+    let stateId:any;
+    for (let data of this.stateInfo) {
+      if(stateValue.target.value===data.name)
+      {
+        stateId=data.iso2
+      }
+    }
+    this.service.getCitiesOfSelectedState(this.countryId,stateId).subscribe(
+      data =>{
+        console.log(data);
+        this.cityInfo=data;
+        
+      }
+    )
+  }
+  telInputObject(obj: any) {
     console.log(obj);
     obj.setCountry('in');
   }
@@ -64,41 +140,57 @@ export class AddPatientComponent implements OnInit {
   get f() {
     return this.patientRegesterForm.controls;
   }
-  formInitilization(){
-    this.patientRegesterForm=this.formBuilder.group({
-      firstName:['',[Validators.required,Validators.minLength(2)]],
-      lastName:['',[Validators.required]],
-      dob:['',[Validators.required]],
-      contactNumber:['',[Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
-      email:['',[Validators.required]],
-      socialSecurityNumber:['',[Validators.required]],
-      address1:['',[Validators.required]],
-      address2:['',[]],
-      country:['',[Validators.required]],
-      state:['',[Validators.required]],
-      city:['',[Validators.required]],
-      zipcode:['',[Validators.required]]
+  formInitilization() {
+    this.patientRegesterForm = this.formBuilder.group({
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required]],
+      dob: ['', [Validators.required]],
+      // contactNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      email: ['', [Validators.required]],
+      socialSecurityNumber: ['', [Validators.required]],
+      address1: ['', [Validators.required]],
+      address2: ['', []],
+      country: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]]
     });
   }
 
-  onSubmit(){
+  onSubmit(event:any) {
     this.submitted = true;
-   // stop here if form is invalid
+    // stop here if form is invalid
     if (this.patientRegesterForm.invalid) {
       return;
     }
-    console.log(this.patientRegesterForm.value);
-    
-    this.patientService.savePatientData(this.patientRegesterForm.value).subscribe(
-      data =>{
+    const data={
+      "FirstName":this.patientRegesterForm.value['firstName'],
+        "LastName": this.patientRegesterForm.value['lastName'],
+        "dateofbirth": this.patientRegesterForm.value['dob'],
+        "ContactNumber": event.target.phone.value,
+        "gender": "f",
+        "emailaddress": this.patientRegesterForm.value['email'],
+        "Ssn": this.patientRegesterForm.value['socialSecurityNumber'],
+        "AddressLine1": this.patientRegesterForm.value['address1'],
+        "AddressLine2": this.patientRegesterForm.value['address2'],
+        "country": this.patientRegesterForm.value['country'],
+        "state": this.patientRegesterForm.value['state'],
+        "city": this.patientRegesterForm.value['city'],
+        "Zipcode": this.patientRegesterForm.value['zipcode'],
+        "InsuranceNumber": 234567
+    }
+    console.log(this.patientRegesterForm.value,event.target.phone.value);
+
+    this.patientService.savePatientData(data).subscribe(
+      data => {
         console.log(data);
-        
-      },error =>{
+
+      }, error => {
         console.log(error);
-        
+
       }
     )
-    
+
   }
 
 
