@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
 
@@ -20,7 +21,7 @@ export class AddPatientComponent implements OnInit {
   constructor(private http: HttpClient,
     private service: AppService,
     private formBuilder:FormBuilder,
-    private patientService:PatientService
+    private patientService:PatientService,private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -98,7 +99,7 @@ export class AddPatientComponent implements OnInit {
         
       }
     )
-    
+    this.router.navigate(['/home/patient/data'])
   }
 
 

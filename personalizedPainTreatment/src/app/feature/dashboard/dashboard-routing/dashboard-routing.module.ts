@@ -8,6 +8,7 @@ import { AddPatientComponent } from '../patinet-contents/add-patient/add-patient
 import { PatientSurveyFormComponent } from '../patinet-contents/patient-survey-form/patient-survey-form.component';
 import { PatientListComponent } from '../patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
+import { PatientdataComponent } from '../patinet-contents/patientdata/patientdata.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
             {path:'survey-form',component:PatientSurveyFormComponent},
             {path: 'list', component:PatientListComponent},
             {path: 'view', component:ViewreportComponent},
+            {path: 'data', component:PatientdataComponent},
           ]
           }
           ]

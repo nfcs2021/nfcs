@@ -11,6 +11,7 @@ import { PatientMainComponent } from './patinet-contents/patient-main/patient-ma
 import { PatientSurveyFormComponent } from './patinet-contents/patient-survey-form/patient-survey-form.component';
 import { PatientListComponent } from './patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
+import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
 
 
 
@@ -23,7 +24,8 @@ import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.co
     PatientMainComponent,
     PatientSurveyFormComponent,
     PatientListComponent,
-    ViewreportComponent
+    ViewreportComponent,
+    PatientdataComponent
   ],
   imports: [
     CommonModule,

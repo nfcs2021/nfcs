@@ -1,0 +1,93 @@
+
+
+<div class=" container  col-md-11 border">
+    
+    <div class="row mt-5 ">
+      <div class="col para1">
+       New Patient data has been Added
+      </div>
+      
+      
+    </div><hr>
+   
+    <!-- <div class="row mt-2 mx-5   row1" >
+        <div class="col-md-2 ml-5  mt-3">
+            <p>Patient Id</p><p class="mt-0">12345</p>
+        </div>
+        <div class="col-md-2 mt-3">
+            <p>  Visited On</p><p>12/3/2021</p>
+        </div>
+        <div class="col-md-3 mt-4 ml-5 ">
+            <a   class="   btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
+          <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
+        </div> -->
+        <!-- <div class="col-md-2 ">
+          
+                <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
+                
+           
+        </div>
+        <div class="   col-md-3 mt-4 ml-5">
+            <a  class="   btn-lg active border" role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
+            <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
+            
+          </div>
+          <div class="   col-md-4 ml-5">
+            <p>PCP</p>
+            
+          </div>
+          <div class="col-md-4 ">
+            <p>Apolo Hospital,Bangalore</p>
+        </div>
+        <div class="col-md-2 ml-5 ">
+            <p>  Patient Id:1234</p>
+        </div>
+    </div> -->
+
+    <table class="table table-borderless border">
+        <thead>
+          <tr>
+          
+            <th >First Name</th>
+            <th >LastName</th>
+            <th >Dob</th>
+            <th >SocialSecurityNumber</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let patient of patientList;">
+           
+          
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.dob}}</td>
+            <td>{{patient.socialSecurityNumber}}</td> 
+            <!-- <td>{{patient.email}}</td>
+            <td>{{patient.phone}}</td>
+            <td>{{patient.Address}}</td> -->
+          </tr>
+          <tr>
+            <th>Email </th>
+            <th >contactNumber</th>
+            <th >Address</th>
+            <th >Created on</th>
+           
+          </tr>
+          <tr *ngFor="let patient of patientList;">
+            <td>{{patient.email}}</td>
+            <td>{{patient.phone}}</td>
+            <td>{{patient.Address}}</td>
+           
+
+          </tr>
+          
+        </tbody>
+      </table>
+    <div class="buttons mt-5">
+    <a  class="btn  col-md-4 active p-3 mt-5 mx-5" role="button" aria-pressed="true" style="color: white;">Add New PPT Survey Form</a><br>
+    <a  class="btn  col-md-4 active  p-3 mt-3 mx-5 " role="button" aria-pressed="true" style="color: white;" >View in Patient Profile</a><br>
+    <a  class="btn  col-md-4 active  p-3 mt-3 mx-5" role="button" aria-pressed="true" style="color: white;">Cancel</a>
+    <br>
+  </div>
+
+
