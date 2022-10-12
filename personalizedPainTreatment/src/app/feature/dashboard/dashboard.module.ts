@@ -9,12 +9,11 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { AddPatientComponent } from './patinet-contents/add-patient/add-patient.component';
 import { PatientMainComponent } from './patinet-contents/patient-main/patient-main.component';
 import { PatientSurveyFormComponent } from './patinet-contents/patient-survey-form/patient-survey-form.component';
+import { NewpatientNavigationComponent } from './patinet-contents/newpatient-navigation/newpatient-navigation.component';
+import { FrontdeskLoginComponent } from './frontdesk-login/frontdesk-login.component';
 import { PatientListComponent } from './patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -23,9 +22,13 @@ import { PatientdataComponent } from './patinet-contents/patientdata/patientdata
     AddPatientComponent,
     PatientMainComponent,
     PatientSurveyFormComponent,
+    NewpatientNavigationComponent,
+    FrontdeskLoginComponent,
     PatientListComponent,
     ViewreportComponent,
-    PatientdataComponent
+    PatientdataComponent,
+    ViewreportComponent
+
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,7 @@ import { PatientdataComponent } from './patinet-contents/patientdata/patientdata
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
-  ]
+    MaterialModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}
