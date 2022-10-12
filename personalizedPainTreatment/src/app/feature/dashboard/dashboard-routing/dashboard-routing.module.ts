@@ -6,6 +6,8 @@ import { MainLayoutComponent } from '../main-layout/main-layout.component';
 import { PatientMainComponent } from '../patinet-contents/patient-main/patient-main.component';
 import { AddPatientComponent } from '../patinet-contents/add-patient/add-patient.component';
 import { PatientSurveyFormComponent } from '../patinet-contents/patient-survey-form/patient-survey-form.component';
+import { PatientListComponent } from '../patinet-contents/patient-list/patient-list.component';
+import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
 
 const routes: Routes = [
   {
@@ -19,7 +21,9 @@ const routes: Routes = [
           children: [
             {path: '', redirectTo: 'details', pathMatch: 'full'},
             {path: 'new', component: AddPatientComponent},
-            {path:'survey-form',component:PatientSurveyFormComponent}
+            {path:'survey-form',component:PatientSurveyFormComponent},
+            {path: 'list', component:PatientListComponent},
+            {path: 'view', component:ViewreportComponent},
           ]
           }
           ]

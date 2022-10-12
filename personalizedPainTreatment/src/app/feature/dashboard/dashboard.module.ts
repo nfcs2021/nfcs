@@ -9,6 +9,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { AddPatientComponent } from './patinet-contents/add-patient/add-patient.component';
 import { PatientMainComponent } from './patinet-contents/patient-main/patient-main.component';
 import { PatientSurveyFormComponent } from './patinet-contents/patient-survey-form/patient-survey-form.component';
+import { PatientListComponent } from './patinet-contents/patient-list/patient-list.component';
+import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 
 
 
@@ -19,7 +21,9 @@ import { PatientSurveyFormComponent } from './patinet-contents/patient-survey-fo
     MainLayoutComponent,
     AddPatientComponent,
     PatientMainComponent,
-    PatientSurveyFormComponent
+    PatientSurveyFormComponent,
+    PatientListComponent,
+    ViewreportComponent
   ],
   imports: [
     CommonModule,
