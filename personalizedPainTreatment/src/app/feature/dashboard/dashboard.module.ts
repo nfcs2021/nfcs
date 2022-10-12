@@ -11,6 +11,8 @@ import { PatientMainComponent } from './patinet-contents/patient-main/patient-ma
 import { PatientSurveyFormComponent } from './patinet-contents/patient-survey-form/patient-survey-form.component';
 import { NewpatientNavigationComponent } from './patinet-contents/newpatient-navigation/newpatient-navigation.component';
 import { FrontdeskLoginComponent } from './frontdesk-login/frontdesk-login.component';
+import { PatientListComponent } from './patinet-contents/patient-list/patient-list.component';
+import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { FrontdeskLoginComponent } from './frontdesk-login/frontdesk-login.compo
     PatientMainComponent,
     PatientSurveyFormComponent,
     NewpatientNavigationComponent,
-    FrontdeskLoginComponent
+    FrontdeskLoginComponent,
+    PatientListComponent,
+    ViewreportComponent
+
   ],
   imports: [
     CommonModule,
