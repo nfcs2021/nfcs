@@ -1,0 +1,72 @@
+.container{
+    background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
+   height: 780px;
+}
+h3 {
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    
+    /* identical to box height */
+    letter-spacing: 0.05em;
+    
+    color: #712C6B;
+}
+hr{
+    border: 1px solid #712C6B;
+    font-weight: 1000;
+}
+.style{
+    text-decoration: underline;
+}
+.para1{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 23px;
+    letter-spacing: 0.05em;
+    
+    color: #712C6B;
+}
+
+.input-group{
+    outline:1px black;
+    border-radius: 5px;
+}
+/* input[type="search"], button, date {
+
+    outline: 1px solid #712C6B;
+  
+  }
+  input[type="date"] {
+
+    outline: 1px solid #712C6B;
+  
+  } */
+  .buttons{
+    text-align: right;
+   
+  }
+  .btn{
+    background-color: #712C6B;
+    font-family: 'Arial';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+letter-spacing: 0.05em;
+  }
+ 
+  p{
+    color: #712C6B;
+  }
+  .row1{
+    border-radius: 5px;
+    border:1px solid #712C6B;
+    
+  }

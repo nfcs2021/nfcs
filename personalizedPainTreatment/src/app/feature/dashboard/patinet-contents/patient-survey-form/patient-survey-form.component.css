@@ -50,11 +50,11 @@
  }
 
   #years, #months, #days:focus{
-      width: 40px;
+      width: 50px;
       
   }
   #age{
-    width: 8%;
+    width: 15%;
   }
  .container{
    font-size: 12px;

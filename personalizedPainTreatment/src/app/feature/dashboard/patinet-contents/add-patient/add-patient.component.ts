@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
 
@@ -23,10 +24,12 @@ export class AddPatientComponent implements OnInit {
   countryInfo: any[] = [];
   cityInfo: any[] = [];
   countryId:any;
+  today = new Date();
   constructor(private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +42,10 @@ export class AddPatientComponent implements OnInit {
     this.formInitilization();
     this.getCountries();
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
   getCountries(){
     this.service.getCountry().subscribe(
       data =>{
@@ -84,19 +91,6 @@ export class AddPatientComponent implements OnInit {
     console.log(event.target.value);
     
   }
-
-  // getCountries() {
-  //   this.service.allCountries().
-  //     subscribe(
-  //       data2 => {
-  //         this.countryInfo = data2.Countries;
-  //         //console.log('Data:', this.countryInfo);
-  //       },
-  //       err => console.log(err),
-  //       () => console.log('complete')
-  //     )
-  // }
-
   onChangeCountry(countryValue: any) {
     let countryIso:any;
     for (let data of this.countryInfo) {
@@ -184,13 +178,12 @@ export class AddPatientComponent implements OnInit {
     this.patientService.savePatientData(data).subscribe(
       data => {
         console.log(data);
-
+        this.route.navigate(['/home/patient/data/'+data.id])
       }, error => {
         console.log(error);
 
       }
     )
-
   }
 
 

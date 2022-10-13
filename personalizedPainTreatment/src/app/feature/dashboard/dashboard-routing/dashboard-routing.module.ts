@@ -10,6 +10,10 @@ import { PatientSurveyFormComponent } from '../patinet-contents/patient-survey-f
 import { NewpatientNavigationComponent } from '../patinet-contents/newpatient-navigation/newpatient-navigation.component';
 import { PatientListComponent } from '../patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
+import { PatientdataComponent } from '../patinet-contents/patientdata/patientdata.component';
+import { patientList } from '../patinet-contents/module/Patient1';
+import { PatientReportComponent } from '../patinet-contents/patient-report/patient-report.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -22,10 +26,12 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
           { path: 'new', component: AddPatientComponent },
-          { path: 'survey-form', component: PatientSurveyFormComponent },
+          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
-          { path: 'view', component: ViewreportComponent },
-          {path:'nav',component:NewpatientNavigationComponent}
+          { path: 'view/:id', component: ViewreportComponent },
+          {path:'nav',component:NewpatientNavigationComponent},
+          {path:'data/:id',component:PatientdataComponent},
+          {path:'patient-report',component:PatientReportComponent}
         ],
       },
     ],

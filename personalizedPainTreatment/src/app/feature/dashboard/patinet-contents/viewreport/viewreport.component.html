@@ -8,12 +8,12 @@
       
     </div><hr>
    
-    <div class="row mt-2 mx-5   row1" >
+    <div class="row mt-2 mx-5   row1" *ngFor="let patient of patientsRecordData">
         <div class="col-md-2 ml-5  mt-3">
-            <p>Record Id</p><p class="mt-0">12345</p>
+            <p>Record Id</p><p class="mt-0">{{patient.id}}</p>
         </div>
         <div class="col-md-2 mt-3">
-            <p>  Visited On</p><p>12/3/2021</p>
+            <p>  Visited On</p><p>{{patient.visit_time | date}}</p>
         </div>
         <div class="col-md-3 mt-4 ml-5 ">
             <a   class="   btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
@@ -25,11 +25,11 @@
                 
            
         </div> -->
-        <div class="   col-md-3 mt-4 ml-5">
+        <!-- <div class="   col-md-3 mt-4 ml-5">
             <a  class="   btn-lg active border" role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
             <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
             
-          </div>
+          </div> -->
           <div class="   col-md-4 ml-5">
             <p>PCP</p>
             
@@ -38,7 +38,7 @@
             <p>Apolo Hospital,Bangalore</p>
         </div>
         <div class="col-md-2 ml-5 ">
-            <p>  Patient Id:1234</p>
+            <p>  Patient Id:{{patient.patientdataid}}</p>
         </div>
     </div>
     <div class="buttons mt-5">
