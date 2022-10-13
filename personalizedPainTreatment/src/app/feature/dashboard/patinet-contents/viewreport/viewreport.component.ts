@@ -17,17 +17,18 @@ export class ViewreportComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeId();
-    this.patientRecordData();
+    
   }
   routeId() {
     this.route.params.subscribe(params => {
       this.routerId = +params['id']; // (+) converts string 'id' to a number
       console.log(this.routerId);
+      this.patientRecordData(this.routerId);
     });
   }
 
-   patientRecordData(){
-  this.service.getPatientRecordData().subscribe(
+   patientRecordData(id:any){
+  this.service.getPatientRecordData(id).subscribe(
     data =>{
       this.patientsRecordData=data;
       console.log(data);

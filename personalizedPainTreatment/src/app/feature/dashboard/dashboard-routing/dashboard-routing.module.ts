@@ -30,7 +30,7 @@ const routes: Routes = [
           { path: 'view/:id', component: ViewreportComponent },
           {path:'nav',component:NewpatientNavigationComponent},
           {path:'data/:id',component:PatientdataComponent},
-          {path:'patient-report',component:PatientReportComponent}
+          {path:'patient-report/:id',component:PatientReportComponent}
 
         ],
       },
