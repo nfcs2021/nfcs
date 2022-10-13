@@ -1,7 +1,4 @@
 
-
-<!-- <button class="btn btn-success m-5 float-right" (click)="downloadPDF()">Download</button> -->
-<!-- <button class="btn btn-success" (click)="generatePDF()">Download</button> -->
 <div *ngIf="base64code">
     <img src="base64code" alt="">
 
@@ -12,23 +9,23 @@
 
         <ul class="list-unstyled ml-5">
 
-            <li> <span class="mr-5">Name :</span>{{registarPatient?.name}}</li>
+            <li> <span class="mr-5">Name :</span>{{patientData.FirstName}} {{patientData.LastName}}</li>
             <li><span class="mr-5">MRN :</span>1232142354</li>
-            <li><span class="mr-5">DOB :</span>{{registarPatient?.dob | date}}</li>
+            <li><span class="mr-5">DOB :</span>{{patientData.dateofbirth | date}}</li>
             <ng-container *ngFor="let data of quetionaryData">
-                <li *ngIf="data?. question_Id===3"><span class="mr-5">AGE :</span>{{data.text1}}</li>
+                <li *ngIf="data?. questions==='AGE IN YERAS'"><span class="mr-5">AGE :</span>{{data.text1}}</li>
             </ng-container>
-            <li><span class="mr-4">Address :</span>{{registarPatient?.address}}</li>
+            <li><span class="mr-4">Address :</span>{{patientData.AddressLine1}},{{patientData.AddressLine2}}</li>
             <hr style="border-top:1px solid black">
             <ng-container *ngFor="let data of quetionaryData">
-                <li *ngIf="data.question_Id===2"><span class="mr-5 align">Pain Duration :</span> {{data.text1}}yrs
+                <li *ngIf="data.questions==='HOW LONG HAVE YOU HAD YOUR PAIN PROBLEM'"><span class="mr-5 align">Pain Duration :</span> {{data.text1}}yrs
                     {{data.text2}}Months</li>
             </ng-container>
             <li><span class="mr-5"> Total number of pain regions identified :</span>
                 {{selectedPartData?.length}}</li>
             <ng-container *ngFor="let data of quetionaryData">
-                <li *ngIf="data.question_Id===1"><span class="mr-5"> Average pain intensity in the last 7 days :</span>
-                    {{data.p_Options}}
+                <li *ngIf="data.questions==='HOW WOULD YOU RATE YOUR PAIN ON AVERAGE'"><span class="mr-5"> Average pain intensity in the last 7 days :</span>
+                    {{data.patientInputs}}
                     out of 10</li>
             </ng-container>
             <li><span class="mr-5 align">Pattern of pain :</span> Widespread Pain</li>

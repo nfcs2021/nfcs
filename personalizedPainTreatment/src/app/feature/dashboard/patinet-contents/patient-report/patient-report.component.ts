@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import jsPDF from 'jspdf';
 import { DOCUMENT } from '@angular/common';
 import { PatientService } from '../../services/patient.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-patient-report',
   templateUrl: './patient-report.component.html',
@@ -40,19 +41,32 @@ export class PatientReportComponent implements OnInit {
   registarPatient: any;
   patientRecordsData: any;
   previousPatientRecord: any;
-  filePath: any; 
+  filePath: any;
   base64code:any;
   img:Observable<any>
+  routerId:any;
   constructor(@Inject(DOCUMENT) private document: Document,
-  private service:PatientService
+  private service:PatientService,
+  private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.routeId();
+    
   }
+
+  routeId() {
+    this.route.params.subscribe(params => {
+      this.routerId = +params['id']; // (+) converts string 'id' to a number
+      console.log(this.routerId);
+      this.getById(this.routerId);
+    });
+  }
+
   enableColorAfterLoad(): void {
     const pathElements = this.document.getElementsByTagName('path');
     for (let j = 0; j < this.selectedPartData.length; j++) {
-      const selectedpart = this.selectedPartData[j].selectedPart;
+      const selectedpart = this.selectedPartData[j].partname;
       for (let i = 0; i < pathElements.length; ++i) {
         if (pathElements[i].id == selectedpart) {
           pathElements[i].style.fill = '#8585EC';
@@ -66,27 +80,21 @@ export class PatientReportComponent implements OnInit {
     this.service.getPatientQuestionaryDataById(id)
       .subscribe(data => {
         this.quetionaryData = data;
+        console.log(data);
+        
       },
         error => {
           console.log(error)
         }
       );
-      this.service.getPatientDataById(id).subscribe(data => {
-        this.patientData = data;
-        this.service.getRegistarPatientDataByEmail(this.patientData?.patient_Email).subscribe(
-          data => {
-            let registarPatientData1: any = data;
-            this.registarPatient = registarPatientData1[0];
-          },
-          error => {
-            console.log(error);
-          }
-  
-        )
-        this.service.getPatientDataRecords(this.patientData?.patient_Email).subscribe(
+     
+        this.service.getPatientDataRecords(id).subscribe(
           data => {
             this.patientRecordsData = data;
             console.log(this.patientRecordsData);
+            this.service.getPatientDataById(data.patientdataid).subscribe(data => {
+              this.patientData = data;
+                  console.log(this.patientData);
             for (let patient of this.patientRecordsData) {
               if (patient.id == id) {
                 var index = this.patientRecordsData.indexOf(patient)
@@ -98,16 +106,18 @@ export class PatientReportComponent implements OnInit {
         error => {
           console.log(error);
         });
-  
+
       this.service.getSelectedPartsById(id)
         .subscribe(data => {
           this.selectedPartData = data
           this.enableColorAfterLoad();
+          console.log(this.selectedPartData);
+          
         },
           error => {
             console.log(error)
           });
-  
+
     }
 
     rehabilitationTherapiesForPeoetntialImprovement() {

@@ -1,6 +1,9 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
 import { DataService } from 'src/app/feature/dashboard/services/data.service';
+import { NavnsideWrapperComponent } from '../navnside-wrapper/navnside-wrapper.component';
 
 @Component({
   selector: 'app-top-navigation',
@@ -8,21 +11,30 @@ import { DataService } from 'src/app/feature/dashboard/services/data.service';
   styleUrls: ['./top-navigation.component.css'],
 })
 export class TopNavigationComponent implements OnInit, OnChanges {
-  isLoggidIn: boolean = this.authService.loggedIn();
-
+  // isLoggidIn: boolean = this.authService.loggedIn();
+  // name = localStorage.getItem('registrationData');
+  name: any;
+  user: any;
+  pcp: string | null;
   constructor(
     private dataService: DataService,
-    private authService: AuthService
+    private authService: AuthService,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    if (this.isLoggidIn == true) {
-      // this.dataService.getUserData(data:any).subscribe((data) => {
-      //   console.log(data);
-      // });
-    }
+    this.authService.getEvent().subscribe(() => {
+      this.getloginData();
+    });
   }
-  ngOnChanges() {
+  ngOnChanges() {}
+  getloginData() {
+    this.dataService.getUserData().subscribe((data) => {
+      console.log('header :' + data.name);
+      localStorage.setItem('username', data.name);
+      this.name = localStorage.getItem('username');
+      this.pcp = localStorage.getItem('pcpData');
+    });
   }
   logOut() {
     this.authService.logout();

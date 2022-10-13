@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-newpatient-navigation',
   templateUrl: './newpatient-navigation.component.html',
-  styleUrls: ['./newpatient-navigation.component.css']
+  styleUrls: ['./newpatient-navigation.component.css'],
 })
 export class NewpatientNavigationComponent implements OnInit {
+  userdata: any;
+  constructor(private dataService: DataService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

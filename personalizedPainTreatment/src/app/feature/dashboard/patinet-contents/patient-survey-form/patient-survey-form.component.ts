@@ -174,7 +174,7 @@ console.log(this.questions);
         });
     
       }
-    this.router.navigate(['home/patient/view/'+id])
+    this.router.navigate(['/patient/view/'+id])
   }
 
   createSelectedParts(id: number) {

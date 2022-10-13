@@ -4,8 +4,7 @@ import { PageNotfoundComponent } from './core/page-notfound/page-notfound.compon
 import { DashboardHomeComponent } from './feature/dashboard/dashboard-home/dashboard-home.component';
 import { MainLayoutComponent } from './feature/dashboard/main-layout/main-layout.component';
 const routes: Routes = [
-  {path:'',component:MainLayoutComponent},
-  {path: 'home', loadChildren: () => import(`./feature/dashboard/dashboard.module`).then(m => m.DashboardModule)},
+  {path: '', loadChildren: () => import(`./feature/dashboard/dashboard.module`).then(m => m.DashboardModule)},
   {path: '**', component: PageNotfoundComponent},
 ];
 
