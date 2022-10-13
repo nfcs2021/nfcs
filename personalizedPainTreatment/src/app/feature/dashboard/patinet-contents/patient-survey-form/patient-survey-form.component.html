@@ -323,12 +323,12 @@
             <!--  ..........................................second question.....................................-->
             <div *ngFor="let data of questions">
                 <div class="row mt-5" *ngIf="data.question_Id===2">
-                    <div class="col">
+                    <div class="col-15">
                         <h5 class="font-weight-bold ">PAIN EXPERIENCE DURATION.</h5>
                         <span class="font-weight-bold "> 2 .{{data.questions}}?</span> <br> <br>
-                        <div class="row ml-3">
-                            <div ><label class="font-weight-bold mr-1" for="years">years:</label> </div>
-                            <div class="col-1">
+                        <div class="row ml-3 " >
+                            <div class="col-3">
+                                <label class="font-weight-bold mr-1" for="years">years:</label> 
                                 <input type="text" id="years" class="form-control form-control-sm" name="years1"
                                     #years1="ngModel" [(ngModel)]="data.text1" required pattern="[0-9]+" maxlength="2">
                                 <span class="text-danger "
@@ -337,9 +337,9 @@
                                 </span>
                                 <div class="text-danger years " *ngIf="years1.errors?.['pattern']">Invalid years.</div>
                             </div>
-                            <div ><label class="font-weight-bold mt-2" for="months">Months:</label>
-                            </div>
+                            
                             <div class="col-1">
+                                <label class="font-weight-bold " for="months">Months:</label>
                                 <input type="text" id="months" class="form-control form-control-sm" name="months1"
                                     #months1="ngModel" [(ngModel)]="data.text2" required pattern="[0-9]+" maxlength="2" appMonthValidator>
                                 <span class="text-danger "
@@ -360,7 +360,7 @@
             <!--  ..........................................third question.....................................-->
             <div *ngFor="let data of questions">
                 <div class="row mt-5 ml-3" *ngIf="data.question_Id===3">
-                    <div class="col-2">
+                    <div class="col-10">
                         <label for="age">
                             <h5 class="font-weight-bold mr-1">{{data.questions}}</h5>
                         </label><input type="text" class="form-control" id="age" name="age1" [(ngModel)]="data.text1"
@@ -1100,7 +1100,7 @@
             <div *ngFor="let data of questions">
                 <div class="row mt-2" *ngIf="data.question_Id===35">
                     <div class="col-3">
-                        <h6 class="font-weight-bold ">Heal Positive Outlook</h6>
+                        <h5 class="font-weight-bold ">Heal Positive Outlook</h5>
                     </div>
                     <div class="col">
                         <input text="text" class="form-control" id="positiveOutlook" name="positiveOutlook1"
@@ -1116,7 +1116,7 @@
             <div *ngFor="let data of questions">
                 <div class="row mt-2" *ngIf="data.question_Id===36">
                     <div class="col-3">
-                        <h6 class="font-weight-bold ">Pain Detect</h6>
+                        <h5 class="font-weight-bold ">Pain Detect</h5>
                     </div>
                     <div class="col">
                         <input text="text" class="form-control" id="PainDetect" name="PainDetect1"
@@ -1132,7 +1132,7 @@
             <div *ngFor="let data of questions">
                 <div class="row mt-2" *ngIf="data.question_Id===37">
                     <div class="col-3">
-                        <h6 class="font-weight-bold ">Opioid Checklist</h6>
+                        <h5 class="font-weight-bold ">Opioid Checklist</h5>
                     </div>
                     <div class="col">
                         <input text="text" class="form-control" id="OpioidChecklist" name="OpioidChecklist1"
@@ -1148,7 +1148,7 @@
             <div *ngFor="let data of questions">
                 <div class="row mt-2" *ngIf="data.question_Id===38">
                     <div class="col-3">
-                        <h6 class="font-weight-bold ">Impression of Change</h6>
+                        <h5 class="font-weight-bold ">Impression of Change</h5>
                     </div>
                     <div class="col">
                         <input text="text" class="form-control" id="ImpressionofChange" name="ImpressionofChange1"

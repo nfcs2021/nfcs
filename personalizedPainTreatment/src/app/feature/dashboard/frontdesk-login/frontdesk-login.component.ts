@@ -42,7 +42,7 @@ export class FrontdeskLoginComponent implements OnInit {
         if (this.errordata != this.has_error) {
           this.login_user_msg = 'Login in, Please wait... !!!';
           setTimeout(() => {
-            this.route.navigateByUrl('/home/patient/navigation');
+            this.route.navigateByUrl('/home/patient/nav');
           }, 1000);
         } else {
           this.has_error = true;
