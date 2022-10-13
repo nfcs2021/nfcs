@@ -48,11 +48,12 @@ export class PatientReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getById(1);
   }
   enableColorAfterLoad(): void {
     const pathElements = this.document.getElementsByTagName('path');
     for (let j = 0; j < this.selectedPartData.length; j++) {
-      const selectedpart = this.selectedPartData[j].selectedPart;
+      const selectedpart = this.selectedPartData[j].partname;
       for (let i = 0; i < pathElements.length; ++i) {
         if (pathElements[i].id == selectedpart) {
           pathElements[i].style.fill = '#8585EC';
@@ -66,27 +67,21 @@ export class PatientReportComponent implements OnInit {
     this.service.getPatientQuestionaryDataById(id)
       .subscribe(data => {
         this.quetionaryData = data;
+        console.log(data);
+        
       },
         error => {
           console.log(error)
         }
       );
-      this.service.getPatientDataById(id).subscribe(data => {
-        this.patientData = data;
-        this.service.getRegistarPatientDataByEmail(this.patientData?.patient_Email).subscribe(
-          data => {
-            let registarPatientData1: any = data;
-            this.registarPatient = registarPatientData1[0];
-          },
-          error => {
-            console.log(error);
-          }
-  
-        )
-        this.service.getPatientDataRecords(this.patientData?.patient_Email).subscribe(
+     
+        this.service.getPatientDataRecords(id).subscribe(
           data => {
             this.patientRecordsData = data;
             console.log(this.patientRecordsData);
+            this.service.getPatientDataById(data.patientdataid).subscribe(data => {
+              this.patientData = data;
+                  console.log(this.patientData);
             for (let patient of this.patientRecordsData) {
               if (patient.id == id) {
                 var index = this.patientRecordsData.indexOf(patient)
@@ -103,6 +98,8 @@ export class PatientReportComponent implements OnInit {
         .subscribe(data => {
           this.selectedPartData = data
           this.enableColorAfterLoad();
+          console.log(this.selectedPartData);
+          
         },
           error => {
             console.log(error)

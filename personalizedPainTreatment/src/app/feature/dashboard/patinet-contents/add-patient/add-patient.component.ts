@@ -178,7 +178,7 @@ export class AddPatientComponent implements OnInit {
     this.patientService.savePatientData(data).subscribe(
       data => {
         console.log(data);
-        this.route.navigate(['/home/patient/data/'+data.id])
+        this.route.navigate(['/patient/data/'+data.id])
       }, error => {
         console.log(error);
 
