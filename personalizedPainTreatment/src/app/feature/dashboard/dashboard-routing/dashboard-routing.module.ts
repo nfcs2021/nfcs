@@ -26,6 +26,7 @@ const routes: Routes = [
           { path: 'survey-form', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
+          { path: 'navigation', component: NewpatientNavigationComponent },
         ],
       },
     ],

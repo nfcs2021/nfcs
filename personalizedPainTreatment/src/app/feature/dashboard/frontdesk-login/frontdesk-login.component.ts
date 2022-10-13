@@ -42,7 +42,7 @@ export class FrontdeskLoginComponent implements OnInit {
         if (this.errordata != this.has_error) {
           this.login_user_msg = 'Login in, Please wait... !!!';
           setTimeout(() => {
-            this.route.navigateByUrl('/home/patient/add-list');
+            this.route.navigateByUrl('/home/patient/navigation');
           }, 1000);
         } else {
           this.has_error = true;
@@ -57,7 +57,6 @@ export class FrontdeskLoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    this.authservice.loggedIn();
     if (this.loginFormGroup.invalid) {
       return;
     }
@@ -69,6 +68,5 @@ export class FrontdeskLoginComponent implements OnInit {
     this.authservice.authontication(data);
     console.log(data);
     localStorage.setItem('pcpData', data.pcp);
-    console.log(data.email);
   }
 }

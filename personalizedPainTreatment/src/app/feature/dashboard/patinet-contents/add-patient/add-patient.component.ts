@@ -88,17 +88,17 @@ export class AddPatientComponent implements OnInit {
       return;
     }
     console.log(this.patientRegesterForm.value);
-    
+
     this.patientService.savePatientData(this.patientRegesterForm.value).subscribe(
       data =>{
         console.log(data);
-        
+
       },error =>{
         console.log(error);
-        
+
       }
     )
-    
+
   }
 
 

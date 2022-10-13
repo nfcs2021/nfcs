@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
   isAuthenticate = false;
   authenticationEvent = new EventEmitter<boolean>();
+  getUserData = new EventEmitter<any>();
+  name: any;
   constructor(private dataService: DataService, private router: Router) {}
   authontication(data: any) {
     this.dataService.login(data).subscribe(
@@ -17,6 +19,7 @@ export class AuthService {
         this.dataService.getUserData();
         this.isAuthenticate = true;
         this.authenticationEvent.emit(true);
+        this.getUserData.emit();
       },
       (error) => {
         console.log(error);
@@ -24,10 +27,6 @@ export class AuthService {
         this.authenticationEvent.emit(false);
       }
     );
-  }
-  loggedIn() {
-    this.dataService.getUserData();
-    return !!localStorage.getItem('token');
   }
   logout() {
     // console.log("Logged Out called");
@@ -37,5 +36,9 @@ export class AuthService {
     localStorage.clear();
     this.router.navigate(['/']);
     // location.reload();
+  }
+
+  getEvent() {
+    return this.getUserData.asObservable();
   }
 }
