@@ -57,7 +57,6 @@ export class FrontdeskLoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    this.authservice.loggedIn();
     if (this.loginFormGroup.invalid) {
       return;
     }
@@ -69,6 +68,5 @@ export class FrontdeskLoginComponent implements OnInit {
     this.authservice.authontication(data);
     console.log(data);
     localStorage.setItem('pcpData', data.pcp);
-    console.log(data.email);
   }
 }

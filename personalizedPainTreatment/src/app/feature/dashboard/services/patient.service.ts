@@ -54,11 +54,11 @@ export class PatientService {
   }
 
 
-  getPatientRecordData() {
+  getPatientRecordData(id:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(this.apiUrl+'record',{headers: httpheaders});
+    return this.http.get<any>(this.apiUrl+'record/'+id,{headers: httpheaders});
   }
   
   getPatientQuestionaryDataById(id: any) {

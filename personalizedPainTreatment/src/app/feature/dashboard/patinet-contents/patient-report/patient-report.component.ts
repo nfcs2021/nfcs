@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import jsPDF from 'jspdf';
 import { DOCUMENT } from '@angular/common';
 import { PatientService } from '../../services/patient.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-patient-report',
   templateUrl: './patient-report.component.html',
@@ -40,16 +41,28 @@ export class PatientReportComponent implements OnInit {
   registarPatient: any;
   patientRecordsData: any;
   previousPatientRecord: any;
-  filePath: any; 
+  filePath: any;
   base64code:any;
   img:Observable<any>
+  routerId:any;
   constructor(@Inject(DOCUMENT) private document: Document,
-  private service:PatientService
+  private service:PatientService,
+  private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.getById(1);
+    this.routeId();
+    
   }
+
+  routeId() {
+    this.route.params.subscribe(params => {
+      this.routerId = +params['id']; // (+) converts string 'id' to a number
+      console.log(this.routerId);
+      this.getById(this.routerId);
+    });
+  }
+
   enableColorAfterLoad(): void {
     const pathElements = this.document.getElementsByTagName('path');
     for (let j = 0; j < this.selectedPartData.length; j++) {
@@ -93,7 +106,7 @@ export class PatientReportComponent implements OnInit {
         error => {
           console.log(error);
         });
-  
+
       this.service.getSelectedPartsById(id)
         .subscribe(data => {
           this.selectedPartData = data
@@ -104,7 +117,7 @@ export class PatientReportComponent implements OnInit {
           error => {
             console.log(error)
           });
-  
+
     }
 
     rehabilitationTherapiesForPeoetntialImprovement() {

@@ -51,7 +51,7 @@ export class AddPatientComponent implements OnInit {
       data =>{
         console.log(data);
         this.countryInfo=data
-        
+
       }
     )
   }
@@ -68,11 +68,11 @@ export class AddPatientComponent implements OnInit {
     }
   console.log(getactualSpecialChar);
   console.log(getIndexSpecialChar);
-  
-  
+
+
     let len = event.target.value.length;
     let backspace = event.keyCode;
-   
+
     if (backspace === 8) {
       len = len-1;
     } else {
@@ -89,14 +89,14 @@ export class AddPatientComponent implements OnInit {
 
     }
     console.log(event.target.value);
-    
+
   }
   onChangeCountry(countryValue: any) {
     let countryIso:any;
     for (let data of this.countryInfo) {
       if(countryValue.target.value===data.name)
       {
-        
+
         countryIso=data.iso2
         this.countryId=data.iso2
       }
@@ -105,10 +105,10 @@ export class AddPatientComponent implements OnInit {
       data =>{
         console.log(data);
         this.stateInfo=data;
-        
+
       }
     )
-    
+
   }
   onChangeState(stateValue:any) {
     let stateId:any;
@@ -122,7 +122,7 @@ export class AddPatientComponent implements OnInit {
       data =>{
         console.log(data);
         this.cityInfo=data;
-        
+
       }
     )
   }
