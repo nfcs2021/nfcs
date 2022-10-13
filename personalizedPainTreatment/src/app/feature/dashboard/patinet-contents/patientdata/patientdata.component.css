@@ -53,17 +53,13 @@ hr{
   }
   .btn{
     background-color: #712C6B;
-   
     font-family: 'Arial';
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
 line-height: 30px;
-
 /* identical to box height */
 letter-spacing: 0.05em;
-
-
   }
  
   p{
@@ -74,5 +70,3 @@ letter-spacing: 0.05em;
     border:1px solid #712C6B;
     
   }
-  
-  

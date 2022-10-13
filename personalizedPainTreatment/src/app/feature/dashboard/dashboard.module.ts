@@ -14,6 +14,8 @@ import { FrontdeskLoginComponent } from './frontdesk-login/frontdesk-login.compo
 import { PatientListComponent } from './patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
+import { PatientReportComponent } from './patinet-contents/patient-report/patient-report.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { PatientdataComponent } from './patinet-contents/patientdata/patientdata
     PatientListComponent,
     ViewreportComponent,
     PatientdataComponent,
-    ViewreportComponent
+    ViewreportComponent,
+    PatientReportComponent
 
   ],
   imports: [

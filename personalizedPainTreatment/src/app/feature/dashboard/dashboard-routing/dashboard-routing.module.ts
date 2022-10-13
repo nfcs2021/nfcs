@@ -11,31 +11,32 @@ import { NewpatientNavigationComponent } from '../patinet-contents/newpatient-na
 import { PatientListComponent } from '../patinet-contents/patient-list/patient-list.component';
 import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from '../patinet-contents/patientdata/patientdata.component';
+import { patientList } from '../patinet-contents/module/Patient1';
+import { PatientReportComponent } from '../patinet-contents/patient-report/patient-report.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-        { path: '', component: DashboardHomeComponent },
-        {
-          path: 'patient',
-          component: PatientMainComponent,
-          children: [
-            {path: '', redirectTo: 'details', pathMatch: 'full'},
-            {path: 'new', component: AddPatientComponent},
-            {path:'survey-form',component:PatientSurveyFormComponent},
-            {path: 'list', component:PatientListComponent},
-            {path: 'view', component:ViewreportComponent},
-            {path: 'data', component:PatientdataComponent},
-            {path: 'nav', component:NewpatientNavigationComponent},
-          ]
-          }
-          ]
-        },]
-   
-      
-   
+      { path: '', component: DashboardHomeComponent },
+      {
+        path: 'patient',
+        component: PatientMainComponent,
+        children: [
+          { path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: 'new', component: AddPatientComponent },
+          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
+          { path: 'list', component: PatientListComponent },
+          { path: 'view/:id', component: ViewreportComponent },
+          {path:'nav',component:NewpatientNavigationComponent},
+          {path:'data/:id',component:PatientdataComponent},
+          {path:'patient-report',component:PatientReportComponent}
+        ],
+      },
+    ],
+  },
+];
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],

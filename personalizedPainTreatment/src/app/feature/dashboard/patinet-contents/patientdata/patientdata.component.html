@@ -1,9 +1,9 @@
 
 
-<div class=" container  col-md-11 border">
+<div class="container col-md-11 ">
     
-    <div class="row mt-5 ">
-      <div class="col para1">
+    <div class="row  ">
+      <div class="col para1 mt-5">
        New Patient data has been Added
       </div>
       
@@ -55,13 +55,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let patient of patientList;">
+          <tr>
            
           
-            <td>{{patient.firstName}}</td>
-            <td>{{patient.lastName}}</td>
-            <td>{{patient.dob}}</td>
-            <td>{{patient.socialSecurityNumber}}</td> 
+            <td>{{patientList.FirstName}}</td>
+            <td>{{patientList.LastName}}</td>
+            <td>{{patientList.dateofbirth}}</td>
+            <td>{{patientList.Ssn}}</td> 
             <!-- <td>{{patient.email}}</td>
             <td>{{patient.phone}}</td>
             <td>{{patient.Address}}</td> -->
@@ -73,10 +73,13 @@
             <th >Created on</th>
            
           </tr>
-          <tr *ngFor="let patient of patientList;">
-            <td>{{patient.email}}</td>
-            <td>{{patient.phone}}</td>
-            <td>{{patient.Address}}</td>
+          <tr>
+            <td>{{patientList.emailaddress}}</td>
+            <td>{{patientList.ContactNumber}}</td>
+            <td>{{patientList.AddressLine1}}</td>
+            <td>{{patientList.created_at | date}}</td>
+            
+
            
 
           </tr>
@@ -84,7 +87,7 @@
         </tbody>
       </table>
     <div class="buttons mt-5">
-    <button  class="btn  col-md-4 active p-3 mt-5 mx-5" role="button" aria-pressed="true"  routerLink="/home/patient/survey-form" >Add New PPT Survey Form</button><br>
+    <a  class="btn  col-md-4 active p-3 mt-5 mx-5" role="button" aria-pressed="true" routerLink="/home/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
     <a  class="btn  col-md-4 active  p-3 mt-3 mx-5 " role="button" aria-pressed="true"  >View in Patient Profile</a><br>
     <a  class="btn  col-md-4 active  p-3 mt-3 mx-5" role="button" aria-pressed="true" >Cancel</a>
     <br>
