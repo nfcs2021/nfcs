@@ -63,12 +63,9 @@ line-height: 30px;
 /* identical to box height */
 letter-spacing: 0.05em;
 
-color: #FFFFFF;
+
   }
-  a{
-    color: #FFFFFF;
-    text-decoration: none;
-  }
+ 
   p{
     color: #712C6B;
   }
@@ -77,3 +74,5 @@ color: #FFFFFF;
     border:1px solid #712C6B;
     
   }
+  
+  
