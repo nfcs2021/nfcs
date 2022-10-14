@@ -15,6 +15,8 @@ import { PatientListComponent } from './patinet-contents/patient-list/patient-li
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
 import { PatientReportComponent } from './patinet-contents/patient-report/patient-report.component';
+import { FrontdeskMainComponent } from './frontdesk-contents/frontdesk-main/frontdesk-main.component';
+import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-details/frontdesk-details.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { PatientReportComponent } from './patinet-contents/patient-report/patien
     ViewreportComponent,
     PatientdataComponent,
     ViewreportComponent,
-    PatientReportComponent
+    PatientReportComponent,
+    FrontdeskMainComponent,
+    FrontdeskDetailsComponent
 
   ],
   imports: [

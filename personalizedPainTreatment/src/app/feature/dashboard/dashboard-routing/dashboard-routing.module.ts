@@ -11,6 +11,8 @@ import { PatientListComponent } from '../patinet-contents/patient-list/patient-l
 import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from '../patinet-contents/patientdata/patientdata.component';
 import { PatientReportComponent } from '../patinet-contents/patient-report/patient-report.component';
+import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/frontdesk-main.component';
+import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
 
 const routes: Routes = [
   {
@@ -28,10 +30,17 @@ const routes: Routes = [
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
           { path: 'view/:id', component: ViewreportComponent },
-          {path:'nav',component:NewpatientNavigationComponent},
-          {path:'data/:id',component:PatientdataComponent},
-          {path:'patient-report/:id',component:PatientReportComponent}
-
+          { path: 'nav', component: NewpatientNavigationComponent },
+          { path: 'data/:id', component: PatientdataComponent },
+          { path: 'patient-report/:id', component: PatientReportComponent },
+        ],
+      },
+      {
+        path: 'frontdesk',
+        component: FrontdeskMainComponent,
+        children: [
+          { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
+          { path: 'frontdetails', component: FrontdeskDetailsComponent},
         ],
       },
     ],

@@ -35,7 +35,7 @@ export class AuthService {
     localStorage.removeItem('role');
     localStorage.clear();
     this.router.navigate(['/']);
-    // location.reload();
+    location.reload();
   }
 
   getEvent() {

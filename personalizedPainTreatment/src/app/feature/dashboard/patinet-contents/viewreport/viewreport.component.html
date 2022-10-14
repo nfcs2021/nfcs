@@ -1,41 +1,13 @@
 <div class=" container col-md-11">
-<<<<<<< HEAD
 
-  <div class="row">
-    <div class="col para1 mt-5">
-      New PPT Survey Form has been added to visit log
-    </div>
-
-
-  </div><hr>
-
-  <div class="row mt-2 mx-5 row1" *ngFor="let patient of patientsRecordData">
-    <div class="col-md-2 ml-5 mt-3">
-      <p>Record Id</p><p class="mt-0">{{patient.id}}</p>
-    </div>
-    <div class="col-md-2 mt-3">
-      <p> Visited On</p><p>{{patient.visit_time | date}}</p>
-    </div>
-    <div class="col-md-3 mt-4 ml-5 ">
-      <a class=" btn-lg active border " role="button" aria-pressed="true"
-        style="color: #712C6B;"
-        routerLink="/patient/patient-report/{{patientsRecordData.patientdataid}}">Patient
-        Report</a>
-      <img src="\assets\images\bxs_download.png" role="button"
-        style="width:30px" class="ml-2 border-0">
-    </div>
-    <!-- <div class="col-md-2 ">
-
-=======
-    
     <div class="row">
       <div class="col para1 mt-5">
         New PPT Survey Form has been added to visit log
       </div>
-      
-      
+
+
     </div><hr>
-   
+
     <div class="row mt-2 mx-5   row1" >
         <div class="col-md-2 ml-5  mt-3">
             <p>Record Id</p><p class="mt-0">{{patientsRecordData.id}}</p>
@@ -48,8 +20,7 @@
           <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
         </div>
         <!-- <div class="col-md-2 ">
-          
->>>>>>> 5a8c58b3a05a191eed4c857c64a8262600761b7f
+
                 <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
 
 
@@ -59,28 +30,15 @@
             <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
 
           </div> -->
-<<<<<<< HEAD
     <div class=" col-md-4 ml-5">
       <p>PCP</p>
 
-=======
-          <div class="   col-md-4 ml-5">
-            <p>PCP</p>
-            
-          </div>
-          <div class="col-md-4 ">
-            <p>Apolo Hospital,Bangalore</p>
-        </div>
-        <div class="col-md-2 ml-5 ">
-            <p>  Patient Id:{{patientsRecordData.patientdataid}}</p>
-        </div>
->>>>>>> 5a8c58b3a05a191eed4c857c64a8262600761b7f
     </div>
     <div class="col-md-4 ">
       <p>Apolo Hospital,Bangalore</p>
     </div>
     <div class="col-md-2 ml-5 ">
-      <p> Patient Id:{{patient.patientdataid}}</p>
+      <p> Patient Id:{{patientsRecordData.patientdataid}}</p>
     </div>
   </div>
   <div class="buttons mt-5">
