@@ -167,14 +167,14 @@ console.log(this.questions);
 
       this.service.savePatientSurveyForm(data)
         .subscribe(response => {
-          
+         
             
         }, error => {
           console.log(error)
         });
     
       }
-    this.router.navigate(['/patient/view/'+id])
+    
   }
 
   createSelectedParts(id: number) {
@@ -190,7 +190,9 @@ console.log(this.questions);
                 error => {
                   console.log(error)
                 })
+
           }
+          this.router.navigate(['/patient/view/'+this.patientid])
   }
 
 

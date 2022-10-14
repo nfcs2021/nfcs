@@ -24,6 +24,15 @@ export class PatientService {
     });
    return this.http.get(this.apiUrl+'patientData/'+id,{headers: httpheaders})
   }
+  getAllPatientsData() {
+   
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<any>(this.apiUrl+'patientData',{headers: httpheaders});
+  }
+
+
   savePatientData(data: any):Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),

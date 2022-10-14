@@ -7,14 +7,14 @@
       PatientList
       </div>
       
-      <div class="col-3 ">
-      <h3 class="style"> <a > <img src="\assets\images\ant-design_plus-circle-outlined.png" style="width: 25px; border-radius: 5px;"></a>AddNew Patient</h3>
+      <div class="col-3 mt-5">
+        <a routerLink="/patient/new"><h3 class="style"><img src="\assets\images\ant-design_plus-circle-outlined.png" style="width: 25px; border-radius: 5px;">AddNew Patient</h3></a>
       </div>
     </div><hr>
    
     <div class="row ">
         <div class="col-md-3">
-            <!-- <div class="input-group">
+            <div class="input-group">
                 <input class="form-control border-end-0 border" name="searchInput" type="search" placeholder="last name"  id="example-search-input" >
                 <span class="input-group-append">
                     <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-1  border ms-n3 " type="button">
@@ -24,10 +24,7 @@
                   
                         
                
-            </div> -->
-            <div class="search-hero">
-                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching">
-              </div>
+            </div>
         </div>
         <div class="col-md-3 ">
             <div class="input-group  ">
@@ -65,5 +62,102 @@
           
     </div>
     <hr>
+    <!-- <a  style="text-decoration: none;" (click)="troggle()">
+    <table class="table table-borderless border" *ngFor="let patientList of patientsData">
+        <thead >
+          <tr>
+          
+            <th >First Name</th>
+            <th >LastName</th>
+            <th >Dob</th>
+            <th >SocialSecurityNumber</th> 
+          </tr>
+        </thead>
+        <tbody >
+          <tr >
+           
+          
+            <td>{{patientList.FirstName}}</td>
+            <td>{{patientList.LastName}}</td>
+            <td>{{patientList.dateofbirth}}</td>
+            <td>{{patientList.Ssn}}</td> 
+             <td>{{patient.email}}</td>
+            <td>{{patient.phone}}</td>
+            <td>{{patient.Address}}</td> 
+          </tr>
+          <tr >
+            <th>Email </th>
+            <th >contactNumber</th>
+            <th >Address</th>
+            <th >Created on</th>
+           
+          </tr>
+          <tr >
+            <td>{{patientList.emailaddress}}</td>
+            <td>{{patientList.ContactNumber}}</td>
+            <td>{{patientList.AddressLine1}}</td>
+            <td>{{patientList.created_at | date}}</td>
+            
+    
+           
+    
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+     
+    </a> -->
+    <div *ngFor="let patientList of patientsData; let i = index">
+        <a  (click)="troggle(patientList.id)">
+            <table class="table table-borderless" >
+                <thead>
+                  <tr >
+                  
+                    <th >First Name</th>
+                    <th >LastName</th>
+                    <th >Dob</th>
+                    <th >SocialSecurityNumber</th> 
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr >
+                   
+                  
+                    <td>{{patientList.FirstName}}</td>
+                    <td>{{patientList.LastName}}</td>
+                    <td>{{patientList.dateofbirth}}</td>
+                    <td>{{patientList.Ssn}}</td> 
+                     <!-- <td>{{patient.email}}</td>
+                    <td>{{patient.phone}}</td>
+                    <td>{{patient.Address}}</td>  -->
+                  </tr>
+                  <tr >
+                    <th>Email </th>
+                    <th >contactNumber</th>
+                    <th >Address</th>
+                    <th >Created on</th>
+                   
+                  </tr>
+                  <tr >
+                    <td>{{patientList.emailaddress}}</td>
+                    <td>{{patientList.ContactNumber}}</td>
+                    <td>{{patientList.AddressLine1}}</td>
+                    <td>{{patientList.created_at | date}}</td>
+                  </tr>
+                  <tr>
+                  </tr>
+                </tbody>
+              </table>
+            </a>
+        <div *ngIf="dropdown[patientList.id]">
+            <div class="buttons  ">
+                <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
+                <br>
+              </div>
+        </div>
+    </div>
   </div>
 
+
+ 
