@@ -14,6 +14,10 @@ import { PatientService } from '../../services/patient.service';
 export class AddPatientComponent implements OnInit {
   indianFormat = '12345 67890';
   USFormat = '(000) 123-4567'
+  ssnNumberFormate = '123-45-6789';
+  ssnPlaceholder = this.ssnNumberFormate;
+  ssnNumberEntered = '';
+  ssnFormateLe:any;
   paceHolder = this.USFormat;
   phoneNumberEntered = '';
   formatLen: any;
@@ -91,6 +95,44 @@ export class AddPatientComponent implements OnInit {
     console.log(event.target.value);
 
   }
+
+
+  onSsnChange(event: any) {
+
+    let getIndexSpecialChar = [];
+    let getactualSpecialChar = [];
+    for (let i = 0; i < this.ssnPlaceholder.length; i++) {
+      if (this.ssnPlaceholder[i] === '-') {
+        getIndexSpecialChar.push(i);
+        getactualSpecialChar.push(this.ssnPlaceholder[i]);
+      }
+    }
+  console.log(getactualSpecialChar);
+  console.log(getIndexSpecialChar);
+
+
+    let len = event.target.value.length;
+    let backspace = event.keyCode;
+
+    if (backspace === 8) {
+      len = len-1;
+    } else {
+      len = event.target.value.length;
+    }
+    let eventTargetValue = event.target.value
+    for (let i = 0; i < this.paceHolder.length; i++) {
+      if (len === getIndexSpecialChar[i]) {
+        this.ssnNumberEntered = eventTargetValue + getactualSpecialChar[i];
+        if (this.ssnNumberEntered.length === getIndexSpecialChar[i + 1]) {
+          this.ssnNumberEntered = this.ssnNumberEntered + getactualSpecialChar[i + 1];
+        }
+      }
+
+    }
+    console.log(event.target.value);
+
+  }
+
   onChangeCountry(countryValue: any) {
     let countryIso:any;
     for (let data of this.countryInfo) {
@@ -139,7 +181,7 @@ export class AddPatientComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-      // contactNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+       contactNumber: ['', [Validators.required]],
       email: ['', [Validators.required]],
       socialSecurityNumber: ['', [Validators.required]],
       address1: ['', [Validators.required]],
@@ -147,11 +189,14 @@ export class AddPatientComponent implements OnInit {
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      zipcode: ['', [Validators.required]]
+      zipcode: ['', [Validators.required]],
+      gender:['', [Validators.required]]
     });
   }
 
   onSubmit(event:any) {
+    console.log(this.patientRegesterForm.value['socialSecurityNumber']);
+    
     this.submitted = true;
     // stop here if form is invalid
     if (this.patientRegesterForm.invalid) {
@@ -161,8 +206,8 @@ export class AddPatientComponent implements OnInit {
       "FirstName":this.patientRegesterForm.value['firstName'],
         "LastName": this.patientRegesterForm.value['lastName'],
         "dateofbirth": this.patientRegesterForm.value['dob'],
-        "ContactNumber": event.target.phone.value,
-        "gender": "f",
+        "ContactNumber": this.patientRegesterForm.value['contactNumber'],
+        "gender": this.patientRegesterForm.value['gender'],
         "emailaddress": this.patientRegesterForm.value['email'],
         "Ssn": this.patientRegesterForm.value['socialSecurityNumber'],
         "AddressLine1": this.patientRegesterForm.value['address1'],

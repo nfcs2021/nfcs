@@ -17,7 +17,7 @@ export class AuthRouteGaurdService {
     state: RouterStateSnapshot
   ): boolean {
     if (!this.authService.isAuthenticate) {
-      this.router.navigate(['/home'], {
+      this.router.navigate(['/'], {
         queryParams: { requested: state.url },
       });
     }

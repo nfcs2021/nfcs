@@ -1,10 +1,17 @@
 
-
+.btn{
+    background-color: #712C6B;
+}
 .container{
     background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
    height: 780px;
 }
-     
+table{
+    background-color: #712C6B;
+    color: #FFFFFF;
+    width: 1050px;
+    
+}   
 h3 {
     
     font-family: 'Arial';
@@ -50,3 +57,19 @@ hr{
     outline: 1px solid #712C6B;
   
   } */
+
+  /* enable absolute positioning */
+  .has-search .form-control {
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

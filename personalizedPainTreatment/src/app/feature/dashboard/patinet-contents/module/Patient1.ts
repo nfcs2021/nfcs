@@ -1,19 +1,19 @@
-import { Patient } from "./Patient";
+// import { Patient } from "./Patient";
 
-export const patientList:Patient[]=[{
-    id:'',
-    firstName: '',
-    lastName:'',
-    dob: '',
-    phone:'',
-    email:'',
-    socialSecurityNumber:'',
-    Address:'',
-    Address2:'',
+// export const patientList:Patient[]=[{
+//     id:'',
+//     firstName: '',
+//     lastName:'',
+//     dob: '',
+//     phone:'',
+//     email:'',
+//     socialSecurityNumber:'',
+//     Address1:'',
+//     Address2:'',
 
     
-},
+// },
 
    
      
- ];
+//  ];

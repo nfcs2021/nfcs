@@ -12,9 +12,10 @@ const httpOptions={
   providedIn: 'root'
 })
 export class PatientService {
+ 
   
-  
-  apiUrl='http://127.0.0.1:8000/api/';
+ 
+  apiUrl=environment.apiUrl;
 
   constructor(private http:HttpClient) { }
 
@@ -29,6 +30,13 @@ export class PatientService {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
     return this.http.post<any>(this.apiUrl+'patientData',data,{headers: httpheaders});
+  }
+  getAllPatientsData() {
+   
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<any>(this.apiUrl+'patientData',{headers: httpheaders});
   }
 
   savePatientRecord(patientdata:any) {
