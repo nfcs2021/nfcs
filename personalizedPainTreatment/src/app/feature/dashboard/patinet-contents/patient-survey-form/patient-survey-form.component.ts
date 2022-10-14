@@ -156,6 +156,7 @@ console.log(this.questions);
   }
 
   createQuestiondata(id: any) {
+    var recordId:any;
     for (let data1 of this.questions) {
       const data = {
         patientrecordid:this.patientid,
@@ -167,14 +168,13 @@ console.log(this.questions);
 
       this.service.savePatientSurveyForm(data)
         .subscribe(response => {
-         
-            
+          recordId=response.patientrecordid;
         }, error => {
           console.log(error)
         });
     
       }
-    
+      
   }
 
   createSelectedParts(id: number) {

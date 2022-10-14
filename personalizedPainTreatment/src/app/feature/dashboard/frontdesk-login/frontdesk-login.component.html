@@ -1,29 +1,29 @@
 <div class="container-fluid container col-md-10">
   <div class="row justify-content-center align-items-center">
-    <div class="col-md-8 col-lg-6" style="margin-top: 100px; margin-bottom:
-      105px;margin-left: 150px;">
+    <div class="col-md-8 col-lg-6 " style="margin-top: 100px; margin-bottom:
+      105px;margin-left: 300px;">
       <form style="margin-bottom: 100px;" (ngSubmit)="onSubmit()"
-        class="needs-validation" novalidate
+        class="needs-validation ml-5  " novalidate
         [formGroup]="loginFormGroup">
 
         <div class="row mb-4">
-          <div class="col">
-            <h4 class="font-weight-bold" style="color:#712C6B
-              ;">Login</h4><hr
+          <div class="col-8">
+            <h2 class="font-weight-bold" style="color:#712C6B
+              ;">Login</h2><hr
               style="border: 1px solid #712C6B;">
           </div>
         </div>
         <div class="row mb-4">
-          <div class="col">
+          <div class="col-8">
             <label for="email" class="form-label h6" style="color:
               #712C6B;">User Name</label>
             <input type="text" class="form-control"
               style="border: 1px solid
               #712C6B;color: #712C6B;" id="email"
-              placeholder="Enter Email"
+              placeholder="Enter UserName"
               formControlName="email"
               [ngClass]="{'is-invalid':submitted && f['email'].errors}"
-              placeholder="Enter Name">
+              >
             <div *ngIf="submitted && f['email'].errors"
               class="invalid-feedback">
               <div *ngIf="f['email'].errors['required']">PatientName is
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col">
+          <div class="col-8">
             <label for="password" class="form-label h6"
               style="color: #712C6B;">Password</label>
             <input type="password" class="form-control"
@@ -40,6 +40,7 @@
               style="border: 1px solid #712C6B;color:
               #712C6B;"
               formControlName="password"
+              placeholder="Enter password"
               [ngClass]="{'is-invalid':submitted && f['password'].errors}"
               />
             <div *ngIf="submitted && f['password'].errors"
@@ -51,16 +52,15 @@
           </div>
         </div>
         <div class="row mb-3">
-          <div class="col">
+          <div class="col-8">
             <div class="form-label">
               <label for="inputState" class="form-label mb-2 h6"
                 style="color: #712C6B">Select PCP&nbsp;</label>
             </div>
             <select id="inputState" class="form-select w-100"
               style="border: 1px solid #712C6B;height:
-              70%;border-radius: 3px;color: #712C6B;" formControlName="pcp">
-              <option selected>Choose...</option>
-              <option>...</option>
+              55%;border-radius: 3px;color: #712C6B;" formControlName="pcp">
+              <option value="" selected disabled>Choose...</option>
               <option>Upmc</option>
               <option>Apolo</option>
               <option>Medicover</option>
@@ -69,13 +69,13 @@
         </div>
         <div class="d-flex justify-content-between
           align-items-center">
-          <a href="#!" class="text ml-md-auto d-md-flex" style="color:#712C6B
+          <a href="#!" class="text  d-md-flex" style="color:#712C6B
             ;">Forgot password?</a>
-        </div>
-        <div class="text-center text-lg-start mt-4 pt-2">
-          <div class="text-center pt-1 mb-5 pb-1">
+        </div> 
+        <div class="text-center text-lg-start mt-4  p-2  col-8">
+          <div class="text-center  mb-5 pb-1">
             <button class="btn btn-block fa-lg
-              gradient-custom-2 text-light p-3"
+              gradient-custom-1 text-light "
               style="background-color: #712C6B;font-weight:
               bold;" type="submit">Log
               in</button>

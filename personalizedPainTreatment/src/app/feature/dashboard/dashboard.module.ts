@@ -15,7 +15,8 @@ import { PatientListComponent } from './patinet-contents/patient-list/patient-li
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
 import { PatientReportComponent } from './patinet-contents/patient-report/patient-report.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PatientReportComponent } from './patinet-contents/patient-report/patien
     ViewreportComponent,
     PatientdataComponent,
     ViewreportComponent,
-    PatientReportComponent
+    PatientReportComponent,
+    AdvanceSearchPipe
 
   ],
   imports: [
@@ -40,6 +42,7 @@ import { PatientReportComponent } from './patinet-contents/patient-report/patien
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    NgxPaginationModule 
   ],
 })
 export class DashboardModule {}
