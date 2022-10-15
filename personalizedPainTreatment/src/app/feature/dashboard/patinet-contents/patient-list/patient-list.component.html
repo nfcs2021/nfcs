@@ -91,7 +91,7 @@
       </div>
     </div>
     <hr>
-    <div *ngFor="let patientList of posts  | advanceSearch: model | paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec} let i = index ">
+    <div *ngFor="let patientList of posts  | advanceSearch: model | paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec} let i = index  ">
         <a  (click)="troggle(patientList.id)">
             <table class="table table-borderless" >
                 <thead>

@@ -218,7 +218,7 @@ export class AddPatientComponent implements OnInit {
         "Zipcode": this.patientRegesterForm.value['zipcode'],
         "InsuranceNumber": 234567
     }
-    console.log(this.patientRegesterForm.value,event.target.phone.value);
+    // console.log(this.patientRegesterForm.value,event.target.phone.value);
 
     this.patientService.savePatientData(data).subscribe(
       data => {
