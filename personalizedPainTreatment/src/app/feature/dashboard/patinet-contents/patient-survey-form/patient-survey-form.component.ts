@@ -135,18 +135,14 @@ export class PatientSurveyFormComponent implements OnInit {
   }
 
   createQuestiondata(id: any) {
-<<<<<<< HEAD
     var reportId: any;
-=======
     var recordId:any;
->>>>>>> 199d990702cc6919ddb5ef846cbf0331e045bee9
     for (let data1 of this.questions) {
       const data = {
         patientrecordid: this.patientid,
         questions: data1.questions,
         patientInputs: data1.p_Options,
         text1: data1.text1,
-<<<<<<< HEAD
         text2: data1.text2,
       };
       this.service.savePatientSurveyForm(data).subscribe(
@@ -158,25 +154,10 @@ export class PatientSurveyFormComponent implements OnInit {
         }
       );
     }
-=======
-        text2: data1.text2 
-      }
-
-      this.service.savePatientSurveyForm(data)
-        .subscribe(response => {
-          recordId=response.patientrecordid;
-        }, error => {
-          console.log(error)
-        });
-    
-      }
-      
->>>>>>> 199d990702cc6919ddb5ef846cbf0331e045bee9
   }
   createSelectedParts(id: number) {
     for (let data of this.selectedPart) {
       const data1 = {
-<<<<<<< HEAD
         patientrecordid: this.patientid,
         partname: data,
       };
@@ -188,20 +169,5 @@ export class PatientSurveyFormComponent implements OnInit {
       );
     }
     this.router.navigate(['/patient/view/' + this.patientid]);
-=======
-        patientrecordid:this.patientid,
-        partname: data
-      }
-    this.service.saveSelectedParts(data1)
-              .subscribe(data => {
-
-              },
-                error => {
-                  console.log(error)
-                })
-
-          }
-          this.router.navigate(['/patient/view/'+this.patientid])
->>>>>>> 199d990702cc6919ddb5ef846cbf0331e045bee9
   }
 }

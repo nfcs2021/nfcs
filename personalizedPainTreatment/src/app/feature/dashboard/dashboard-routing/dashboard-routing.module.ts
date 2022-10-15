@@ -13,19 +13,20 @@ import { PatientdataComponent } from '../patinet-contents/patientdata/patientdat
 import { PatientReportComponent } from '../patinet-contents/patient-report/patient-report.component';
 import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/frontdesk-main.component';
 import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
+import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', component: DashboardHomeComponent },
+      { path: '', component: DashboardHomeComponent},
       {
         path: 'patient',
         component: PatientMainComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'new', component: AddPatientComponent },
+          { path: 'new', component: AddPatientComponent ,canActivate:[AuthRouteGaurdService]},
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
