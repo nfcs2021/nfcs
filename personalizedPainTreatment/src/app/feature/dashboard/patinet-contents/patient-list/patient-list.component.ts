@@ -20,7 +20,6 @@ export class PatientListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.getAllPatient();
   }
   troggle(i:any){
@@ -34,7 +33,7 @@ export class PatientListComponent implements OnInit {
         this.patientsData=res;
       },err =>{
         console.log(err);
-        
+
       }
     )
   }

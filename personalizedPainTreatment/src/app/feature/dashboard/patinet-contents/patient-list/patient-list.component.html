@@ -1,159 +1,151 @@
 
 
-<div class=" container  col-md-11">
-<<<<<<< HEAD
-
-    <div class="row ">
-      <div class="col para1 mt-5">
+<div class=" container col-md-11">
+<!-- <div class="row ">
+    <div class="col para1 mt-5">
       PatientList
-      </div>
-
-      <div class="col-3 ">
-      <h3 class="style"> <a > <img src="\assets\images\ant-design_plus-circle-outlined.png" style="width: 25px; border-radius: 5px;"></a>AddNew Patient</h3>
-=======
-    
-    <!-- <div class="row ">
-      <div class="col para1 mt-5">
-      PatientList
-      </div>
-      
-      <div class="col-3 mt-5">
-        <a routerLink="/patient/new"><h3 class="style"><img src="\assets\images\ant-design_plus-circle-outlined.png" style="width: 25px; border-radius: 5px;">AddNew Patient</h3></a>
->>>>>>> 199d990702cc6919ddb5ef846cbf0331e045bee9
-      </div>
-    </div><hr>
-
-    <div class="row ">
-        <div class="col-md-3">
-            <div class="input-group">
-                <input class="form-control border-end-0 border" name="searchInput" type="search" placeholder="last name"  id="example-search-input" >
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-1  border ms-n3 " type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </div>
-        <div class="col-md-3 ">
-            <div class="input-group  ">
-                <input class="form-control border-end-0 border" type="search" placeholder="last name"  id="example-search-input" >
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-1  border ms-n3 " type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="input-group">
-                <input class="form-control border-end-0 border" type="search" placeholder="Service no" id="example-search-input " >
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-1 border ms-n5" type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </div>
-<<<<<<< HEAD
-        <!-- <div class="col-md-2 ">
-                <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
-        </div> -->
-=======
-        <div class="col-md-2 ">
-          
-                <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
-                
-           
-        </div> 
->>>>>>> 199d990702cc6919ddb5ef846cbf0331e045bee9
-        <div class="   col-md-2 ">
-            <div class="input-group-prepend">
-              <span class="mt-2 mr-2 " style="color:#712C6B">Dob</span><input type="date" class="form-control"   >
-            </div>
-          </div>
     </div>
-    <hr>
-     -->
-     <div class="row ">
-      <div class="col para1 mt-5">
-      PatientList
-      </div>
-      
-      <div class="col-3 mt-5">
-        <a routerLink="/patient/new"><h3 class="style"><img src="\assets\images\ant-design_plus-circle-outlined.png" style="width: 25px; border-radius: 5px;">AddNew Patient</h3></a>
-      </div>
-    </div><hr>
-    <div class="row mt-4 mb-3">
-      <div class="col-md-3 has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <input type="text" [(ngModel)]="model.FirstName" class="form-control" placeholder="FirstName...">
-      </div>
-      <div class="col-md-3 has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <input type="text"[(ngModel)]="model.LastName" class="form-control" placeholder="LastName...">
-      </div>
-      <div class="col-md-3 has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <input type="date" [(ngModel)]="model.dateofbirth" class="form-control" >
-      </div>
-      <div class="col-md-3 has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <input type="text" [(ngModel)]="model.Ssn" class="form-control" placeholder="Ssn Number...">
+
+    <div class="col-3 ">
+      <h3 class="style"> <a> <img
+            src="\assets\images\ant-design_plus-circle-outlined.png"
+            style="width: 25px; border-radius: 5px;"></a>AddNew Patient</h3>
+    </div>
+  </div><hr>
+
+  <div class="row ">
+    <div class="col-md-3">
+      <div class="input-group">
+        <input class="form-control border-end-0 border" name="searchInput"
+          type="search" placeholder="last name" id="example-search-input">
+        <span class="input-group-append">
+          <button class="btn btn-outline-secondary bg-white border-start-0
+            border-bottom-1 border ms-n3 " type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
       </div>
     </div>
-    <hr>
-    <div *ngFor="let patientList of posts  | advanceSearch: model | paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec} let i = index ">
-        <a  (click)="troggle(patientList.id)">
-            <table class="table table-borderless" >
-                <thead>
-                  <tr >
-                  
-                    <th >First Name</th>
-                    <th >LastName</th>
-                    <th >Dob</th>
-                    <th >SocialSecurityNumber</th> 
-                  </tr>
-                </thead>
-                <tbody >
-                  <tr >
-                   
-                  
-                    <td>{{patientList.FirstName }}</td>
-                    <td>{{patientList.LastName }}</td>
-                    <td>{{patientList.dateofbirth }}</td>
-                    <td>{{patientList.Ssn }}</td> 
-                     <!-- <td>{{patient.email}}</td>
+    <div class="col-md-3 ">
+      <div class="input-group ">
+        <input class="form-control border-end-0 border" type="search"
+          placeholder="last name" id="example-search-input">
+        <span class="input-group-append">
+          <button class="btn btn-outline-secondary bg-white border-start-0
+            border-bottom-1 border ms-n3 " type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="input-group">
+        <input class="form-control border-end-0 border" type="search"
+          placeholder="Service no" id="example-search-input ">
+        <span class="input-group-append">
+          <button class="btn btn-outline-secondary bg-white border-start-0
+            border-bottom-1 border ms-n5" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class=" col-md-2 ">
+      <div class="input-group-prepend">
+        <span class="mt-2 mr-2 " style="color:#712C6B">Dob</span><input
+          type="date" class="form-control">
+      </div>
+    </div>
+  </div>
+  <hr>
+  -->
+  <div class="row ">
+    <div class="col para1 mt-5">
+      PatientList
+    </div>
+
+    <div class="col-3 mt-5">
+      <a routerLink="/patient/new"><h3 class="style"><img
+            src="\assets\images\ant-design_plus-circle-outlined.png"
+            style="width: 25px; border-radius: 5px;">AddNew Patient</h3></a>
+    </div>
+  </div><hr>
+  <div class="row mt-4 mb-3">
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" [(ngModel)]="model.FirstName" class="form-control"
+        placeholder="FirstName...">
+    </div>
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text"[(ngModel)]="model.LastName" class="form-control"
+        placeholder="LastName...">
+    </div>
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="date" [(ngModel)]="model.dateofbirth" class="form-control">
+    </div>
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" [(ngModel)]="model.Ssn" class="form-control"
+        placeholder="Ssn Number...">
+    </div>
+  </div>
+  <hr>
+  <div *ngFor="let patientList of posts | advanceSearch: model |
+    paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec}
+    let i= index ">
+    <a (click)="troggle(patientList.id)">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>Dob</th>
+            <th>SocialSecurityNumber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{patientList.FirstName }}</td>
+            <td>{{patientList.LastName }}</td>
+            <td>{{patientList.dateofbirth }}</td>
+            <td>{{patientList.Ssn }}</td>
+            <!-- <td>{{patient.email}}</td>
                     <td>{{patient.phone}}</td>
                     <td>{{patient.Address}}</td>  -->
-                  </tr>
-                  <tr >
-                    <th>Email </th>
-                    <th >contactNumber</th>
-                    <th >Address</th>
-                    <th >Created on</th>
-                   
-                  </tr>
-                  <tr >
-                    <td>{{patientList.emailaddress | uppercase}}</td>
-                    <td>{{patientList.ContactNumber}}</td>
-                    <td class="col-3">{{patientList.AddressLine1 | uppercase}},<br>{{patientList.city}}, {{patientList.state}} <br> {{patientList.country}} - {{patientList.Zipcode}}</td>
-                    <td>{{patientList.created_at | date}}</td>
-                  </tr>
-                  <tr>
-                  </tr>
-                </tbody>
-              </table>
-            </a>
-        <div *ngIf="dropdown[patientList.id]">
-            <div class="buttons  ">
-                <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
-                <br>
-              </div>
-        </div>
+          </tr>
+          <tr>
+            <th>Email </th>
+            <th>contactNumber</th>
+            <th>Address</th>
+            <th>Created on</th>
+
+          </tr>
+          <tr>
+            <td>{{patientList.emailaddress | uppercase}}</td>
+            <td>{{patientList.ContactNumber}}</td>
+            <td class="col-3">{{patientList.AddressLine1 | uppercase}},<br>{{patientList.city}},
+              {{patientList.state}} <br> {{patientList.country}} -
+              {{patientList.Zipcode}}</td>
+            <td>{{patientList.created_at | date}}</td>
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </a>
+    <div *ngIf="dropdown[patientList.id]">
+      <div class="buttons ">
+        <a class="btn ml-md-auto d-none d-md-flex col-md-3 active p-3 mx-5"
+          role="button" aria-pressed="true"
+          routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT
+          Survey Form</a><br>
+        <br>
+      </div>
     </div>
-    <pagination-controls id="listing_pagination" [maxSize]="5 " [directionLinks]="true" (pageChange)="page= $event">
-    </pagination-controls>
   </div>
-
-
- 
+  <pagination-controls id="listing_pagination" [maxSize]="5 "
+    [directionLinks]="true" (pageChange)="page= $event">
+  </pagination-controls>
+</div>

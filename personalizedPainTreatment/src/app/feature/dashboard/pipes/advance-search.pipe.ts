@@ -23,7 +23,7 @@ export class AdvanceSearchPipe implements PipeTransform {
          (!search.Ssn || post.Ssn.toString().startsWith(search.Ssn))
          ;
    })
-   
+
  }
 
 }
