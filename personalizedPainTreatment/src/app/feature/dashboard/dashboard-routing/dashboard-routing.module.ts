@@ -14,19 +14,24 @@ import { PatientReportComponent } from '../patinet-contents/patient-report/patie
 import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/frontdesk-main.component';
 import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
+import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', component: DashboardHomeComponent},
+      { path: '', component: DashboardHomeComponent },
       {
         path: 'patient',
         component: PatientMainComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'new', component: AddPatientComponent ,canActivate:[AuthRouteGaurdService]},
+          {
+            path: 'new',
+            component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService],
+          },
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
@@ -41,7 +46,11 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
-          { path: 'frontdetails', component: FrontdeskDetailsComponent},
+          { path: 'frontdetails', component: FrontdeskDetailsComponent },
+          {
+            path: 'frontdesk-registration',
+            component: FrontdeskRegistrationComponent,
+          },
         ],
       },
     ],

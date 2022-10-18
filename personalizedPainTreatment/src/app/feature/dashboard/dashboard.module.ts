@@ -20,6 +20,7 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     PatientReportComponent,
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
-    AdvanceSearchPipe
+    AdvanceSearchPipe,
+    FrontdeskRegistrationComponent
 
   ],
   imports: [
