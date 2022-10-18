@@ -39,7 +39,7 @@ import { PopupComponent } from './patinet-contents/popup/popup.component';
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
-    PopupComponent
+ 
 
   ],
   imports: [
