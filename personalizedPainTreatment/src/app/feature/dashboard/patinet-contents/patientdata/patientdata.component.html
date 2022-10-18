@@ -43,7 +43,7 @@
             <p>  Patient Id:1234</p>
         </div>
     </div> -->
-  <table class="table table-borderless border">
+  <table class="table table-borderless  row1 ">
     <thead>
       <tr>
         <th>First Name</th>
@@ -73,7 +73,21 @@
       </tr>
     </tbody>
   </table>
-  <div class="buttons mt-5">
+
+  <div class="row mb-5" >
+    <div class="ml-3 col-3">
+    <button  class="btn btn-primary" routerLink="/patient/new/{{patientList.id}}" >Edit Patient Details</button>
+    </div>
+    <div class="col-6">
+    <button  class="btn btn-primary ml-md-auto  d-md-flex" routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button>
+  </div>
+      <!-- <div class="buttons  ">
+          <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
+          <br>
+        </div> -->
+  </div>
+
+  <!-- <div class="buttons mt-5">
     <a class="btn col-md-4 active p-3 mt-5 mx-5" role="button"
       aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}">Add
       New PPT Survey Form</a><br>
@@ -82,4 +96,4 @@
     <a class="btn col-md-4 active p-3 mt-3 mx-5" role="button"
       aria-pressed="true">Cancel</a>
     <br>
-  </div>
+  </div> -->

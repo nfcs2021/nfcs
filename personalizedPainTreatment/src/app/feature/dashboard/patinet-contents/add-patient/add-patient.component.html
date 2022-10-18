@@ -1,38 +1,29 @@
 <div class="row custom ">
   <div class="form-content">
-    <form name="form" class="mx-auto col-md-8 offset-md-3 form-box
-      form-horizontal" [formGroup]="patientRegesterForm"
-      (ngSubmit)="onSubmit()">
-      <h2 class=" mt-3 mb-2 form-title border-bottom"> Add New Patient </h2>
+    <form name="form" class="mx-auto col-md-8  offset-md-3 form-box form-horizontal" [formGroup]="patientRegesterForm"
+      (ngSubmit)="onSubmit($event)">
+
+      <h2 class=" mt-3 mb-2  form-title border-bottom"> Add New Patient </h2>
       <div class="row mt-3 ">
         <div class="form-group col-sm-4 ml-5">
-          <label for="firstName">First Name <span class="text-danger">*</span>
-          </label>
-          <input type="text" class="form-control " id="firstName"
-            placeholder="First Name" formControlName="firstName"
+          <label for="firstName">First Name <span class="text-danger">*</span> </label>
+          <input type="text" class="form-control " id="firstName" placeholder="First Name" formControlName="firstName"
             [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
-          <div *ngIf="submitted && f['firstName'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['firstName'].errors['required']" class="text-danger">First
-              Name is required</div>
-            <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First
-              Name must be at least 2
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors['required']" class="text-danger">First Name is required</div>
+            <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First Name must be at least 2
               characters</div>
           </div>
-          <label for="lastName" class="mt-3">Last Name <span
-              class="text-danger">*</span></label>
-          <input type="text" class="form-control " id="lastName"
-            placeholder="Last Name" formControlName="lastName"
+          <label for="lastName" class="mt-3">Last Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control " id="lastName" placeholder="Last Name" formControlName="lastName"
             [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
-          <div *ngIf="submitted && f['lastName'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last
-              Name is required</div>
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last Name is required</div>
           </div>
-          <label for="lastName" class="mt-3">Date Of Birth <span
-              class="text-danger">*</span></label>
-          <input type="date" class="form-control " id="dob"
-            formControlName="dob" [max]="getToday()"
+
+
+          <label for="lastName" class="mt-3">Date Of Birth <span class="text-danger">*</span></label>
+          <input type="date" class="form-control " id="dob" formControlName="dob" [max]="getToday()"
             [ngClass]="{ 'is-invalid': submitted && f['dob'].errors }">
           <div *ngIf="submitted && f['dob'].errors" class="invalid-feedback">
             <div *ngIf="f['dob'].errors['required']" class="text-danger">Date Of
@@ -42,128 +33,113 @@
             &nbsp;<span class="text-danger">*</span></label>
           <br>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio1"
-              formControlName="gender" value="Male"
-              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+            <input class="form-check-input" type="radio" id="inlineRadio1" formControlName="gender" value="Male"
+              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }" />
             <label class="form-check-label" for="inlineRadio1">Male</label>
           </div>
+
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio2"
-              formControlName="gender" value="Female"
-              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+            <input class="form-check-input" type="radio" id="inlineRadio2" formControlName="gender" value="Female"
+              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }" />
             <label class="form-check-label" for="inlineRadio2">Female</label>
           </div>
+
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="inlineRadio3"
-              formControlName="gender" value="Others"
-              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+            <input class="form-check-input" type="radio" id="inlineRadio3" formControlName="gender" value="Others"
+              [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }" />
             <label class="form-check-label" for="inlineRadio3">Others</label>
           </div>
+
           <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
-            <div *ngIf="f['gender'].errors['required']" class="text-danger">Gender
-              is required</div>
+            <div *ngIf="f['gender'].errors['required']" class="text-danger">Gender is required</div>
           </div>
+
+
           <!-- <label for="phone" class="mt-3">Contact Number <span class="text-danger">*</span></label>
           <input type="tel" class="form-control"   name="phone" (keydown)="onPhoneChange($event)"
           placeholder={{paceHolder}} formControlName="contactNumber"  [ngClass]="{ 'is-invalid': submitted && f['contactNumber'].errors }"> -->
-          <label for="phone" class="mt-3">Contact Number <span
-              class="text-danger">*</span></label>
-          <input type="tel" class="form-control" placeholder={{paceHolder}}
-            formControlName="contactNumber" value={{phoneNumberEntered}}
-            (keydown)="onPhoneChange($event)"
-            maxlength="14" [ngClass]="{ 'is-invalid': submitted &&
-            f['contactNumber'].errors }">
-          <div *ngIf="submitted && f['contactNumber'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['contactNumber'].errors['required']"
-              class="text-danger">Contact Number is required</div>
+
+          <label for="phone" class="mt-3">Contact Number <span class="text-danger">*</span></label>
+          <input type="tel" class="form-control" placeholder={{paceHolder}} formControlName="contactNumber"
+            value={{phoneNumberEntered}} (keydown)="onPhoneChange($event)" maxlength="14"
+            [ngClass]="{ 'is-invalid': submitted && f['contactNumber'].errors }">
+
+          <div *ngIf="submitted && f['contactNumber'].errors" class="invalid-feedback">
+            <div *ngIf="f['contactNumber'].errors['required']" class="text-danger">Contact Number is required</div>
           </div>
           <label for="email" class="mt-3">E-mail address</label>
-          <input type="email" class="form-control" id="email" placeholder="Email
-            Address" formControlName="email"
+          <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email"
             [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
           <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
             <div *ngIf="f['email'].errors['required']" class="text-danger">Email
               Address is required</div>
           </div>
-          <label for="phone" class="mt-3">Social Security Number <span
-              class="text-danger">*</span></label>
-          <input type="tel" class="form-control" placeholder={{ssnPlaceholder}}
-            formControlName="socialSecurityNumber" value={{ssnNumberEntered}}
-            (keydown)="onSsnChange($event)"
-            maxlength="11" [ngClass]="{ 'is-invalid': submitted &&
-            f['socialSecurityNumber'].errors }">
-          <div *ngIf="submitted && f['socialSecurityNumber'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['socialSecurityNumber'].errors['required']"
-              class="text-danger">Social Security Number is required</div>
+
+
+
+          <label for="phone" class="mt-3">Social Security Number <span class="text-danger">*</span></label>
+          <input type="tel" class="form-control" placeholder={{ssnPlaceholder}} formControlName="socialSecurityNumber"
+            value={{ssnNumberEntered}} (keydown)="onSsnChange($event)" maxlength="11"
+            [ngClass]="{ 'is-invalid': submitted && f['socialSecurityNumber'].errors }">
+          <div *ngIf="submitted && f['socialSecurityNumber'].errors" class="invalid-feedback">
+            <div *ngIf="f['socialSecurityNumber'].errors['required']" class="text-danger">Social Security Number is
+              required</div>
           </div>
         </div>
         <div class="form-group col-sm-4 ml-5">
           <label for="Address">Address </label>
-          <input type="text" class="form-control " id="Address"
-            placeholder="Adress Line 1 *" formControlName="address1"
+          <input type="text" class="form-control " id="Address" placeholder="Adress Line 1 *" formControlName="address1"
             [ngClass]="{ 'is-invalid': submitted && f['address1'].errors }">
-          <div *ngIf="submitted && f['address1'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['address1'].errors['required']" class="text-danger">address
-              is required</div>
+          <div *ngIf="submitted && f['address1'].errors" class="invalid-feedback">
+            <div *ngIf="f['address1'].errors['required']" class="text-danger">address is required</div>
           </div>
-          <input type="text" class="form-control mt-3 mb-3" id="Address2"
-            placeholder="Adress Line 2" formControlName="address2">
-          <select class="form-control form-select"
-            (change)="onChangeCountry($event)"
-            formControlName="country" [ngClass]="{ 'is-invalid': submitted &&
-            f['country'].errors }">
+          <input type="text" class="form-control mt-3 mb-3" id="Address2" placeholder="Adress Line 2"
+            formControlName="address2">
+          <select class="form-control form-select" (change)="onChangeCountry($event)" formControlName="country"
+            [ngClass]="{ 'is-invalid': submitted && f['country'].errors }">
             <option disabled value="">Country <span class="text-danger">*</span></option>
-            <option *ngFor="let country of countryInfo; let i= index"
-              value="{{country.name}}">{{country.name}}</option>
+            <option *ngFor="let country of countryInfo; let i = index" value="{{country.name}}">{{country.name}}
+            </option>
           </select>
-          <div *ngIf="submitted && f['country'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['country'].errors['required']" class="text-danger">Country
-              is required</div>
+          <div *ngIf="submitted && f['country'].errors" class="invalid-feedback">
+            <div *ngIf="f['country'].errors['required']" class="text-danger">Country is required</div>
           </div>
-          <select class="form-control mt-3 form-select"
-            (change)="onChangeState($event)"
-            formControlName="state" [ngClass]="{ 'is-invalid': submitted &&
-            f['state'].errors }">
-            <option disabled value="" class="option">State <span
-                class="text-danger">*</span></option>
-            <option *ngFor="let state of stateInfo; let j= index"
-              value="{{state.name}}">{{state.name}}</option>
+
+          <select class="form-control mt-3 form-select" (change)="onChangeState($event)" formControlName="state"
+            [ngClass]="{ 'is-invalid': submitted && f['state'].errors }">
+
+            <option disabled value="" class="option">State <span class="text-danger">*</span></option>
+
+            <option *ngFor="let state of stateInfo; let j = index" value="{{state.name}}">{{state.name}}</option>
           </select>
           <div *ngIf="submitted && f['state'].errors" class="invalid-feedback">
-            <div *ngIf="f['state'].errors['required']" class="text-danger">State
-              is required</div>
+            <div *ngIf="f['state'].errors['required']" class="text-danger">State is required</div>
           </div>
-          <select class="form-control mt-3 form-select"
-            formControlName="city" [ngClass]="{ 'is-invalid': submitted &&
-            f['city'].errors }">
-            <option disabled value="" class="option">city <span
-                class="text-danger">*</span></option>
-            <option *ngFor="let city of cityInfo; let j= index"
-              value="{{city.name}}">{{city.name}}</option>
+
+
+          <select class="form-control mt-3 form-select" formControlName="city"
+            [ngClass]="{ 'is-invalid': submitted && f['city'].errors }">
+
+            <option disabled value="" class="option">city <span class="text-danger">*</span></option>
+
+            <option *ngFor="let city of cityInfo; let j = index" value="{{city.name}}">{{city.name}}</option>
           </select>
           <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
-            <div *ngIf="f['city'].errors['required']" class="text-danger">city
-              is required</div>
+            <div *ngIf="f['city'].errors['required']" class="text-danger">city is required</div>
           </div>
+
+
           <!-- <input type="text" class="form-control mt-3" id="city" placeholder="City *" formControlName="city"
           [ngClass]="{ 'is-invalid': submitted && f['city'].errors }">
           <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
             <div *ngIf="f['city'].errors['required']" class="text-danger">City is required</div>
             </div> -->
-          <input type="text" class="form-control mt-3" id="zipcode"
-            placeholder="Zip Code *" formControlName="zipcode"
+          <input type="text" class="form-control mt-3" id="zipcode" placeholder="Zip Code *" formControlName="zipcode"
             [ngClass]="{ 'is-invalid': submitted && f['zipcode'].errors }">
-          <div *ngIf="submitted && f['zipcode'].errors"
-            class="invalid-feedback">
-            <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode
-              is required</div>
+          <div *ngIf="submitted && f['zipcode'].errors" class="invalid-feedback">
+            <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode is required</div>
           </div>
-          <button class="mb-3 mt-3 p-2 btn col-sm-12 " type="submit">Submit
-          </button>
+          <button class="mb-3 mt-3 p-2 btn col-sm-12  " type="submit">Submit </button>
           <a class="mb-3 mt-3 p-2 btn col-sm-12" routerLink="/patient/nav"
             style="background-color: #712C6B; color:white ;">Cancle </a>
         </div>
@@ -179,3 +155,101 @@
     </form>
   </div>
 </div>
+
+<div class="overlay " *ngIf="popup">
+  <div class="popup">
+    <h2 class="text-center border-bottom" style="color: rgb(83, 4, 83); font-weight: bold;">Patient with similar data
+      already exit</h2>
+
+    <div class="content">
+      <div class="container col-md-11 ">
+        <table class="table table-borderless border">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>LastName</th>
+              <th>Dob</th>
+              <th>SocialSecurityNumber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{this.patientRegesterForm.value['firstName']}}</td>
+              <td>{{this.patientRegesterForm.value['lastName']}}</td>
+              <td>{{this.patientRegesterForm.value['dob'] | date:"MM-dd-YYYY"}} </td>
+              <td>{{this.patientRegesterForm.value['socialSecurityNumber']}}</td>
+            </tr>
+            <tr>
+              <th>Email </th>
+              <th>contactNumber</th>
+              <th>Address</th>
+            </tr>
+            <tr>
+              <td>{{this.patientRegesterForm.value['email']}}</td>
+              <td>{{this.patientRegesterForm.value['contactNumber']}}/td>
+              <td>{{this.patientRegesterForm.value['address1']}}, {{this.patientRegesterForm.value['address2']}},
+                {{this.patientRegesterForm.value['city']}}, {{this.patientRegesterForm.value['state']}}, 
+                {{this.patientRegesterForm.value['country']}} - {{this.patientRegesterForm.value['zipcode']}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <h2 class="text-center " style="color: rgb(83, 4, 83); font-weight: bold;">Simillar To</h2>
+        <div class="container col-md-11 ">
+          <table class="table table-borderless border">
+            <thead>
+              <tr>
+                <th>Patient ID</th>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Date Of Birth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{simillarPatientData.id}}</td>
+                <td>{{simillarPatientData.FirstName}}</td>
+                <td>{{simillarPatientData.LastName}}</td>
+                <td>{{simillarPatientData.dateofbirth | date:"MM-dd-YYYY"}}</td>
+              </tr>
+              <tr>
+                <th>Gender</th>
+                <th>SocialSecurityNumber</th>
+                <th >E-mail address</th>
+                <th>Contact Number</th>
+                <th >Address</th>
+              </tr>
+              <tr>
+                <td>{{simillarPatientData.gender}}</td>
+                <td>{{simillarPatientData.Ssn}}</td>
+                <td>{{simillarPatientData.emailaddress}}</td>
+                <td>{{simillarPatientData.ContactNumber}}</td>
+                <td>{{simillarPatientData.AddressLine1}},{{simillarPatientData.AddressLine2}} {{simillarPatientData.city}}, {{simillarPatientData.state}}
+                  <br>{{simillarPatientData.country}} - {{simillarPatientData.Zipcode}}
+                </td>
+               
+              </tr>
+              <tr>
+                <th>Created On</th>
+                <th>Created By</th>
+                <th>Last Updated On</th>
+                <th>Last Updated By</th>
+              </tr>
+              <tr>
+                <td>{{simillarPatientData.created_at}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+        <div class=" container offset-md-2 w-50">
+        <button  class="btn btn-primary ml-3 mr-5" (click)="savePatient()">Save as New Patient</button>
+        <button  class="btn btn-primary ml-5" routerLink="/patient/nav">Cancel</button>
+      </div>
+    </div>

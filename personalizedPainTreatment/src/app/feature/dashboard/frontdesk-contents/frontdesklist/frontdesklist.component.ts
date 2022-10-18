@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
 import { PatientService } from '../../services/patient.service';
-import { Patient, SearchModel } from '../module/Patient';
 
 @Component({
-  selector: 'app-patient-list',
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.css']
+  selector: 'app-frontdesklist',
+  templateUrl: './frontdesklist.component.html',
+  styleUrls: ['./frontdesklist.component.css']
 })
-export class PatientListComponent implements OnInit {
-
+export class FrontdesklistComponent implements OnInit {
   posts: Array<Patient>;
   model:SearchModel =  new SearchModel();
   
@@ -16,9 +15,7 @@ export class PatientListComponent implements OnInit {
   dropdown:boolean[]=[];
   page: number = 1;
   tatalRec: string;
-  constructor(
-    private service:PatientService
-  ) { }
+  constructor(private service:PatientService) { }
 
   ngOnInit(): void {
     this.getAllPatient();
@@ -38,4 +35,5 @@ export class PatientListComponent implements OnInit {
       }
     )
   }
+
 }

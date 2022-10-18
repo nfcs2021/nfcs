@@ -1,7 +1,17 @@
+
+.btn{
+    background-color: #712C6B;
+}
 .container{
     background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
    height: 780px;
 }
+table{
+    background-color: #712C6B;
+    color: #FFFFFF;
+    width: 1050px;
+    
+}   
 h3 {
     
     font-family: 'Arial';
@@ -32,14 +42,11 @@ hr{
     
     color: #712C6B;
 }
-.table{
-  border: 1px solid black;
-  border-radius: 10px;
-}
-/* .input-group{
+
+.input-group{
     outline:1px black;
     border-radius: 5px;
-} */
+}
 /* input[type="search"], button, date {
 
     outline: 1px solid #712C6B;
@@ -50,26 +57,19 @@ hr{
     outline: 1px solid #712C6B;
   
   } */
-  .buttons{
-    text-align: right;
-   
-  }
-  .btn{
-    background-color: #712C6B;
-    font-family: 'Arial';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 30px;
-/* identical to box height */
-letter-spacing: 0.05em;
-  }
- 
-  p{
-    color: #712C6B;
-  }
-  .row1{
-  border-radius: 10px;
-    border:1px solid #712C6B;
-    
-  }
+
+  /* enable absolute positioning */
+  .has-search .form-control {
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

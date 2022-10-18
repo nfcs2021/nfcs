@@ -20,7 +20,13 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+<<<<<<< HEAD
 import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
+=======
+import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/frontdesklist.component';
+import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
+
+>>>>>>> 22b28c4d29aef0eb0e4e91a3fd3bad79ad9cbbbb
 
 @NgModule({
   declarations: [
@@ -39,7 +45,13 @@ import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-r
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
+<<<<<<< HEAD
     FrontdeskRegistrationComponent
+=======
+    FrontdesklistComponent,
+    FrontdeskpipePipe,
+ 
+>>>>>>> 22b28c4d29aef0eb0e4e91a3fd3bad79ad9cbbbb
 
   ],
   imports: [
