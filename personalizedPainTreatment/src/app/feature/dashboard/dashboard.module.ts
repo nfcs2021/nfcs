@@ -20,7 +20,7 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
-import { PopupComponent } from './patinet-contents/popup/popup.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { PopupComponent } from './patinet-contents/popup/popup.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxPaginationModule 
+    NgxPaginationModule
   ],
 })
 export class DashboardModule {}

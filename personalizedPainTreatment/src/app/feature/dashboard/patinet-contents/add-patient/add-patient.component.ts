@@ -5,19 +5,18 @@ import { Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
 
-
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
+  styleUrls: ['./add-patient.component.css'],
 })
 export class AddPatientComponent implements OnInit {
   indianFormat = '12345 67890';
-  USFormat = '(000) 123-4567'
+  USFormat = '(000) 123-4567';
   ssnNumberFormate = '123-45-6789';
   ssnPlaceholder = this.ssnNumberFormate;
   ssnNumberEntered = '';
-  ssnFormateLe:any;
+  ssnFormateLe: any;
   paceHolder = this.USFormat;
   phoneNumberEntered = '';
   formatLen: any;
@@ -27,17 +26,17 @@ export class AddPatientComponent implements OnInit {
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
-  countryId:any;
+  countryId: any;
   today = new Date();
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private route:Router
-  ) { }
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
-
     // const phoneInputField = document.querySelector("#phone");
     // const phoneInput = (<any>window).intlTelInput(phoneInputField, {
     //   utilsScript:
@@ -48,57 +47,54 @@ export class AddPatientComponent implements OnInit {
   }
 
   getToday(): string {
-    return new Date().toISOString().split('T')[0]
- }
-  getCountries(){
-    this.service.getCountry().subscribe(
-      data =>{
-        console.log(data);
-        this.countryInfo=data
-
-      }
-    )
+    return new Date().toISOString().split('T')[0];
+  }
+  getCountries() {
+    this.service.getCountry().subscribe((data) => {
+      console.log(data);
+      this.countryInfo = data;
+    });
   }
 
   onPhoneChange(event: any) {
-
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.paceHolder.length; i++) {
-      if (this.paceHolder[i] === ' ' || this.paceHolder[i] === '(' || this.paceHolder[i] === ')' || this.paceHolder[i] === '-') {
+      if (
+        this.paceHolder[i] === ' ' ||
+        this.paceHolder[i] === '(' ||
+        this.paceHolder[i] === ')' ||
+        this.paceHolder[i] === '-'
+      ) {
         getIndexSpecialChar.push(i);
         getactualSpecialChar.push(this.paceHolder[i]);
       }
     }
-  console.log(getactualSpecialChar);
-  console.log(getIndexSpecialChar);
-
+    console.log(getactualSpecialChar);
+    console.log(getIndexSpecialChar);
 
     let len = event.target.value.length;
     let backspace = event.keyCode;
 
     if (backspace === 8) {
-      len = len-1;
+      len = len - 1;
     } else {
       len = event.target.value.length;
     }
-    let eventTargetValue = event.target.value
+    let eventTargetValue = event.target.value;
     for (let i = 0; i < this.paceHolder.length; i++) {
       if (len === getIndexSpecialChar[i]) {
         this.phoneNumberEntered = eventTargetValue + getactualSpecialChar[i];
         if (this.phoneNumberEntered.length === getIndexSpecialChar[i + 1]) {
-          this.phoneNumberEntered = this.phoneNumberEntered + getactualSpecialChar[i + 1];
+          this.phoneNumberEntered =
+            this.phoneNumberEntered + getactualSpecialChar[i + 1];
         }
       }
-
     }
     console.log(event.target.value);
-
   }
 
-
   onSsnChange(event: any) {
-
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.ssnPlaceholder.length; i++) {
@@ -107,66 +103,56 @@ export class AddPatientComponent implements OnInit {
         getactualSpecialChar.push(this.ssnPlaceholder[i]);
       }
     }
-  console.log(getactualSpecialChar);
-  console.log(getIndexSpecialChar);
-
+    console.log(getactualSpecialChar);
+    console.log(getIndexSpecialChar);
 
     let len = event.target.value.length;
     let backspace = event.keyCode;
 
     if (backspace === 8) {
-      len = len-1;
+      len = len - 1;
     } else {
       len = event.target.value.length;
     }
-    let eventTargetValue = event.target.value
+    let eventTargetValue = event.target.value;
     for (let i = 0; i < this.paceHolder.length; i++) {
       if (len === getIndexSpecialChar[i]) {
         this.ssnNumberEntered = eventTargetValue + getactualSpecialChar[i];
         if (this.ssnNumberEntered.length === getIndexSpecialChar[i + 1]) {
-          this.ssnNumberEntered = this.ssnNumberEntered + getactualSpecialChar[i + 1];
+          this.ssnNumberEntered =
+            this.ssnNumberEntered + getactualSpecialChar[i + 1];
         }
       }
-
     }
     console.log(event.target.value);
-
   }
 
   onChangeCountry(countryValue: any) {
-    let countryIso:any;
+    let countryIso: any;
     for (let data of this.countryInfo) {
-      if(countryValue.target.value===data.name)
-      {
-
-        countryIso=data.iso2
-        this.countryId=data.iso2
+      if (countryValue.target.value === data.name) {
+        countryIso = data.iso2;
+        this.countryId = data.iso2;
       }
     }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe(
-      data =>{
-        console.log(data);
-        this.stateInfo=data;
-
-      }
-    )
-
+    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
+      console.log(data);
+      this.stateInfo = data;
+    });
   }
-  onChangeState(stateValue:any) {
-    let stateId:any;
+  onChangeState(stateValue: any) {
+    let stateId: any;
     for (let data of this.stateInfo) {
-      if(stateValue.target.value===data.name)
-      {
-        stateId=data.iso2
+      if (stateValue.target.value === data.name) {
+        stateId = data.iso2;
       }
     }
-    this.service.getCitiesOfSelectedState(this.countryId,stateId).subscribe(
-      data =>{
+    this.service
+      .getCitiesOfSelectedState(this.countryId, stateId)
+      .subscribe((data) => {
         console.log(data);
-        this.cityInfo=data;
-
-      }
-    )
+        this.cityInfo = data;
+      });
   }
   telInputObject(obj: any) {
     console.log(obj);
@@ -181,7 +167,7 @@ export class AddPatientComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-       contactNumber: ['', [Validators.required]],
+      contactNumber: ['', [Validators.required]],
       email: ['', [Validators.required]],
       socialSecurityNumber: ['', [Validators.required]],
       address1: ['', [Validators.required]],
@@ -190,15 +176,13 @@ export class AddPatientComponent implements OnInit {
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
       zipcode: ['', [Validators.required]],
-      gender:['', [Validators.required]]
+      gender: ['', [Validators.required]],
     });
   }
 
-  onSubmit(event:any) {
+  onSubmit() {
     console.log(this.patientRegesterForm.value['socialSecurityNumber']);
-    
     this.submitted = true;
-    // stop here if form is invalid
     if (this.patientRegesterForm.invalid) {
       return;
     }
@@ -221,15 +205,13 @@ export class AddPatientComponent implements OnInit {
     // console.log(this.patientRegesterForm.value,event.target.phone.value);
 
     this.patientService.savePatientData(data).subscribe(
-      data => {
+      (data) => {
         console.log(data);
-        this.route.navigate(['/patient/data/'+data.id])
-      }, error => {
+        this.route.navigate(['/patient/data/' + data.id]);
+      },
+      (error) => {
         console.log(error);
-
       }
-    )
+    );
   }
-
-
 }
