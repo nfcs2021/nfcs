@@ -15,6 +15,7 @@ import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/fro
 import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +36,7 @@ const routes: Routes = [
           { path: 'nav', component: NewpatientNavigationComponent },
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
+        
         ],
       },
       {

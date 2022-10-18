@@ -16,6 +16,8 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   name: any;
   user: any;
   pcp: string | null;
+  text = 'welcome';
+  loggedIn = false;
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -25,6 +27,8 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.authService.getEvent().subscribe(() => {
       this.getloginData();
+      this.loggedIn = true;
+      console.log(this.loggedIn);
     });
   }
   ngOnChanges() {}

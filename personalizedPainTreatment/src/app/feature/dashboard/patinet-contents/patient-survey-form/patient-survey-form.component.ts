@@ -77,6 +77,7 @@ export class PatientSurveyFormComponent implements OnInit {
         });
         const index = this.selectedPart.indexOf(selectedPart);
         this.selectedPart.splice(index, 1);
+        console.log(selectedPart)
         break;
       }
     }
@@ -105,6 +106,44 @@ export class PatientSurveyFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.questions);
+<<<<<<< HEAD
+=======
+
+    const patientdata = {
+      patientdataid: this.routerId,
+      patientreport: 'test',
+      physicianreport: 'test',
+      PCP_Name: 'test',
+    };
+    this.service.savePatientRecord(patientdata).subscribe(
+      (data) => {
+        this.patientid = data.id;
+        this.createQuestiondata(this.patientid.id);
+        this.createSelectedParts(this.patientid.id);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    //
+
+    // var userId: number = 0;
+    // if (userName != undefined && userName.toLowerCase() == 'krishna') {
+    //   userId = 10001;
+    // } else if (userName != undefined && userName.toLowerCase() == 'ram') {
+    //   userId = 10002;
+    // } else {
+    //   userId = 10003;
+    // }
+  }
+
+  createQuestiondata(id: any) {
+    var reportId: any;
+<<<<<<< HEAD
+=======
+    var recordId:any;
+>>>>>>> b77148dedffc834b7b43d88e9eb7d74250de943a
+>>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
     for (let data1 of this.questions) {
      const data={
       patientrecordid:1,

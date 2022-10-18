@@ -20,7 +20,7 @@ export class PatientdataComponent implements OnInit {
 
   ngOnInit(): void {
 this.routeId();
-   
+
   }
 
   routeId() {
@@ -32,7 +32,6 @@ this.routeId();
     });
   }
   retrivalpatientList(id:any) {
-
     this.patientservice.getById(id)
       .subscribe((data) => {
         this.patientList = data;

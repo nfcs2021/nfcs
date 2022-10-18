@@ -17,7 +17,7 @@ export class ViewreportComponent implements OnInit {
   }
   routeId() {
     this.route.params.subscribe((params) => {
-      this.routerId = +params['id']; // (+) converts string 'id' to a number
+      this.routerId = +params['id']; 
       console.log(this.routerId);
       this.patientRecordData(this.routerId);
     });

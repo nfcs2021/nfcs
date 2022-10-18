@@ -21,6 +21,7 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
 
+
 @NgModule({
   declarations: [
     DashboardHomeComponent,
@@ -37,7 +38,8 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     PatientReportComponent,
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
-    AdvanceSearchPipe
+    AdvanceSearchPipe,
+ 
 
   ],
   imports: [
@@ -47,7 +49,7 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxPaginationModule 
+    NgxPaginationModule
   ],
 })
 export class DashboardModule {}

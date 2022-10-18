@@ -11,6 +11,7 @@ export class PatientListComponent implements OnInit {
 
   posts: Array<Patient>;
   model:SearchModel =  new SearchModel();
+  
   patientsData:any;
   dropdown:boolean[]=[];
   page: number = 1;
@@ -20,7 +21,6 @@ export class PatientListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.getAllPatient();
   }
   troggle(i:any){
@@ -34,7 +34,7 @@ export class PatientListComponent implements OnInit {
         this.patientsData=res;
       },err =>{
         console.log(err);
-        
+
       }
     )
   }
