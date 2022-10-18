@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'jquery';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
 
@@ -11,6 +12,7 @@ import { PatientService } from '../../services/patient.service';
   styleUrls: ['./add-patient.component.css'],
 })
 export class AddPatientComponent implements OnInit {
+  popup=false;
   indianFormat = '12345 67890';
   USFormat = '(000) 123-4567';
   ssnNumberFormate = '123-45-6789';
@@ -28,13 +30,17 @@ export class AddPatientComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
-  constructor(
-    private http: HttpClient,
+  patientData: any;
+  simillarPatientData: any;
+  patientDataById: any;
+  patientId: string | null;
+  constructor(private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private route: Router
-  ) {}
+    private route:Router,
+    private router:ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     // const phoneInputField = document.querySelector("#phone");
@@ -44,6 +50,24 @@ export class AddPatientComponent implements OnInit {
     // });
     this.formInitilization();
     this.getCountries();
+    this.patientId = this.router.snapshot.paramMap.get('id')
+    this.getByPatientId(this.router.snapshot.paramMap.get('id'));
+   
+  }
+
+  getByPatientId(id:any){
+     this.patientService.getPatientDataById(id).subscribe(
+      data =>{
+        console.log(data);
+        this.patientDataById=data;
+        this.formUpdation();
+        this.onChangeCountryUpdateData(data.country);
+       
+      },err =>{
+        console.log(err);
+        
+      }
+     );
   }
 
   getToday(): string {
@@ -140,8 +164,47 @@ export class AddPatientComponent implements OnInit {
       this.stateInfo = data;
     });
   }
-  onChangeState(stateValue: any) {
-    let stateId: any;
+  onChangeCountryUpdateData(countryValue: any) {
+    let countryIso:any;
+    for (let data of this.countryInfo) {
+      if(countryValue===data.name)
+      {
+
+        countryIso=data.iso2
+        this.countryId=data.iso2
+      }
+    }
+    this.service.getStateOfSelectedCountry(countryIso).subscribe(
+      data =>{
+        console.log(data);
+        this.stateInfo=data;
+        this.onChangeStateUpdateData(this.patientDataById.state);
+      }
+    )
+    
+  }
+
+  onChangeStateUpdateData(stateValue:any) {
+    console.log(this.stateInfo);
+    let stateId:any;
+    for (let data of this.stateInfo) {
+      if(stateValue===data.name)
+      {
+        stateId=data.iso2
+      }
+    }
+    this.service.getCitiesOfSelectedState(this.countryId,stateId).subscribe(
+      data =>{
+        console.log(data);
+        this.cityInfo=data;
+       
+      }
+    )
+    
+  }
+
+  onChangeState(stateValue:any) {
+    let stateId:any;
     for (let data of this.stateInfo) {
       if (stateValue.target.value === data.name) {
         stateId = data.iso2;
@@ -179,13 +242,62 @@ export class AddPatientComponent implements OnInit {
       gender: ['', [Validators.required]],
     });
   }
-
-  onSubmit() {
-    console.log(this.patientRegesterForm.value['socialSecurityNumber']);
+  formUpdation(){
+    this.patientRegesterForm = this.formBuilder.group({
+      firstName: [this.patientDataById.FirstName, [Validators.required, Validators.minLength(2)]],
+      lastName: [this.patientDataById.LastName, [Validators.required]],
+      dob: [this.patientDataById.dateofbirth, [Validators.required]],
+       contactNumber: [this.patientDataById.ContactNumber, [Validators.required]],
+      email: [this.patientDataById.emailaddress, [Validators.required]],
+      socialSecurityNumber: [this.patientDataById.Ssn, [Validators.required]],
+      address1: [this.patientDataById.AddressLine1, [Validators.required]],
+      address2: [this.patientDataById.AddressLine2, []],
+      country: [this.patientDataById.country, [Validators.required]],
+      state: [this.patientDataById.state, [Validators.required]],
+      city: [this.patientDataById.city, [Validators.required]],
+      zipcode: [this.patientDataById.Zipcode, [Validators.required]],
+      gender:[this.patientDataById.gender, [Validators.required]]
+    });
+  }
+  getAllPatientsData(){
+    this.patientService.getAllPatientsData().subscribe(
+      data =>{
+        console.log(data);
+        this.patientData=data;
+        for (let patient of this.patientData) {
+          if(patient.FirstName ===this.patientRegesterForm.value['firstName'] && patient.LastName===this.patientRegesterForm.value['lastName'] && patient.dateofbirth===this.patientRegesterForm.value['dob'])
+           {
+            this.popup=true;
+            this.simillarPatientData=patient;
+            break;
+           }
+        }
+        if(!this.simillarPatientData){
+         this.savePatient(); 
+        }
+      },err =>{
+        console.log(err); 
+      });
+  }
+  onSubmit(event:any) {
     this.submitted = true;
-    if (this.patientRegesterForm.invalid) {
-      return;
+    // // stop here if form is invalid
+     if (this.patientRegesterForm.invalid) {
+       return;
     }
+   this.getAllPatientsData();
+  }
+
+   savePatient(){
+    console.log(this.patientRegesterForm.value);
+    
+    // console.log(this.patientRegesterForm.value['socialSecurityNumber']);
+    
+    // this.submitted = true;
+    // // stop here if form is invalid
+    // if (this.patientRegesterForm.invalid) {
+    //   return;
+    // }
     const data={
       "FirstName":this.patientRegesterForm.value['firstName'],
         "LastName": this.patientRegesterForm.value['lastName'],
@@ -202,8 +314,6 @@ export class AddPatientComponent implements OnInit {
         "Zipcode": this.patientRegesterForm.value['zipcode'],
         "InsuranceNumber": 234567
     }
-    // console.log(this.patientRegesterForm.value,event.target.phone.value);
-
     this.patientService.savePatientData(data).subscribe(
       (data) => {
         console.log(data);
