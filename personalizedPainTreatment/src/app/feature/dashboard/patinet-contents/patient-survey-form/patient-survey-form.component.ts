@@ -8,7 +8,7 @@ import { PatientService } from '../../services/patient.service';
 @Component({
   selector: 'app-patient-survey-form',
   templateUrl: './patient-survey-form.component.html',
-  styleUrls: ['./patient-survey-form.component.css']
+  styleUrls: ['./patient-survey-form.component.css'],
 })
 export class PatientSurveyFormComponent implements OnInit {
   patientid: any;
@@ -21,50 +21,39 @@ export class PatientSurveyFormComponent implements OnInit {
   getDataById: any;
   patientUserData: any;
   age: number;
-  routerId:any;
+  routerId: any;
   private unsubscribeQuetionaryData: Subscription;
   private unsubscribeSelectedParts: Subscription;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private questionarydata: QuestionaryService,
-    private router:Router,
-    private route:ActivatedRoute,
-    private service:PatientService
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: PatientService
+  ) {}
 
   ngOnInit(): void {
-
     this.questions = this.questionarydata.questions;
     this.disabledData(this.disabled);
     this.routeId();
   }
   routeId() {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.routerId = +params['id']; // (+) converts string 'id' to a number
     });
   }
 
   disabledData(disabled: boolean) {
     if (!disabled) {
-
       $(document).ready(function () {
-
-        $("path").click(function () {
-
-          $(this).toggleClass("on");
-
+        $('path').click(function () {
+          $(this).toggleClass('on');
         });
-
-
-
       });
       for (let questionsDataObj of this.questions) {
-
-        questionsDataObj.p_Options = "";
-        questionsDataObj.text1 = "";
-        questionsDataObj.text2 = "";
-
-
+        questionsDataObj.p_Options = '';
+        questionsDataObj.text1 = '';
+        questionsDataObj.text2 = '';
       }
     }
   }
@@ -78,26 +67,22 @@ export class PatientSurveyFormComponent implements OnInit {
       if (selectedPart == selectedPartObj) {
         isexist = true;
         $(document).ready(function () {
-
-          $("path").click(function () {
-            $(this).addClass("on");
+          $('path').click(function () {
+            $(this).addClass('on');
 
             $(this).click(function () {
-              $(this).removeClass("on")
-
-            })
+              $(this).removeClass('on');
+            });
           });
-
         });
-        const index = this.selectedPart.indexOf(selectedPart)
+        const index = this.selectedPart.indexOf(selectedPart);
         this.selectedPart.splice(index, 1);
         break;
       }
     }
 
     if (!isexist) {
-      this.selectedPart.push(selectedPart)
-
+      this.selectedPart.push(selectedPart);
     }
   }
 
@@ -106,44 +91,39 @@ export class PatientSurveyFormComponent implements OnInit {
       console.log('no pain');
       this.selectedPart.splice(0);
       $(document).ready(function () {
-
-        $("path").removeClass("on")
-        $("path").hide();
+        $('path').removeClass('on');
+        $('path').hide();
       });
       this.disabledData(this.checkbox);
-
     } else {
-      console.log("pain")
+      console.log('pain');
       $(document).ready(function () {
-
-        $("path").show();
+        $('path').show();
       });
     }
-
   }
 
-  onSubmit(){
-
-console.log(this.questions);
-
+  onSubmit() {
+    console.log(this.questions);
 
     const patientdata = {
       patientdataid: this.routerId,
-      patientreport: "test",
-			physicianreport: "test",
-			PCP_Name: "test"
-    }
-    this.service.savePatientRecord(patientdata).subscribe(data => {
-      this.patientid = data.id
-      this.createQuestiondata(this.patientid.id);
-      this.createSelectedParts(this.patientid.id);
+      patientreport: 'test',
+      physicianreport: 'test',
+      PCP_Name: 'test',
+    };
+    this.service.savePatientRecord(patientdata).subscribe(
+      (data) => {
+        this.patientid = data.id;
+        this.createQuestiondata(this.patientid.id);
+        this.createSelectedParts(this.patientid.id);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    //
 
-    },
-    error => {
-      console.log(error)
-    });
-      // 
-      
     // var userId: number = 0;
     // if (userName != undefined && userName.toLowerCase() == 'krishna') {
     //   userId = 10001;
@@ -152,49 +132,42 @@ console.log(this.questions);
     // } else {
     //   userId = 10003;
     // }
-
   }
 
   createQuestiondata(id: any) {
+    var reportId: any;
     var recordId:any;
     for (let data1 of this.questions) {
       const data = {
-        patientrecordid:this.patientid,
+        patientrecordid: this.patientid,
         questions: data1.questions,
         patientInputs: data1.p_Options,
         text1: data1.text1,
-        text2: data1.text2 
-      }
-
-      this.service.savePatientSurveyForm(data)
-        .subscribe(response => {
-          recordId=response.patientrecordid;
-        }, error => {
-          console.log(error)
-        });
-    
-      }
-      
+        text2: data1.text2,
+      };
+      this.service.savePatientSurveyForm(data).subscribe(
+        (response) => {
+          reportId = response.patientrecordid;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
-
   createSelectedParts(id: number) {
     for (let data of this.selectedPart) {
       const data1 = {
-        patientrecordid:this.patientid,
-        partname: data
-      }
-    this.service.saveSelectedParts(data1)
-              .subscribe(data => {
-
-              },
-                error => {
-                  console.log(error)
-                })
-
-          }
-          this.router.navigate(['/patient/view/'+this.patientid])
+        patientrecordid: this.patientid,
+        partname: data,
+      };
+      this.service.saveSelectedParts(data1).subscribe(
+        (data) => {},
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    this.router.navigate(['/patient/view/' + this.patientid]);
   }
-
-
-       
 }

@@ -1,16 +1,16 @@
 
 
 <div class="container col-md-11 ">
-    
-    <div class="row  ">
-      <div class="col para1 mt-5">
-       New Patient data has been Added
-      </div>
-      
-      
-    </div><hr>
-   
-    <!-- <div class="row mt-2 mx-5   row1" >
+
+  <div class="row ">
+    <div class="col para1 mt-5">
+      New Patient data has been Added
+    </div>
+
+
+  </div><hr>
+
+  <!-- <div class="row mt-2 mx-5   row1" >
         <div class="col-md-2 ml-5  mt-3">
             <p>Patient Id</p><p class="mt-0">12345</p>
         </div>
@@ -21,20 +21,20 @@
             <a   class="   btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
           <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
         </div> -->
-        <!-- <div class="col-md-2 ">
-          
+  <!-- <div class="col-md-2 ">
+
                 <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
-                
-           
+
+
         </div>
         <div class="   col-md-3 mt-4 ml-5">
             <a  class="   btn-lg active border" role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
             <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
-            
+
           </div>
           <div class="   col-md-4 ml-5">
             <p>PCP</p>
-            
+
           </div>
           <div class="col-md-4 ">
             <p>Apolo Hospital,Bangalore</p>
@@ -43,54 +43,43 @@
             <p>  Patient Id:1234</p>
         </div>
     </div> -->
-
-    <table class="table table-borderless border">
-        <thead>
-          <tr>
-          
-            <th >First Name</th>
-            <th >LastName</th>
-            <th >Dob</th>
-            <th >SocialSecurityNumber</th> 
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-           
-          
-            <td>{{patientList.FirstName}}</td>
-            <td>{{patientList.LastName}}</td>
-            <td>{{patientList.dateofbirth}}</td>
-            <td>{{patientList.Ssn}}</td> 
-            <!-- <td>{{patient.email}}</td>
-            <td>{{patient.phone}}</td>
-            <td>{{patient.Address}}</td> -->
-          </tr>
-          <tr>
-            <th>Email </th>
-            <th >contactNumber</th>
-            <th >Address</th>
-            <th >Created on</th>
-           
-          </tr>
-          <tr>
-            <td>{{patientList.emailaddress}}</td>
-            <td>{{patientList.ContactNumber}}</td>
-            <td>{{patientList.AddressLine1}}</td>
-            <td>{{patientList.created_at | date}}</td>
-            
-
-           
-
-          </tr>
-          
-        </tbody>
-      </table>
-    <div class="buttons mt-5">
-    <a  class="btn  col-md-4 active p-3 mt-5 mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
-    <a  class="btn  col-md-4 active  p-3 mt-3 mx-5 " role="button" aria-pressed="true"  >View in Patient Profile</a><br>
-    <a  class="btn  col-md-4 active  p-3 mt-3 mx-5" role="button" aria-pressed="true" >Cancel</a>
+  <table class="table table-borderless  row1 ">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>LastName</th>
+        <th>Dob</th>
+        <th>SocialSecurityNumber</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{patientList.FirstName}}</td>
+        <td>{{patientList.LastName}}</td>
+        <td>{{patientList.dateofbirth}}</td>
+        <td>{{patientList.Ssn}}</td>
+      </tr>
+      <tr>
+        <th>Email </th>
+        <th>contactNumber</th>
+        <th>Address</th>
+        <th>Created on</th>
+      </tr>
+      <tr>
+        <td>{{patientList.emailaddress}}</td>
+        <td>{{patientList.ContactNumber}}</td>
+        <td>{{patientList.AddressLine1}},{{patientList.country}},{{patientList.state}}</td>
+        <td>{{patientList.created_at | date}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="buttons mt-5">
+    <a class="btn col-md-4 active p-3 mt-5 mx-5" role="button"
+      aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}">Add
+      New PPT Survey Form</a><br>
+    <a class="btn col-md-4 active p-3 mt-3 mx-5 " role="button"
+      aria-pressed="true">View in Patient Profile</a><br>
+    <a class="btn col-md-4 active p-3 mt-3 mx-5" role="button"
+      aria-pressed="true">Cancel</a>
     <br>
   </div>
-
-

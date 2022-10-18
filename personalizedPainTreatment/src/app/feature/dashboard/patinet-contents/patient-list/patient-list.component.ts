@@ -11,6 +11,7 @@ export class PatientListComponent implements OnInit {
 
   posts: Array<Patient>;
   model:SearchModel =  new SearchModel();
+  
   patientsData:any;
   dropdown:boolean[]=[];
   page: number = 1;

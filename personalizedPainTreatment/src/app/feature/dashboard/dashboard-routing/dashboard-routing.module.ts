@@ -11,27 +11,39 @@ import { PatientListComponent } from '../patinet-contents/patient-list/patient-l
 import { ViewreportComponent } from '../patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from '../patinet-contents/patientdata/patientdata.component';
 import { PatientReportComponent } from '../patinet-contents/patient-report/patient-report.component';
+import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/frontdesk-main.component';
+import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
+import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
+import { PopupComponent } from '../patinet-contents/popup/popup.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: '', component: DashboardHomeComponent },
+      { path: '', component: DashboardHomeComponent},
       {
         path: 'patient',
         component: PatientMainComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'new', component: AddPatientComponent },
+          { path: 'new', component: AddPatientComponent ,canActivate:[AuthRouteGaurdService]},
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
           { path: 'view/:id', component: ViewreportComponent },
-          {path:'nav',component:NewpatientNavigationComponent},
-          {path:'data/:id',component:PatientdataComponent},
-          {path:'patient-report/:id',component:PatientReportComponent}
-
+          { path: 'nav', component: NewpatientNavigationComponent },
+          { path: 'data/:id', component: PatientdataComponent },
+          { path: 'patient-report/:id', component: PatientReportComponent },
+          {path:'popup',component:PopupComponent}
+        ],
+      },
+      {
+        path: 'frontdesk',
+        component: FrontdeskMainComponent,
+        children: [
+          { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
+          { path: 'frontdetails', component: FrontdeskDetailsComponent},
         ],
       },
     ],

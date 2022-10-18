@@ -1,5 +1,29 @@
 <div class=" container col-md-11">
 
+    <div class="row">
+      <div class="col para1 mt-5">
+        New PPT Survey Form has been added to visit log
+      </div>
+
+
+    </div><hr>
+
+    <div class="row mt-2 mx-5   row1" >
+        <div class="col-md-2 ml-5  mt-3">
+            <p>Record Id</p><p class="mt-0">{{patientsRecordData.id}}</p>
+        </div>
+        <div class="col-md-2 mt-3">
+            <p>  Visited On</p><p>{{patientsRecordData.visit_time | date}}</p>
+        </div>
+        <div class="col-md-3 mt-4 ml-5 ">
+            <a routerLink="/patient/patient-report/{{patientsRecordData.patientdataid}}"  class="btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
+          <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
+        </div>
+        <div class="col-md-3 mt-4 ml-3 ">
+          <a class="btn-lg active border " role="button" aria-pressed="false" style="color: #712C6B; opacity: 50%;">Physian Report</a>
+        <img src="\assets\images\bxs_download.png"role="button" style="width:30px ;opacity: 50%;" class="ml-2 border-0">
+      </div>
+        <!-- <div class="col-md-2 ">
   <div class="row">
     <div class="col para1 mt-5">
       New PPT Survey Form has been added to visit log
@@ -23,7 +47,7 @@
       <img src="\assets\images\bxs_download.png" role="button"
         style="width:30px" class="ml-2 border-0">
     </div>
-    <!-- <div class="col-md-3 mt-4 ml-5 ">
+     <div class="col-md-3 mt-4 ml-5 ">
     <a  routerLink="/patient/patient-report/{{patientsRecordData.patientdataid}}" class="btn-lg col-md-3 mt-4 ml-5 disabled" role="button disabled"   
     style="color: #712C6B;" aria-disabled="false">Primary link</a>
     <img src="\assets\images\bxs_download.png" role="button"
@@ -35,11 +59,7 @@
 
 
         </div> -->
-     <div class="   col-md-3 mt-4 ml-5">
-            <a  class="   btn-lg active border" role="button" aria-pressed="false" style="color: #712C6B; opacity: 50%;">Physian Report</a>
-            <img src="\assets\images\bxs_download.png"role="button" style="width:30px; opacity: 25%;" class="ml-2 border-0">
-
-          </div> 
+    
     <div class=" col-md-4 ml-5">
       <p>PCP:{{patientsRecordData.PCP_Name}}</p>
 

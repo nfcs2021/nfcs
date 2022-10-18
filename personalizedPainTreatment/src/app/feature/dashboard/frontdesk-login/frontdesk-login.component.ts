@@ -35,22 +35,6 @@ export class FrontdeskLoginComponent implements OnInit {
       password: ['', Validators.required],
       pcp: [''],
     });
-    this.authservice.authenticationEvent.subscribe(
-      (data) => {
-        this.errordata = data;
-        console.log(this.errordata);
-        if (this.errordata != this.has_error) {
-          this.login_user_msg = 'Login in, Please wait... !!!';
-          setTimeout(() => {
-            this.route.navigateByUrl('/patient/nav');
-          }, 1000);
-        } else {
-          this.has_error = true;
-          this.login_user_msg = 'Invalid Username and Password !!!';
-        }
-      },
-      (error) => {}
-    );
   }
   get f() {
     return this.loginFormGroup.controls;
@@ -62,11 +46,21 @@ export class FrontdeskLoginComponent implements OnInit {
     }
     const data = {
       email: this.loginFormGroup.value['email'],
-      password: this.loginFormGroup.value['password'],
-      pcp: this.loginFormGroup.value['pcp'],
+      password: this.loginFormGroup.value['password']
     };
-    this.authservice.authontication(data);
-    console.log(data);
-    localStorage.setItem('pcpData', data.pcp);
+    this.authservice.loginUser(data).subscribe(
+      data =>{
+        console.log(data);
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('pcpData',this.loginFormGroup.value['pcp'] );
+        this.login_user_msg = 'Login in, Please wait... !!!';
+        this.route.navigateByUrl('/patient/nav');
+      },err =>{
+        this.has_error = true;
+        this.login_user_msg = 'Invalid Username and Password !!!';
+      }
+    );
+    
+    
   }
 }

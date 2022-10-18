@@ -15,8 +15,12 @@ import { PatientListComponent } from './patinet-contents/patient-list/patient-li
 import { ViewreportComponent } from './patinet-contents/viewreport/viewreport.component';
 import { PatientdataComponent } from './patinet-contents/patientdata/patientdata.component';
 import { PatientReportComponent } from './patinet-contents/patient-report/patient-report.component';
+import { FrontdeskMainComponent } from './frontdesk-contents/frontdesk-main/frontdesk-main.component';
+import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-details/frontdesk-details.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+import { PopupComponent } from './patinet-contents/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     PatientdataComponent,
     ViewreportComponent,
     PatientReportComponent,
-    AdvanceSearchPipe
+    FrontdeskMainComponent,
+    FrontdeskDetailsComponent,
+    AdvanceSearchPipe,
+    PopupComponent
 
   ],
   imports: [
