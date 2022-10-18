@@ -13,7 +13,7 @@ export class AdvanceSearchPipe implements PipeTransform {
    console.table(posts);
 
    // search is blank, return post
-   if(!search || !search.FirstName && !search.LastName && !search.dateofbirth && !search.Ssn) return posts;
+   if(!search || !search.FirstName && !search.LastName && !search.dateofbirth && !search.Ssn) return null;
 
  console.log(search);
    return posts.filter((post) => {

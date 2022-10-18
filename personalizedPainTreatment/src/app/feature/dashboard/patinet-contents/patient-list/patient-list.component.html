@@ -103,7 +103,7 @@
                   
                     <td>{{patientList.FirstName }}</td>
                     <td>{{patientList.LastName }}</td>
-                    <td>{{patientList.dateofbirth }}</td>
+                    <td>{{patientList.dateofbirth | date:"MM-dd-YYYY"}}</td>
                     <td>{{patientList.Ssn }}</td> 
                      <!-- <td>{{patient.email}}</td>
                     <td>{{patient.phone}}</td>
@@ -120,18 +120,24 @@
                     <td>{{patientList.emailaddress | uppercase}}</td>
                     <td>{{patientList.ContactNumber}}</td>
                     <td class="col-3">{{patientList.AddressLine1 | uppercase}},<br>{{patientList.city}}, {{patientList.state}} <br> {{patientList.country}} - {{patientList.Zipcode}}</td>
-                    <td>{{patientList.created_at | date}}</td>
+                    <td>{{patientList.created_at }}</td>
                   </tr>
                   <tr>
                   </tr>
                 </tbody>
               </table>
             </a>
-        <div *ngIf="dropdown[patientList.id]">
-            <div class="buttons  ">
+        <div class="row mb-5" *ngIf="dropdown[patientList.id]">
+          <div class="ml-3 col-2">
+          <button  class="btn btn-primary" routerLink="/patient/new/{{patientList.id}}" >Edit Patient Details</button>
+          </div>
+          <div class="col-6">
+          <button  class="btn btn-primary ml-md-auto  d-md-flex" routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button>
+        </div>
+            <!-- <div class="buttons  ">
                 <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
                 <br>
-              </div>
+              </div> -->
         </div>
     </div>
     <pagination-controls id="listing_pagination" [maxSize]="5 " [directionLinks]="true" (pageChange)="page= $event">

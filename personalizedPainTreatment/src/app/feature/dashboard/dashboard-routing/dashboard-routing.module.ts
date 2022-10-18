@@ -27,6 +27,7 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
           { path: 'new', component: AddPatientComponent ,canActivate:[AuthRouteGaurdService]},
+          { path: 'new/:id', component: AddPatientComponent },
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
