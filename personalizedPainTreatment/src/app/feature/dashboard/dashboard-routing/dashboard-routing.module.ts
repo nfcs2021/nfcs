@@ -15,7 +15,10 @@ import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/fro
 import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
+<<<<<<< HEAD
 import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
+=======
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
 
 const routes: Routes = [
   {
@@ -40,6 +43,11 @@ const routes: Routes = [
           { path: 'nav', component: NewpatientNavigationComponent },
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
+<<<<<<< HEAD
+=======
+          {path: 'new/:id',component:AddPatientComponent}
+
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
         ],
       },
       {
@@ -52,8 +60,11 @@ const routes: Routes = [
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
           },
+<<<<<<< HEAD
           { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
+=======
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
         ],
       },
     ],

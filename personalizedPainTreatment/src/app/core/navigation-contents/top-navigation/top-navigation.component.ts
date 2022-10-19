@@ -1,4 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Input } from '@angular/core';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
@@ -14,10 +14,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TopNavigationComponent implements OnInit, OnChanges {
   // isLoggidIn: boolean = this.authService.loggedIn();
   // name = localStorage.getItem('registrationData');
+  @Input('data1') data1:any;
+  @Input('pcp_Name') pcp_Name:any;
   name: any;
   user: any;
+<<<<<<< HEAD
   pcp: string | null;
   text = 'Welcome';
+=======
+  pcp: any ;
+  text = 'welcome';
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
   loggedIn = false;
   presentLogin: any;
   data: any;
@@ -32,6 +39,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+<<<<<<< HEAD
     const now = new Date();
     console.log(now);
     this.presentLogin = now;
@@ -48,9 +56,17 @@ export class TopNavigationComponent implements OnInit, OnChanges {
     console.log('retrievedObject: ', JSON.parse(retrievedObject));
     this.frontdeskData = JSON.parse(retrievedObject);
     console.log(this.data.First_Name);
+=======
   }
+
+  ngOnChanges() {
+   this.name= this.data1;
+   this.pcp=this.pcp_Name;
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
+  }
+
+
   logOut() {
-    // localStorage.removeItem('token')
     this.authService.logout();
   }
 }

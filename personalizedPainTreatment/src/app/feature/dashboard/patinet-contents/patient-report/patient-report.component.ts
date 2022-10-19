@@ -66,7 +66,7 @@ export class PatientReportComponent implements OnInit {
   enableColorAfterLoad(): void {
     const pathElements = this.document.getElementsByTagName('path');
     for (let j = 0; j < this.selectedPartData.length; j++) {
-      const selectedpart = this.selectedPartData[j].partname;
+      const selectedpart = this.selectedPartData[j].Body_parts_id;
       for (let i = 0; i < pathElements.length; ++i) {
         if (pathElements[i].id == selectedpart) {
           pathElements[i].style.fill = '#8585EC';
@@ -92,7 +92,7 @@ export class PatientReportComponent implements OnInit {
           data => {
             this.patientRecordsData = data;
             console.log(this.patientRecordsData);
-            this.service.getPatientDataById(data.patientdataid).subscribe(data => {
+            this.service.getPatientDataById(data.Patient_id).subscribe(data => {
               this.patientData = data;
                   console.log(this.patientData);
             for (let patient of this.patientRecordsData) {

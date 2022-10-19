@@ -12,11 +12,15 @@ export class DataService {
     localStorage.setItem('loginEmail', data.email);
     return this.http.post<any>(environment.apiUrl+'login', data);
   }
-  getUserData(): Observable<any> {
+  getUserData(id:any): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
+<<<<<<< HEAD
     return this.http.get<any>(environment.apiUrl+'me', {
+=======
+    return this.http.get<any>(environment.apiUrl+'registerData/'+id, {
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
       headers: httpheaders,
     });
   }

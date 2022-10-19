@@ -106,24 +106,32 @@ export class PatientSurveyFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.questions);
-
     const patientdata = {
-      patientdataid: this.routerId,
-      patientreport: 'test',
-      physicianreport: 'test',
-      PCP_Name: 'test',
+      Patient_id: this.routerId,
+      Patient_report: 'test',
+      Physician_report: 'test',
+      PCP_Name: localStorage.getItem('PCP_Name'),
+      Created_by:localStorage.getItem('name')
     };
     this.service.savePatientRecord(patientdata).subscribe(
       (data) => {
+        console.log(data);
+        
         this.patientid = data.id;
+<<<<<<< HEAD
         this.createQuestiondata(this.patientid.id);
 
+=======
+
+        this.createQuestiondata(this.patientid);
+        this.createSelectedParts(this.patientid);
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
       },
       (error) => {
         console.log(error);
       }
     );
-    //
+    
 
     // var userId: number = 0;
     // if (userName != undefined && userName.toLowerCase() == 'krishna') {
@@ -137,82 +145,54 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
+<<<<<<< HEAD
     var recordId:any;
+=======
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
     for (let data1 of this.questions) {
      const data={
-      patientrecordid:1,
-      patientId:this.routerId,
-      subQuestionId:data1.subQuestionId,
-      Answers_text:data1.p_Options
-
+      Record_id:id,
+      Patient_id:this.routerId,
+      Sub_question_id:data1.subQuestionId,
+      Answers:data1.p_Options,
+      Created_by:'test',
+      Updated_By:'test'
      }
      console.log(data);
+     
+     this.service.savePatientSurveyForm(data).subscribe(
+              (response) => {
+                reportId = response.Record_id;
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          }
      }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
 
-//     const patientdata = {
-//       patientdataid: this.routerId,
-//       patientreport: 'test',
-//       physicianreport: 'test',
-//       PCP_Name: 'test',
-//     };
-//     this.service.savePatientRecord(patientdata).subscribe(
-//       (data) => {
-//         this.patientid = data.id;
-//         this.createQuestiondata(this.patientid.id);
-//         this.createSelectedParts(this.patientid.id);
-//       },
-//       (error) => {
-//         console.log(error);
-//       }
-//     );
-//     //
-
-//     // var userId: number = 0;
-//     // if (userName != undefined && userName.toLowerCase() == 'krishna') {
-//     //   userId = 10001;
-//     // } else if (userName != undefined && userName.toLowerCase() == 'ram') {
-//     //   userId = 10002;
-//     // } else {
-//     //   userId = 10003;
-//     // }
-//   }
-
-//   createQuestiondata(id: any) {
-//     var reportId: any;
-//     var recordId:any;
-//     for (let data1 of this.questions) {
-//       const data = {
-//         patientrecordid: this.patientid,
-//         questions: data1.questions,
-//         patientInputs: data1.p_Options,
-//         text1: data1.text1,
-//         text2: data1.text2,
-//       };
-//       this.service.savePatientSurveyForm(data).subscribe(
-//         (response) => {
-//           reportId = response.patientrecordid;
-//         },
-//         (error) => {
-//           console.log(error);
-//         }
-//       );
-//     }
-//   }
-//   createSelectedParts(id: number) {
-//     for (let data of this.selectedPart) {
-//       const data1 = {
-//         patientrecordid: this.patientid,
-//         partname: data,
-//       };
-//       this.service.saveSelectedParts(data1).subscribe(
-//         (data) => {},
-//         (error) => {
-//           console.log(error);
-//         }
-//       );
-//     }
-//     this.router.navigate(['/patient/view/' + this.patientid]);
+  createSelectedParts(id: number) {
+    for (let data of this.selectedPart) {
+      const data1 = {
+        Record_id: id,
+        Body_parts_id: data,
+        Patient_id:this.routerId,
+      };
+      this.service.saveSelectedParts(data1).subscribe(
+        (data) => {
+          console.log(data);
+          
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    this.router.navigate(['/patient/view/' + this.patientid]);
   }
  }

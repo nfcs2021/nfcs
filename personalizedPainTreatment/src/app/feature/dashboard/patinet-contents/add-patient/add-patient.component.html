@@ -139,7 +139,8 @@
           <div *ngIf="submitted && f['zipcode'].errors" class="invalid-feedback">
             <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode is required</div>
           </div>
-          <button class="mb-3 mt-3 p-2 btn col-sm-12  " type="submit">Submit </button>
+          <button class="mb-3 mt-3 p-2 btn col-sm-12  " type="submit" *ngIf="!updateData">Submit </button>
+          <a class="mb-3 mt-3 p-2 btn col-sm-12  " style="background-color: #712C6B; color:white ;" *ngIf="updateData" (click)="update()">Update </a>
           <a class="mb-3 mt-3 p-2 btn col-sm-12" routerLink="/patient/nav"
             style="background-color: #712C6B; color:white ;">Cancle </a>
         </div>
