@@ -9,10 +9,15 @@ import { DataService } from '../../services/data.service';
 export class NewpatientNavigationComponent implements OnInit {
   userdata: any;
   pcp: any;
-  constructor(private dataService: DataService) {}
+  
+  constructor(private dataService: DataService) {
+    
+  }
+  
 
   ngOnInit(): void {
     this.pcp = localStorage.getItem('pcpData');
+    
   }
 
 //   applyStyle(){

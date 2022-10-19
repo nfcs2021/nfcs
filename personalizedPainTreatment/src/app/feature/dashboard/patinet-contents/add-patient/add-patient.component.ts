@@ -166,22 +166,6 @@ export class AddPatientComponent implements OnInit {
   }
 
   onChangeCountry(countryValue: any) {
-<<<<<<< HEAD
-=======
-    let countryIso: any;
-    for (let data of this.countryInfo) {
-      if (countryValue.target.value === data.name) {
-        countryIso = data.iso2;
-        this.countryId = data.iso2;
-      }
-    }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
-      console.log(data);
-      this.stateInfo = data;
-    });
-  }
-  onChangeCountryUpdateData(countryValue: any) {
->>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
     let countryIso:any;
     for (let data of this.countryInfo) {
       if(countryValue.target.value===data.name)

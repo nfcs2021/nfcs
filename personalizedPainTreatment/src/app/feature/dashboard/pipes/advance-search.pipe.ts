@@ -16,13 +16,8 @@ export class AdvanceSearchPipe implements PipeTransform {
   
    console.table(posts);
 
-<<<<<<< HEAD
    // search is blank, return post
    if(!search || !search.First_Name && !search.Last_Name && !search.Date_of_birth && !search.Ssn) return null;
-=======
-   
-   if(!search || !search.FirstName && !search.LastName && !search.dateofbirth && !search.Ssn) return null;
->>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
 
  console.log(search);
    return posts.filter((post) => {
