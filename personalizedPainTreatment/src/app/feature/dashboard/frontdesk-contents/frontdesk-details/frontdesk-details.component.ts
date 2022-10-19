@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
@@ -7,16 +8,18 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./frontdesk-details.component.css'],
 })
 export class FrontdeskDetailsComponent implements OnInit {
-  frontDeskData: any;
   pcp: string | null;
+  frontdeskData: any;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getUserData().subscribe((data) => {
-      console.log('frontdesk profile:' + data.name);
-      // this.data = data;
-      this.frontDeskData = data;
-      this.pcp = localStorage.getItem('pcpData');
-    });
+    this.getloginData();
+  }
+  getloginData() {
+    var retrievedObject: any = localStorage.getItem('testObject');
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    this.frontdeskData = JSON.parse(retrievedObject);
+    let newObject: any = localStorage.getItem('data');
+    console.log(JSON.parse(newObject));
   }
 }

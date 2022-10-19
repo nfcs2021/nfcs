@@ -5,7 +5,7 @@ export class SearchModel {
     dateofbirth: any;
     Ssn:any;
   }
-  
+
 export interface Patient{
     id:any
     FirstName: any;
@@ -23,7 +23,4 @@ export interface Patient{
     city:any;
     Zipcode:any;
     InsuranceNumber:any;
-   
-   
-    
 }

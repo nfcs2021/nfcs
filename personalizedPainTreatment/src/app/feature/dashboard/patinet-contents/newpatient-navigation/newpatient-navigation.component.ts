@@ -13,11 +13,12 @@ export class NewpatientNavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.pcp = localStorage.getItem('pcpData');
+    console.log('buttons................' + localStorage.getItem('token'));
   }
 
-//   applyStyle(){
-//     if(this.pcp!=='admin')
-//     return width: 40% ;
-//   }
-// }
+  //   applyStyle(){
+  //     if(this.pcp!=='admin')
+  //     return width: 40% ;
+  //   }
+  // }
 }

@@ -17,8 +17,12 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   name: any;
   user: any;
   pcp: string | null;
-  text = 'welcome';
+  text = 'Welcome';
   loggedIn = false;
+  presentLogin: any;
+  data: any;
+  frontdeskData: any;
+  firstName: any;
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -28,25 +32,25 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+    const now = new Date();
+    console.log(now);
+    this.presentLogin = now;
+
     this.authService.getEvent().subscribe(() => {
       this.getloginData();
-      this.loggedIn = true;
-      console.log(this.loggedIn);
     });
   }
 
   ngOnChanges() {}
   getloginData() {
-    this.dataService.getUserData().subscribe((data) => {
-      console.log('header :' + data.name);
-      localStorage.setItem('username', data.name);
-      this.name = localStorage.getItem('username');
-      this.pcp = localStorage.getItem('pcpData');
-    });
+    this.firstName = localStorage.getItem('createdBy');
+    var retrievedObject: any = localStorage.getItem('testObject');
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    this.frontdeskData = JSON.parse(retrievedObject);
+    console.log(this.data.First_Name);
   }
   logOut() {
     // localStorage.removeItem('token')
     this.authService.logout();
   }
-
 }

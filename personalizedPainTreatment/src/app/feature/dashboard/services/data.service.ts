@@ -16,7 +16,6 @@ export class DataService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    alert('getUserData')
     return this.http.get<any>(environment.apiUrl+'me', {
       headers: httpheaders,
     });

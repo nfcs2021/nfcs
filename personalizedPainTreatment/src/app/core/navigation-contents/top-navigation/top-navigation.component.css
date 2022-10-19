@@ -1,5 +1,13 @@
+* {
+  color: #712C6B;
+}
+
 .navbar {
   height: 74px;
   margin-top: 8px;
   margin-left: 10%;
+}
+
+.dropdown {
+  margin-right: 100px;
 }

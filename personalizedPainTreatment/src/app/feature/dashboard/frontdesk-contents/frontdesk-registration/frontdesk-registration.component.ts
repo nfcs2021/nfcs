@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-frontdesk-registration',
@@ -28,17 +29,21 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
+  createdBy: any;
   constructor(
     private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private route: Router
+    private route: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
+    alert(localStorage.getItem('createdBy'));
+    this.createdBy = localStorage.getItem('createdBy');
   }
   getToday(): string {
     return new Date().toISOString().split('T')[0];
@@ -149,28 +154,36 @@ export class FrontdeskRegistrationComponent implements OnInit {
     return this.patientRegesterForm.controls;
   }
   formInitilization() {
-    this.patientRegesterForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required]],
-      dob: ['', [Validators.required]],
-      contactNumber: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      socialSecurityNumber: ['', [Validators.required]],
-      address1: ['', [Validators.required]],
-      address2: ['', []],
-      country: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      zipcode: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      pcp: ['', [Validators.required]],
-      employeePostion: ['', [Validators.required]],
-      immediateManager: ['', [Validators.required]],
-      employeeId: ['', [Validators.required]],
-      employeeIdDocument: [''],
-      idproof: [''],
-      profileImage: [''],
-    });
+    this.patientRegesterForm = this.formBuilder.group(
+      {
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required]],
+        dob: ['', [Validators.required]],
+        contactNumber: ['', [Validators.required]],
+        email: ['', [Validators.required]],
+        socialSecurityNumber: ['', [Validators.required]],
+        address1: ['', [Validators.required]],
+        address2: ['', []],
+        country: ['', [Validators.required]],
+        state: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        zipcode: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
+        pcp: ['', [Validators.required]],
+        employeePostion: ['', [Validators.required]],
+        immediateManager: ['', [Validators.required]],
+        employeeId: ['', [Validators.required]],
+        employeeIdDocument: [''],
+        idproof: [''],
+        profileImage: [''],
+        password: ['', Validators.required],
+        createBy: [this.createdBy],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
+      }
+    );
   }
   onSubmit() {
     console.log(this.patientRegesterForm.value['socialSecurityNumber']);
@@ -179,29 +192,57 @@ export class FrontdeskRegistrationComponent implements OnInit {
       return;
     }
     const data = {
-      FirstName: this.patientRegesterForm.value['firstName'],
-      LastName: this.patientRegesterForm.value['lastName'],
-      dateofbirth: this.patientRegesterForm.value['dob'],
-      ContactNumber: this.patientRegesterForm.value['contactNumber'],
-      gender: this.patientRegesterForm.value['gender'],
-      emailaddress: this.patientRegesterForm.value['email'],
+      First_Name: this.patientRegesterForm.value['firstName'],
+      Last_Name: this.patientRegesterForm.value['lastName'],
+      Date_of_birth: this.patientRegesterForm.value['dob'],
+      Contact_number: this.patientRegesterForm.value['contactNumber'],
+      Gender: this.patientRegesterForm.value['gender'],
+      Email: this.patientRegesterForm.value['email'],
       Ssn: this.patientRegesterForm.value['socialSecurityNumber'],
-      AddressLine1: this.patientRegesterForm.value['address1'],
-      AddressLine2: this.patientRegesterForm.value['address2'],
-      country: this.patientRegesterForm.value['country'],
-      state: this.patientRegesterForm.value['state'],
-      city: this.patientRegesterForm.value['city'],
+      Address_Line1: this.patientRegesterForm.value['address1'],
+      Address_Line2: this.patientRegesterForm.value['address2'],
+      Country: this.patientRegesterForm.value['country'],
+      State: this.patientRegesterForm.value['state'],
+      City: this.patientRegesterForm.value['city'],
       Zipcode: this.patientRegesterForm.value['zipcode'],
+      PCP_Name: this.patientRegesterForm.value['pcp'],
+      Emp_designation: this.patientRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.patientRegesterForm.value['immediateManager'],
+      Emp_id: this.patientRegesterForm.value['employeeId'],
+      Emp_id_doc: this.patientRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.patientRegesterForm.value['idproof'],
+      Profile_image: this.patientRegesterForm.value['profileImage'],
+      Password: this.patientRegesterForm.value['password'],
+      confirmPassword: this.patientRegesterForm.value['confirmPassword'],
+      Created_by: this.createdBy,
       InsuranceNumber: 234567,
     };
-    this.patientService.savePatientData(data).subscribe(
+    this.authService.saveFrontDeskData(data).subscribe(
       (data) => {
         console.log(data);
-        this.route.navigate(['/patient/data/' + data.id]);
+        this.route.navigate(['/frontdesk/frontdesklist']);
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  ConfirmPasswordValidator(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[confirmPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['confirmPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 }
