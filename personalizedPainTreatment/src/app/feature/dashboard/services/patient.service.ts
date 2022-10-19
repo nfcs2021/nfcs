@@ -12,6 +12,8 @@ const httpOptions={
   providedIn: 'root'
 })
 export class PatientService {
+  
+  
   apiUrl=environment.apiUrl;
   constructor(private http:HttpClient) { }
   getById(id:any) {
@@ -26,6 +28,14 @@ export class PatientService {
     });
     return this.http.post<any>(this.apiUrl+'patientData',data,{headers: httpheaders});
   }
+
+  updatePatientData(data:any,id:any) {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.put<any>(this.apiUrl+'patientData/'+id,data,{headers: httpheaders});
+  }
+
   getAllPatientsData() {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -42,13 +52,13 @@ export class PatientService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.post<any>(this.apiUrl+'Questions',data,{headers: httpheaders});
+    return this.http.post<any>(this.apiUrl+'selectedanswer',data,{headers: httpheaders});
   }
   saveSelectedParts(data:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.post<any>(this.apiUrl+'select',data,{headers: httpheaders});
+    return this.http.post<any>(this.apiUrl+'answer',data,{headers: httpheaders});
   }
   getPatientRecordData(id:any) {
     const httpheaders = new HttpHeaders({
@@ -61,7 +71,7 @@ export class PatientService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(this.apiUrl+'Questions/'+id,{headers: httpheaders});
+    return this.http.get<any>(this.apiUrl+'selectedanswer/'+id,{headers: httpheaders});
   }
 
   getPatientDataById(id: any) {
@@ -88,6 +98,13 @@ export class PatientService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(this.apiUrl+'select/'+id,{headers: httpheaders});
+    return this.http.get<any>(this.apiUrl+'answer/'+id,{headers: httpheaders});
+  }
+
+  getAllPatientRecords() {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<any>(this.apiUrl+'record/',{headers: httpheaders});
   }
 }

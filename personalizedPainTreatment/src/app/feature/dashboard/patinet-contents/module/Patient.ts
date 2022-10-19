@@ -1,29 +1,41 @@
 
 export class SearchModel {
-    FirstName: any;
-    LastName: any;
-    dateofbirth: any;
+    First_Name: any;
+    Last_Name: any;
+    Date_of_birth: any;
     Ssn:any;
   }
   
 export interface Patient{
     id:any
-    FirstName: any;
-    LastName: any;
-    dateofbirth: any;
-    ContactNumber:any;
-    gender:any;
-    socialSecurityNumber:any;
-    emailaddress:any;
+    First_Name: any;
+    Last_Name: any;
+    Date_of_birth: any;
+    Contact_Number:any;
+    Gender:any;
+    Email_address:any;
     Ssn:any;
-    AddressLine1:any;
-    AddressLine2:any;
-    country:any;
-    state:any;
-    city:any;
+    Address_Line1:any;
+    Address_Line2:any;
+    Country:any;
+    State:any;
+    City:any;
     Zipcode:any;
-    InsuranceNumber:any;
-   
-   
-    
+    Insurance_Number:any;
+    Created_by:any; 
+}
+
+export interface PatientRecord{
+  id:any;
+  Patient_id:any;
+  Patient_report:any;
+  Physician_report:any;
+  PCP_Name:any;
+  Created_by:any;
+  Visit_time:any;
+}
+
+export class SearchDate{
+  toDate:any;
+  fromDate:any;
 }

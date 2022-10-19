@@ -6,19 +6,20 @@ import { data } from 'jquery';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
 
+
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css'],
+  styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {
   popup=false;
   indianFormat = '12345 67890';
-  USFormat = '(000) 123-4567';
+  USFormat = '(000) 123-4567'
   ssnNumberFormate = '123-45-6789';
   ssnPlaceholder = this.ssnNumberFormate;
   ssnNumberEntered = '';
-  ssnFormateLe: any;
+  ssnFormateLe:any;
   paceHolder = this.USFormat;
   phoneNumberEntered = '';
   formatLen: any;
@@ -28,13 +29,13 @@ export class AddPatientComponent implements OnInit {
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
-  countryId: any;
+  countryId:any;
   today = new Date();
-<<<<<<< HEAD
   patientData: any;
   simillarPatientData: any;
   patientDataById: any;
   patientId: string | null;
+  updateData: boolean;
   constructor(private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
@@ -42,17 +43,9 @@ export class AddPatientComponent implements OnInit {
     private route:Router,
     private router:ActivatedRoute
   ) { }
-=======
-  constructor(
-    private http: HttpClient,
-    private service: AppService,
-    private formBuilder: FormBuilder,
-    private patientService: PatientService,
-    private route: Router
-  ) {}
->>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
 
   ngOnInit(): void {
+
     // const phoneInputField = document.querySelector("#phone");
     // const phoneInput = (<any>window).intlTelInput(phoneInputField, {
     //   utilsScript:
@@ -61,8 +54,14 @@ export class AddPatientComponent implements OnInit {
     this.formInitilization();
     this.getCountries();
     this.patientId = this.router.snapshot.paramMap.get('id')
-    this.getByPatientId(this.router.snapshot.paramMap.get('id'));
+
+    if(this.patientId)
+    {
+      this.getByPatientId(this.router.snapshot.paramMap.get('id'));
+      this.updateData=true;
+    }
    
+    
   }
 
   getByPatientId(id:any){
@@ -71,8 +70,8 @@ export class AddPatientComponent implements OnInit {
         console.log(data);
         this.patientDataById=data;
         this.formUpdation();
-        this.onChangeCountryUpdateData(data.country);
-       
+        this.onChangeCountryUpdateData(data.Country);
+        
       },err =>{
         console.log(err);
         
@@ -81,54 +80,57 @@ export class AddPatientComponent implements OnInit {
   }
 
   getToday(): string {
-    return new Date().toISOString().split('T')[0];
-  }
-  getCountries() {
-    this.service.getCountry().subscribe((data) => {
-      console.log(data);
-      this.countryInfo = data;
-    });
+    return new Date().toISOString().split('T')[0]
+ }
+  getCountries(){
+    this.service.getCountry().subscribe(
+      data =>{
+        console.log(data);
+        this.countryInfo=data
+
+      }
+    )
   }
 
   onPhoneChange(event: any) {
+
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.paceHolder.length; i++) {
-      if (
-        this.paceHolder[i] === ' ' ||
-        this.paceHolder[i] === '(' ||
-        this.paceHolder[i] === ')' ||
-        this.paceHolder[i] === '-'
-      ) {
+      if (this.paceHolder[i] === ' ' || this.paceHolder[i] === '(' || this.paceHolder[i] === ')' || this.paceHolder[i] === '-') {
         getIndexSpecialChar.push(i);
         getactualSpecialChar.push(this.paceHolder[i]);
       }
     }
-    console.log(getactualSpecialChar);
-    console.log(getIndexSpecialChar);
+  console.log(getactualSpecialChar);
+  console.log(getIndexSpecialChar);
+
 
     let len = event.target.value.length;
     let backspace = event.keyCode;
 
     if (backspace === 8) {
-      len = len - 1;
+      len = len-1;
     } else {
       len = event.target.value.length;
     }
-    let eventTargetValue = event.target.value;
+    let eventTargetValue = event.target.value
     for (let i = 0; i < this.paceHolder.length; i++) {
       if (len === getIndexSpecialChar[i]) {
         this.phoneNumberEntered = eventTargetValue + getactualSpecialChar[i];
         if (this.phoneNumberEntered.length === getIndexSpecialChar[i + 1]) {
-          this.phoneNumberEntered =
-            this.phoneNumberEntered + getactualSpecialChar[i + 1];
+          this.phoneNumberEntered = this.phoneNumberEntered + getactualSpecialChar[i + 1];
         }
       }
+
     }
     console.log(event.target.value);
+
   }
 
+
   onSsnChange(event: any) {
+
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.ssnPlaceholder.length; i++) {
@@ -137,48 +139,36 @@ export class AddPatientComponent implements OnInit {
         getactualSpecialChar.push(this.ssnPlaceholder[i]);
       }
     }
-    console.log(getactualSpecialChar);
-    console.log(getIndexSpecialChar);
+  console.log(getactualSpecialChar);
+  console.log(getIndexSpecialChar);
+
 
     let len = event.target.value.length;
     let backspace = event.keyCode;
 
     if (backspace === 8) {
-      len = len - 1;
+      len = len-1;
     } else {
       len = event.target.value.length;
     }
-    let eventTargetValue = event.target.value;
+    let eventTargetValue = event.target.value
     for (let i = 0; i < this.paceHolder.length; i++) {
       if (len === getIndexSpecialChar[i]) {
         this.ssnNumberEntered = eventTargetValue + getactualSpecialChar[i];
         if (this.ssnNumberEntered.length === getIndexSpecialChar[i + 1]) {
-          this.ssnNumberEntered =
-            this.ssnNumberEntered + getactualSpecialChar[i + 1];
+          this.ssnNumberEntered = this.ssnNumberEntered + getactualSpecialChar[i + 1];
         }
       }
+
     }
     console.log(event.target.value);
+
   }
 
   onChangeCountry(countryValue: any) {
-    let countryIso: any;
-    for (let data of this.countryInfo) {
-      if (countryValue.target.value === data.name) {
-        countryIso = data.iso2;
-        this.countryId = data.iso2;
-      }
-    }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
-      console.log(data);
-      this.stateInfo = data;
-    });
-  }
-<<<<<<< HEAD
-  onChangeCountryUpdateData(countryValue: any) {
     let countryIso:any;
     for (let data of this.countryInfo) {
-      if(countryValue===data.name)
+      if(countryValue.target.value===data.name)
       {
 
         countryIso=data.iso2
@@ -189,14 +179,33 @@ export class AddPatientComponent implements OnInit {
       data =>{
         console.log(data);
         this.stateInfo=data;
-        this.onChangeStateUpdateData(this.patientDataById.state);
+
       }
     )
-    
+
+  }
+  onChangeCountryUpdateData(countryValue: any) {
+    alert(countryValue)
+    let countryIso:any;
+    for (let data of this.countryInfo) {
+      if(countryValue===data.name)
+      {
+        countryIso=data.iso2
+        this.countryId=data.iso2
+      }
+    }
+    this.service.getStateOfSelectedCountry(countryIso).subscribe(
+      data =>{
+        console.log(data);
+        this.stateInfo=data;
+        this.onChangeStateUpdateData(this.patientDataById.State);
+      }
+    )
+
   }
 
   onChangeStateUpdateData(stateValue:any) {
-    console.log(this.stateInfo);
+    alert(stateValue)
     let stateId:any;
     for (let data of this.stateInfo) {
       if(stateValue===data.name)
@@ -208,29 +217,26 @@ export class AddPatientComponent implements OnInit {
       data =>{
         console.log(data);
         this.cityInfo=data;
-       
+
       }
     )
-    
   }
 
   onChangeState(stateValue:any) {
     let stateId:any;
-=======
-  onChangeState(stateValue: any) {
-    let stateId: any;
->>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
     for (let data of this.stateInfo) {
-      if (stateValue.target.value === data.name) {
-        stateId = data.iso2;
+      if(stateValue.target.value===data.name)
+      {
+        stateId=data.iso2
       }
     }
-    this.service
-      .getCitiesOfSelectedState(this.countryId, stateId)
-      .subscribe((data) => {
+    this.service.getCitiesOfSelectedState(this.countryId,stateId).subscribe(
+      data =>{
         console.log(data);
-        this.cityInfo = data;
-      });
+        this.cityInfo=data;
+
+      }
+    )
   }
   telInputObject(obj: any) {
     console.log(obj);
@@ -245,7 +251,7 @@ export class AddPatientComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-      contactNumber: ['', [Validators.required]],
+       contactNumber: ['', [Validators.required]],
       email: ['', [Validators.required]],
       socialSecurityNumber: ['', [Validators.required]],
       address1: ['', [Validators.required]],
@@ -254,25 +260,24 @@ export class AddPatientComponent implements OnInit {
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
       zipcode: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
+      gender:['', [Validators.required]]
     });
   }
-<<<<<<< HEAD
   formUpdation(){
     this.patientRegesterForm = this.formBuilder.group({
-      firstName: [this.patientDataById.FirstName, [Validators.required, Validators.minLength(2)]],
-      lastName: [this.patientDataById.LastName, [Validators.required]],
-      dob: [this.patientDataById.dateofbirth, [Validators.required]],
-       contactNumber: [this.patientDataById.ContactNumber, [Validators.required]],
-      email: [this.patientDataById.emailaddress, [Validators.required]],
+      firstName: [this.patientDataById.First_Name, [Validators.required, Validators.minLength(2)]],
+      lastName: [this.patientDataById.Last_Name, [Validators.required]],
+      dob: [this.patientDataById.Date_of_birth, [Validators.required]],
+       contactNumber: [this.patientDataById.Contact_Number, [Validators.required]],
+      email: [this.patientDataById.Email_address, [Validators.required]],
       socialSecurityNumber: [this.patientDataById.Ssn, [Validators.required]],
-      address1: [this.patientDataById.AddressLine1, [Validators.required]],
-      address2: [this.patientDataById.AddressLine2, []],
-      country: [this.patientDataById.country, [Validators.required]],
-      state: [this.patientDataById.state, [Validators.required]],
-      city: [this.patientDataById.city, [Validators.required]],
+      address1: [this.patientDataById.Address_Line1, [Validators.required]],
+      address2: [this.patientDataById.Address_Line2, []],
+      country: [this.patientDataById.Country, [Validators.required]],
+      state: [this.patientDataById.State, [Validators.required]],
+      city: [this.patientDataById.City, [Validators.required]],
       zipcode: [this.patientDataById.Zipcode, [Validators.required]],
-      gender:[this.patientDataById.gender, [Validators.required]]
+      gender:[this.patientDataById.Gender, [Validators.required]]
     });
   }
   getAllPatientsData(){
@@ -300,14 +305,6 @@ export class AddPatientComponent implements OnInit {
     // // stop here if form is invalid
      if (this.patientRegesterForm.invalid) {
        return;
-=======
-
-  onSubmit() {
-    console.log(this.patientRegesterForm.value['socialSecurityNumber']);
-    this.submitted = true;
-    if (this.patientRegesterForm.invalid) {
-      return;
->>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
     }
    this.getAllPatientsData();
   }
@@ -323,34 +320,62 @@ export class AddPatientComponent implements OnInit {
     //   return;
     // }
     const data={
-      "FirstName":this.patientRegesterForm.value['firstName'],
-        "LastName": this.patientRegesterForm.value['lastName'],
-        "dateofbirth": this.patientRegesterForm.value['dob'],
-        "ContactNumber": this.patientRegesterForm.value['contactNumber'],
-        "gender": this.patientRegesterForm.value['gender'],
-        "emailaddress": this.patientRegesterForm.value['email'],
+      "First_Name":this.patientRegesterForm.value['firstName'],
+        "Last_Name": this.patientRegesterForm.value['lastName'],
+        "Date_of_birth": this.patientRegesterForm.value['dob'],
+        "Contact_Number": this.patientRegesterForm.value['contactNumber'],
+        "Gender": this.patientRegesterForm.value['gender'],
+        "Email_address": this.patientRegesterForm.value['email'],
         "Ssn": this.patientRegesterForm.value['socialSecurityNumber'],
-        "AddressLine1": this.patientRegesterForm.value['address1'],
-        "AddressLine2": this.patientRegesterForm.value['address2'],
-        "country": this.patientRegesterForm.value['country'],
-        "state": this.patientRegesterForm.value['state'],
-        "city": this.patientRegesterForm.value['city'],
+        "Address_Line1": this.patientRegesterForm.value['address1'],
+        "Address_Line2": this.patientRegesterForm.value['address2'],
+        "Country": this.patientRegesterForm.value['country'],
+        "State": this.patientRegesterForm.value['state'],
+        "City": this.patientRegesterForm.value['city'],
         "Zipcode": this.patientRegesterForm.value['zipcode'],
-        "InsuranceNumber": 234567
+        "Insurance_Number": 234567,
+        "Created_by":localStorage.getItem('name')
     }
-<<<<<<< HEAD
-=======
-    // console.log(this.patientRegesterForm.value,event.target.phone.value);
-
->>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
     this.patientService.savePatientData(data).subscribe(
-      (data) => {
+      data => {
         console.log(data);
-        this.route.navigate(['/patient/data/' + data.id]);
-      },
-      (error) => {
+        this.route.navigate(['/patient/data/'+data.id])
+      }, error => {
         console.log(error);
+
       }
-    );
+    )
   }
+  update(){
+    const data={
+      "First_Name":this.patientRegesterForm.value['firstName'],
+        "Last_Name": this.patientRegesterForm.value['lastName'],
+        "Date_of_birth": this.patientRegesterForm.value['dob'],
+        "Contact_Number": this.patientRegesterForm.value['contactNumber'],
+        "Gender": this.patientRegesterForm.value['gender'],
+        "Email_address": this.patientRegesterForm.value['email'],
+        "Ssn": this.patientRegesterForm.value['socialSecurityNumber'],
+        "Address_Line1": this.patientRegesterForm.value['address1'],
+        "Address_Line2": this.patientRegesterForm.value['address2'],
+        "Country": this.patientRegesterForm.value['country'],
+        "State": this.patientRegesterForm.value['state'],
+        "City": this.patientRegesterForm.value['city'],
+        "Zipcode": this.patientRegesterForm.value['zipcode'],
+        "Insurance_Number": 234567,
+        "Created_by":localStorage.getItem('name') 
+  }
+  console.log(data);
+  
+  this.patientService.updatePatientData(data,this.patientId).subscribe(
+    data =>{
+      console.log(data);
+       this.route.navigate(['patient/nav'])
+    },err =>{
+      console.log(err);
+      
+    }
+  )
+}
+
+
 }

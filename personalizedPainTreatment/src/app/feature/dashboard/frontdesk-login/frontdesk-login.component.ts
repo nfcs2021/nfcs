@@ -45,14 +45,18 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
-      email: this.loginFormGroup.value['email'],
-      password: this.loginFormGroup.value['password']
+      Email: this.loginFormGroup.value['email'],
+      Password: this.loginFormGroup.value['password'],
+      PCP_Name:this.loginFormGroup.value['pcp']
+
     };
     this.authservice.loginUser(data).subscribe(
       data =>{
         console.log(data);
         localStorage.setItem('token', data.access_token);
-        localStorage.setItem('pcpData',this.loginFormGroup.value['pcp'] );
+       console.log(data.data);
+       localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
+       localStorage.setItem('PCP_Name',data.data.PCP_Name)
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.route.navigateByUrl('/patient/nav');
       },err =>{

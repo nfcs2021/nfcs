@@ -20,6 +20,7 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+import { DateSearchPipe } from './pipes/date-search.pipe';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
+    DateSearchPipe,
  
 
   ],

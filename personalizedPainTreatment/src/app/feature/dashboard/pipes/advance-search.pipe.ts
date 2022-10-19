@@ -16,20 +16,15 @@ export class AdvanceSearchPipe implements PipeTransform {
   
    console.table(posts);
 
-<<<<<<< HEAD
    // search is blank, return post
-=======
-   
->>>>>>> ab46cbef275b3ffc7bb09342f91b45a04aa147ee
-   if(!search || !search.FirstName && !search.LastName && !search.dateofbirth && !search.Ssn) return null;
+   if(!search || !search.First_Name && !search.Last_Name && !search.Date_of_birth && !search.Ssn) return null;
 
  console.log(search);
    return posts.filter((post) => {
-     return (!search.FirstName || post.FirstName.toLowerCase().startsWith(search.FirstName.toLowerCase()) ) &&
-         (!search.LastName || post.LastName.toLowerCase().startsWith(search.LastName.toLowerCase()))  &&
-         (!search.dateofbirth || post.dateofbirth.toString().startsWith(search.dateofbirth)) &&
-         (!search.Ssn || post.Ssn.toString().startsWith(search.Ssn))
- ;
+     return (!search.First_Name || post.First_Name.toLowerCase().startsWith(search.First_Name.toLowerCase()) ) &&
+         (!search.Last_Name || post.Last_Name.toLowerCase().startsWith(search.Last_Name.toLowerCase()))  &&
+         (!search.Date_of_birth || post.Date_of_birth.toString().startsWith(search.Date_of_birth)) &&
+         (!search.Ssn || post.Ssn.toString().startsWith(search.Ssn));
    })
 
  }

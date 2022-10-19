@@ -6,13 +6,13 @@
     </div><hr>
     <div class="row mt-2 mx-5   row1" >
         <div class="col-md-2 ml-5  mt-3">
-            <p>Record Id</p><p class="mt-0">{{patientsRecordData.id}}</p>
+            <p>Record Id</p><p class="mt-0">{{patientsRecordData?.id}}</p>
         </div>
         <div class="col-md-2 mt-3">
-            <p>  Visited On</p><p>{{patientsRecordData.visit_time | date}}</p>
+            <p>  Visited On</p><p>{{patientsRecordData?.Visit_time}}</p>
         </div>
         <div class="col-md-3 mt-4 ml-5 ">
-            <a routerLink="/patient/patient-report/{{patientsRecordData.patientdataid}}"  class="btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
+            <a routerLink="/patient/patient-report/{{patientsRecordData.id}}"  class="btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
           <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
         </div>
         <div class="col-md-3 mt-4 ml-3 ">
@@ -58,7 +58,7 @@
     
 
     <div class=" col-md-4 ml-5">
-      <p>PCP:{{patientsRecordData.PCP_Name}}</p>
+      <p>PCP:{{patientsRecordData?.PCP_Name}}</p>
 
     </div>
     <!-- <div class="buttons mt-5">
@@ -67,16 +67,11 @@
     <a  class="btn  col-md-4 active  p-3 mt-3 mx-5" role="button" aria-pressed="true" style="color: white;">Cancel</a>
     <br>
   </div> -->
-
-
-    <div class="col-md-4 ">
-      <p>Apolo Hospital,Bangalore</p>
-    </div>
-    <div class="col-md-2 ml-5 ">
-      <p> Patient Id:{{patientsRecordData.patientdataid}}</p>
-    </div>
-  </div>
-  <div class="buttons mt-5">
+    <!-- <div class="col-md-2 ml-5 ">
+      <p> Patient Id:{{patientsRecordData.Patient_id}}</p>
+    </div>-->
+  </div> 
+  <!-- <div class="buttons mt-5">
     <a class="btn col-md-4 active p-3 mt-5 mx-5" role="button"
       aria-pressed="true" style="color: white;">Add New PPT Survey Form</a><br>
     <a class="btn col-md-4 active p-3 mt-3 mx-5 " role="button"
@@ -84,5 +79,5 @@
     <a class="btn col-md-4 active p-3 mt-3 mx-5" role="button"
       aria-pressed="true" style="color: white;">Cancel</a>
     <br>
-  </div>
+  </div> -->
 

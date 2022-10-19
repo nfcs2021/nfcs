@@ -54,9 +54,9 @@
     </thead>
     <tbody>
       <tr>
-        <td>{{patientList.FirstName}}</td>
-        <td>{{patientList.LastName}}</td>
-        <td>{{patientList.dateofbirth}}</td>
+        <td>{{patientList.First_Name}}</td>
+        <td>{{patientList.Last_Name}}</td>
+        <td>{{patientList.Date_of_birth}}</td>
         <td>{{patientList.Ssn}}</td>
       </tr>
       <tr>
@@ -64,12 +64,16 @@
         <th>contactNumber</th>
         <th>Address</th>
         <th>Created on</th>
+        <th>Created By</th>
       </tr>
       <tr>
-        <td>{{patientList.emailaddress}}</td>
-        <td>{{patientList.ContactNumber}}</td>
-        <td>{{patientList.AddressLine1}},{{patientList.country}},{{patientList.state}}</td>
-        <td>{{patientList.created_at | date}}</td>
+        <td>{{patientList.Email_address}}</td>
+        <td>{{patientList.Contact_Number}}</td>
+        <td>{{patientList.Address_Line1}}{{patientList.Address_Line2}},
+          {{patientList.City}},{{patientList.state}} <br>
+          {{patientList.Country}} - {{patientList.Zipcode}}</td>
+        <td>{{patientList.created_at }}</td>
+        <td>{{patientList.Created_by }}</td>
       </tr>
     </tbody>
   </table>
