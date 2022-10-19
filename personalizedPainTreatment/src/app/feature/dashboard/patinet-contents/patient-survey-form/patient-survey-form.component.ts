@@ -106,6 +106,10 @@ export class PatientSurveyFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.questions);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
     const patientdata = {
       Patient_id: this.routerId,
       Patient_report: 'test',
@@ -118,9 +122,14 @@ export class PatientSurveyFormComponent implements OnInit {
         console.log(data);
         
         this.patientid = data.id;
+<<<<<<< HEAD
 
         this.createQuestiondata(this.patientid);
         this.createSelectedParts(this.patientid);
+=======
+        this.createQuestiondata(this.patientid.id);
+       
+>>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
       },
       (error) => {
         console.log(error);
@@ -140,6 +149,16 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    var recordId:any;
+=======
+
+    var recordId:any;
+
+>>>>>>> 22b28c4d29aef0eb0e4e91a3fd3bad79ad9cbbbb
+>>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
     for (let data1 of this.questions) {
      const data={
       Record_id:id,

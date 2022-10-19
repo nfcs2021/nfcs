@@ -4,6 +4,7 @@ import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
 import { DataService } from 'src/app/feature/dashboard/services/data.service';
 import { NavnsideWrapperComponent } from '../navnside-wrapper/navnside-wrapper.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-navigation',
@@ -21,7 +22,9 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   constructor(
     private dataService: DataService,
     private authService: AuthService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
       console.log(this.loggedIn);
     });
   }
+
   ngOnChanges() {}
   getloginData() {
     this.dataService.getUserData().subscribe((data) => {
@@ -41,6 +45,8 @@ export class TopNavigationComponent implements OnInit, OnChanges {
     });
   }
   logOut() {
+    // localStorage.removeItem('token')
     this.authService.logout();
   }
+
 }

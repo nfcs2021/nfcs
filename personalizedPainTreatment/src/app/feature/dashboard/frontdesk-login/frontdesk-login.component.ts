@@ -45,26 +45,36 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
+<<<<<<< HEAD
       Email: this.loginFormGroup.value['email'],
       Password: this.loginFormGroup.value['password'],
       PCP_Name:this.loginFormGroup.value['pcp']
 
+=======
+      email: this.loginFormGroup.value['email'],
+      password: this.loginFormGroup.value['password'],
+>>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
     };
     this.authservice.loginUser(data).subscribe(
-      data =>{
+      (data) => {
         console.log(data);
         localStorage.setItem('token', data.access_token);
+<<<<<<< HEAD
        console.log(data.data);
        localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
+=======
+        console.log('login component' + localStorage.getItem('token'));
+        localStorage.setItem('pcpData', this.loginFormGroup.value['pcp']);
+>>>>>>> f6159ea8afffd451865bff33f283569e026f6d64
         this.login_user_msg = 'Login in, Please wait... !!!';
+        this.authservice.sentEvent();
         this.route.navigateByUrl('/patient/nav');
-      },err =>{
+      },
+      (err) => {
         this.has_error = true;
         this.login_user_msg = 'Invalid Username and Password !!!';
       }
     );
-    
-    
   }
 }

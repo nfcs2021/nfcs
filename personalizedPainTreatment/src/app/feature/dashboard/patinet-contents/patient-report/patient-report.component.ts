@@ -52,7 +52,7 @@ export class PatientReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeId();
-    
+
   }
 
   routeId() {
@@ -81,13 +81,13 @@ export class PatientReportComponent implements OnInit {
       .subscribe(data => {
         this.quetionaryData = data;
         console.log(data);
-        
+
       },
         error => {
           console.log(error)
         }
       );
-     
+
         this.service.getPatientDataRecords(id).subscribe(
           data => {
             this.patientRecordsData = data;
@@ -112,7 +112,7 @@ export class PatientReportComponent implements OnInit {
           this.selectedPartData = data
           this.enableColorAfterLoad();
           console.log(this.selectedPartData);
-          
+
         },
           error => {
             console.log(error)

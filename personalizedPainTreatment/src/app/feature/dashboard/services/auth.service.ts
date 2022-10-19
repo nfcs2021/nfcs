@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from './data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,40 +13,29 @@ export class AuthService {
   getUserData = new EventEmitter<any>();
   name: any;
   constructor(
-    private dataService: DataService, 
+    private dataService: DataService,
     private router: Router,
-    private http: HttpClient
-    ) {}
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) {}
 
-  loginUser(data:any) {
-    localStorage.removeItem("token");
-    return this.http.post<any>(environment.apiUrl+'login', data);
+  loginUser(data: any) {
+    localStorage.removeItem('token');
+    return this.http.post<any>(environment.apiUrl + 'login', data);
   }
-  // authontication(data: any) {
-  //   this.dataService.login(data).subscribe(
-  //     (data) => {
-  //       localStorage.setItem('token', data.access_token);
-  //       console.log(data.access_token);
-  //       this.dataService.getUserData();
-  //       this.isAuthenticate = true;
-  //       this.authenticationEvent.emit(true);
-  //       this.getUserData.emit();
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //       this.isAuthenticate = false;
-  //       this.authenticationEvent.emit(false);
-  //     }
-  //   );
-  // }
   logout() {
-    // console.log("Logged Out called");
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('role');
-    this.router.navigate(['']);
+    console.log(localStorage.getItem('token'));
+    localStorage.clear();
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
-
+  sentEvent() {
+    this.getUserData.emit();
+  }
   getEvent() {
     return this.getUserData.asObservable();
   }

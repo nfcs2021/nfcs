@@ -8,7 +8,16 @@ import { DataService } from '../../services/data.service';
 })
 export class NewpatientNavigationComponent implements OnInit {
   userdata: any;
+  pcp: any;
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pcp = localStorage.getItem('pcpData');
+  }
+
+//   applyStyle(){
+//     if(this.pcp!=='admin')
+//     return width: 40% ;
+//   }
+// }
 }
