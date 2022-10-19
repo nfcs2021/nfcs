@@ -20,15 +20,8 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
-<<<<<<< HEAD
-import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
-import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/frontdesklist.component';
-import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
-
-=======
 import { DateSearchPipe } from './pipes/date-search.pipe';
 import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
 
 @NgModule({
   declarations: [
@@ -47,16 +40,8 @@ import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-r
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
-<<<<<<< HEAD
-    FrontdeskRegistrationComponent,
-    FrontdesklistComponent,
-    FrontdeskpipePipe,
-
-
-=======
     DateSearchPipe,
     FrontdeskRegistrationComponent
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
   ],
   imports: [
     CommonModule,

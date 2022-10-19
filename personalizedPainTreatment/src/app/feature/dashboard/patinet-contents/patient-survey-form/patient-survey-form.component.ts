@@ -116,22 +116,17 @@ export class PatientSurveyFormComponent implements OnInit {
     this.service.savePatientRecord(patientdata).subscribe(
       (data) => {
         console.log(data);
-        
-        this.patientid = data.id;
-<<<<<<< HEAD
-        this.createQuestiondata(this.patientid.id);
 
-=======
+        this.patientid = data.id;
 
         this.createQuestiondata(this.patientid);
         this.createSelectedParts(this.patientid);
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
       },
       (error) => {
         console.log(error);
       }
     );
-    
+
 
     // var userId: number = 0;
     // if (userName != undefined && userName.toLowerCase() == 'krishna') {
@@ -145,10 +140,6 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
-<<<<<<< HEAD
-    var recordId:any;
-=======
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
     for (let data1 of this.questions) {
      const data={
       Record_id:id,
@@ -159,7 +150,7 @@ export class PatientSurveyFormComponent implements OnInit {
       Updated_By:'test'
      }
      console.log(data);
-     
+
      this.service.savePatientSurveyForm(data).subscribe(
               (response) => {
                 reportId = response.Record_id;
@@ -170,11 +161,6 @@ export class PatientSurveyFormComponent implements OnInit {
             );
           }
      }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
 
   createSelectedParts(id: number) {
     for (let data of this.selectedPart) {
@@ -186,7 +172,7 @@ export class PatientSurveyFormComponent implements OnInit {
       this.service.saveSelectedParts(data1).subscribe(
         (data) => {
           console.log(data);
-          
+
         },
         (error) => {
           console.log(error);

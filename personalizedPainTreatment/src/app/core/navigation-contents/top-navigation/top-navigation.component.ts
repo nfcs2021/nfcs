@@ -18,13 +18,8 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   @Input('pcp_Name') pcp_Name:any;
   name: any;
   user: any;
-<<<<<<< HEAD
-  pcp: string | null;
-  text = 'Welcome';
-=======
   pcp: any ;
   text = 'welcome';
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
   loggedIn = false;
   presentLogin: any;
   data: any;
@@ -39,30 +34,11 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    const now = new Date();
-    console.log(now);
-    this.presentLogin = now;
-
-    this.authService.getEvent().subscribe(() => {
-      this.getloginData();
-    });
-  }
-
-  ngOnChanges() {}
-  getloginData() {
-    this.firstName = localStorage.getItem('createdBy');
-    var retrievedObject: any = localStorage.getItem('testObject');
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
-    this.frontdeskData = JSON.parse(retrievedObject);
-    console.log(this.data.First_Name);
-=======
   }
 
   ngOnChanges() {
    this.name= this.data1;
    this.pcp=this.pcp_Name;
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
   }
 
 

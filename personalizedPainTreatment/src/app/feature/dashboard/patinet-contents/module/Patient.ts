@@ -21,12 +21,8 @@ export interface Patient{
     State:any;
     City:any;
     Zipcode:any;
-<<<<<<< HEAD
-    InsuranceNumber:any;
-=======
     Insurance_Number:any;
-    Created_by:any; 
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
+    Created_by:any;
 }
 
 export interface PatientRecord{
