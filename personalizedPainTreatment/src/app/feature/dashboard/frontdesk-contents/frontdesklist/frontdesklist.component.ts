@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
 import { PatientService } from '../../services/patient.service';
+import { SearchModel1 } from '../frontdeskmodule/Employee';
 
 @Component({
   selector: 'app-frontdesklist',
@@ -15,6 +16,8 @@ export class FrontdesklistComponent implements OnInit {
   dropdown:boolean[]=[];
   page: number = 1;
   tatalRec: string;
+
+
   constructor(private service:PatientService) { }
 
   ngOnInit(): void {

@@ -33,7 +33,7 @@ export class FrontdeskLoginComponent implements OnInit {
     this.loginFormGroup = this.fromBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
-      pcp: [''],
+      pcp: ['',Validators.required],
     });
   }
   get f() {
@@ -47,6 +47,7 @@ export class FrontdeskLoginComponent implements OnInit {
     const data = {
       email: this.loginFormGroup.value['email'],
       password: this.loginFormGroup.value['password'],
+      Pcp_Name:this.loginFormGroup.value['pcp']
     };
     this.authservice.loginUser(data).subscribe(
       (data) => {

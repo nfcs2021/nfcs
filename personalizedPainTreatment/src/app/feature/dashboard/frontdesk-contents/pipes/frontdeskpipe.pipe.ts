@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
+
+import { Employee, SearchModel1 } from '../frontdeskmodule/Employee';
 
 @Pipe({
   name: 'frontdeskpipe',
@@ -7,7 +8,7 @@ import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
 })
 export class FrontdeskpipePipe implements PipeTransform {
 
-  transform(posts: Patient[], search: SearchModel): any {
+  transform(posts: Employee[], search: SearchModel1): any {
     console.log(search);
    
    if(posts.length === 0) 

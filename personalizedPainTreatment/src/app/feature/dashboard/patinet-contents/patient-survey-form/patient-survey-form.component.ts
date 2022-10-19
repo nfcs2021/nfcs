@@ -137,13 +137,9 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
-<<<<<<< HEAD
-    var recordId:any;
-=======
 
-    var recordId:any;
+   
 
->>>>>>> 22b28c4d29aef0eb0e4e91a3fd3bad79ad9cbbbb
     for (let data1 of this.questions) {
      const data={
       patientrecordid:1,
