@@ -20,11 +20,15 @@ import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-detail
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+
+import { DateSearchPipe } from './pipes/date-search.pipe';
+
 import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/frontdesklist.component';
 import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
+
 
 @NgModule({
   declarations: [
@@ -43,11 +47,18 @@ import { OtpComponent } from './frontdesk-contents/otp/otp.component';
     FrontdeskMainComponent,
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
+
     FrontdeskRegistrationComponent,
     FrontdesklistComponent,
    FrontdeskpipePipe,
    ForgetpasswordComponent,
-   OtpComponent
+   OtpComponent,
+
+    DateSearchPipe,
+
+    FrontdeskRegistrationComponent
+ 
+
 
   ],
   imports: [

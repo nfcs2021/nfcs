@@ -42,6 +42,11 @@ const routes: Routes = [
           { path: 'nav', component: NewpatientNavigationComponent },
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
+          {
+            path: 'new/:id',
+            component: AddPatientComponent,
+          
+          },
 
         ],
       },
@@ -52,7 +57,7 @@ const routes: Routes = [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           {
-            path: 'frontdesk-registration',
+            path: 'frontdeskregistration',
             component: FrontdeskRegistrationComponent,
           },
           { path: 'frontdesklist', component: FrontdesklistComponent },

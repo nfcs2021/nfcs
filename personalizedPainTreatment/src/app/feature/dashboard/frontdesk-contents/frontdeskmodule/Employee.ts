@@ -1,12 +1,12 @@
 export class SearchModel1 {
-    FirstName: any;
+    First_Name: any;
     LastName: any;
    
   }
   
   export interface Employee{
     id:any
-    FirstName: any;
+    First_Name: any;
     LastName: any;
     dateofbirth: any;
     ContactNumber:any;

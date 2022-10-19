@@ -19,11 +19,11 @@ export class FrontdeskpipePipe implements PipeTransform {
    console.table(posts);
 
    
-   if(!search || !search.FirstName && !search.LastName ) return null;
+   if(!search || !search.First_Name && !search.LastName ) return null;
 
  console.log(search);
    return posts.filter((post) => {
-     return (!search.FirstName || post.FirstName.toLowerCase().startsWith(search.FirstName.toLowerCase()) ) &&
+     return (!search.First_Name || post.First_Name.toLowerCase().startsWith(search.First_Name.toLowerCase()) ) &&
          (!search.LastName || post.LastName.toLowerCase().startsWith(search.LastName.toLowerCase()))  
          
  ;
