@@ -13,12 +13,16 @@
             <div *ngIf="f['firstName'].errors['required']" class="text-danger">First Name is required</div>
             <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First Name must be at least 2
               characters</div>
+              <div *ngIf="f['firstName'].errors['pattern']" class="text-danger">Numbers Not allowed
+              </div>
           </div>
           <label for="lastName" class="mt-3">Last Name <span class="text-danger">*</span></label>
           <input type="text" class="form-control " id="lastName" placeholder="Last Name" formControlName="lastName"
             [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
           <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
             <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last Name is required</div>
+            <div *ngIf="f['lastName'].errors['pattern']" class="text-danger">Numbers Not allowed
+            </div>
           </div>
 
 
@@ -66,6 +70,8 @@
 
           <div *ngIf="submitted && f['contactNumber'].errors" class="invalid-feedback">
             <div *ngIf="f['contactNumber'].errors['required']" class="text-danger">Contact Number is required</div>
+            <div *ngIf="f['contactNumber'].errors['pattern']" class="text-danger">Characters Not allowed
+          </div>
           </div>
           <label for="email" class="mt-3">E-mail address</label>
           <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email"
@@ -84,6 +90,8 @@
           <div *ngIf="submitted && f['socialSecurityNumber'].errors" class="invalid-feedback">
             <div *ngIf="f['socialSecurityNumber'].errors['required']" class="text-danger">Social Security Number is
               required</div>
+              <div *ngIf="f['socialSecurityNumber'].errors['pattern']" class="text-danger">Characters Not allowed
+              </div>
           </div>
         </div>
         <div class="form-group col-sm-4 ml-5">
@@ -138,6 +146,8 @@
             [ngClass]="{ 'is-invalid': submitted && f['zipcode'].errors }">
           <div *ngIf="submitted && f['zipcode'].errors" class="invalid-feedback">
             <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode is required</div>
+            <div *ngIf="f['zipcode'].errors['pattern']" class="text-danger">Characters Not allowed
+            </div>
           </div>
           <button class="mb-3 mt-3 p-2 btn col-sm-12  " type="submit" *ngIf="!updateData">Submit </button>
           <a class="mb-3 mt-3 p-2 btn col-sm-12  " style="background-color: #712C6B; color:white ;" *ngIf="updateData" (click)="update()">Update </a>
@@ -178,7 +188,7 @@
               <td>{{this.patientRegesterForm.value['firstName']}}</td>
               <td>{{this.patientRegesterForm.value['lastName']}}</td>
               <td>{{this.patientRegesterForm.value['dob'] | date:"MM-dd-YYYY"}} </td>
-              <td>{{this.patientRegesterForm.value['socialSecurityNumber']}}</td>
+              <td>{{this.patientRegesterForm.value['socialSecurityNumber']}} </td>
             </tr>
             <tr>
               <th>Email </th>
@@ -212,9 +222,9 @@
             <tbody>
               <tr>
                 <td>{{simillarPatientData.id}}</td>
-                <td>{{simillarPatientData.FirstName}}</td>
-                <td>{{simillarPatientData.LastName}}</td>
-                <td>{{simillarPatientData.dateofbirth | date:"MM-dd-YYYY"}}</td>
+                <td>{{simillarPatientData.First_Name}}</td>
+                <td>{{simillarPatientData.Last_Name}}</td>
+                <td>{{simillarPatientData.Date_of_birth | date:"MM-dd-YYYY"}}</td>
               </tr>
               <tr>
                 <th>Gender</th>
@@ -224,12 +234,12 @@
                 <th >Address</th>
               </tr>
               <tr>
-                <td>{{simillarPatientData.gender}}</td>
+                <td>{{simillarPatientData.Gender}}</td>
                 <td>{{simillarPatientData.Ssn}}</td>
-                <td>{{simillarPatientData.emailaddress}}</td>
-                <td>{{simillarPatientData.ContactNumber}}</td>
-                <td>{{simillarPatientData.AddressLine1}},{{simillarPatientData.AddressLine2}} {{simillarPatientData.city}}, {{simillarPatientData.state}}
-                  <br>{{simillarPatientData.country}} - {{simillarPatientData.Zipcode}}
+                <td>{{simillarPatientData.Email_address}}</td>
+                <td>{{simillarPatientData.Contact_Number}}</td>
+                <td>{{simillarPatientData.Address_Line1}},{{simillarPatientData.Address_Line2}} {{simillarPatientData.City}}, {{simillarPatientData.State}}
+                  <br>{{simillarPatientData.Country}} - {{simillarPatientData.Zipcode}}
                 </td>
 
               </tr>
@@ -241,8 +251,8 @@
               </tr>
               <tr>
                 <td>{{simillarPatientData.created_at}}</td>
-                <td></td>
-                <td></td>
+                <td>{{simillarPatientData.Created_by}}</td>
+                <td>{{simillarPatientData.updated_at}}</td>
                 <td></td>
               </tr>
             </tbody>

@@ -31,8 +31,43 @@ const routes: Routes = [
           {
             path: 'new',
             component: AddPatientComponent,
-            canActivate: [AuthRouteGaurdService],
+            canActivate: [AuthRouteGaurdService]
           },
+<<<<<<< HEAD
+          {
+            path: 'survey-form/:id', component: PatientSurveyFormComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'list', component: PatientListComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view/:id', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'nav', component: NewpatientNavigationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'data/:id', component: PatientdataComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'patient-report/:id', component: PatientReportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'new/:id', component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService]
+          }
+
+=======
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
@@ -41,6 +76,7 @@ const routes: Routes = [
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
           { path: 'new/:id', component: AddPatientComponent },
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
         ],
       },
       {
@@ -48,11 +84,29 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
+<<<<<<< HEAD
+          {
+            path: 'frontdetails', component: FrontdeskDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+=======
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
           {
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesk-registration/:id',
+            component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesk-list',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
           },
           { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
