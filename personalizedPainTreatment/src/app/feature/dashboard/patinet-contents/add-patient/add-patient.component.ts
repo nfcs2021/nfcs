@@ -60,8 +60,8 @@ export class AddPatientComponent implements OnInit {
       this.getByPatientId(this.router.snapshot.paramMap.get('id'));
       this.updateData=true;
     }
-   
-    
+
+
   }
 
   getByPatientId(id:any){
@@ -71,10 +71,10 @@ export class AddPatientComponent implements OnInit {
         this.patientDataById=data;
         this.formUpdation();
         this.onChangeCountryUpdateData(data.Country);
-        
+
       },err =>{
         console.log(err);
-        
+
       }
      );
   }
@@ -294,10 +294,10 @@ export class AddPatientComponent implements OnInit {
            }
         }
         if(!this.simillarPatientData){
-         this.savePatient(); 
+         this.savePatient();
         }
       },err =>{
-        console.log(err); 
+        console.log(err);
       });
   }
   onSubmit(event:any) {
@@ -311,9 +311,9 @@ export class AddPatientComponent implements OnInit {
 
    savePatient(){
     console.log(this.patientRegesterForm.value);
-    
+
     // console.log(this.patientRegesterForm.value['socialSecurityNumber']);
-    
+
     // this.submitted = true;
     // // stop here if form is invalid
     // if (this.patientRegesterForm.invalid) {
@@ -340,6 +340,7 @@ export class AddPatientComponent implements OnInit {
       data => {
         console.log(data);
         this.route.navigate(['/patient/data/'+data.id])
+        alert(data.id)
       }, error => {
         console.log(error);
 
@@ -362,17 +363,17 @@ export class AddPatientComponent implements OnInit {
         "City": this.patientRegesterForm.value['city'],
         "Zipcode": this.patientRegesterForm.value['zipcode'],
         "Insurance_Number": 234567,
-        "Created_by":localStorage.getItem('name') 
+        "Created_by":localStorage.getItem('name')
   }
   console.log(data);
-  
+
   this.patientService.updatePatientData(data,this.patientId).subscribe(
     data =>{
       console.log(data);
        this.route.navigate(['patient/nav'])
     },err =>{
       console.log(err);
-      
+
     }
   )
 }

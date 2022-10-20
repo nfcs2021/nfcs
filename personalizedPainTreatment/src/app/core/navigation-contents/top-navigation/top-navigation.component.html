@@ -1,15 +1,14 @@
 <nav class="navbar fixed-top ">
   <img src="assets\images\PPT-logo 1000px.png" alt="" style="width: 150px;"
     class="ml-5 ">
-<<<<<<< HEAD
-  <div class="row ml-md-auto d-none d-md-flex mr-4 mt-1">
-    <div class="col mt-2 h4 mr-4">
-      <p class="">{{text}},{{firstName}}</p>
-      <p>Last LoggedIn:{{presentLogin |date}}</p>
+  <div class="ml-md-auto d-none d-md-flex mt-1" style="color:
+    #712C6B;">
+    <div class="row">
+      <div class="col mt-2 h4">
+        <p class="mr-5">{{text}},{{name}}</p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col dropdown show mt-1">
+    <div class="col dropdown show mt-1 ml-3">
       <img
         src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
         alt="profile" class="mt-1" style="width: 40px; border-radius: 5px;"
@@ -25,7 +24,7 @@
             alt="profile" class="mt-1"
             style="width:
             40px; border-radius: 5px;">
-          <p class="h6">{{frontdeskData.First_Name}}</p>
+          <p class="h6">{{name}}</p>
         </div>
         <div>
           <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
@@ -34,50 +33,16 @@
                 gradient-custom-2 text-light p-2"
                 style="background-color: #712C6B;font-weight:
                 bold;" [routerLink]="['/frontdesk/frontdetails']">View Profile</button>
-=======
-  <div class="ml-md-auto d-none d-md-flex mr-4 mt-1" style="color:
-    #712C6B;">
-    <div class="row ">
-      <div class="col mt-2 h4 mr-4" >
-        <p>{{text}}</p>
-      </div>
-      <div class="col dropdown show mt-1">
-        <img
-          src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
-          alt="profile" class="mt-1" style="width: 40px; border-radius: 5px;"
-          role="button"
-          id="dropdownMenuLink" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" (click)="false">
-        <div class="dropdown-menu dropdown-menu-right mt-2"
-          aria-labelledby="dropdownMenuLink" style="color:
-          #712C6B;border-radius: 10px;width: 300px;">
-          <div class="text-center">
-            <img
-              src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
-              alt="profile" class="mt-1"
-              style="width:
-              40px; border-radius: 5px;">
-            <p class="h6">{{name}}</p>
-          </div>
-          <div>
-            <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
-              <div class="text-center pt-0 mb-4 pb-1">
-                <button class="btn btn-block fa-lg
-                  gradient-custom-2 text-light p-2"
-                  style="background-color: #712C6B;font-weight:
-                  bold;" [routerLink]="['/frontdesk/frontdetails']">View Profile</button>
-              </div>
->>>>>>> cbd0b9e05307126babb8c908a9a8829735784c83
             </div>
           </div>
-          <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
-            <div class="text-center pt-0 mb-1 pb-1">
-              <button class="btn btn-block fa-lg
-                gradient-custom-2 text-light p-2"
-                style="background-color: #712C6B;font-weight:
-                bold;" (click)="logOut()">Log
-                Out</button>
-            </div>
+        </div>
+        <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
+          <div class="text-center pt-0 mb-1 pb-1">
+            <button class="btn btn-block fa-lg
+              gradient-custom-2 text-light p-2"
+              style="background-color: #712C6B;font-weight:
+              bold;" (click)="logOut()">Log
+              Out</button>
           </div>
         </div>
       </div>

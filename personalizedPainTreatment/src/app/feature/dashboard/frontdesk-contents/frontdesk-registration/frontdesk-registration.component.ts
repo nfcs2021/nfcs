@@ -22,7 +22,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   phoneNumberEntered = '';
   formatLen: any;
   myData: any[] = [];
-  patientRegesterForm: FormGroup;
+  frontDeskRegesterForm: FormGroup;
   submitted = false;
   stateInfo: any[] = [];
   countryInfo: any[] = [];
@@ -151,10 +151,10 @@ export class FrontdeskRegistrationComponent implements OnInit {
     obj.setCountry('in');
   }
   get f() {
-    return this.patientRegesterForm.controls;
+    return this.frontDeskRegesterForm.controls;
   }
   formInitilization() {
-    this.patientRegesterForm = this.formBuilder.group(
+    this.frontDeskRegesterForm = this.formBuilder.group(
       {
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required]],
@@ -186,48 +186,47 @@ export class FrontdeskRegistrationComponent implements OnInit {
     );
   }
   onSubmit() {
-    console.log(this.patientRegesterForm.value['socialSecurityNumber']);
+    console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
     this.submitted = true;
-    if (this.patientRegesterForm.invalid) {
+    if (this.frontDeskRegesterForm.invalid) {
       return;
     }
     const data = {
-      First_Name: this.patientRegesterForm.value['firstName'],
-      Last_Name: this.patientRegesterForm.value['lastName'],
-      Date_of_birth: this.patientRegesterForm.value['dob'],
-      Contact_number: this.patientRegesterForm.value['contactNumber'],
-      Gender: this.patientRegesterForm.value['gender'],
-      Email: this.patientRegesterForm.value['email'],
-      Ssn: this.patientRegesterForm.value['socialSecurityNumber'],
-      Address_Line1: this.patientRegesterForm.value['address1'],
-      Address_Line2: this.patientRegesterForm.value['address2'],
-      Country: this.patientRegesterForm.value['country'],
-      State: this.patientRegesterForm.value['state'],
-      City: this.patientRegesterForm.value['city'],
-      Zipcode: this.patientRegesterForm.value['zipcode'],
-      PCP_Name: this.patientRegesterForm.value['pcp'],
-      Emp_designation: this.patientRegesterForm.value['employeePostion'],
-      Immidiate_manager: this.patientRegesterForm.value['immediateManager'],
-      Emp_id: this.patientRegesterForm.value['employeeId'],
-      Emp_id_doc: this.patientRegesterForm.value['employeeIdDocument'],
-      Id_proof: this.patientRegesterForm.value['idproof'],
-      Profile_image: this.patientRegesterForm.value['profileImage'],
-      Password: this.patientRegesterForm.value['password'],
-      confirmPassword: this.patientRegesterForm.value['confirmPassword'],
+      First_Name: this.frontDeskRegesterForm.value['firstName'],
+      Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      Date_of_birth: this.frontDeskRegesterForm.value['dob'],
+      Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
+      Gender: this.frontDeskRegesterForm.value['gender'],
+      Email: this.frontDeskRegesterForm.value['email'],
+      Ssn: this.frontDeskRegesterForm.value['socialSecurityNumber'],
+      Address_Line1: this.frontDeskRegesterForm.value['address1'],
+      Address_Line2: this.frontDeskRegesterForm.value['address2'],
+      Country: this.frontDeskRegesterForm.value['country'],
+      State: this.frontDeskRegesterForm.value['state'],
+      City: this.frontDeskRegesterForm.value['city'],
+      Zipcode: this.frontDeskRegesterForm.value['zipcode'],
+      PCP_Name: this.frontDeskRegesterForm.value['pcp'],
+      Emp_designation: this.frontDeskRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.frontDeskRegesterForm.value['immediateManager'],
+      Emp_id: this.frontDeskRegesterForm.value['employeeId'],
+      Emp_id_doc: this.frontDeskRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.frontDeskRegesterForm.value['idproof'],
+      Profile_image: this.frontDeskRegesterForm.value['profileImage'],
+      Password: this.frontDeskRegesterForm.value['password'],
+      confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
       Created_by: this.createdBy,
-      InsuranceNumber: 234567,
     };
     this.authService.saveFrontDeskData(data).subscribe(
       (data) => {
-        console.log(data);
-        this.route.navigate(['/frontdesk/frontdesklist']);
+        console.log('frontdeskData :', data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.data.id]);
+        alert(data.data.First_Name);
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
       let control = formGroup.controls[password];

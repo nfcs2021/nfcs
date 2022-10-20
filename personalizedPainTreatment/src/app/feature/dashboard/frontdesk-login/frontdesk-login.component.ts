@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { DataService } from '../services/data.service';
+import { data } from 'jquery';
 @Component({
   selector: 'app-frontdesk-login',
   templateUrl: './frontdesk-login.component.html',
@@ -64,6 +65,7 @@ export class FrontdeskLoginComponent implements OnInit {
         localStorage.setItem('token', data.access_token);
        console.log(data.data);
        localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
+       localStorage.setItem('createdBy',data.data.First_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
        localStorage.setItem('id',data.data.id)
         console.log('login component' + localStorage.getItem('token'));
