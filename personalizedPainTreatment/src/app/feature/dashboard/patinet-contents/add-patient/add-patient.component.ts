@@ -286,7 +286,7 @@ export class AddPatientComponent implements OnInit {
         console.log(data);
         this.patientData=data;
         for (let patient of this.patientData) {
-          if(patient.FirstName ===this.patientRegesterForm.value['firstName'] && patient.LastName===this.patientRegesterForm.value['lastName'] && patient.dateofbirth===this.patientRegesterForm.value['dob'])
+          if(patient.First_Name ===this.patientRegesterForm.value['firstName'] && patient.Last_Name===this.patientRegesterForm.value['lastName'] && patient.Date_of_birth===this.patientRegesterForm.value['dob'])
            {
             this.popup=true;
             this.simillarPatientData=patient;

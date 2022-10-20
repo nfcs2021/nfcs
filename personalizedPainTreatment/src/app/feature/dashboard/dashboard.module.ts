@@ -19,6 +19,7 @@ import { FrontdeskMainComponent } from './frontdesk-contents/frontdesk-main/fron
 import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-details/frontdesk-details.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
 
 import { DateSearchPipe } from './pipes/date-search.pipe';
@@ -28,6 +29,7 @@ import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/front
 import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 
 @NgModule({
@@ -68,7 +70,10 @@ import { OtpComponent } from './frontdesk-contents/otp/otp.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxPaginationModule
+   NgxPaginationModule,
+   NgOtpInputModule
+    
+   
   ],
 })
 export class DashboardModule {}

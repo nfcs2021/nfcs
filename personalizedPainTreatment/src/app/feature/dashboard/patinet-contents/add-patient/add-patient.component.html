@@ -212,9 +212,9 @@
             <tbody>
               <tr>
                 <td>{{simillarPatientData.id}}</td>
-                <td>{{simillarPatientData.FirstName}}</td>
-                <td>{{simillarPatientData.LastName}}</td>
-                <td>{{simillarPatientData.dateofbirth | date:"MM-dd-YYYY"}}</td>
+                <td>{{simillarPatientData.First_Name}}</td>
+                <td>{{simillarPatientData.Last_Name}}</td>
+                <td>{{simillarPatientData.Date_of_birth | date:"MM-dd-YYYY"}}</td>
               </tr>
               <tr>
                 <th>Gender</th>
@@ -224,12 +224,12 @@
                 <th >Address</th>
               </tr>
               <tr>
-                <td>{{simillarPatientData.gender}}</td>
+                <td>{{simillarPatientData.Gender}}</td>
                 <td>{{simillarPatientData.Ssn}}</td>
-                <td>{{simillarPatientData.emailaddress}}</td>
-                <td>{{simillarPatientData.ContactNumber}}</td>
-                <td>{{simillarPatientData.AddressLine1}},{{simillarPatientData.AddressLine2}} {{simillarPatientData.city}}, {{simillarPatientData.state}}
-                  <br>{{simillarPatientData.country}} - {{simillarPatientData.Zipcode}}
+                <td>{{simillarPatientData.Email_address}}</td>
+                <td>{{simillarPatientData.Contact_Number}}</td>
+                <td>{{simillarPatientData.Address_Line1}},{{simillarPatientData.Address_Line2}} {{simillarPatientData.City}}, {{simillarPatientData.State}}
+                  <br>{{simillarPatientData.Country}} - {{simillarPatientData.Zipcode}}
                 </td>
                
               </tr>
@@ -241,7 +241,7 @@
               </tr>
               <tr>
                 <td>{{simillarPatientData.created_at}}</td>
-                <td></td>
+                <td>{{simillarPatientData.Created_by}}</td>
                 <td></td>
                 <td></td>
               </tr>
