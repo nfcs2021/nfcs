@@ -30,11 +30,11 @@
         <dd>Employee ID</dd>
         <dt class="mb-4">00{{frontDeskData.Emp_id}}</dt>
         <dd>Employee Designation</dd>
-        <dt class="mb-4">-</dt>
+        <dt class="mb-4">{{frontDeskData.Emp_designation}}</dt>
         <dd>PCP Name</dd>
         <dt class="mb-3">{{frontDeskData.PCP_Name}}</dt>
         <dd>Immediate Manager</dd>
-        <dt class="">-</dt>
+        <dt class="">{{frontDeskData.Immidiate_manager}}</dt>
       </ul>
     </div>
     <div class="col-sm-9">
@@ -46,10 +46,8 @@
             <dd>Contact Number</dd>
             <dt class="mb-4">{{frontDeskData.Contact_number}}</dt>
             <dd>Address</dd>
-            <dt class="mb-5">{{frontDeskData.Address_Line1}}, {{frontDeskData.Address_Line2}}
-              <br>{{frontDeskData.City}}, {{frontDeskData.State}}
-              <br>{{frontDeskData.Country}} - {{frontDeskData.Zipcode}}
-            </dt>
+            <dt class="mb-5">{{frontDeskData.Address_Line1}},{{frontDeskData.Address_Line2}},<br>
+              {{frontDeskData.Country}},{{frontDeskData.State}}.{{frontDeskData.City}}</dt>
           </ul>
         </div>
         <div class="col-sm-4">
@@ -69,7 +67,7 @@
             <dd>Last Updated On</dd>
             <dt class="mb-4">{{frontDeskData.updated_at}}</dt>
             <dd>Last Updated By</dd>
-            <dt class="mb-4">-</dt>
+            <dt class="mb-4">{{frontDeskData.created_at}}</dt>
           </ul>
         </div>
       </div>
@@ -77,19 +75,22 @@
         <div class="col text-center">
           <div class="row mt-3">
             <div class="col-sm-7 text-end">Employee ID Document</div>
-            <div class="col-sm-5">Employee ID.pdf<span class="text-end"><img
+            <div class="col-sm-5">{{frontDeskData.Emp_id_doc}}<span
+                class="text-end"><img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span></div>
           </div>
           <div class="row mt-3">
             <div class="col-sm-7 text-end">ID Proof(Drivers Licence/State ID)</div>
-            <div class="col-sm-5">Drivers licence.pdf<span class="text-end"><img
+            <div class="col-sm-5">{{frontDeskData.Id_proof}}<span
+                class="text-end"><img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span></div>
           </div>
           <div class="row mt-3 mb-3">
             <div class="col-sm-7 text-end">Profile Image</div>
-            <div class="col-sm-5">Profile image.png<span class="text-end"><img
+            <div class="col-sm-5">{{frontDeskData.Profile_image}}<span
+                class="text-end"><img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span></div>
           </div>

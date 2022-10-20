@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 <div class=" container  col-md-11">
     
     
@@ -88,5 +89,84 @@
    <pagination-controls id="listing_pagination" [maxSize]="5 " [directionLinks]="true" (pageChange)="page= $event">
    </pagination-controls>
  </div>
+=======
+<div class=" container col-md-11">
 
+  <div class="row ">
+    <div class="col para1 mt-5">
+      Front Desk Employees
+    </div>
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
 
+    <div class="col-4 mt-5">
+      <a routerLink="/frontdesk/frontdesk-registration"><h3 class="style"><img
+            src="\assets\images\ant-design_plus-circle-outlined.png"
+            style="width: 25px; border-radius: 5px;">AddNew FrontDesk Employees</h3></a>
+    </div>
+  </div><hr>
+  <div class="row mt-4 mb-3 ml-5">
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" [(ngModel)]="model.First_Name" class="form-control"
+        placeholder="FirstName...">
+    </div>
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text"[(ngModel)]="model.Last_Name" class="form-control"
+        placeholder="LastName...">
+    </div>
+    <div class="col-md-3 ">
+      <select class="form-select" aria-label="Default select example">
+        <option selected="" disabled>Choose ...</option>
+        <option value="1">Upmc</option>
+        <option value="2">Apolo</option>
+        <option value="3">Medicover</option>
+      </select>
+    </div>
+  </div>
+  <hr>
+  <div *ngFor="let frontdeskData of frontDesKList | frontdeskpipe: model |
+    paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:totalRec}
+    let i= index ">
+    <a (click)="troggle(frontdeskData.id)">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>Dob</th>
+            <th>SocialSecurityNumber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{frontdeskData.First_Name}}</td>
+            <td>{{frontdeskData.Last_Name }}</td>
+            <td>{{frontdeskData.Date_of_birth }}</td>
+            <td>{{frontdeskData.Ssn}}</td>
+          </tr>
+          <tr>
+            <th>Email </th>
+            <th>contactNumber</th>
+            <th>Address</th>
+            <th>Created on</th>
+          </tr>
+          <tr>
+            <td>{{frontdeskData.Email | uppercase}}</td>
+            <td>{{frontdeskData.Contact_number}}</td>
+            <td class="col-3">{{frontdeskData.Address_Line1 | uppercase}},<br>{{frontdeskData.City}},
+              {{frontdeskData.State}} <br> {{frontdeskData.Country}} -
+              {{frontdeskData.Zipcode}}</td>
+            <td>{{frontdeskData.created_at | date}}</td>
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </a>
+  </div>
+
+  <pagination-controls id="listing_pagination" [maxSize]="5 "
+    [directionLinks]="true" (pageChange)="page= $event">
+  </pagination-controls>
+</div>

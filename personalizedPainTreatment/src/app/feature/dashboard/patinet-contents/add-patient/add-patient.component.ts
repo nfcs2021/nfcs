@@ -71,7 +71,11 @@ export class AddPatientComponent implements OnInit {
         this.formUpdation();
         this.onChangeCountryUpdateData(data.Country);
 
+<<<<<<< HEAD
       }, err => {
+=======
+      },err =>{
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
         console.log(err);
 
       }
@@ -359,10 +363,17 @@ export class AddPatientComponent implements OnInit {
             break;
           }
         }
+<<<<<<< HEAD
         if (!this.simillarPatientData) {
           this.savePatient();
         }
       }, err => {
+=======
+        if(!this.simillarPatientData){
+         this.savePatient();
+        }
+      },err =>{
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
         console.log(err);
       });
   }
@@ -405,13 +416,19 @@ export class AddPatientComponent implements OnInit {
     this.patientService.savePatientData(data).subscribe(
       data => {
         console.log(data);
+<<<<<<< HEAD
         this.route.navigate(['/patient/data/' + data.id])
+=======
+        this.route.navigate(['/patient/data/'+data.id])
+        alert(data.id)
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
       }, error => {
         console.log(error);
 
       }
     )
   }
+<<<<<<< HEAD
   update() {
     const data = {
       "First_Name": this.patientRegesterForm.value['firstName'],
@@ -429,6 +446,35 @@ export class AddPatientComponent implements OnInit {
       "Zipcode": this.patientRegesterForm.value['zipcode'],
       "Insurance_Number": 234567,
       "Created_by": localStorage.getItem('name')
+=======
+  update(){
+    const data={
+      "First_Name":this.patientRegesterForm.value['firstName'],
+        "Last_Name": this.patientRegesterForm.value['lastName'],
+        "Date_of_birth": this.patientRegesterForm.value['dob'],
+        "Contact_Number": this.patientRegesterForm.value['contactNumber'],
+        "Gender": this.patientRegesterForm.value['gender'],
+        "Email_address": this.patientRegesterForm.value['email'],
+        "Ssn": this.patientRegesterForm.value['socialSecurityNumber'],
+        "Address_Line1": this.patientRegesterForm.value['address1'],
+        "Address_Line2": this.patientRegesterForm.value['address2'],
+        "Country": this.patientRegesterForm.value['country'],
+        "State": this.patientRegesterForm.value['state'],
+        "City": this.patientRegesterForm.value['city'],
+        "Zipcode": this.patientRegesterForm.value['zipcode'],
+        "Insurance_Number": 234567,
+        "Created_by":localStorage.getItem('name')
+  }
+  console.log(data);
+
+  this.patientService.updatePatientData(data,this.patientId).subscribe(
+    data =>{
+      console.log(data);
+       this.route.navigate(['patient/nav'])
+    },err =>{
+      console.log(err);
+
+>>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
     }
     console.log(data);
 

@@ -13,6 +13,7 @@ export class AuthService {
   authenticationEvent = new EventEmitter<boolean>();
   getUserData = new EventEmitter<any>();
   name: any;
+  apiUrl = environment.apiUrl;
   constructor(
     private dataService: DataService,
     private router: Router,
@@ -24,11 +25,27 @@ export class AuthService {
     localStorage.removeItem('token');
     return this.http.post<any>(environment.apiUrl + 'login', data);
   }
+
+  saveFrontDeskData(data: any): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.post<any>(this.apiUrl + 'register', data, {
+      headers: httpheaders,
+    });
+  }
+  getAllRegistrationData() {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<any>(this.apiUrl + 'getregister', {
+      headers: httpheaders,
+    });
+  }
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
     localStorage.removeItem('role');
-    console.log(localStorage.getItem('token'));
+    console.log('logout.................' + localStorage.getItem('token'));
     localStorage.clear();
     this.router.navigate(['']).then(() => {
       window.location.reload();

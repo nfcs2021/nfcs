@@ -1,39 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
 import { PatientService } from '../../services/patient.service';
+import { AuthService } from '../../services/auth.service';
+import { FrontdeskEmployee, SearchModel1 } from '../frontdesk-model/frontdesk-model';
 
 @Component({
   selector: 'app-frontdesklist',
   templateUrl: './frontdesklist.component.html',
-  styleUrls: ['./frontdesklist.component.css']
+  styleUrls: ['./frontdesklist.component.css'],
 })
 export class FrontdesklistComponent implements OnInit {
-  posts: Array<Patient>;
-  model:SearchModel =  new SearchModel();
-  
-  patientsData:any;
-  dropdown:boolean[]=[];
+  frontDesKList: Array<FrontdeskEmployee>;
+  model: SearchModel1 = new SearchModel1();
+  dropdown: boolean[] = [];
   page: number = 1;
-  tatalRec: string;
-  constructor(private service:PatientService) { }
+  totalRec: string;
+  constructor(
+    private service: PatientService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.getAllPatient();
+    this.getRegisterData();
   }
-  troggle(i:any){
-    this.dropdown[i]=!this.dropdown[i];
+  troggle(i: any) {
+    this.dropdown[i] = !this.dropdown[i];
   }
-  getAllPatient(){
-    this.service.getAllPatientsData().subscribe(
-      res =>{
-        console.log(res);
-        this.posts=res
-        this.patientsData=res;
-      },err =>{
-        console.log(err);
-
-      }
-    )
+  getRegisterData() {
+    this.authService.getAllRegistrationData().subscribe((data) => {
+      console.log(data);
+      this.frontDesKList = data;
+    });
   }
-
 }

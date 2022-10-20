@@ -46,10 +46,10 @@ export class PatientListComponent implements OnInit {
       data =>{
         this.patientRecordData=data;
     console.log(data);
-   
+
       },err =>{
         console.log(err);
-        
+
       }
     )
   }

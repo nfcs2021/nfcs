@@ -116,7 +116,7 @@ export class PatientSurveyFormComponent implements OnInit {
     this.service.savePatientRecord(patientdata).subscribe(
       (data) => {
         console.log(data);
-        
+
         this.patientid = data.id;
 
         this.createQuestiondata(this.patientid);
@@ -126,7 +126,7 @@ export class PatientSurveyFormComponent implements OnInit {
         console.log(error);
       }
     );
-    
+
 
     // var userId: number = 0;
     // if (userName != undefined && userName.toLowerCase() == 'krishna') {
@@ -150,7 +150,7 @@ export class PatientSurveyFormComponent implements OnInit {
       Updated_By:'test'
      }
      console.log(data);
-     
+
      this.service.savePatientSurveyForm(data).subscribe(
               (response) => {
                 reportId = response.Record_id;
@@ -172,7 +172,7 @@ export class PatientSurveyFormComponent implements OnInit {
       this.service.saveSelectedParts(data1).subscribe(
         (data) => {
           console.log(data);
-          
+
         },
         (error) => {
           console.log(error);
