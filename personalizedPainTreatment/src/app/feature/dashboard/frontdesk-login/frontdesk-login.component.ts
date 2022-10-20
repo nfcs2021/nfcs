@@ -62,7 +62,11 @@ export class FrontdeskLoginComponent implements OnInit {
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
-        this.route.navigateByUrl('/patient/nav');
+        this.route.navigate(['/patient/nav']).then(() => {
+          window.location.reload();
+        });
+        // this.route.navigateByUrl('/patient/nav');
+       
       },
       (err) => {
         this.has_error = true;

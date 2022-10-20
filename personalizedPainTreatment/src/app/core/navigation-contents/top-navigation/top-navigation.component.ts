@@ -1,4 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Input } from '@angular/core';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
@@ -14,9 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TopNavigationComponent implements OnInit, OnChanges {
   // isLoggidIn: boolean = this.authService.loggedIn();
   // name = localStorage.getItem('registrationData');
+  @Input('data1') data1:any;
+  @Input('pcp_Name') pcp_Name:any;
   name: any;
   user: any;
-  pcp: string | null;
+  pcp: any ;
   text = 'welcome';
   loggedIn = false;
   constructor(
@@ -28,24 +30,15 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    this.authService.getEvent().subscribe(() => {
-      this.getloginData();
-      this.loggedIn = true;
-      console.log(this.loggedIn);
-    });
   }
 
-  ngOnChanges() {}
-  getloginData() {
-    this.dataService.getUserData().subscribe((data) => {
-      console.log('header :' + data.name);
-      localStorage.setItem('username', data.name);
-      this.name = localStorage.getItem('username');
-      this.pcp = localStorage.getItem('pcpData');
-    });
+  ngOnChanges() {
+   this.name= this.data1;
+   this.pcp=this.pcp_Name;
   }
+
+
   logOut() {
-    // localStorage.removeItem('token')
     this.authService.logout();
   }
 
