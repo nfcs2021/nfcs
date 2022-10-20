@@ -15,6 +15,7 @@ import { FrontdeskMainComponent } from '../frontdesk-contents/frontdesk-main/fro
 import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-details/frontdesk-details.component';
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
+import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
 
 const routes: Routes = [
   {
@@ -30,16 +31,40 @@ const routes: Routes = [
           {
             path: 'new',
             component: AddPatientComponent,
-            canActivate: [AuthRouteGaurdService],
+            canActivate: [AuthRouteGaurdService]
           },
-          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
-          { path: 'list', component: PatientListComponent },
-          { path: 'view', component: ViewreportComponent },
-          { path: 'view/:id', component: ViewreportComponent },
-          { path: 'nav', component: NewpatientNavigationComponent },
-          { path: 'data/:id', component: PatientdataComponent },
-          { path: 'patient-report/:id', component: PatientReportComponent },
-          {path: 'new/:id',component:AddPatientComponent}
+          {
+            path: 'survey-form/:id', component: PatientSurveyFormComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'list', component: PatientListComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view/:id', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'nav', component: NewpatientNavigationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'data/:id', component: PatientdataComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'patient-report/:id', component: PatientReportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'new/:id', component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService]
+          }
 
         ],
       },
@@ -48,10 +73,24 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
-          { path: 'frontdetails', component: FrontdeskDetailsComponent },
+          {
+            path: 'frontdetails', component: FrontdeskDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
           {
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesk-registration/:id',
+            component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesk-list',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
           },
         ],
       },

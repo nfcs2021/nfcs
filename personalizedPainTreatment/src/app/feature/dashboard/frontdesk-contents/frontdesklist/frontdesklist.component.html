@@ -15,11 +15,11 @@
    <div class="row mt-4 mb-3 ml-5">
      <div class="col-md-3 has-search">
        <span class="fa fa-search form-control-feedback"></span>
-       <input type="text" [(ngModel)]="model.FirstName" class="form-control" placeholder="FirstName...">
+       <input type="text" [(ngModel)]="model.First_Name" class="form-control" placeholder="FirstName...">
      </div>
      <div class="col-md-3 has-search">
        <span class="fa fa-search form-control-feedback"></span>
-       <input type="text"[(ngModel)]="model.LastName" class="form-control" placeholder="LastName...">
+       <input type="text"[(ngModel)]="model.Last_Name" class="form-control" placeholder="LastName...">
      </div>
      <div class="col-md-3 ">
         <select class="form-select" aria-label="Default select example">
@@ -50,9 +50,9 @@
                  <tr >
                   
                  
-                   <td>{{patientList.FirstName }}</td>
-                   <td>{{patientList.LastName }}</td>
-                   <td>{{patientList.dateofbirth }}</td>
+                   <td>{{patientList.First_Name }}</td>
+                   <td>{{patientList.Last_Name }}</td>
+                   <td>{{patientList.Date_of_birth }}</td>
                    <td>{{patientList.Ssn }}</td> 
                    
                  </tr>
@@ -64,9 +64,12 @@
                   
                  </tr>
                  <tr >
-                   <td>{{patientList.emailaddress | uppercase}}</td>
-                   <td>{{patientList.ContactNumber}}</td>
-                   <td class="col-3">{{patientList.AddressLine1 | uppercase}},<br>{{patientList.city}}, {{patientList.state}} <br> {{patientList.country}} - {{patientList.Zipcode}}</td>
+                   <td>{{patientList.Email_address | uppercase}}</td>
+                   <td>{{patientList.Contact_Number}}</td>
+                   <td class="col-3">{{patientList.Address_Line1 | uppercase}},{{patientList.Address_Line2 | uppercase}}<br>
+                    {{patientList.City}}, {{patientList.State}} <br>
+                     {{patientList.Country}} - {{patientList.Zipcode}}
+                    </td>
                    <td>{{patientList.created_at | date}}</td>
                  </tr>
                  <tr>
@@ -76,7 +79,7 @@
            </a>
        <div *ngIf="dropdown[patientList.id]">
            <div class="buttons  ">
-               <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
+               <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/frontdesk/frontdesk-registration/{{patientList.id}}" >Edit Front Desk Employee</a><br>
                <br>
              </div>
        </div>

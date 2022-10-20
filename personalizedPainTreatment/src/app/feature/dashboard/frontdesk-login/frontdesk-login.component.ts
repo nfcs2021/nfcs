@@ -54,6 +54,7 @@ export class FrontdeskLoginComponent implements OnInit {
         console.log(data);
         localStorage.setItem('token', data.access_token);
        console.log(data.data);
+       localStorage.setItem('role',data.data.roles.role)
        localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
        localStorage.setItem('id',data.data.id)
@@ -61,6 +62,7 @@ export class FrontdeskLoginComponent implements OnInit {
         localStorage.setItem('pcpData', this.loginFormGroup.value['pcp']);
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
+
         this.route.navigate(['/patient/nav']).then(() => {
           window.location.reload();
         });

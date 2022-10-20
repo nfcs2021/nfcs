@@ -8,7 +8,7 @@ import { DataService } from '../../services/data.service';
 })
 export class NewpatientNavigationComponent implements OnInit {
   userdata: any;
-  pcp: any;
+  role: any;
   
   constructor(private dataService: DataService) {
     
@@ -16,7 +16,7 @@ export class NewpatientNavigationComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.pcp = localStorage.getItem('pcpData');
+    this.role = localStorage.getItem('role');
     
   }
 

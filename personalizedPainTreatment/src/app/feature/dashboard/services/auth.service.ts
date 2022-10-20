@@ -2,7 +2,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +39,14 @@ export class AuthService {
   }
   getEvent() {
     return this.getUserData.asObservable();
+  }
+
+  saveFrontDeskData(data: any): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.post<any>(environment.apiUrl + 'register', data, {
+      headers: httpheaders,
+    });
   }
 }

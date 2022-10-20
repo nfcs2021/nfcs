@@ -10,7 +10,7 @@ export class DateSearchPipe implements PipeTransform {
 
   transform(patientRecords: PatientRecord[], search:SearchDate): any {
       
-    console.log(patientRecords);
+    if(!search || !search.fromDate && !search.toDate) return patientRecords;
         var datePipe = new DatePipe("en-US");  
             
         return patientRecords.filter(proj => { 

@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
+import { LocalizedString } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
+import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 import { PatientService } from '../../services/patient.service';
 
 @Component({
@@ -28,18 +31,84 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
+  frontDeskId: any;
+  updateData: boolean;
+  frontDeskDataById: any;
   constructor(
     private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private route: Router
+    private route: Router,
+    private router:ActivatedRoute,
+    private dataService:DataService,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
+
+    this.frontDeskId = this.router.snapshot.paramMap.get('id')
+
+    if (this.frontDeskId) {
+      this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
+      this.updateData = true;
+    }
   }
+
+  getForntDeskDataById(id:any){
+    this.dataService.getUserData(id).subscribe(
+      data =>{
+       console.log(data);
+       this.frontDeskDataById=data;
+       this.updateFrontDeskRegistrationForm();
+       this.onChangeCountryUpdateData(data.Country);
+
+      },err =>{
+      console.log(err);
+      }
+    )
+  }
+
+  onChangeCountryUpdateData(countryValue: any) {
+    alert(countryValue)
+    alert(this.frontDeskDataById.State)
+    let countryIso: any;
+    for (let data of this.countryInfo) {
+      if (countryValue === data.name) {
+        countryIso = data.iso2
+        this.countryId = data.iso2
+      }
+    }
+    this.service.getStateOfSelectedCountry(countryIso).subscribe(
+      data => {
+        console.log(data);
+        this.stateInfo = data;
+        this.onChangeStateUpdateData(this.frontDeskDataById.State);
+      }
+    )
+
+  }
+
+  onChangeStateUpdateData(stateValue: any) {
+    alert(stateValue)
+    let stateId: any;
+    for (let data of this.stateInfo) {
+      if (stateValue === data.name) {
+        stateId = data.iso2
+      }
+    }
+    this.service.getCitiesOfSelectedState(this.countryId, stateId).subscribe(
+      data => {
+        console.log(data);
+        this.cityInfo = data;
+
+      }
+    )
+  }
+
+
   getToday(): string {
     return new Date().toISOString().split('T')[0];
   }
@@ -172,6 +241,33 @@ export class FrontdeskRegistrationComponent implements OnInit {
       profileImage: [''],
     });
   }
+
+  updateFrontDeskRegistrationForm(){
+    this.patientRegesterForm = this.formBuilder.group({
+      firstName: [this.frontDeskDataById.First_Name, [Validators.required, Validators.minLength(2)]],
+      lastName: [this.frontDeskDataById.Last_Name, [Validators.required]],
+      dob: [this.frontDeskDataById.Date_of_birth, [Validators.required]],
+      contactNumber: [this.frontDeskDataById.Contact_number, [Validators.required]],
+      email: [this.frontDeskDataById.Email, [Validators.required]],
+      socialSecurityNumber: [this.frontDeskDataById.Ssn, [Validators.required]],
+      address1: [this.frontDeskDataById.Address_Line1, [Validators.required]],
+      address2: [this.frontDeskDataById.Address_Line2, []],
+      country: [this.frontDeskDataById.Country, [Validators.required]],
+      state: [this.frontDeskDataById.State, [Validators.required]],
+      city: [this.frontDeskDataById.City, [Validators.required]],
+      zipcode: [this.frontDeskDataById.Zipcode, [Validators.required]],
+      gender: [this.frontDeskDataById.Gender, [Validators.required]],
+      pcp: [this.frontDeskDataById.PCP_Name, [Validators.required]],
+      employeePostion: [this.frontDeskDataById.Emp_designation, [Validators.required]],
+      immediateManager: [this.frontDeskDataById.Immidiate_manager, [Validators.required]],
+      employeeId: [this.frontDeskDataById.Emp_id, [Validators.required]],
+      employeeIdDocument: [this.frontDeskDataById.Emp_id_doc],
+      idproof: [this.frontDeskDataById.Id_proof],
+      profileImage: [this.frontDeskDataById.Profile_image],
+    });
+
+  }
+
   onSubmit() {
     console.log(this.patientRegesterForm.value['socialSecurityNumber']);
     this.submitted = true;
@@ -179,29 +275,40 @@ export class FrontdeskRegistrationComponent implements OnInit {
       return;
     }
     const data = {
-      FirstName: this.patientRegesterForm.value['firstName'],
-      LastName: this.patientRegesterForm.value['lastName'],
-      dateofbirth: this.patientRegesterForm.value['dob'],
-      ContactNumber: this.patientRegesterForm.value['contactNumber'],
-      gender: this.patientRegesterForm.value['gender'],
-      emailaddress: this.patientRegesterForm.value['email'],
+      First_Name: this.patientRegesterForm.value['firstName'],
+      Last_Name: this.patientRegesterForm.value['lastName'],
+      Date_of_birth: this.patientRegesterForm.value['dob'],
+      Contact_number: this.patientRegesterForm.value['contactNumber'],
+      Gender: this.patientRegesterForm.value['gender'],
+      Email: this.patientRegesterForm.value['email'],
       Ssn: this.patientRegesterForm.value['socialSecurityNumber'],
-      AddressLine1: this.patientRegesterForm.value['address1'],
-      AddressLine2: this.patientRegesterForm.value['address2'],
-      country: this.patientRegesterForm.value['country'],
-      state: this.patientRegesterForm.value['state'],
-      city: this.patientRegesterForm.value['city'],
+      Address_Line1: this.patientRegesterForm.value['address1'],
+      Address_Line2: this.patientRegesterForm.value['address2'],
+      Country: this.patientRegesterForm.value['country'],
+      State: this.patientRegesterForm.value['state'],
+      City: this.patientRegesterForm.value['city'],
       Zipcode: this.patientRegesterForm.value['zipcode'],
-      InsuranceNumber: 234567,
+      PCP_Name: this.patientRegesterForm.value['pcp'],
+      Emp_designation: this.patientRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.patientRegesterForm.value['immediateManager'],
+      Emp_id: this.patientRegesterForm.value['employeeId'],
+      Emp_id_doc: this.patientRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.patientRegesterForm.value['idproof'],
+      Profile_image: this.patientRegesterForm.value['profileImage'],
+      Password: this.patientRegesterForm.value['password'],
+      confirmPassword: this.patientRegesterForm.value['confirmPassword'],
+      Created_by:localStorage.getItem('name'),
     };
-    this.patientService.savePatientData(data).subscribe(
+    this.authService.saveFrontDeskData(data).subscribe(
       (data) => {
-        console.log(data);
-        this.route.navigate(['/patient/data/' + data.id]);
+        console.log('frontdeskData :', data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.data.id]);
+        alert(data.data.First_Name);
       },
       (error) => {
         console.log(error);
       }
     );
   }
+
 }

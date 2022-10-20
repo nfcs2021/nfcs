@@ -22,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
 import { DateSearchPipe } from './pipes/date-search.pipe';
 import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
+import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/frontdesklist.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-r
     FrontdeskDetailsComponent,
     AdvanceSearchPipe,
     DateSearchPipe,
-    FrontdeskRegistrationComponent
+    FrontdeskRegistrationComponent,
+    FrontdesklistComponent
   ],
   imports: [
     CommonModule,
