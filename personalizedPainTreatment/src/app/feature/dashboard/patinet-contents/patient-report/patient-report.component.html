@@ -9,20 +9,24 @@
 
         <ul class="list-unstyled ml-5">
 
-            <li> <span class="mr-5">Name :</span>{{patientData.First_Name}} {{patientData.LastName}}</li>
+            <li> <span class="mr-5">Name :</span>{{patientData?.First_Name}} {{patientData?.LastName}}</li>
             <li><span class="mr-5">MRN :</span>1232142354</li>
-            <li><span class="mr-5">DOB :</span>{{patientData.Date_of_birth | date}}</li>
+            <li><span class="mr-5">DOB :</span>{{patientData?.Date_of_birth | date}}</li>
             <div *ngFor="let data of quetionaryData">
                 <li *ngIf="data.Sub_question_id===2"><span class="mr-5">AGE :</span>{{data.Answers}}</li>
         </div>
-            <li><span class="mr-4">Address :</span>{{patientData.Address_Line1}},{{patientData.Address_Line2}}</li>
+            <li class="row"><span class="col-1 ">Address:</span> <span class="col-3">{{patientData?.Address_Line1}},{{patientData?.Address_Line2}}
+              <br>{{patientData?.City}}, {{patientData?.State}} <br>
+              {{patientData?.Country}} - {{patientData?.Zipcode}}
+            </span>
+            </li>
             <hr style="border-top:1px solid black">
             <ng-container *ngFor="let data of quetionaryData">
                 <li *ngIf="data.Sub_question_id===3"><span class="mr-5 align">Pain Duration :</span> {{data.Answers}}yrs
                     {{data.Answers}}Months</li>
             </ng-container>
             <li><span class="mr-5"> Total number of pain regions identified :</span>
-                {{selectedPartData.length}}</li>
+                {{selectedPartData?.length}}</li>
             <ng-container *ngFor="let data of quetionaryData">
                 <li *ngIf="data.Sub_question_id===1"><span class="mr-5"> Average pain intensity in the last 7 days :</span>
                     {{data.Answers}}
@@ -821,4 +825,933 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container conatiner-border mt-5 " [id]="'pdf'+4">
+    <div class="header-2 h3 p-3 border border-dark text-white">Patient Survey Form
+        </div>
+    <form class="form ml-5 " #saveForm="ngForm"  novalidate>
+        <fieldset [disabled]="true">
+           
+            <!-- .....................................first question..................................... -->
+            <div *ngFor="let data of questions; ">
+                <div class="row mt-3" *ngIf="data.question_Id===1">
+                    <div class="col-8">
+                        <h5 class="font-weight-bold ">PAIN INTENSITY. <span>(IN THE PAST 7
+                                DAYS.)</span> </h5>
+                        <span class="font-weight-bold "> 1.{{data.questions}} ?.....</span> <br> <br>
+
+                        <div class="row ml-3 ">
+                            <div class="col-1 ">
+
+                                <label for="radioA"><input type="radio" class="form-control check" name="radio1" #radio1="ngModel"
+                                        value="1" [(ngModel)]="data.p_Options" required > </label>
+                                <br>1 <br> <span> No
+                                    <br> pain</span>
+                                   
+                            </div>
+                            <div class="col-1 ">
+                                <label for="radioB"><input type="radio" class="check" name="radio1" value="2"
+                                        [(ngModel)]="data.p_Options" required/>
+                                </label> <br>2
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="3"
+                                        [(ngModel)]="data.p_Options" required /> </label>
+                                <br>3
+                            </div>
+
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="4"
+                                        [(ngModel)]="data.p_Options" required/> </label>
+                                <br>4
+                            </div>
+                            <div class="col-1">
+                                <label for="radioA"><input type="radio" class="check" name="radio1" value="5"
+                                        [(ngModel)]="data.p_Options" required/> </label>
+                                <br>5
+                            </div>
+                            <div class="col-1">
+                                <label for="radioB"><input type="radio" class="check" name="radio1" value="6"
+                                        [(ngModel)]="data.p_Options" required/> </label>
+                                <br>6
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="7"
+                                        [(ngModel)]="data.p_Options" required/> </label>
+                                <br>7
+                            </div>
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="8"
+                                        [(ngModel)]="data.p_Options" required/>
+                                </label> <br>8
+                            </div>
+                            <div class="col-1">
+                                <label for="radioC"><input type="radio" class="check" name="radio1" value="9"
+                                        [(ngModel)]="data.p_Options" required/> </label>
+                                <br>9
+                            </div>
+                            <div class="col-1">
+                                <label for="radioD"><input type="radio" class="check" name="radio1" value="10"
+                                        [(ngModel)]="data.p_Options" required/>
+                                </label> <br>10 <br> <span>
+                                    Worst
+                                    <br> imaginable <br> pain</span>
+                            </div>
+                            <span class="text-danger "
+                            *ngIf="(radio1.touched || saveForm.submitted) && radio1.errors?.['required']">
+                            Pain Intensity Are Required
+                        </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................second question.....................................-->
+            <div *ngFor="let data of questions">
+                <div class="row mt-5" *ngIf="data.question_Id===3">
+                    <div class="col-15">
+                        <h5 class="font-weight-bold ">PAIN EXPERIENCE DURATION.</h5>
+                        <span class="font-weight-bold "> 2 .{{data.subQuestions}}?</span> <br> <br>
+                        <div class="row ml-3 " >
+                            <div class="col-3">
+                                <label class="font-weight-bold mr-1" for="years">years:</label> 
+                                <input type="text" id="years" class="form-control form-control-sm" name="years1"
+                                    #years1="ngModel" [(ngModel)]="data.p_Options" required pattern="[0-9]+" maxlength="2" [ngClass]="{ 'is-invalid': saveForm.submitted && years1.errors }">
+                                <span class="text-danger "
+                                    *ngIf="(years1.touched || saveForm.submitted) && years1.errors?.['required']">
+                                    years are required
+                                </span>
+                                <div class="text-danger years " *ngIf="years1.errors?.['pattern']">Invalid years.</div>
+                            </div>
+                            
+                            <div class="col-1">
+                                <label class="font-weight-bold " for="months">Months:</label>
+                                <input type="text" id="months" class="form-control form-control-sm" name="months1"
+                                    #months1="ngModel" [(ngModel)]="data.p_Options" required pattern="[0-9]+" maxlength="2" appMonthValidator [ngClass]="{ 'is-invalid': saveForm.submitted && months1.errors }">
+                                <span class="text-danger "
+                                    *ngIf="(months1.touched || saveForm.submitted) && months1.errors?.['required']">
+                                    Months are required
+                                </span>
+                                <span class="text-danger "
+                                *ngIf="(months1.touched || saveForm.submitted) &&  months1.errors?.['monthInvalid']" >
+                                Months are Invalid
+                            </span>
+                                <div class="text-danger years " *ngIf="months1.errors?.['pattern']">Invalid Months.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................third question.....................................-->
+            <div *ngFor="let data of questions">
+                <div class="row mt-5 ml-3" *ngIf="data.question_Id===2">
+                    <div class="col-10">
+                        <label for="age">
+                            <h5 class="font-weight-bold mr-1">{{data.questions}}</h5>
+                        </label><input type="text" class="form-control" id="age" name="age1" [(ngModel)]="data.p_Options"
+                            #age1="ngModel" required pattern="[0-9]+" maxlength="2"  >
+                        <span class="text-danger "
+                            *ngIf="(age1.touched || saveForm.submitted) && age1.errors?.['required']">
+                            Age is required
+                        </span>
+                        <span class="text-danger "
+                        *ngIf="(age1.touched || saveForm.submitted) &&  age1.errors?.['ageInvalid']" >
+                        Age is Invalid
+                    </span>
+                        <div class="text-danger " *ngIf="age1.errors?.['pattern']">Invalid age.</div>
+                    </div>
+                </div>
+            </div>
+            <!--  ..........................................FOURTH question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PROMIS ANXIETY. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let data of questions">
+
+                    <tr
+                        *ngIf="data.question_Id===4">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+
+                        <td>
+
+                            <div class="col-1 mr-3">
+                                <label for="radio1"><input type="radio" class="check0" name="{{data.subQuestionId}}"
+                                        value="NEVER" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">1</span>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio2"><input type="radio" class="check1" name="{{data.subQuestionId}}"
+                                        value="RARELY" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">2</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio3"><input type="radio" class="check1" name="{{data.subQuestionId}}"
+                                        value="SOMETIMES" [(ngModel)]="data.p_Options" /> </label> <br> <span
+                                    class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio4"><input type="radio" class="check1" name="{{data.subQuestionId}}"
+                                        value="OFTEN" [(ngModel)]="data.p_Options"  /> </label> <br> <span
+                                    class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radio5"><input type="radio" class="check1" name="{{data.subQuestionId}}"
+                                        value="ALWAYS" [(ngModel)]="data.p_Options"  /> </label> <br> <span
+                                    class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <hr>
+
+            <!--  ..........................................FIFTH question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">DEPRESSION. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===5">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="NEVER"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="RARELY"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="SOMETIMES"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="OFTEN"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="ALWAYS"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--  ..........................................SIXTH question.....................................-->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PHYSICAL FUNCTION. <span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col" width="5%"></th>
+                        <th scope="col" width="1%">UNABLE TO DO</th>
+                        <th scope="col" width="1%">WITH MUCH DIFFICULTY</th>
+                        <th scope="col" width="1%">WITH SOME DFFICULTY</th>
+                        <th scope="col" width="1%">WITH A LITTLE DFFICULTY</th>
+                        <th scope="col" width="1%">WITHOUT ANY DIFFICULTY</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===6">
+                        <th scope="row">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="UNABLE TO DO"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}"
+                                        value="WITH MUCH DIFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}"
+                                        value="WITH SOME DFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}"
+                                        value="WITH A LITTLE DFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}"
+                                        value="WITHOUT ANY DIFFICULTY" [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <!--  ..........................................SEVENTH question.....................................-->
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PAIN BEHAVIOR.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">NEVER</th>
+                        <th scope="col">RARELY</th>
+                        <th scope="col">SOMETIMES</th>
+                        <th scope="col">OFTEN</th>
+                        <th scope="col">ALWAYS</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===7">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="NEVER"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="RARELY"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="SOMETIMES"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="OFTEN"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="ALWAYS"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--  ..........................................eight question.....................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">PAIN INTERFERANCE.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Not at all</th>
+                        <th scope="col">A Little bit</th>
+                        <th scope="col">Somewhat</th>
+                        <th scope="col">Quite a bit</th>
+                        <th scope="col">Very much</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr
+                        *ngIf="data.question_Id===8">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="A Little bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Somewhat"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Quite a bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very much"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!--...........................................nineth question.......................................-->
+
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">SLEEP DISTRUBANCE.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Very poor</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===9.1">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Very much</th>
+                        <th scope="col">Quite a bit</th>
+                        <th scope="col">Somewhat</th>
+                        <th scope="col">A little bit</th>
+                        <th scope="col">Not at all</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===9.2 || data.subQuestionId===9.3 || data.subQuestionId===9.4">
+
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very much"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Quite a bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Somewhat"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="A little bit"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <hr>
+            <!--...........................................10th quation question.......................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">Global Mental Health.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Excellent</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.question_Id===10 ">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Excellent"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <!--...........................................11th quation question.......................................-->
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h4 class="font-weight-bold ">Global Physical Health.<span>(IN THE PAST 7
+                            DAYS.)</span></h4>
+                    <p>Please respond to each question or statement by marking one box per row.</p>
+                </div>
+            </div>
+
+            <table class="table table-sm">
+                <thead *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===11.1">
+                        <th scope="col"></th>
+                        <th scope="col">Poor</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Good</th>
+                        <th scope="col">Very good</th>
+                        <th scope="col">Excellent</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===11.1">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Poor"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Fair"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Very good"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Excellent"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===11.2">
+                        <th scope="col"></th>
+                        <th scope="col">Not at all</th>
+                        <th scope="col">A little</th>
+                        <th scope="col">Moderately</th>
+                        <th scope="col">Mostly</th>
+                        <th scope="col">Completely</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of questions">
+                    <tr *ngIf="data.subQuestionId===11.2">
+                        <th scope="row" class="col-4">{{data.subQuestions}}</th>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Not at all"
+                                        [(ngModel)]="data.p_Options" /> </label> <br> <span class="ml-1">1
+                                </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="A little"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">2 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Moderately"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">3 </span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Mostly"
+                                        [(ngModel)]="data.p_Options" /> </label> <br>
+                                <span class="ml-1">4</span>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-1 mr-3">
+
+                                <label for="radioA"><input type="radio" name="{{data.subQuestionId}}" value="Completely"
+                                        [(ngModel)]="data.p_Options"> </label> <br>
+                                <span class="ml-1">5</span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <!-- ..........................................12th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===12">
+                    <div class="col-3">
+                        <h5 class="font-weight-bold ">Heal Positive Outlook</h5>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="positiveOutlook" name="positiveOutlook1"
+                            [(ngModel)]="data.p_Options" #positiveOutlook1="ngModel" required>
+                        <span class="text-danger "
+                            *ngIf="(positiveOutlook1.touched || saveForm.submitted) && positiveOutlook1.errors?.['required']">
+                            positiveOutlook is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................13th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===13">
+                    <div class="col-3">
+                        <h5 class="font-weight-bold ">Pain Detect</h5>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="PainDetect" name="PainDetect1"
+                            [(ngModel)]="data.p_Options" #PainDetect1="ngModel" required>
+                        <span class="text-danger "
+                            *ngIf="(PainDetect1.touched || saveForm.submitted) && PainDetect1.errors?.['required']">
+                            PainDetect is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................14th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===14">
+                    <div class="col-3">
+                        <h5 class="font-weight-bold ">Opioid Checklist</h5>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="OpioidChecklist" name="OpioidChecklist1"
+                            #OpioidChecklist1="ngModel" [(ngModel)]="data.p_Options" required>
+                        <span class="text-danger "
+                            *ngIf="(OpioidChecklist1.touched || saveForm.submitted) && OpioidChecklist1.errors?.['required']">
+                            OpioidChecklist is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- ..........................................15th question question............................... -->
+            <div *ngFor="let data of questions">
+                <div class="row mt-2" *ngIf="data.question_Id===15">
+                    <div class="col-3">
+                        <h5 class="font-weight-bold ">Impression of Change</h5>
+                    </div>
+                    <div class="col">
+                        <input text="text" class="form-control" id="ImpressionofChange" name="ImpressionofChange1"
+                            #ImpressionofChange1="ngModel" [(ngModel)]="data.p_Options" required>
+
+                        <span class="text-danger "
+                            *ngIf="(ImpressionofChange1.touched || saveForm.submitted) && ImpressionofChange1.errors?.['required']">
+                            ImpressionofChange is required
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-light border text-center bg-danger error" *ngIf="saveForm.submitted && saveForm.invalid">
+                Please Enter required fileds
+            </div>
+          
+        </fieldset>
+    </form>
+
 </div>

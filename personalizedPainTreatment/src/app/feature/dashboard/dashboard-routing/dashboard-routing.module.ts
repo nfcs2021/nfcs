@@ -33,7 +33,6 @@ const routes: Routes = [
             component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService]
           },
-<<<<<<< HEAD
           {
             path: 'survey-form/:id', component: PatientSurveyFormComponent,
             canActivate: [AuthRouteGaurdService]
@@ -67,16 +66,6 @@ const routes: Routes = [
             canActivate: [AuthRouteGaurdService]
           }
 
-=======
-          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
-          { path: 'list', component: PatientListComponent },
-          { path: 'view', component: ViewreportComponent },
-          { path: 'view/:id', component: ViewreportComponent },
-          { path: 'nav', component: NewpatientNavigationComponent },
-          { path: 'data/:id', component: PatientdataComponent },
-          { path: 'patient-report/:id', component: PatientReportComponent },
-          { path: 'new/:id', component: AddPatientComponent },
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
         ],
       },
       {
@@ -84,15 +73,9 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
-<<<<<<< HEAD
-          {
-            path: 'frontdetails', component: FrontdeskDetailsComponent,
-            canActivate: [AuthRouteGaurdService]
-          },
-=======
+          
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
           {
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
@@ -103,11 +86,7 @@ const routes: Routes = [
             component: FrontdeskRegistrationComponent,
             canActivate: [AuthRouteGaurdService]
           },
-          {
-            path: 'frontdesk-list',
-            component: FrontdesklistComponent,
-            canActivate: [AuthRouteGaurdService]
-          },
+          
           { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
         ],

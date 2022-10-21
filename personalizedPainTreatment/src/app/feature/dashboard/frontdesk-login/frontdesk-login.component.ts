@@ -65,7 +65,7 @@ export class FrontdeskLoginComponent implements OnInit {
         localStorage.setItem('token', data.access_token);
        console.log(data.data);
        localStorage.setItem('role',data.data.roles.role)
-       localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
+       localStorage.setItem('name',data.data.First_Name+' '+data.data.Last_Name)
        localStorage.setItem('createdBy',data.data.First_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
        localStorage.setItem('id',data.data.id)

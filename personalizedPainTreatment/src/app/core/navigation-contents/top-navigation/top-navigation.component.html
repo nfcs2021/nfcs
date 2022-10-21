@@ -1,20 +1,23 @@
 <nav class="navbar fixed-top ">
+  <a routerLink="patient/nav">
   <img src="assets\images\PPT-logo 1000px.png" alt="" style="width: 150px;"
     class="ml-5 ">
+  </a>
   <div class="ml-md-auto d-none d-md-flex mt-1" style="color:
     #712C6B;">
     <div class="row">
       <div class="col mt-2 h4">
-        <p class="mr-5">{{text}},{{name}}</p>
+        <p class="">{{text}}</p>
       </div>
     </div>
-    <div class="col dropdown show mt-1 ml-3">
+    <div class="col-1 dropdown show mt-1 ml-3">
       <img
         src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
         alt="profile" class="mt-1" style="width: 40px; border-radius: 5px;"
         role="button"
         id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false" (click)="false">
+
       <div class="dropdown-menu dropdown-menu-right mt-2"
         aria-labelledby="dropdownMenuLink" style="color:
         #712C6B;border-radius: 10px;width: 300px;">
@@ -24,7 +27,7 @@
             alt="profile" class="mt-1"
             style="width:
             40px; border-radius: 5px;">
-          <p class="h6">{{name}}</p>
+          <p class="h6">{{name | uppercase}}</p>
         </div>
         <div>
           <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
@@ -47,5 +50,9 @@
         </div>
       </div>
     </div>
+    <span class="mr-5">
+      <p class="text mt-1 h6">{{name | uppercase}}</p>
+      <p class="h6">{{pcp}}</p>
+    </span>
   </div>
 </nav>
