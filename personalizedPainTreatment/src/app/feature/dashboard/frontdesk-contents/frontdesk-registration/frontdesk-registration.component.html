@@ -1,7 +1,7 @@
 <div class="row custom ">
   <div class="form-content">
     <form name="form" class="mx-auto col-md-8 offset-md-3 form-box
-      form-horizontal" [formGroup]="patientRegesterForm"
+      form-horizontal" [formGroup]="frontDeskRegesterForm"
       (ngSubmit)="onSubmit()">
       <h2 class=" mt-3 mb-2 form-title"> Add New Front Desk
         Employee <hr></h2>
@@ -218,6 +218,37 @@
             <label for="profileImage">Profile Image</label>
             <input class="form-control" id=""
               type="file" formControlName="profileImage" />
+          </div>
+          <label for="password" class="form-label h6"
+            style="color: #712C6B;">Password</label>
+          <input type="password" class="form-control"
+            id="password"
+            style="border: 1px solid #712C6B;color:
+            #712C6B;"
+            formControlName="password"
+            placeholder="Enter password"
+            [ngClass]="{'is-invalid':submitted && f['password'].errors}"
+            />
+          <div *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">
+              Password is required
+            </div>
+          </div>
+          <label for="name" class="form-label h6 mt-3" style="color: #712C6B;">Confirm
+            Password</label>
+          <input type="password" class="form-control"
+            formControlName="confirmPassword" style="border: 1px solid
+            #712C6B;color:
+            #712C6B;">
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="alert
+            alert-danger">
+            <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm
+              Password is required</div>
+            <div
+              *ngIf="f['confirmPassword'].errors?.['confirmPasswordValidator']">Passsword
+              and
+              Confirm Password didn't match. </div>
           </div>
           <button class="mb-3 mt-5 p-2 btn col-sm-12 " type="submit">Submit
           </button>

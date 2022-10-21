@@ -33,8 +33,43 @@ const routes: Routes = [
           {
             path: 'new',
             component: AddPatientComponent,
-            canActivate: [AuthRouteGaurdService],
+            canActivate: [AuthRouteGaurdService]
           },
+
+          {
+            path: 'survey-form/:id', component: PatientSurveyFormComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'list', component: PatientListComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'view/:id', component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'nav', component: NewpatientNavigationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'data/:id', component: PatientdataComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'patient-report/:id', component: PatientReportComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'new/:id', component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+
+
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
           { path: 'view', component: ViewreportComponent },
@@ -42,11 +77,7 @@ const routes: Routes = [
           { path: 'nav', component: NewpatientNavigationComponent },
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
-          {
-            path: 'new/:id',
-            component: AddPatientComponent,
-          
-          },
+          { path: 'new/:id', component: AddPatientComponent },
 
         ],
       },
@@ -56,9 +87,11 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
+          { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
           {
             path: 'frontdeskregistration',
             component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
           },
           { path: 'frontdesklist', component: FrontdesklistComponent },
           {path:'forgetpassword',component:ForgetpasswordComponent},
@@ -73,4 +106,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

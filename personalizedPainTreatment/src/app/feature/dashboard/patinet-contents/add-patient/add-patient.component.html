@@ -13,12 +13,16 @@
             <div *ngIf="f['firstName'].errors['required']" class="text-danger">First Name is required</div>
             <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First Name must be at least 2
               characters</div>
+              <div *ngIf="f['firstName'].errors['pattern']" class="text-danger">Numbers Not allowed
+              </div>
           </div>
           <label for="lastName" class="mt-3">Last Name <span class="text-danger">*</span></label>
           <input type="text" class="form-control " id="lastName" placeholder="Last Name" formControlName="lastName"
             [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
           <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
             <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last Name is required</div>
+            <div *ngIf="f['lastName'].errors['pattern']" class="text-danger">Numbers Not allowed
+            </div>
           </div>
 
 
@@ -66,6 +70,8 @@
 
           <div *ngIf="submitted && f['contactNumber'].errors" class="invalid-feedback">
             <div *ngIf="f['contactNumber'].errors['required']" class="text-danger">Contact Number is required</div>
+            <div *ngIf="f['contactNumber'].errors['pattern']" class="text-danger">Characters Not allowed
+          </div>
           </div>
           <label for="email" class="mt-3">E-mail address</label>
           <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email"
@@ -84,6 +90,8 @@
           <div *ngIf="submitted && f['socialSecurityNumber'].errors" class="invalid-feedback">
             <div *ngIf="f['socialSecurityNumber'].errors['required']" class="text-danger">Social Security Number is
               required</div>
+              <div *ngIf="f['socialSecurityNumber'].errors['pattern']" class="text-danger">Characters Not allowed
+              </div>
           </div>
         </div>
         <div class="form-group col-sm-4 ml-5">
@@ -138,6 +146,8 @@
             [ngClass]="{ 'is-invalid': submitted && f['zipcode'].errors }">
           <div *ngIf="submitted && f['zipcode'].errors" class="invalid-feedback">
             <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode is required</div>
+            <div *ngIf="f['zipcode'].errors['pattern']" class="text-danger">Characters Not allowed
+            </div>
           </div>
           <button class="mb-3 mt-3 p-2 btn col-sm-12  " type="submit" *ngIf="!updateData">Submit </button>
           <a class="mb-3 mt-3 p-2 btn col-sm-12  " style="background-color: #712C6B; color:white ;" *ngIf="updateData" (click)="update()">Update </a>
@@ -178,7 +188,7 @@
               <td>{{this.patientRegesterForm.value['firstName']}}</td>
               <td>{{this.patientRegesterForm.value['lastName']}}</td>
               <td>{{this.patientRegesterForm.value['dob'] | date:"MM-dd-YYYY"}} </td>
-              <td>{{this.patientRegesterForm.value['socialSecurityNumber']}}</td>
+              <td>{{this.patientRegesterForm.value['socialSecurityNumber']}} </td>
             </tr>
             <tr>
               <th>Email </th>
@@ -189,7 +199,7 @@
               <td>{{this.patientRegesterForm.value['email']}}</td>
               <td>{{this.patientRegesterForm.value['contactNumber']}}/td>
               <td>{{this.patientRegesterForm.value['address1']}}, {{this.patientRegesterForm.value['address2']}},
-                {{this.patientRegesterForm.value['city']}}, {{this.patientRegesterForm.value['state']}}, 
+                {{this.patientRegesterForm.value['city']}}, {{this.patientRegesterForm.value['state']}},
                 {{this.patientRegesterForm.value['country']}} - {{this.patientRegesterForm.value['zipcode']}}
               </td>
             </tr>
@@ -231,7 +241,7 @@
                 <td>{{simillarPatientData.Address_Line1}},{{simillarPatientData.Address_Line2}} {{simillarPatientData.City}}, {{simillarPatientData.State}}
                   <br>{{simillarPatientData.Country}} - {{simillarPatientData.Zipcode}}
                 </td>
-               
+
               </tr>
               <tr>
                 <th>Created On</th>
@@ -242,12 +252,12 @@
               <tr>
                 <td>{{simillarPatientData.created_at}}</td>
                 <td>{{simillarPatientData.Created_by}}</td>
-                <td></td>
+                <td>{{simillarPatientData.updated_at}}</td>
                 <td></td>
               </tr>
             </tbody>
           </table>
-  
+
         </div>
         <div class=" container offset-md-2 w-50">
         <button  class="btn btn-primary ml-3 mr-5" (click)="savePatient()">Save as New Patient</button>

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DataService {
+ 
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
     localStorage.setItem('loginEmail', data.email);
@@ -16,8 +17,11 @@ export class DataService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl+'registerData/'+id, {
+    return this.http.get<any>(environment.apiUrl+'getregister/'+id, {
       headers: httpheaders,
     });
   }
+
+  
+  
 }
