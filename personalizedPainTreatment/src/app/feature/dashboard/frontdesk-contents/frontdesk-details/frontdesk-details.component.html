@@ -3,7 +3,7 @@
     <div class="col col-md-2 para1 mt-4">
       User Profile
     </div>
-    <div class="col ml-5 mt-4">(LastUpdatedOn :{{frontDeskData.updated_at}})</div>
+    <!-- <div class="col ml-5 mt-4">(LastUpdatedOn :{{frontDeskData.updated_at}})</div> -->
     <hr>
   </div>
   <div class="row">
@@ -82,7 +82,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-sm-7 text-end">ID Proof(Drivers Licence/State ID)</div>
-            <div class="col-sm-5">{{frontDeskData.Id_proof}}<span
+            <div class="col-sm-5" hidden>{{frontDeskData.Id_proof}}<span
                 class="text-end"><img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span></div>
