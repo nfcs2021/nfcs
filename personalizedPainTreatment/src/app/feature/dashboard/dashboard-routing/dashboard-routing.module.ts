@@ -16,6 +16,8 @@ import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-detai
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
+import { ForgetpasswordComponent } from '../frontdesk-contents/forgetpassword/forgetpassword.component';
+import { OtpComponent } from '../frontdesk-contents/otp/otp.component';
 
 const routes: Routes = [
   {
@@ -64,7 +66,17 @@ const routes: Routes = [
           {
             path: 'new/:id', component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService]
-          }
+          },
+
+
+          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
+          { path: 'list', component: PatientListComponent },
+          { path: 'view', component: ViewreportComponent },
+          { path: 'view/:id', component: ViewreportComponent },
+          { path: 'nav', component: NewpatientNavigationComponent },
+          { path: 'data/:id', component: PatientdataComponent },
+          { path: 'patient-report/:id', component: PatientReportComponent },
+          { path: 'new/:id', component: AddPatientComponent },
 
         ],
       },
@@ -73,27 +85,16 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
+          { path: 'frontdetails', component: FrontdeskDetailsComponent },
+          { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
           {
-            path: 'frontdetails', component: FrontdeskDetailsComponent,
-            canActivate: [AuthRouteGaurdService]
-          },
-          {
-            path: 'frontdesk-registration',
+            path: 'frontdeskregistration',
             component: FrontdeskRegistrationComponent,
             canActivate: [AuthRouteGaurdService]
           },
-          {
-            path: 'frontdesk-registration/:id',
-            component: FrontdeskRegistrationComponent,
-            canActivate: [AuthRouteGaurdService]
-          },
-          {
-            path: 'frontdesk-list',
-            component: FrontdesklistComponent,
-            canActivate: [AuthRouteGaurdService]
-          },
-          { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
+          {path:'forgetpassword',component:ForgetpasswordComponent},
+          {path:'otp',component:OtpComponent}
         ],
       },
     ],

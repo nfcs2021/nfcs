@@ -31,31 +31,23 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
-  frontDeskId: any;
-  updateData: boolean;
-  frontDeskDataById: any;
   createdBy: any;
+  frontDeskDataById: any;
   constructor(
     private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
     private route: Router,
-    private router:ActivatedRoute,
-    private dataService:DataService,
-    private authService:AuthService
+    private authService: AuthService,
+    private dataService:DataService
   ) {}
 
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
-
-    this.frontDeskId = this.router.snapshot.paramMap.get('id')
-
-    if (this.frontDeskId) {
-      this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
-      this.updateData = true;
-    }
+    alert(localStorage.getItem('createdBy'));
+    this.createdBy = localStorage.getItem('createdBy');
   }
 
   getForntDeskDataById(id:any){

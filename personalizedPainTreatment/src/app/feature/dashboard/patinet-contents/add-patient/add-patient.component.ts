@@ -438,6 +438,9 @@ export class AddPatientComponent implements OnInit {
        this.route.navigate(['patient/nav'])
     },err =>{
       console.log(err);
-    })
+
+    }
+
+    )
   }
 }

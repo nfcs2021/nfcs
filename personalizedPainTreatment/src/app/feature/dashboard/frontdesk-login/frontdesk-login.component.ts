@@ -42,7 +42,7 @@ export class FrontdeskLoginComponent implements OnInit {
     this.loginFormGroup = this.fromBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
-      pcp: [''],
+      pcp: ['',Validators.required],
     });
   }
   get f() {
@@ -55,9 +55,13 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
+
       Email: this.loginFormGroup.value['email'],
       Password: this.loginFormGroup.value['password'],
       PCP_Name:this.loginFormGroup.value['pcp']
+
+
+
     };
     this.authservice.loginUser(data).subscribe(
       (data) => {
@@ -69,9 +73,6 @@ export class FrontdeskLoginComponent implements OnInit {
        localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
        localStorage.setItem('createdBy',data.data.First_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)
-       localStorage.setItem('id',data.data.id)
-        console.log('login component' + localStorage.getItem('token'));
-        localStorage.setItem('pcpData', this.loginFormGroup.value['pcp']);
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
 
@@ -84,6 +85,8 @@ export class FrontdeskLoginComponent implements OnInit {
       (err) => {
         this.has_error = true;
         this.login_user_msg = 'Invalid Username and Password !!!';
+        console.log(err);
+        
       }
     );
   }
