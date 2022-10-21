@@ -62,10 +62,10 @@ export class FrontdeskLoginComponent implements OnInit {
     this.authservice.loginUser(data).subscribe(
       (data) => {
         console.log('data' + data);
-        console.log('role',data.data.role)
+        console.log('role',data.data.roles.role)
         localStorage.setItem('token', data.access_token);
        console.log(data.data);
-       localStorage.setItem('role',data.data.roles.role)
+       localStorage.setItem('role',data.data.role)
        localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
        localStorage.setItem('createdBy',data.data.First_Name)
        localStorage.setItem('PCP_Name',data.data.PCP_Name)

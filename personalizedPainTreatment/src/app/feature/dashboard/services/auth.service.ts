@@ -58,12 +58,4 @@ export class AuthService {
     return this.getUserData.asObservable();
   }
 
-  saveFrontDeskData(data: any): Observable<any> {
-    const httpheaders = new HttpHeaders({
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-    });
-    return this.http.post<any>(environment.apiUrl + 'register', data, {
-      headers: httpheaders,
-    });
-  }
 }

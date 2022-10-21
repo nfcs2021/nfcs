@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { LocalizedString } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +6,7 @@ import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import { PatientService } from '../../services/patient.service';
-import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-frontdesk-registration',
@@ -32,32 +31,24 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
-<<<<<<< HEAD
   frontDeskId: any;
   updateData: boolean;
   frontDeskDataById: any;
-=======
   createdBy: any;
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
   constructor(
     private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
     private patientService: PatientService,
     private route: Router,
-<<<<<<< HEAD
     private router:ActivatedRoute,
     private dataService:DataService,
     private authService:AuthService
-=======
-    private authService: AuthService
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
   ) {}
 
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
-<<<<<<< HEAD
 
     this.frontDeskId = this.router.snapshot.paramMap.get('id')
 
@@ -65,10 +56,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
-=======
-    alert(localStorage.getItem('createdBy'));
-    this.createdBy = localStorage.getItem('createdBy');
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
   }
 
   getForntDeskDataById(id:any){
@@ -265,7 +252,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   }
 
   updateFrontDeskRegistrationForm(){
-    this.patientRegesterForm = this.formBuilder.group({
+    this.frontDeskRegesterForm = this.formBuilder.group({
       firstName: [this.frontDeskDataById.First_Name, [Validators.required, Validators.minLength(2)]],
       lastName: [this.frontDeskDataById.Last_Name, [Validators.required]],
       dob: [this.frontDeskDataById.Date_of_birth, [Validators.required]],
@@ -297,31 +284,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       return;
     }
     const data = {
-<<<<<<< HEAD
-      First_Name: this.patientRegesterForm.value['firstName'],
-      Last_Name: this.patientRegesterForm.value['lastName'],
-      Date_of_birth: this.patientRegesterForm.value['dob'],
-      Contact_number: this.patientRegesterForm.value['contactNumber'],
-      Gender: this.patientRegesterForm.value['gender'],
-      Email: this.patientRegesterForm.value['email'],
-      Ssn: this.patientRegesterForm.value['socialSecurityNumber'],
-      Address_Line1: this.patientRegesterForm.value['address1'],
-      Address_Line2: this.patientRegesterForm.value['address2'],
-      Country: this.patientRegesterForm.value['country'],
-      State: this.patientRegesterForm.value['state'],
-      City: this.patientRegesterForm.value['city'],
-      Zipcode: this.patientRegesterForm.value['zipcode'],
-      PCP_Name: this.patientRegesterForm.value['pcp'],
-      Emp_designation: this.patientRegesterForm.value['employeePostion'],
-      Immidiate_manager: this.patientRegesterForm.value['immediateManager'],
-      Emp_id: this.patientRegesterForm.value['employeeId'],
-      Emp_id_doc: this.patientRegesterForm.value['employeeIdDocument'],
-      Id_proof: this.patientRegesterForm.value['idproof'],
-      Profile_image: this.patientRegesterForm.value['profileImage'],
-      Password: this.patientRegesterForm.value['password'],
-      confirmPassword: this.patientRegesterForm.value['confirmPassword'],
-      Created_by:localStorage.getItem('name'),
-=======
       First_Name: this.frontDeskRegesterForm.value['firstName'],
       Last_Name: this.frontDeskRegesterForm.value['lastName'],
       Date_of_birth: this.frontDeskRegesterForm.value['dob'],
@@ -345,7 +307,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       Password: this.frontDeskRegesterForm.value['password'],
       confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
       Created_by: this.createdBy,
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
     };
     this.authService.saveFrontDeskData(data).subscribe(
       (data) => {
@@ -358,9 +319,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-<<<<<<< HEAD
-
-=======
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
       let control = formGroup.controls[password];
@@ -378,5 +336,4 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     };
   }
->>>>>>> dade6157c2c103ccd9bab6c37bb61e616c4361ef
 }
