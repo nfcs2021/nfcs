@@ -18,6 +18,9 @@ import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-
 import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
 import { ForgetpasswordComponent } from '../frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from '../frontdesk-contents/otp/otp.component';
+import { FrontdeskResetPasswordComponent } from '../frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
+
+
 
 const routes: Routes = [
   {
@@ -33,41 +36,48 @@ const routes: Routes = [
           {
             path: 'new',
             component: AddPatientComponent,
-            canActivate: [AuthRouteGaurdService]
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'survey-form/:id', component: PatientSurveyFormComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'survey-form/:id',
+            component: PatientSurveyFormComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'list', component: PatientListComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'list',
+            component: PatientListComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'view', component: ViewreportComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'view',
+            component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'view/:id', component: ViewreportComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'view/:id',
+            component: ViewreportComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'nav', component: NewpatientNavigationComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'nav',
+            component: NewpatientNavigationComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'data/:id', component: PatientdataComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'data/:id',
+            component: PatientdataComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'patient-report/:id', component: PatientReportComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'patient-report/:id',
+            component: PatientReportComponent,
+            canActivate: [AuthRouteGaurdService],
           },
           {
-            path: 'new/:id', component: AddPatientComponent,
-            canActivate: [AuthRouteGaurdService]
+            path: 'new/:id',
+            component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService],
           },
-
 
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
@@ -77,7 +87,6 @@ const routes: Routes = [
           { path: 'data/:id', component: PatientdataComponent },
           { path: 'patient-report/:id', component: PatientReportComponent },
           { path: 'new/:id', component: AddPatientComponent },
-
         ],
       },
       {
@@ -90,11 +99,23 @@ const routes: Routes = [
           {
             path: 'frontdeskregistration',
             component: FrontdeskRegistrationComponent,
-            canActivate: [AuthRouteGaurdService]
+            canActivate: [AuthRouteGaurdService],
+          },
+          {
+            path: 'frontdeskregistration/:id',
+            component: FrontdeskRegistrationComponent,
           },
           { path: 'frontdesklist', component: FrontdesklistComponent },
-          {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp',component:OtpComponent}
+          { path: 'forgetpassword', component: ForgetpasswordComponent },
+          { path: 'otp', component: OtpComponent },
+          {
+            path: 'changepassword',
+            component: FrontdeskResetPasswordComponent,
+          },
+          {
+            path: 'changepassword/:id',
+            component: FrontdeskResetPasswordComponent,
+          },
         ],
       },
     ],

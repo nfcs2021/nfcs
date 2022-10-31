@@ -252,12 +252,126 @@
               and
               Confirm Password didn't match. </div>
           </div>
-          <button class="mb-3 mt-5 p-2 btn col-sm-12 " type="submit">Submit
-          </button>
+          <button class="mb-3 mt-3 p-2 btn col-sm-12 " type="submit"
+            *ngIf="!updateData">Submit </button>
+          <a class="mb-3 mt-3 p-2 btn col-sm-12 " style="background-color:
+            #712C6B; color:white ;" *ngIf="updateData"
+            (click)="updateRegistrationData()">Update </a>
           <a class="mb-3 mt-3 p-2 btn col-sm-12" routerLink="/patient/nav"
             style="background-color: #712C6B; color:white ;">Cancle </a>
         </div>
       </div>
     </form>
+  </div>
+</div>
+
+<div class="overlay mt-5" *ngIf="popup">
+  <div class="popup">
+    <h2 class="text-center border-bottom" style="color: rgb(83, 4, 83);
+      font-weight: bold;">Frontdesk user with similar data
+      already exit</h2>
+
+    <div class="content">
+      <div class="container col-md-11 ">
+        <table class="table table-borderless border">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>LastName</th>
+              <th>Dob</th>
+              <th>SocialSecurityNumber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{this.frontDeskRegesterForm.value['firstName']}}</td>
+              <td>{{this.frontDeskRegesterForm.value['lastName']}}</td>
+              <td>{{this.frontDeskRegesterForm.value['dob'] |
+                date:"MM-dd-YYYY"}} </td>
+              <td>{{this.frontDeskRegesterForm.value['socialSecurityNumber']}}
+              </td>
+            </tr>
+            <tr>
+              <th>Email </th>
+              <th>contactNumber</th>
+              <th>Address</th>
+            </tr>
+            <tr>
+              <td>{{this.frontDeskRegesterForm.value['email']}}</td>
+              <td>{{this.frontDeskRegesterForm.value['contactNumber']}}</td>
+              <td>{{this.frontDeskRegesterForm.value['address1']}},
+                {{this.frontDeskRegesterForm.value['address2']}},
+                {{this.frontDeskRegesterForm.value['city']}},
+                {{this.frontDeskRegesterForm.value['state']}},
+                {{this.frontDeskRegesterForm.value['country']}} -
+                {{this.frontDeskRegesterForm.value['zipcode']}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <h2 class="text-center " style="color: rgb(83, 4, 83); font-weight:
+        bold;">Simillar To</h2>
+      <div class="container col-md-11 ">
+        <table class="table table-borderless border">
+          <thead>
+            <tr>
+              <th>Frontdesk ID</th>
+              <th>First Name</th>
+              <th>LastName</th>
+              <th>Date Of Birth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{simillarFrontdeskData.id}}</td>
+              <td>{{simillarFrontdeskData.First_Name}}</td>
+              <td>{{simillarFrontdeskData.Last_Name}}</td>
+              <td>{{simillarFrontdeskData.Date_of_birth | date:"MM-dd-YYYY"}}</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <th>SocialSecurityNumber</th>
+              <th>E-mail address</th>
+              <th>Contact Number</th>
+              <th>Address</th>
+            </tr>
+            <tr>
+              <td>{{simillarFrontdeskData.Gender}}</td>
+              <td>{{simillarFrontdeskData.Ssn}}</td>
+              <td>{{simillarFrontdeskData.Email}}</td>
+              <td>{{simillarFrontdeskData.Contact_Number}}</td>
+              <td>{{simillarFrontdeskData.Address_Line1}},{{simillarFrontdeskData.Address_Line2}}
+                {{simillarFrontdeskData.City}},
+                {{simillarFrontdeskData.State}}
+                <br>{{simillarFrontdeskData.Country}} -
+                {{simillarFrontdeskData.Zipcode}}
+              </td>
+
+            </tr>
+            <tr>
+              <th>Created On</th>
+              <th>Created By</th>
+              <th>Last Updated On</th>
+              <th>Last Updated By</th>
+            </tr>
+            <tr>
+              <td>{{simillarFrontdeskData.created_at}}</td>
+              <td>{{simillarFrontdeskData.Created_by}}</td>
+              <td>{{simillarFrontdeskData.updated_at}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class=" container offset-md-2 w-50">
+        <button class="btn btn-primary ml-3 mr-5"
+          (click)="savefrondeskData()">Save as New Patient</button>
+        <button class="btn btn-primary ml-5" routerLink="/patient/nav">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>
