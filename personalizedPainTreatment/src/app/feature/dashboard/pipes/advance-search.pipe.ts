@@ -7,6 +7,12 @@ import { Patient, SearchModel } from '../patinet-contents/module/Patient';
 })
 export class AdvanceSearchPipe implements PipeTransform {
   transform(posts: Patient[], search: SearchModel): any {
+<<<<<<< HEAD
+   if(posts.length === 0) 
+   {
+    return posts;
+   }
+=======
     console.log(search);
 
    if(posts.length === 0)
@@ -16,10 +22,10 @@ export class AdvanceSearchPipe implements PipeTransform {
 
    console.table(posts);
 
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
    // search is blank, return post
    if(!search || !search.First_Name && !search.Last_Name && !search.Date_of_birth && !search.Ssn) return null;
 
- console.log(search);
    return posts.filter((post) => {
      return (!search.First_Name || post.First_Name.toLowerCase().startsWith(search.First_Name.toLowerCase()) ) &&
          (!search.Last_Name || post.Last_Name.toLowerCase().startsWith(search.Last_Name.toLowerCase()))  &&

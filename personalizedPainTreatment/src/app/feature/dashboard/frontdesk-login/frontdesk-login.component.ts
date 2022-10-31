@@ -55,7 +55,15 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      UserName: this.loginFormGroup.value['email'],
+=======
+
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
       Email: this.loginFormGroup.value['email'],
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
       Password: this.loginFormGroup.value['password'],
       PCP_Name: this.loginFormGroup.value['pcp'],
     };
@@ -64,6 +72,7 @@ export class FrontdeskLoginComponent implements OnInit {
         // console.log('data' + data);
         // console.log('role..............', data.data.roles.role);
         localStorage.setItem('token', data.access_token);
+<<<<<<< HEAD
         // console.log(data.data);
         localStorage.setItem('role', data.data.roles.role);
         localStorage.setItem(
@@ -113,6 +122,55 @@ export class FrontdeskLoginComponent implements OnInit {
             console.log(error);
           }
         );
+=======
+       console.log(data.data);
+<<<<<<< HEAD
+       localStorage.setItem('role',data.data.roles.role)
+       localStorage.setItem('name',data.data.First_Name+' '+data.data.Last_Name)
+=======
+       localStorage.setItem('role',data.data.role)
+       localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+       localStorage.setItem('createdBy',data.data.First_Name)
+       localStorage.setItem('PCP_Name',data.data.PCP_Name)
+        this.login_user_msg = 'Login in, Please wait... !!!';
+        this.authservice.sentEvent();
+        const loginData={
+        Email:data.data.Email,
+        PCP_Name:data.data.PCP_Name,
+        password:data.data.Password
+        }
+        // this.dataservices.frontDeskLoginInfromation(loginData).subscribe(
+        //   res =>{
+        //     console.log(res);
+            
+        //   },err =>{
+        //     console.log(err);
+            
+        //   }
+        // )
+       this.dataservices.getFrontDeskData(data.data.Email).subscribe(
+        data =>{
+          console.log(data.length);
+          if(data.length==1){
+            this.route.navigateByUrl('/frontdesk/frontdeskpasswordChange');
+          }else{
+            this.route.navigate(['/patient/nav']).then(() => {
+                window.location.reload();
+              });
+          }
+        },err =>{
+          console.log(err);
+          
+        }
+       ) 
+
+        // this.route.navigate(['/patient/nav']).then(() => {
+        //   window.location.reload();
+        // });
+        // this.route.navigateByUrl('/patient/nav');
+
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
       },
       (err) => {
         this.has_error = true;

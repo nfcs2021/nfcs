@@ -30,6 +30,21 @@
             <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last
               Name is required</div>
           </div>
+
+          <label for="userName" class="mt-3">User Name <span
+            class="text-danger">*</span></label>
+        <input type="text" class="form-control " id="userName"
+          placeholder="User Name" formControlName="userName"
+          [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+        <div *ngIf="submitted && f['userName'].errors"
+          class="invalid-feedback">
+          <div *ngIf="f['userName'].errors['required']" class="text-danger">User
+            Name is required</div>
+            <div
+              *ngIf="f['userName'].errors?.['UserNameValidator']" class="text-danger">User Name already exist. </div>
+          
+        </div>
+
           <label for="lastName" class="mt-3">Date Of Birth <span
               class="text-danger">*</span></label>
           <input type="date" class="form-control " id="dob"
@@ -221,7 +236,7 @@
             <input class="form-control" id=""
               type="file" formControlName="profileImage" />
           </div>
-          <label for="password" class="form-label h6"
+          <!-- <label for="password" class="form-label h6"
             style="color: #712C6B;">Password</label>
           <input type="password" class="form-control"
             id="password"
@@ -236,8 +251,8 @@
             <div *ngIf="f['password'].errors['required']">
               Password is required
             </div>
-          </div>
-          <label for="name" class="form-label h6 mt-3" style="color: #712C6B;">Confirm
+          </div> -->
+          <!-- <label for="name" class="form-label h6 mt-3" style="color: #712C6B;">Confirm
             Password</label>
           <input type="password" class="form-control"
             formControlName="confirmPassword" style="border: 1px solid
@@ -251,12 +266,18 @@
               *ngIf="f['confirmPassword'].errors?.['confirmPasswordValidator']">Passsword
               and
               Confirm Password didn't match. </div>
+<<<<<<< HEAD
           </div>
           <button class="mb-3 mt-3 p-2 btn col-sm-12 " type="submit"
             *ngIf="!updateData">Submit </button>
           <a class="mb-3 mt-3 p-2 btn col-sm-12 " style="background-color:
             #712C6B; color:white ;" *ngIf="updateData"
             (click)="updateRegistrationData()">Update </a>
+=======
+          </div> -->
+          <button class="mb-3 mt-5 p-2 btn col-sm-12 " type="submit">Submit
+          </button>
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
           <a class="mb-3 mt-3 p-2 btn col-sm-12" routerLink="/patient/nav"
             style="background-color: #712C6B; color:white ;">Cancle </a>
         </div>

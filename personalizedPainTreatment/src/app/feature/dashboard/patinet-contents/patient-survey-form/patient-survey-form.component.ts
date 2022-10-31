@@ -158,7 +158,8 @@ export class PatientSurveyFormComponent implements OnInit {
 
      this.service.savePatientSurveyForm(data).subscribe(
               (response) => {
-                reportId = response.Record_id;
+                console.log(data);
+                
               },
               (error) => {
                 console.log(error);

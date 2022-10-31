@@ -11,7 +11,9 @@
     border: 2px solid #000000;
     border-radius: 25px 25px 0px 0px;
   }
-  
+  *{
+    color: #810000;
+  }
   ul {
     margin-top: 30px;
   
@@ -23,6 +25,7 @@
   
   
   }
+ 
   
   #borderLeft {
   
@@ -622,3 +625,86 @@
       );
      
   }
+
+  input[type="radio"]{
+    appearance: none;
+    border: 1px solid #747070;
+    width: 20px;
+    height: 20px;
+    content: none;
+    outline: none;
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 3px;
+ }
+ 
+ input[type="radio"]:checked {
+   appearance: none;
+   outline: none;
+   padding: 0;
+   content: none;
+   border: none;
+ }
+ 
+ input[type="radio"]:checked::before{
+   position: absolute;
+   color: rgb(248, 252, 249) !important;
+   content: "\00A0\2713\00A0" !important;
+   background-color: #28a745;
+   border: 1px solid #3e3f3e;
+   font-weight:bold;
+   font-size: 12px;
+   border-radius: 3px;
+ }
+
+  #years, #months, #days:focus{
+      width: 50px;
+      
+  }
+  #age{
+    width: 15%;
+  }
+ .container{
+   font-size: 12px;
+   
+ }
+ span{
+   font-size: 12px;
+ }
+ p{
+   
+   font-weight: bold;
+  font-size: 16px;
+ }
+ .form-control{
+  border-color:black;
+  width: 50%;
+ }
+
+table{
+  width: 80%;
+}
+.text-danger{
+  font-size: 12px;
+}
+ .error{
+   padding-top: 7px;
+  font-size: 20px;
+  height: 60px;
+  border-radius: 10px;
+ }
+ input:required:invalid {
+  border-color: #c00000;
+}
+
+
+.on{
+  fill: rgb(133, 133, 236);
+}
+#checkbox{
+  margin-left: 25%;
+}
+
+span{
+  font-size: 20px;
+}
