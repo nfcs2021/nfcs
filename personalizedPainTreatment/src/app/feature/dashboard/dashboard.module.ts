@@ -17,15 +17,23 @@ import { PatientdataComponent } from './patinet-contents/patientdata/patientdata
 import { PatientReportComponent } from './patinet-contents/patient-report/patient-report.component';
 import { FrontdeskMainComponent } from './frontdesk-contents/frontdesk-main/frontdesk-main.component';
 import { FrontdeskDetailsComponent } from './frontdesk-contents/frontdesk-details/frontdesk-details.component';
-
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdvanceSearchPipe } from './pipes/advance-search.pipe';
+import { DateSearchPipe } from './pipes/date-search.pipe';
 import { FrontdeskRegistrationComponent } from './frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/frontdesklist.component';
 import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
+import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
+import { OtpComponent } from './frontdesk-contents/otp/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
+
+
+<<<<<<< HEAD
 import { DateSearchPipe } from './pipes/date-search.pipe';
 import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
+=======
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
 
 
 @NgModule({
@@ -47,11 +55,17 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
     AdvanceSearchPipe,
     FrontdeskRegistrationComponent,
     FrontdesklistComponent,
-    FrontdeskpipePipe,
+   FrontdeskpipePipe,
+   ForgetpasswordComponent,
+   OtpComponent,
     DateSearchPipe,
+<<<<<<< HEAD
     FrontdeskRegistrationComponent,
     FrontdesklistComponent,
     FrontdeskPasswordChangeComponent
+=======
+
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
   ],
   imports: [
     CommonModule,
@@ -60,7 +74,10 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxPaginationModule
+   NgxPaginationModule,
+   NgOtpInputModule
+
+
   ],
 })
 export class DashboardModule {}

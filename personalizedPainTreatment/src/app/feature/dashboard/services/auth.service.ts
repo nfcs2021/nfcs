@@ -58,5 +58,9 @@ export class AuthService {
     return this.getUserData.asObservable();
   }
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
 }

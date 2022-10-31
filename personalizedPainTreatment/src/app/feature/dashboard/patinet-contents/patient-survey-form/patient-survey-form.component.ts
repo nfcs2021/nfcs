@@ -140,6 +140,11 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
+
+    var recordId:any;
+
+
+
     for (let data1 of this.questions) {
      const data={
       Record_id:id,

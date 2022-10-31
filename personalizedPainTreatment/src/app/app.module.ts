@@ -24,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
     FeatureModule,
     Ng2TelInputModule,
     HttpClientModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
