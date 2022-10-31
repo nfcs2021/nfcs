@@ -25,6 +25,7 @@ import { FrontdesklistComponent } from './frontdesk-contents/frontdesklist/front
 import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe';
 
 import { DateSearchPipe } from './pipes/date-search.pipe';
+import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { DateSearchPipe } from './pipes/date-search.pipe';
     FrontdeskpipePipe,
     DateSearchPipe,
     FrontdeskRegistrationComponent,
-    FrontdesklistComponent
+    FrontdesklistComponent,
+    FrontdeskPasswordChangeComponent
   ],
   imports: [
     CommonModule,

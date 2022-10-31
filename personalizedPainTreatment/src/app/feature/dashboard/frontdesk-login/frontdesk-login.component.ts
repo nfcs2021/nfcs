@@ -55,7 +55,7 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
-      Email: this.loginFormGroup.value['email'],
+      UserName: this.loginFormGroup.value['email'],
       Password: this.loginFormGroup.value['password'],
       PCP_Name:this.loginFormGroup.value['pcp']
     };
@@ -73,10 +73,39 @@ export class FrontdeskLoginComponent implements OnInit {
         localStorage.setItem('pcpData', this.loginFormGroup.value['pcp']);
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
+        const loginData={
+        Email:data.data.Email,
+        PCP_Name:data.data.PCP_Name,
+        password:data.data.Password
+        }
+        // this.dataservices.frontDeskLoginInfromation(loginData).subscribe(
+        //   res =>{
+        //     console.log(res);
+            
+        //   },err =>{
+        //     console.log(err);
+            
+        //   }
+        // )
+       this.dataservices.getFrontDeskData(data.data.Email).subscribe(
+        data =>{
+          console.log(data.length);
+          if(data.length==1){
+            this.route.navigateByUrl('/frontdesk/frontdeskpasswordChange');
+          }else{
+            this.route.navigate(['/patient/nav']).then(() => {
+                window.location.reload();
+              });
+          }
+        },err =>{
+          console.log(err);
+          
+        }
+       ) 
 
-        this.route.navigate(['/patient/nav']).then(() => {
-          window.location.reload();
-        });
+        // this.route.navigate(['/patient/nav']).then(() => {
+        //   window.location.reload();
+        // });
         // this.route.navigateByUrl('/patient/nav');
 
       },

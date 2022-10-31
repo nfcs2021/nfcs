@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DataService {
  
+ 
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
     localStorage.setItem('loginEmail', data.email);
@@ -21,7 +22,23 @@ export class DataService {
       headers: httpheaders,
     });
   }
+getFrontDeskData(email:any){
+  const httpheaders = new HttpHeaders({
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
+  });
+  return this.http.get<any>(environment.apiUrl+'registerBymail/'+email, {
+    headers: httpheaders,
+  });
+}
 
+  frontDeskLoginInfromation(loginData:any) {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.post<any>(environment.apiUrl+'logindet/',loginData,{
+      headers: httpheaders,
+    });
+  }
   
   
 }

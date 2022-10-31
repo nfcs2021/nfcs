@@ -34,6 +34,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   frontDeskId: any;
   updateData: boolean;
   frontDeskDataById: any;
+  existedUserName:any=new Array();
   constructor(
     private http: HttpClient,
     private service: AppService,
@@ -48,6 +49,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
+    this.frontDeskData();
 
     this.frontDeskId = this.router.snapshot.paramMap.get('id')
 
@@ -55,6 +57,24 @@ export class FrontdeskRegistrationComponent implements OnInit {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
+  }
+  frontDeskData(){
+    this.authService.getAllRegistrationData().subscribe(
+      data =>{
+        console.log(data);
+        for(let singledata of data)
+        {
+
+          this.existedUserName.push(singledata .UserName);
+        }
+        console.log(this.existedUserName);
+      },
+      err =>{
+        console.log(err);
+        
+      }
+    )
+    
   }
 
   getForntDeskDataById(id:any){
@@ -222,6 +242,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
       {
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required]],
+        userName: ['', [Validators.required]],
         dob: ['', [Validators.required]],
         contactNumber: ['', [Validators.required]],
         email: ['', [Validators.required]],
@@ -240,13 +261,16 @@ export class FrontdeskRegistrationComponent implements OnInit {
         employeeIdDocument: [''],
         idproof: [''],
         profileImage: [''],
-        password: ['', Validators.required],
+        // password: ['', Validators.required],
         createBy: [''],
-        confirmPassword: ['', Validators.required],
+        // confirmPassword: ['', Validators.required],
       },
-      {
-        validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
-      }
+      // {
+      //   validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
+      // }
+       {
+      validator: this.userNameValidation('userName'),
+       }
     );
   }
 
@@ -285,6 +309,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
     const data = {
       First_Name: this.frontDeskRegesterForm.value['firstName'],
       Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      UserName: this.frontDeskRegesterForm.value['userName'],
       Date_of_birth: this.frontDeskRegesterForm.value['dob'],
       Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
       Gender: this.frontDeskRegesterForm.value['gender'],
@@ -335,4 +360,27 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     };
   }
+
+  userNameValidation(UserName: string) {
+    return (formGroup: FormGroup) => {
+      let matchingControl = formGroup.controls[UserName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['UserNameValidator']
+      ) {
+        return;
+      }
+      for(let control of this.existedUserName)
+      {
+        if (control === matchingControl.value) {
+          matchingControl.setErrors({ UserNameValidator: true });
+          break;
+        } else {
+          matchingControl.setErrors(null);
+        }
+      }
+      
+    };
+  }
+
 }
