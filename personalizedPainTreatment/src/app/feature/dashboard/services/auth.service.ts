@@ -25,7 +25,15 @@ export class AuthService {
     localStorage.removeItem('token');
     return this.http.post<any>(environment.apiUrl + 'login', data);
   }
-
+  saveLoginData(data: any) {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    alert(1)
+    return this.http.post<any>(environment.apiUrl + 'logindet', data, {
+      headers: httpheaders,
+    });
+  }
   saveFrontDeskData(data: any): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -57,6 +65,22 @@ export class AuthService {
   getEvent() {
     return this.getUserData.asObservable();
   }
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 }

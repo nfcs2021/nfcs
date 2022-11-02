@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
+=======
+import { ActivatedRoute, Router } from '@angular/router';
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
 import { data } from 'jquery';
 import { NgOtpInputComponent, NgOtpInputConfig } from 'ng-otp-input';
 import { Subscription, take, timer } from 'rxjs';
@@ -14,7 +18,11 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent implements OnInit {
+<<<<<<< HEAD
   popup = false;
+=======
+  popup = true;
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   otp: any;
   showOtpComponent = true;
   email:any;
@@ -22,14 +30,20 @@ export class OtpComponent implements OnInit {
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
   counter = 30;
+<<<<<<< HEAD
   tick = 1000; 
   isAuth=false
   @ViewChild(NgOtpInputComponent, { static: false}) 
+=======
+  tick = 1000;
+  isAuth=false
+  @ViewChild(NgOtpInputComponent, { static: false})
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   ngOtpInput:NgOtpInputComponent;
   config :NgOtpInputConfig = {
     allowNumbersOnly: true,
     length: 4,
-    
+   
     // disableAutoFocus: false,
     // placeholder: ''
   };
@@ -37,10 +51,18 @@ export class OtpComponent implements OnInit {
 
   constructor(private dataService:DataService,
     private route:ActivatedRoute, private formBuilder: FormBuilder,
+<<<<<<< HEAD
     ) { }
 
   ngOnInit(): void {
     this.email=this.route.snapshot.paramMap.get('email')
+=======
+    private router:Router
+    ) { }
+
+  ngOnInit(): void {
+    this.email=this.route.snapshot.paramMap.get('userName')
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
     // this.generateOtp();
     this.formInitilization();
     this.countDown = timer(0, this.tick)
@@ -54,7 +76,11 @@ export class OtpComponent implements OnInit {
       });
   }
  
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
 
   onOtpChange(otp:any) {
    this.otp=otp;
@@ -74,11 +100,12 @@ export class OtpComponent implements OnInit {
     this.ngOtpInput.setValue(val);
   }
 
-  
+ 
 
   onConfigChange() {
     this.showOtpComponent = false;
     this.otp = null;
+<<<<<<< HEAD
     
   }
   // generateOtp=()=>{
@@ -95,6 +122,26 @@ export class OtpComponent implements OnInit {
     console.log(this.otp);
   const data = {
     Email:this.email,
+=======
+   
+  }
+  // generateOtp=()=>{
+  //   let otp="";
+  //   for (let i=0;i<4;i++){
+  //     otp+=Math.floor(Math.random()*10);
+
+  //   }
+  //   return Number(otp);        
+ 
+  // }
+
+  onValidate(){
+    console.log(this.otp);
+    console.log(this.email);
+    
+  const data = {
+    User_Name:this.email,
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
       otp:this.otp
     }
     this.dataService.verifyOtp(data).subscribe(
@@ -102,7 +149,11 @@ export class OtpComponent implements OnInit {
         console.log(data1);
         this.response.push(data1);
         console.log(this.response);
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
         console.log(this.response[0].message);
         if(this.response[0].message==='Success'){
           Swal.fire({
@@ -121,12 +172,20 @@ export class OtpComponent implements OnInit {
        
       },err =>{
         console.log(err);
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
       }
 
     )
 
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   }
 
   // startTimer() {
@@ -146,7 +205,11 @@ export class OtpComponent implements OnInit {
       {
        
         password: ['', Validators.required],
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
         confirmPassword: ['', Validators.required],
       },
       {
@@ -179,6 +242,7 @@ export class OtpComponent implements OnInit {
       return;
     }
     const data = {
+<<<<<<< HEAD
      
       Password: this.ResetpasswordForm.value['password'],
       confirmPassword: this.ResetpasswordForm.value['confirmPassword'],
@@ -194,11 +258,31 @@ export class OtpComponent implements OnInit {
     //     console.log(error);
     //   }
     // );
+=======
+     User_Name:this.email,
+      Password: this.ResetpasswordForm.value['password'],
+    };
+    console.log(data);
+    
+    this.dataService.forgotPassword(data).subscribe(
+      (data) => {
+        console.log('frontdeskData :', data);
+        this.router.navigate(['']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   }
 
   resendOtp(){
 
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
     const data = {
       Email:this.email,
         otp:this.otp
@@ -210,11 +294,21 @@ export class OtpComponent implements OnInit {
         this.transform(this.counter);
       },err =>{
         console.log(err);
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
       }
     )
    
   }
+<<<<<<< HEAD
  
 }
 
+=======
+  
+
+}
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c

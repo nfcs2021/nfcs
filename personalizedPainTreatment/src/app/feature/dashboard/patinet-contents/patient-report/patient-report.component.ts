@@ -3,13 +3,16 @@ import { Observable } from 'rxjs';
 import jsPDF from 'jspdf';
 import { DOCUMENT } from '@angular/common';
 import { PatientService } from '../../services/patient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { QuestionaryService } from '../../services/questionary.service';
+import { Patient } from '../module/Patient';
 @Component({
   selector: 'app-patient-report',
   templateUrl: './patient-report.component.html',
   styleUrls: ['./patient-report.component.css']
 })
 export class PatientReportComponent implements OnInit {
+  questions: any[];
   @ViewChild('content1', { static: true }) element: ElementRef;
   rehabilitation_Therapies: any = 50;
   medication: any = 80;
@@ -47,12 +50,17 @@ export class PatientReportComponent implements OnInit {
   routerId:any;
   constructor(@Inject(DOCUMENT) private document: Document,
   private service:PatientService,
-  private route:ActivatedRoute
+  private route:ActivatedRoute,
+  private router:Router,
+  private questionarydata: QuestionaryService
   ) { }
 
   ngOnInit(): void {
+    this.questions = this.questionarydata.questions;
     this.routeId();
-
+    console.log(this.router.url);
+    
+    
   }
 
   routeId() {
@@ -81,6 +89,15 @@ export class PatientReportComponent implements OnInit {
       .subscribe(data => {
         this.quetionaryData = data;
         console.log(data);
+        for (let dataObj of this.quetionaryData) {
+          const qId = dataObj.Sub_question_id;
+          for (let questionsDataObj of this.questions) {
+            if (qId === questionsDataObj.subQuestionId) {
+              questionsDataObj.p_Options = dataObj.Answers;
+            }
+          }
+
+        }
 
       },
         error => {
@@ -95,12 +112,7 @@ export class PatientReportComponent implements OnInit {
             this.service.getPatientDataById(data.Patient_id).subscribe(data => {
               this.patientData = data;
                   console.log(this.patientData);
-            for (let patient of this.patientRecordsData) {
-              if (patient.id == id) {
-                var index = this.patientRecordsData.indexOf(patient)
-              }
-              this.previousPatientRecord = this.patientRecordsData[index - 1];
-            }
+            
           })
       },
         error => {

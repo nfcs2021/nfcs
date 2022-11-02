@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { ThisReceiver } from '@angular/compiler';
+import { data } from 'jquery';
+import * as FileSaver from 'file-saver';
+import { FrontdeskService } from '../../services/frontdesk.service';
 
 @Component({
   selector: 'app-frontdesk-details',
@@ -9,13 +12,19 @@ import { ThisReceiver } from '@angular/compiler';
   styleUrls: ['./frontdesk-details.component.css'],
 })
 export class FrontdeskDetailsComponent implements OnInit {
+<<<<<<< HEAD
   pcp: any;
+=======
+  pcp: string;
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   frontDeskData: any;
   routerId: any;
   retrivalId: any;
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private frontdeskService: FrontdeskService,
+    private router: Router
   ) {}
   id: any;
   ngOnInit(): void {
@@ -40,5 +49,23 @@ export class FrontdeskDetailsComponent implements OnInit {
       console.log(data);
       this.frontDeskData = data;
     });
+  }
+  retriveLoginData(id: any) {}
+
+  downLoadFile() {
+    console.log(this.frontDeskData.Email);
+    this.dataService
+      .downloadFile(this.frontDeskData.Email)
+      .subscribe((data) => {
+        console.log('download[Symbol]...............', data);
+        const blob = new Blob([data.body.Emp_id_doc]);
+        const file = new File([blob], this.frontDeskData.Emp_id_doc);
+        FileSaver.saveAs(file);
+      });
+  }
+  resetPassword() {
+    this.router.navigate([
+      '/frontdesk/changepassword' + this.frontDeskData.Email,
+    ]);
   }
 }

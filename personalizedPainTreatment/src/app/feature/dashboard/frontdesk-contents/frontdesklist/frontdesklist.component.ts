@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient, SearchModel } from '../../patinet-contents/module/Patient';
 import { PatientService } from '../../services/patient.service';
 import { AuthService } from '../../services/auth.service';
-import { FrontdeskEmployee, SearchModel1 } from '../frontdesk-model/frontdesk-model';
+import {
+  FrontdeskEmployee,
+  SearchModel1,
+} from '../frontdesk-model/frontdesk-model';
 
 @Component({
   selector: 'app-frontdesklist',
@@ -15,10 +17,7 @@ export class FrontdesklistComponent implements OnInit {
   dropdown: boolean[] = [];
   page: number = 1;
   totalRec: string;
-  constructor(
-    private service: PatientService,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.getRegisterData();
@@ -28,7 +27,6 @@ export class FrontdesklistComponent implements OnInit {
   }
   getRegisterData() {
     this.authService.getAllRegistrationData().subscribe((data) => {
-      console.log(data);
       this.frontDesKList = data;
     });
   }

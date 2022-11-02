@@ -243,31 +243,31 @@ export class AddPatientComponent implements OnInit {
   }
   formInitilization() {
     this.patientRegesterForm = this.formBuilder.group({
-      firstName: ['', 
+      firstName: ['',
       [
-        Validators.required, 
+        Validators.required,
         Validators.minLength(2),
         Validators.pattern('^[a-zA-Z]+$')
       ]],
-      lastName: ['', 
+      lastName: ['',
       [
         Validators.required,
         Validators.pattern('^[a-zA-Z]+$')
       ]],
-      dob: ['', 
+      dob: ['',
       [
         Validators.required
       ]],
-      contactNumber: ['', 
+      contactNumber: ['',
       [
         Validators.required,
         Validators.pattern('^[0-9 ()-]+$')
       ]],
-      email: ['', 
+      email: ['',
       [
         Validators.required
       ]],
-      socialSecurityNumber: ['', 
+      socialSecurityNumber: ['',
       [
         Validators.required,
         Validators.pattern('^[0-9 -]+$')
@@ -277,7 +277,7 @@ export class AddPatientComponent implements OnInit {
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      zipcode: ['', 
+      zipcode: ['',
       [
         Validators.required,
         Validators.pattern('^[0-9]+$')
@@ -405,8 +405,7 @@ export class AddPatientComponent implements OnInit {
     this.patientService.savePatientData(data).subscribe(
       data => {
         console.log(data);
-        this.route.navigate(['/patient/data/'+data.id])
-        alert(data.id)
+        this.route.navigate(['/patient/data/' + data.id])
       }, error => {
         console.log(error);
 
@@ -432,7 +431,6 @@ export class AddPatientComponent implements OnInit {
         "Created_by":localStorage.getItem('name')
   }
   console.log(data);
-
   this.patientService.updatePatientData(data,this.patientId).subscribe(
     data =>{
       console.log(data);
@@ -441,9 +439,7 @@ export class AddPatientComponent implements OnInit {
       console.log(err);
 
     }
-    
+
     )
   }
-
-
 }

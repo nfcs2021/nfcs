@@ -1,5 +1,5 @@
-
 <div class="container  d-flex justify-content-center align-items-center "> 
+<<<<<<< HEAD
     <div class="position-relative"> 
         <div class="card p-2 text-center mt-1 mb-3">
          <h6>Please enter the one time password <br> to verify your account</h6> 
@@ -75,3 +75,79 @@
           </div>
       
          
+=======
+  <div class="position-relative"> 
+      <div class="card p-2 text-center mt-1 mb-3">
+       <h6>Please enter the one time password <br> to verify your account</h6> 
+       
+          <ng-otp-input  (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+          <button class="btn mt-3 border validate" (click)="onValidate()">Validate</button><br>
+         
+          <p > <span >{{transform(counter)}}</span> 
+         
+                <a  (click)="resendOtp()"  class="text-decoration-none ms-3 "   >Resend</a></p>
+             
+            </div>
+</div> 
+
+
+ <div class="overlay " *ngIf="popup">
+  <div class="popup mt-5" class="reveal-modal">
+   
+
+    <div class="content ">
+      <div class="container col-md-8  ">
+        <h2 class=" mt-5 mb-3  form-title border-bottom"> Reset Password </h2>
+ 
+         
+   <div class=" container col-md-12 fixed">
+    <div class="row justify-content-center align-items-center ">
+      <div class="col-md-10  " >
+        <form style="margin-bottom: 100px;"  [formGroup]="ResetpasswordForm"
+        (ngSubmit)="onSubmit()">
+ 
+         
+        <label for="password" class="form-label h6"
+        style="color: #712C6B;">Password</label>
+      <input type="password" class="form-control"
+        id="password"
+        style="border: 1px solid #712C6B;color:
+        #712C6B;"
+        formControlName="password"
+        placeholder="Enter password"
+        [ngClass]="{'is-invalid':submitted && f['password'].errors}"
+        />
+      <div *ngIf="submitted && f['password'].errors"
+        class="invalid-feedback">
+        <div *ngIf="f['password'].errors['required']">
+          Password is required
+        </div>
+      </div>
+      <label for="name" class="form-label h6 mt-3" style="color: #712C6B;">Confirm
+        Password</label>
+      <input type="password" class="form-control"
+        formControlName="confirmPassword" style="border: 1px solid
+        #712C6B;color:
+        #712C6B;">
+      <div *ngIf="submitted && f['confirmPassword'].errors" class="alert
+        alert-danger">
+        <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm
+          Password is required</div>
+        <div
+          *ngIf="f['confirmPassword'].errors?.['confirmPasswordValidator']">Passsword
+          and
+          Confirm Password didn't match. </div>
+      </div>
+ 
+       
+        <br>
+        <button  class="btn btn-primary ml-5" type="submit">Save Password</button>
+     
+        </form>
+      </div>
+      </div>
+        </div></div></div>
+       
+        </div>
+   
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c

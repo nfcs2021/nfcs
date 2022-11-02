@@ -7,21 +7,21 @@ import { FrontdeskEmployee, SearchModel1 } from '../frontdesk-model/frontdesk-mo
 })
 export class FrontdeskpipePipe implements PipeTransform {
 
-  transform(posts: FrontdeskEmployee[], search: SearchModel1): any {
+  transform(frontdeskList: FrontdeskEmployee[], search: SearchModel1): any {
     console.log(search);
 
-   if(posts.length === 0)
+   if(frontdeskList.length === 0)
    {
-    return posts;
+    return frontdeskList;
    }
 
-   console.table(posts);
+   console.table(frontdeskList);
 
 
    if(!search || !search.First_Name && !search.Last_Name ) return null;
 
  console.log(search);
-   return posts.filter((post) => {
+   return frontdeskList.filter((post) => {
      return (!search.First_Name || post.First_Name.toLowerCase().startsWith(search.First_Name.toLowerCase()) ) &&
          (!search.Last_Name || post.Last_Name.toLowerCase().startsWith(search.Last_Name.toLowerCase()))
  ;

@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-4 mt-5">
-      <a routerLink="/frontdesk/frontdesk-registration"><h3 class="style"><img
+      <a routerLink="/frontdesk/frontdeskregistration"><h3 class="style"><img
             src="\assets\images\ant-design_plus-circle-outlined.png"
             style="width: 25px; border-radius: 5px;">AddNew FrontDesk Employees</h3></a>
     </div>
@@ -73,11 +73,33 @@
         </tbody>
       </table>
     </a>
+<<<<<<< HEAD
 
     <div class="row mb-5" *ngIf="dropdown[frontdeskData.id]">
       <div class="ml-3 col-2">
       <button  class="btn btn-primary" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Patient Details</button>
       </div>
+=======
+    <div *ngIf="dropdown[frontdeskData.id]">
+<<<<<<< HEAD
+      <div class="buttons ">
+        <a class="btn ml-md-auto d-none d-md-flex col-md-3 active p-3 mx-5"
+          role="button" aria-pressed="true"
+          routerLink="/frontdesk/frontdeskregistration/{{frontdeskData.id}}">Edit
+          Front Desk Employee</a><br>
+        <br>
+
+      </div>
+
+    </div>
+=======
+      <div class="buttons  ">
+          <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Front Desk Employee</a><br>
+          <br>
+        </div>
+  </div>
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   </div>
 
   <pagination-controls id="listing_pagination" [maxSize]="5 "

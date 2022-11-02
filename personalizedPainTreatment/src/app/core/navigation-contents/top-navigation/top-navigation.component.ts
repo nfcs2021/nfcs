@@ -14,12 +14,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TopNavigationComponent implements OnInit, OnChanges {
   // isLoggidIn: boolean = this.authService.loggedIn();
   // name = localStorage.getItem('registrationData');
-  @Input('data1') data1:any;
-  @Input('pcp_Name') pcp_Name:any;
+  @Input('data1') data1: any;
+  @Input('pcp_Name') pcp_Name: any;
+  @Input('lastlogin') last_login: any;
   name: any;
   user: any;
+<<<<<<< HEAD
   pcp: any ;
   text = 'Welcome';
+=======
+  pcp: any;
+  text = 'welcome';
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   loggedIn = false;
   presentLogin: any;
   data: any;
@@ -38,10 +44,9 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-   this.name= this.data1;
-   this.pcp=this.pcp_Name;
+    this.name = this.data1;
+    this.pcp = this.pcp_Name;
   }
-
 
   logOut() {
     this.authService.logout();

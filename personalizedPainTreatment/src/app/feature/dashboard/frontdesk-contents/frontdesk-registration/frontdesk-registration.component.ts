@@ -1,13 +1,27 @@
-import { HttpClient } from '@angular/common/http';
-import { LocalizedString } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+<<<<<<< HEAD
+import { FrontdeskService } from '../../services/frontdesk.service';
+=======
 import { PatientService } from '../../services/patient.service';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
 
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 
 @Component({
   selector: 'app-frontdesk-registration',
@@ -32,24 +46,84 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
-  createdBy: any;
+  frontDeskId: any;
+  updateData: boolean;
   frontDeskDataById: any;
+<<<<<<< HEAD
   updateData: boolean;
   frontDeskId: any;
+=======
+  existedUserName:any=new Array();
+  createdBy: any;
+<<<<<<< HEAD
+=======
+  frontDeskDataById: any;
+<<<<<<< HEAD
+  frontDeskId: any;
+  updateData: boolean;
+  frontdeskData: any;
+  file: any;
+  email: any;
+  popup = false;
+  simillarFrontdeskData: any;
+=======
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   constructor(
-    private http: HttpClient,
     private service: AppService,
     private formBuilder: FormBuilder,
-    private patientService: PatientService,
     private route: Router,
     private authService: AuthService,
+<<<<<<< HEAD
     private dataService:DataService,
     private router:ActivatedRoute
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    private router: ActivatedRoute,
+    private dataService: DataService,
+    private frontdeskService: FrontdeskService
+=======
+<<<<<<< HEAD
+    private router:ActivatedRoute,
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+    private router: ActivatedRoute,
+    private dataService: DataService,
+    private frontdeskService: FrontdeskService
+=======
+<<<<<<< HEAD
+    private router:ActivatedRoute,
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+<<<<<<< HEAD
+    private router: ActivatedRoute,
+    private dataService: DataService,
+    private frontdeskService: FrontdeskService
+=======
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+    private router:ActivatedRoute,
+    private dataService:DataService
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   ) {}
 
   ngOnInit(): void {
+    // this.getFrontdeskData();
     this.formInitilization();
     this.getCountries();
+<<<<<<< HEAD
     // alert(localStorage.getItem('createdBy'));
     // this.createdBy = localStorage.getItem('createdBy');
     this.frontDeskId = this.router.snapshot.paramMap.get('id')
@@ -61,60 +135,118 @@ export class FrontdeskRegistrationComponent implements OnInit {
 
       this.updateData = true;
 
+=======
+    this.frontDeskData();
+
+    this.frontDeskId = this.router.snapshot.paramMap.get('id')
+
+    if (this.frontDeskId) {
+      this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
+      this.updateData = true;
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
     }
   }
-
-  getForntDeskDataById(id:any){
-    this.dataService.getUserData(id).subscribe(
+  frontDeskData(){
+    this.authService.getAllRegistrationData().subscribe(
       data =>{
-       console.log(data);
-       this.frontDeskDataById=data;
-       this.updateFrontDeskRegistrationForm();
-       this.onChangeCountryUpdateData(data.Country);
+        console.log(data);
+        for(let singledata of data)
+        {
 
-      },err =>{
-      console.log(err);
+          this.existedUserName.push(singledata .UserName);
+        }
+        console.log(this.existedUserName);
+      },
+      err =>{
+        console.log(err);
+        
       }
     )
+    
+    alert(localStorage.getItem('createdBy'));
+    this.createdBy = localStorage.getItem('createdBy');
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+    this.frontDeskId = this.router.snapshot.paramMap.get('id');
+
+    if (this.frontDeskId) {
+      this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
+      this.updateData = true;
+    }
+=======
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+  }
+
+  getForntDeskDataById(id: any) {
+    this.dataService.getUserData(id).subscribe(
+      (data) => {
+        console.log(data);
+        this.frontDeskDataById = data;
+        this.updateFrontDeskRegistrationForm();
+        this.onChangeCountryUpdateData(data.Country);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   onChangeCountryUpdateData(countryValue: any) {
+<<<<<<< HEAD
     // alert(countryValue)
     // alert(this.frontDeskDataById.State)
+=======
+    alert(countryValue);
+    alert(this.frontDeskDataById.State);
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
     let countryIso: any;
     for (let data of this.countryInfo) {
       if (countryValue === data.name) {
-        countryIso = data.iso2
-        this.countryId = data.iso2
+        countryIso = data.iso2;
+        this.countryId = data.iso2;
       }
     }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe(
-      data => {
-        console.log(data);
-        this.stateInfo = data;
-        this.onChangeStateUpdateData(this.frontDeskDataById.State);
-      }
-    )
-
+    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
+      console.log(data);
+      this.stateInfo = data;
+      this.onChangeStateUpdateData(this.frontDeskDataById.State);
+    });
   }
 
   onChangeStateUpdateData(stateValue: any) {
+<<<<<<< HEAD
     // alert(stateValue)
+=======
+    alert(stateValue);
+>>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {
-        stateId = data.iso2
+        stateId = data.iso2;
       }
     }
-    this.service.getCitiesOfSelectedState(this.countryId, stateId).subscribe(
-      data => {
+    this.service
+      .getCitiesOfSelectedState(this.countryId, stateId)
+      .subscribe((data) => {
         console.log(data);
         this.cityInfo = data;
-
-      }
-    )
+      });
   }
-
 
   getToday(): string {
     return new Date().toISOString().split('T')[0];
@@ -229,6 +361,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
       {
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required]],
+        userName: ['', [Validators.required]],
         dob: ['', [Validators.required]],
         contactNumber: ['', [Validators.required]],
         email: ['', [Validators.required]],
@@ -247,22 +380,31 @@ export class FrontdeskRegistrationComponent implements OnInit {
         employeeIdDocument: [''],
         idproof: [''],
         profileImage: [''],
-        password: ['', Validators.required],
-        createBy: [this.createdBy],
-        confirmPassword: ['', Validators.required],
+        // password: ['', Validators.required],
+        createBy: [''],
+        // confirmPassword: ['', Validators.required],
       },
-      {
-        validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
-      }
+      // {
+      //   validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
+      // }
+       {
+      validator: this.userNameValidation('userName'),
+       }
     );
   }
 
-  updateFrontDeskRegistrationForm(){
+  updateFrontDeskRegistrationForm() {
     this.frontDeskRegesterForm = this.formBuilder.group({
-      firstName: [this.frontDeskDataById.First_Name, [Validators.required, Validators.minLength(2)]],
+      firstName: [
+        this.frontDeskDataById.First_Name,
+        [Validators.required, Validators.minLength(2)],
+      ],
       lastName: [this.frontDeskDataById.Last_Name, [Validators.required]],
       dob: [this.frontDeskDataById.Date_of_birth, [Validators.required]],
-      contactNumber: [this.frontDeskDataById.Contact_number, [Validators.required]],
+      contactNumber: [
+        this.frontDeskDataById.Contact_number,
+        [Validators.required],
+      ],
       email: [this.frontDeskDataById.Email, [Validators.required]],
       socialSecurityNumber: [this.frontDeskDataById.Ssn, [Validators.required]],
       address1: [this.frontDeskDataById.Address_Line1, [Validators.required]],
@@ -273,22 +415,32 @@ export class FrontdeskRegistrationComponent implements OnInit {
       zipcode: [this.frontDeskDataById.Zipcode, [Validators.required]],
       gender: [this.frontDeskDataById.Gender, [Validators.required]],
       pcp: [this.frontDeskDataById.PCP_Name, [Validators.required]],
-      employeePostion: [this.frontDeskDataById.Emp_designation, [Validators.required]],
-      immediateManager: [this.frontDeskDataById.Immidiate_manager, [Validators.required]],
+      employeePostion: [
+        this.frontDeskDataById.Emp_designation,
+        [Validators.required],
+      ],
+      immediateManager: [
+        this.frontDeskDataById.Immidiate_manager,
+        [Validators.required],
+      ],
       employeeId: [this.frontDeskDataById.Emp_id, [Validators.required]],
       employeeIdDocument: [this.frontDeskDataById.Emp_id_doc],
       idproof: [this.frontDeskDataById.Id_proof],
       profileImage: [this.frontDeskDataById.Profile_image],
     });
-
+<<<<<<< HEAD
+<<<<<<< HEAD
   }
 
-  onSubmit() {
-    console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
-    this.submitted = true;
-    if (this.frontDeskRegesterForm.invalid) {
-      return;
-    }
+  updateRegistrationData() {
+=======
+  }
+
+  updateRegistrationData() {
+=======
+  }
+
+  updateRegistrationData() {
     const data = {
       First_Name: this.frontDeskRegesterForm.value['firstName'],
       Last_Name: this.frontDeskRegesterForm.value['lastName'],
@@ -314,16 +466,58 @@ export class FrontdeskRegistrationComponent implements OnInit {
       confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
       Created_by: this.createdBy,
     };
-    this.authService.saveFrontDeskData(data).subscribe(
+    console.log(data);
+    this.frontdeskService.updateFrontdeskData(data, this.frontDeskId).subscribe(
       (data) => {
-        console.log('frontdeskData :', data);
-        this.route.navigate(['/frontdesk/frontdetails/' + data.data.id]);
-        alert(data.data.First_Name);
+        console.log(data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.id]);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  upload(fakepath: any) {
+    var splits = fakepath.split('fakepath\\');
+    alert(splits[1]);
+  }
+  getFrontdeskData() {
+    // alert(1);
+    this.authService.getAllRegistrationData().subscribe(
+      (data) => {
+        console.log('getuserdata:', data);
+        this.frontdeskData = data;
+        for (let frontdeskUser of this.frontdeskData) {
+          if (
+            frontdeskUser.First_Name ===
+              this.frontDeskRegesterForm.value['firstName'] &&
+            frontdeskUser.Last_Name ===
+              this.frontDeskRegesterForm.value['lastName'] &&
+            frontdeskUser.Date_of_birth ===
+              this.frontDeskRegesterForm.value['dob']
+          ) {
+            this.popup = true;
+            this.simillarFrontdeskData = frontdeskUser;
+            break;
+          }
+        }
+        if (!this.simillarFrontdeskData) {
+          this.savefrondeskData();
+        }
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  onSubmit() {
+    console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
+    this.submitted = true;
+    if (this.frontDeskRegesterForm.invalid) {
+      return;
+    }
+    this.getFrontdeskData();
   }
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
@@ -342,4 +536,304 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     };
   }
+
+  savefrondeskData() {
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+    const data = {
+      First_Name: this.frontDeskRegesterForm.value['firstName'],
+      Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      Date_of_birth: this.frontDeskRegesterForm.value['dob'],
+      Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
+      Gender: this.frontDeskRegesterForm.value['gender'],
+      Email: this.frontDeskRegesterForm.value['email'],
+      Ssn: this.frontDeskRegesterForm.value['socialSecurityNumber'],
+      Address_Line1: this.frontDeskRegesterForm.value['address1'],
+      Address_Line2: this.frontDeskRegesterForm.value['address2'],
+      Country: this.frontDeskRegesterForm.value['country'],
+      State: this.frontDeskRegesterForm.value['state'],
+      City: this.frontDeskRegesterForm.value['city'],
+      Zipcode: this.frontDeskRegesterForm.value['zipcode'],
+      PCP_Name: this.frontDeskRegesterForm.value['pcp'],
+      Emp_designation: this.frontDeskRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.frontDeskRegesterForm.value['immediateManager'],
+      Emp_id: this.frontDeskRegesterForm.value['employeeId'],
+      Emp_id_doc: this.frontDeskRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.frontDeskRegesterForm.value['idproof'],
+      Profile_image: this.frontDeskRegesterForm.value['profileImage'],
+      Password: this.frontDeskRegesterForm.value['password'],
+      confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
+      Created_by: this.createdBy,
+    };
+    console.log(data);
+    this.frontdeskService.updateFrontdeskData(data, this.frontDeskId).subscribe(
+      (data) => {
+        console.log(data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.id]);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  upload(fakepath: any) {
+    var splits = fakepath.split('fakepath\\');
+    alert(splits[1]);
+  }
+  getFrontdeskData() {
+    // alert(1);
+    this.authService.getAllRegistrationData().subscribe(
+      (data) => {
+        console.log('getuserdata:', data);
+        this.frontdeskData = data;
+        for (let frontdeskUser of this.frontdeskData) {
+          if (
+            frontdeskUser.First_Name ===
+              this.frontDeskRegesterForm.value['firstName'] &&
+            frontdeskUser.Last_Name ===
+              this.frontDeskRegesterForm.value['lastName'] &&
+            frontdeskUser.Date_of_birth ===
+              this.frontDeskRegesterForm.value['dob']
+          ) {
+            this.popup = true;
+            this.simillarFrontdeskData = frontdeskUser;
+            break;
+          }
+        }
+        if (!this.simillarFrontdeskData) {
+          this.savefrondeskData();
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+<<<<<<< HEAD
+
+  onSubmit() {
+    console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
+    this.submitted = true;
+    if (this.frontDeskRegesterForm.invalid) {
+      return;
+    }
+    this.getFrontdeskData();
+  }
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+  ConfirmPasswordValidator(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[confirmPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['confirmPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  savefrondeskData() {
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+    const data = {
+      First_Name: this.frontDeskRegesterForm.value['firstName'],
+      Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      Date_of_birth: this.frontDeskRegesterForm.value['dob'],
+      Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
+      Gender: this.frontDeskRegesterForm.value['gender'],
+      Email: this.frontDeskRegesterForm.value['email'],
+      Ssn: this.frontDeskRegesterForm.value['socialSecurityNumber'],
+      Address_Line1: this.frontDeskRegesterForm.value['address1'],
+      Address_Line2: this.frontDeskRegesterForm.value['address2'],
+      Country: this.frontDeskRegesterForm.value['country'],
+      State: this.frontDeskRegesterForm.value['state'],
+      City: this.frontDeskRegesterForm.value['city'],
+      Zipcode: this.frontDeskRegesterForm.value['zipcode'],
+      PCP_Name: this.frontDeskRegesterForm.value['pcp'],
+      Emp_designation: this.frontDeskRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.frontDeskRegesterForm.value['immediateManager'],
+      Emp_id: this.frontDeskRegesterForm.value['employeeId'],
+      Emp_id_doc: this.frontDeskRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.frontDeskRegesterForm.value['idproof'],
+      Profile_image: this.frontDeskRegesterForm.value['profileImage'],
+      Password: this.frontDeskRegesterForm.value['password'],
+      confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
+      Created_by: this.createdBy,
+    };
+    console.log(data);
+    this.frontdeskService.updateFrontdeskData(data, this.frontDeskId).subscribe(
+      (data) => {
+        console.log(data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.id]);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  upload(fakepath: any) {
+    var splits = fakepath.split('fakepath\\');
+    alert(splits[1]);
+  }
+  getFrontdeskData() {
+    // alert(1);
+    this.authService.getAllRegistrationData().subscribe(
+      (data) => {
+        console.log('getuserdata:', data);
+        this.frontdeskData = data;
+        for (let frontdeskUser of this.frontdeskData) {
+          if (
+            frontdeskUser.First_Name ===
+              this.frontDeskRegesterForm.value['firstName'] &&
+            frontdeskUser.Last_Name ===
+              this.frontDeskRegesterForm.value['lastName'] &&
+            frontdeskUser.Date_of_birth ===
+              this.frontDeskRegesterForm.value['dob']
+          ) {
+            this.popup = true;
+            this.simillarFrontdeskData = frontdeskUser;
+            break;
+          }
+        }
+        if (!this.simillarFrontdeskData) {
+          this.savefrondeskData();
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+<<<<<<< HEAD
+
+  onSubmit() {
+    console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
+    this.submitted = true;
+    if (this.frontDeskRegesterForm.invalid) {
+      return;
+    }
+    this.getFrontdeskData();
+  }
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+  ConfirmPasswordValidator(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[confirmPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['confirmPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  savefrondeskData() {
+    const data = {
+      First_Name: this.frontDeskRegesterForm.value['firstName'],
+      Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      User_Name: this.frontDeskRegesterForm.value['userName'],
+      Date_of_birth: this.frontDeskRegesterForm.value['dob'],
+      Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
+      Gender: this.frontDeskRegesterForm.value['gender'],
+      Email: this.frontDeskRegesterForm.value['email'],
+      Ssn: this.frontDeskRegesterForm.value['socialSecurityNumber'],
+      Address_Line1: this.frontDeskRegesterForm.value['address1'],
+      Address_Line2: this.frontDeskRegesterForm.value['address2'],
+      Country: this.frontDeskRegesterForm.value['country'],
+      State: this.frontDeskRegesterForm.value['state'],
+      City: this.frontDeskRegesterForm.value['city'],
+      Zipcode: this.frontDeskRegesterForm.value['zipcode'],
+      PCP_Name: this.frontDeskRegesterForm.value['pcp'],
+      Emp_designation: this.frontDeskRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.frontDeskRegesterForm.value['immediateManager'],
+      Emp_id: this.frontDeskRegesterForm.value['employeeId'],
+      Emp_id_doc: this.frontDeskRegesterForm.value['employeeIdDocument'],
+      Id_proof: this.frontDeskRegesterForm.value['idproof'],
+      Profile_image: this.frontDeskRegesterForm.value['profileImage'],
+      Password: this.frontDeskRegesterForm.value['password'],
+      confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
+      Created_by: localStorage.getItem('name'),
+      otp:"null"
+    };
+    this.authService.saveFrontDeskData(data).subscribe(
+      (data) => {
+        console.log('frontdeskData :', data);
+        this.route.navigate(['/frontdesk/frontdetails/' + data.data.id]);
+        alert(data.data.First_Name);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+<<<<<<< HEAD
+=======
+  ConfirmPasswordValidator(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[confirmPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['confirmPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  userNameValidation(UserName: string) {
+    return (formGroup: FormGroup) => {
+      let matchingControl = formGroup.controls[UserName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['UserNameValidator']
+      ) {
+        return;
+      }
+      for(let control of this.existedUserName)
+      {
+        if (control === matchingControl.value) {
+          matchingControl.setErrors({ UserNameValidator: true });
+          break;
+        } else {
+          matchingControl.setErrors(null);
+        }
+      }
+      
+    };
+  }
+
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 }
