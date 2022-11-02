@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="row ml-5" *ngIf="role==='admin'">
-    <div class="col" style="margin-top: 70px; margin-bottom: 40%;margin-left:
+    <div class="col " style="margin-top: 70px; margin-bottom: 7%;margin-left:
       300px;">
       <button class="btn btn-block border fa-lg col-md-5 p-2
         gradient-custom-2 text-light"
@@ -40,6 +40,25 @@
        
 
           class="mt-1">Front Desk</h2> <div
+          class="mt-1"><img
+            class="img-fluid"
+            src="assets\images\wpf_add-user.png"
+            alt=""
+            style="width: 20%;"></div></button>
+    </div>
+  </div>
+  <div class="row ml-5" *ngIf="role==='admin'">
+    <div class="col" style="margin-left:
+      300px;">
+      <button class="btn btn-block border fa-lg col-md-5 p-2
+        gradient-custom-2 text-light"
+        style="background-color: #712C6B;font-weight:
+        bold;" type="button"
+
+        [routerLink]="['/frontdesk/frontdesklist']"><h2
+
+
+          class="mt-1">Admin</h2> <div
           class="mt-1"><img
             class="img-fluid"
             src="assets\images\wpf_add-user.png"

@@ -18,6 +18,7 @@ import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-
 import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
 import { ForgetpasswordComponent } from '../frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from '../frontdesk-contents/otp/otp.component';
+import { ContactComponent } from '../frontdesk-contents/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -89,13 +90,19 @@ const routes: Routes = [
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
           {
-            path: 'frontdeskregistration',
+            path: 'frontdesk-registration',
+            component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesk-registration/:id',
             component: FrontdeskRegistrationComponent,
             canActivate: [AuthRouteGaurdService]
           },
           { path: 'frontdesklist', component: FrontdesklistComponent },
           {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp',component:OtpComponent}
+          {path:'otp/:email',component:OtpComponent},
+          {path:'contact',component:ContactComponent},
         ],
       },
     ],

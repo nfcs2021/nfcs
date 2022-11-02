@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DataService {
+  
  
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
@@ -17,11 +18,24 @@ export class DataService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl+'getregister/'+id, {
+    return this.http.get<any>(environment.apiUrl+'register/'+id, {
       headers: httpheaders,
     });
   }
 
-  
-  
+  create(data:any){
+    // const httpheaders = new HttpHeaders({
+    //   Authorization: 'Bearer ' + localStorage.getItem('token'),
+    // });
+    return this.http.post(environment.apiUrl+'getmail',data
+    );
+    
+  }
+  requestotp(data:any){
+    return this.http.post(environment.apiUrl+'request_otp',data)
+  }
+
+  verifyOtp(otp:any) {
+    return this.http.post(environment.apiUrl+'verify_otp',otp)
+  }
 }

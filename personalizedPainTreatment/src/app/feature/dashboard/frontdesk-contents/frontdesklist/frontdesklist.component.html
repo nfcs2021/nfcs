@@ -73,6 +73,11 @@
         </tbody>
       </table>
     </a>
+
+    <div class="row mb-5" *ngIf="dropdown[frontdeskData.id]">
+      <div class="ml-3 col-2">
+      <button  class="btn btn-primary" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Patient Details</button>
+      </div>
   </div>
 
   <pagination-controls id="listing_pagination" [maxSize]="5 "

@@ -9,7 +9,7 @@ import { ThisReceiver } from '@angular/compiler';
   styleUrls: ['./frontdesk-details.component.css'],
 })
 export class FrontdeskDetailsComponent implements OnInit {
-  pcp: string | null;
+  pcp: any;
   frontDeskData: any;
   routerId: any;
   retrivalId: any;

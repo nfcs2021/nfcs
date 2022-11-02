@@ -19,12 +19,13 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   name: any;
   user: any;
   pcp: any ;
-  text = 'welcome';
+  text = 'Welcome';
   loggedIn = false;
   presentLogin: any;
   data: any;
   frontdeskData: any;
   firstName: any;
+  btndisable:boolean;
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -45,4 +46,5 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   logOut() {
     this.authService.logout();
   }
+  
 }

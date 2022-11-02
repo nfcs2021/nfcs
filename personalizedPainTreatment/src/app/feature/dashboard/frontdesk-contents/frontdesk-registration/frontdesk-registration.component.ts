@@ -34,6 +34,8 @@ export class FrontdeskRegistrationComponent implements OnInit {
   today = new Date();
   createdBy: any;
   frontDeskDataById: any;
+  updateData: boolean;
+  frontDeskId: any;
   constructor(
     private http: HttpClient,
     private service: AppService,
@@ -41,14 +43,25 @@ export class FrontdeskRegistrationComponent implements OnInit {
     private patientService: PatientService,
     private route: Router,
     private authService: AuthService,
-    private dataService:DataService
+    private dataService:DataService,
+    private router:ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.formInitilization();
     this.getCountries();
-    alert(localStorage.getItem('createdBy'));
-    this.createdBy = localStorage.getItem('createdBy');
+    // alert(localStorage.getItem('createdBy'));
+    // this.createdBy = localStorage.getItem('createdBy');
+    this.frontDeskId = this.router.snapshot.paramMap.get('id')
+
+
+    if (this.frontDeskId) {
+
+      this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
+
+      this.updateData = true;
+
+    }
   }
 
   getForntDeskDataById(id:any){
@@ -66,8 +79,8 @@ export class FrontdeskRegistrationComponent implements OnInit {
   }
 
   onChangeCountryUpdateData(countryValue: any) {
-    alert(countryValue)
-    alert(this.frontDeskDataById.State)
+    // alert(countryValue)
+    // alert(this.frontDeskDataById.State)
     let countryIso: any;
     for (let data of this.countryInfo) {
       if (countryValue === data.name) {
@@ -86,7 +99,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   }
 
   onChangeStateUpdateData(stateValue: any) {
-    alert(stateValue)
+    // alert(stateValue)
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {

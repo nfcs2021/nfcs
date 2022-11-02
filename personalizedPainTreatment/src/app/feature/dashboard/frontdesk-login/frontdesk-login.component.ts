@@ -34,7 +34,7 @@ export class FrontdeskLoginComponent implements OnInit {
     private route: Router,
     private authservice: AuthService,
     private activateroute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.url = this.route.url;
@@ -42,7 +42,7 @@ export class FrontdeskLoginComponent implements OnInit {
     this.loginFormGroup = this.fromBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
-      pcp: ['',Validators.required],
+      pcp: ['', Validators.required],
     });
   }
   get f() {
@@ -58,7 +58,7 @@ export class FrontdeskLoginComponent implements OnInit {
 
       Email: this.loginFormGroup.value['email'],
       Password: this.loginFormGroup.value['password'],
-      PCP_Name:this.loginFormGroup.value['pcp']
+      PCP_Name: this.loginFormGroup.value['pcp']
 
 
 
@@ -66,13 +66,15 @@ export class FrontdeskLoginComponent implements OnInit {
     this.authservice.loginUser(data).subscribe(
       (data) => {
         console.log('data' + data);
-        console.log('role',data.data.role)
+        console.log('role', data.data.role)
         localStorage.setItem('token', data.access_token);
-       console.log(data.data);
-       localStorage.setItem('role',data.data.roles.role)
-       localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
-       localStorage.setItem('createdBy',data.data.First_Name)
-       localStorage.setItem('PCP_Name',data.data.PCP_Name)
+        console.log(data.data);
+        localStorage.setItem('role', data.data.roles.role)
+        localStorage.setItem('name', data.data.First_Name + data.data.Last_Name)
+        localStorage.setItem('createdBy', data.data.First_Name)
+        localStorage.setItem('PCP_Name', data.data.PCP_Name)
+        localStorage.setItem('id', data.data.id)
+       
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
 
@@ -86,7 +88,7 @@ export class FrontdeskLoginComponent implements OnInit {
         this.has_error = true;
         this.login_user_msg = 'Invalid Username and Password !!!';
         console.log(err);
-        
+
       }
     );
   }

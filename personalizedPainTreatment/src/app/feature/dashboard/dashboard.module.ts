@@ -31,6 +31,7 @@ import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { ContactComponent } from './frontdesk-contents/contact/contact.component';
 
 
 
@@ -63,7 +64,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
 
     DateSearchPipe,
 
-    FrontdeskRegistrationComponent
+    FrontdeskRegistrationComponent,
+      ContactComponent
  
 
 
