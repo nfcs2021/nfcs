@@ -21,5 +21,7 @@ export class NavnsideWrapperComponent implements OnInit, OnChanges {
     console.log('navnside', this.data);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // alert(this.last_login);
+  }
 }

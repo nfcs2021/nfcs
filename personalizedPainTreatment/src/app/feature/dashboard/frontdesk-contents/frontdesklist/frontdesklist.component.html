@@ -74,26 +74,15 @@
       </table>
     </a>
     <div *ngIf="dropdown[frontdeskData.id]">
-<<<<<<< HEAD
       <div class="buttons ">
         <a class="btn ml-md-auto d-none d-md-flex col-md-3 active p-3 mx-5"
           role="button" aria-pressed="true"
           routerLink="/frontdesk/frontdeskregistration/{{frontdeskData.id}}">Edit
           Front Desk Employee</a><br>
         <br>
-
       </div>
-
     </div>
-=======
-      <div class="buttons  ">
-          <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Front Desk Employee</a><br>
-          <br>
-        </div>
   </div>
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
-  </div>
-
   <pagination-controls id="listing_pagination" [maxSize]="5 "
     [directionLinks]="true" (pageChange)="page= $event">
   </pagination-controls>

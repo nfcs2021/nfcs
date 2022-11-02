@@ -65,13 +65,4 @@ export class AuthService {
   getEvent() {
     return this.getUserData.asObservable();
   }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
 }

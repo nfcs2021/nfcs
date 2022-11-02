@@ -35,6 +35,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+    // alert(this.last_login);
   }
 
   ngOnChanges() {

@@ -48,17 +48,17 @@ export class FrontdeskDetailsComponent implements OnInit {
   }
   retriveLoginData(id: any) {}
 
-  downLoadFile() {
-    console.log(this.frontDeskData.Email);
-    this.dataService
-      .downloadFile(this.frontDeskData.Email)
-      .subscribe((data) => {
-        console.log('download[Symbol]...............', data);
-        const blob = new Blob([data.body.Emp_id_doc]);
-        const file = new File([blob], this.frontDeskData.Emp_id_doc);
-        FileSaver.saveAs(file);
-      });
-  }
+  // downLoadFile() {
+  //   console.log(this.frontDeskData.Email);
+  //   this.dataService
+  //     .downloadFile(this.frontDeskData.Email)
+  //     .subscribe((data) => {
+  //       console.log('download[Symbol]...............', data);
+  //       const blob = new Blob([data.body.Emp_id_doc]);
+  //       const file = new File([blob], this.frontDeskData.Emp_id_doc);
+  //       FileSaver.saveAs(file);
+  //     });
+  // }
   resetPassword() {
     this.router.navigate([
       '/frontdesk/changepassword' + this.frontDeskData.Email,

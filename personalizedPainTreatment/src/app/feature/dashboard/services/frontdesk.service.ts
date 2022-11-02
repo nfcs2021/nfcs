@@ -19,7 +19,7 @@ export class FrontdeskService {
       headers: httpheaders,
     });
   }
-  getLogiData(email: any): Observable<any> {
+  getLoginData(email: any): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });

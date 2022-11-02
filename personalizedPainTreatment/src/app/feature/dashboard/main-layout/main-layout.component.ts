@@ -13,8 +13,10 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
+
     this.pcp_Name = localStorage.getItem('PCP_Name');
     this.lastlogin = localStorage.getItem('lastLogin');
+    // alert(this.lastlogin)
     console.log('main', this.name);
   }
 }

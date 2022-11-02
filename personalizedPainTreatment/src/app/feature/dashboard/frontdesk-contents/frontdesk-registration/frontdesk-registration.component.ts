@@ -4,15 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
-<<<<<<< HEAD
 import { FrontdeskService } from '../../services/frontdesk.service';
-=======
-import { PatientService } from '../../services/patient.service';
-<<<<<<< HEAD
-=======
-
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
 
 @Component({
   selector: 'app-frontdesk-registration',
@@ -37,48 +29,32 @@ export class FrontdeskRegistrationComponent implements OnInit {
   cityInfo: any[] = [];
   countryId: any;
   today = new Date();
-<<<<<<< HEAD
   frontDeskId: any;
   updateData: boolean;
   frontDeskDataById: any;
   existedUserName:any=new Array();
-=======
   createdBy: any;
-  frontDeskDataById: any;
-<<<<<<< HEAD
-  frontDeskId: any;
-  updateData: boolean;
   frontdeskData: any;
   file: any;
   email: any;
   popup = false;
   simillarFrontdeskData: any;
-=======
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
   constructor(
     private service: AppService,
     private formBuilder: FormBuilder,
     private route: Router,
     private authService: AuthService,
-<<<<<<< HEAD
     private router: ActivatedRoute,
     private dataService: DataService,
     private frontdeskService: FrontdeskService
-=======
-<<<<<<< HEAD
-    private router:ActivatedRoute,
-=======
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
-    private dataService:DataService
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+
   ) {}
 
   ngOnInit(): void {
     // this.getFrontdeskData();
     this.formInitilization();
     this.getCountries();
-<<<<<<< HEAD
+
     this.frontDeskData();
 
     this.frontDeskId = this.router.snapshot.paramMap.get('id')
@@ -101,23 +77,21 @@ export class FrontdeskRegistrationComponent implements OnInit {
       },
       err =>{
         console.log(err);
-        
+
       }
     )
-    
-=======
+
+
     alert(localStorage.getItem('createdBy'));
     this.createdBy = localStorage.getItem('createdBy');
-<<<<<<< HEAD
+
     this.frontDeskId = this.router.snapshot.paramMap.get('id');
 
     if (this.frontDeskId) {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
-=======
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+
   }
 
   getForntDeskDataById(id: any) {
@@ -471,11 +445,8 @@ export class FrontdeskRegistrationComponent implements OnInit {
       Profile_image: this.frontDeskRegesterForm.value['profileImage'],
       Password: this.frontDeskRegesterForm.value['password'],
       confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
-<<<<<<< HEAD
       Created_by: localStorage.getItem('name'),
-=======
-      Created_by: this.createdBy,
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
+
     };
     this.authService.saveFrontDeskData(data).subscribe(
       (data) => {
@@ -488,27 +459,24 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-<<<<<<< HEAD
-=======
-  ConfirmPasswordValidator(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) => {
-      let control = formGroup.controls[password];
-      let matchingControl = formGroup.controls[confirmPassword];
-      if (
-        matchingControl.errors &&
-        !matchingControl.errors?.['confirmPasswordValidator']
-      ) {
-        return;
-      }
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmPasswordValidator: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
-  }
-<<<<<<< HEAD
 
+  // ConfirmPasswordValidator(password: string, confirmPassword: string) {
+  //   return (formGroup: FormGroup) => {
+  //     let control = formGroup.controls[password];
+  //     let matchingControl = formGroup.controls[confirmPassword];
+  //     if (
+  //       matchingControl.errors &&
+  //       !matchingControl.errors?.['confirmPasswordValidator']
+  //     ) {
+  //       return;
+  //     }
+  //     if (control.value !== matchingControl.value) {
+  //       matchingControl.setErrors({ confirmPasswordValidator: true });
+  //     } else {
+  //       matchingControl.setErrors(null);
+  //     }
+  //   };
+  // }
   userNameValidation(UserName: string) {
     return (formGroup: FormGroup) => {
       let matchingControl = formGroup.controls[UserName];
@@ -527,11 +495,8 @@ export class FrontdeskRegistrationComponent implements OnInit {
           matchingControl.setErrors(null);
         }
       }
-      
+
     };
   }
 
-=======
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
 }
