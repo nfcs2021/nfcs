@@ -8,14 +8,9 @@ import { DataService } from '../../services/data.service';
 })
 export class NewpatientNavigationComponent implements OnInit {
   userdata: any;
-<<<<<<< HEAD
-  role: any;
-  
-=======
   pcp: any;
   role: any;
 
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
   constructor(private dataService: DataService) {
 
   }
@@ -24,16 +19,24 @@ export class NewpatientNavigationComponent implements OnInit {
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
     console.log("ng.........",this.role);
 =======
 <<<<<<< HEAD
     
 =======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
     console.log(this.role);
 
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
 
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
   }
 
   //   applyStyle(){

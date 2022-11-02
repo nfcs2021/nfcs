@@ -26,9 +26,10 @@ export class FrontdeskLoginComponent implements OnInit {
   login_user_msg: string;
   has_error = false;
   data: any;
+  userName:any;
   email: any;
   login_time_msg: string = 'First Time login';
-
+  
   constructor(
     private fromBuilder: FormBuilder,
     private route: Router,
@@ -55,34 +56,22 @@ export class FrontdeskLoginComponent implements OnInit {
       return;
     }
     const data = {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      UserName: this.loginFormGroup.value['email'],
-=======
 
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+      User_Name: this.loginFormGroup.value['email'],
       Email: this.loginFormGroup.value['email'],
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
       Password: this.loginFormGroup.value['password'],
       PCP_Name: this.loginFormGroup.value['pcp'],
     };
     this.authservice.loginUser(data).subscribe(
       (data) => {
-        // console.log('data' + data);
-        // console.log('role..............', data.data.roles.role);
         localStorage.setItem('token', data.access_token);
-<<<<<<< HEAD
-        // console.log(data.data);
         localStorage.setItem('role', data.data.roles.role);
-        localStorage.setItem(
-          'name',
-          data.data.First_Name + data.data.Last_Name
-        );
+        localStorage.setItem('name',data.data.First_Name + data.data.Last_Name);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('createdBy', data.data.First_Name);
         localStorage.setItem('PCP_Name', data.data.PCP_Name);
         this.email = data.data.Email;
+        this.userName=data.data.User_Name;
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
         this.frontdeskService.getLogiData(this.email).subscribe(
@@ -122,39 +111,15 @@ export class FrontdeskLoginComponent implements OnInit {
             console.log(error);
           }
         );
-=======
-       console.log(data.data);
-<<<<<<< HEAD
-       localStorage.setItem('role',data.data.roles.role)
-       localStorage.setItem('name',data.data.First_Name+' '+data.data.Last_Name)
-=======
-       localStorage.setItem('role',data.data.role)
-       localStorage.setItem('name',data.data.First_Name+data.data.Last_Name)
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
-       localStorage.setItem('createdBy',data.data.First_Name)
-       localStorage.setItem('PCP_Name',data.data.PCP_Name)
-        this.login_user_msg = 'Login in, Please wait... !!!';
-        this.authservice.sentEvent();
-        const loginData={
-        Email:data.data.Email,
-        PCP_Name:data.data.PCP_Name,
-        password:data.data.Password
-        }
-        // this.dataservices.frontDeskLoginInfromation(loginData).subscribe(
-        //   res =>{
-        //     console.log(res);
-            
-        //   },err =>{
-        //     console.log(err);
-            
-        //   }
-        // )
-       this.dataservices.getFrontDeskData(data.data.Email).subscribe(
+       this.dataservices.getFrontDeskData(data.data.User_Name).subscribe(
         data =>{
+          console.log(data);
+          
           console.log(data.length);
           if(data.length==1){
-            this.route.navigateByUrl('/frontdesk/frontdeskpasswordChange');
-          }else{
+            this.route.navigateByUrl('/frontdesk/frontdeskpasswordChange/'+this.userName);
+           }
+           else{
             this.route.navigate(['/patient/nav']).then(() => {
                 window.location.reload();
               });

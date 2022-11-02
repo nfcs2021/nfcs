@@ -16,18 +16,31 @@ import { FrontdeskDetailsComponent } from '../frontdesk-contents/frontdesk-detai
 import { AuthRouteGaurdService } from '../services/auth-route-gaurd.service';
 import { FrontdeskRegistrationComponent } from '../frontdesk-contents/frontdesk-registration/frontdesk-registration.component';
 import { FrontdesklistComponent } from '../frontdesk-contents/frontdesklist/frontdesklist.component';
-<<<<<<< HEAD
 import { FrontdeskPasswordChangeComponent } from '../frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
-=======
 import { ForgetpasswordComponent } from '../frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from '../frontdesk-contents/otp/otp.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 import { FrontdeskResetPasswordComponent } from '../frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
 
 
 =======
 >>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 
 const routes: Routes = [
   {
@@ -81,6 +94,17 @@ const routes: Routes = [
             canActivate: [AuthRouteGaurdService],
           },
           {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+            path: 'new/:id', component: AddPatientComponent,
+            canActivate: [AuthRouteGaurdService]
+          }
+=======
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
             path: 'new/:id',
             component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService],
@@ -105,6 +129,13 @@ const routes: Routes = [
 
 >>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
         ],
       },
       {
@@ -112,22 +143,33 @@ const routes: Routes = [
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
-<<<<<<< HEAD
           
-=======
->>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
           {
-            path: 'frontdeskregistration',
+            path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
+            canActivate: [AuthRouteGaurdService],
+<<<<<<< HEAD
+=======
+          },
+          {
+            path: 'frontdeskregistration/:id',
+            component: FrontdeskRegistrationComponent,
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+          },
+          {
+            path: 'frontdeskregistration/:id',
+            component: FrontdeskRegistrationComponent,
+<<<<<<< HEAD
+=======
             canActivate: [AuthRouteGaurdService],
           },
           {
             path: 'frontdeskregistration/:id',
             component: FrontdeskRegistrationComponent,
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
           },
-<<<<<<< HEAD
           {
             path: 'frontdesk-registration/:id',
             component: FrontdeskRegistrationComponent,
@@ -136,6 +178,11 @@ const routes: Routes = [
           
           { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
+<<<<<<< HEAD
+          {path:'frontdeskpasswordChange/:userName',component:FrontdeskPasswordChangeComponent},
+          {path:'forgetpassword',component:ForgetpasswordComponent},
+          {path:'otp/:userName',component:OtpComponent}
+=======
           {path:'frontdeskpasswordChange',component:FrontdeskPasswordChangeComponent}
 =======
           { path: 'frontdesklist', component: FrontdesklistComponent },
@@ -155,6 +202,13 @@ const routes: Routes = [
           {path:'otp',component:OtpComponent}
 >>>>>>> d6c14af15dfd9b46b2623d471b2ef6c874f8b7e4
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
         ],
       },
     ],

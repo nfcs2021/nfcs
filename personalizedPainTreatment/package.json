@@ -39,7 +39,19 @@
     "popper.js": "^1.14.3",
     "rxjs": "~7.5.0",
     "svg-country-flags": "^1.2.10",
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "sweetalert2": "^11.6.5",
+=======
     "sweetalert2": "^11.6.2",
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+    "sweetalert2": "^11.6.2",
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+    "sweetalert2": "^11.6.2",
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

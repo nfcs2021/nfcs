@@ -10,9 +10,24 @@ import { identifierName } from '@angular/compiler';
 export class DataService {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  
  
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+ 
+ 
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+ 
+ 
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
     localStorage.setItem('loginEmail', data.email);
@@ -61,6 +76,40 @@ getFrontDeskData(email:any){
     });
   }
   
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  changePassword(data:any) {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.put<any>(environment.apiUrl+'updatePassword',data,{
+      headers: httpheaders,
+    });
+  }
+
+requestotp(data:any){
+ return this.http.post(environment.apiUrl+'request_otp',data)
+}
+
+ verifyOtp(otp:any) {
+  return this.http.post(environment.apiUrl+'verify_otp',otp)
+  }
+
+  forgotPassword(data:any) {
+    return this.http.put(environment.apiUrl+'updatePassword',data);
+  }
+
+=======
   
 >>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+  
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+=======
+  
+>>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+>>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 }
