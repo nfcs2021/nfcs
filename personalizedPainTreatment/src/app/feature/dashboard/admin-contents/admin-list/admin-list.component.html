@@ -1,0 +1,82 @@
+
+
+
+<div class=" container col-md-11">
+    <div class="col-3 ">
+      <a ><h3 class="style "><img
+            src="\assets\images\ant-design_plus-circle-outlined.png"
+            style="width: 25px; border-radius: 5px;">AddNew Admin</h3></a>
+    </div>
+  <hr>
+  <div class="row mt-4 mb-3">
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" [(ngModel)]="model.First_Name" class="form-control"
+        placeholder="FirstName...">
+    </div>
+    <div class="col-md-3 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text"[(ngModel)]="model.Last_Name" class="form-control"
+        placeholder="LastName...">
+    </div>
+    
+    
+  </div>
+  <hr>
+  <div *ngFor="let adminList of posts | advanceSearch: model |
+    paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec}
+    let i= index ">
+    <a (click)="troggle(adminList.id)">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>Dob</th>
+            <th>SocialSecurityNumber</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{adminList.First_Name }}</td>
+            <td>{{adminList.Last_Name }}</td>
+            <td>{{adminList.Date_of_birth }}</td>
+            <td>{{adminList.Ssn }}</td>
+          </tr>
+          <tr>
+            <th>Email </th>
+            <th>contactNumber</th>
+            <th>Address</th>
+            <th>Created on</th>
+
+          </tr>
+          <tr>
+            <td>{{adminList.Email_address | uppercase}}</td>
+            <td>{{adminList.Contact_Number}}</td>
+            <td class="col-3">{{adminList.Address_Line1 | uppercase}},{{adminList.Address_Line1}}<br>{{adminList.City}},
+              {{adminList.State}} <br> {{adminList.Country}} -
+              {{adminList.Zipcode}}</td>
+            <td>{{adminList.created_at }}</td>
+          </tr>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </a>
+    <div class="row mb-5" *ngIf="dropdown[adminList.id]">
+      <div class="ml-3 col-2">
+      <button  class="btn btn-primary" routerLink="/patient/new/{{adminList.id}}" >Edit Patient Details</button>
+      </div>
+      <div class="col-6">
+      <!-- <button  class="btn btn-primary ml-md-auto  d-md-flex" routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button> -->
+    </div>
+    
+      
+   
+<!-- </div> -->
+</div>
+  <pagination-controls id="listing_pagination" [maxSize]="5 "
+    [directionLinks]="true" (pageChange)="page= $event">
+  </pagination-controls>
+</div>
+</div>

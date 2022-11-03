@@ -9,20 +9,20 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col col-sm-1">
+    <div class="col-sm-1">
       <img
         src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
-        alt="profile" class="mt-1 profile-image">
+        alt="profile" class="mt-1 profile-image ">
     </div>
-    <div class="col-sm-2">
-      <p class="h6">{{frontDeskData.First_Name}}</p>
+    <div class="col-sm-2 mr-1">
+      <p class="h6">{{frontDeskData.First_Name | uppercase}} </p>
       <p class="h6">{{frontDeskData.Emp_designation}}</p>
     </div>
-    <div class="col-md-5 text-center pb-1">
+    <div class="col-md-2 text-center pb-1">
       <button class="btn btn-block fa-lg
         gradient-custom-1 text-light "
         style="background-color: #712C6B;font-weight:
-        bold;" type="submit">Edit</button>
+        bold;" type="submit" routerLink="/frontdesk/frontdesk-registration/{{frontDeskData.id}}">Edit</button>
     </div>
     <hr>
   </div>
@@ -104,7 +104,7 @@
               class="text-end"><img
                 src="\assets\images\bxs_download.png" role="button"
                 style="width:30px" class="ml-2 border-0"
-                (click)="downLoadFile()"></span>
+               ></span>
           </div>
         </div>
       </div>

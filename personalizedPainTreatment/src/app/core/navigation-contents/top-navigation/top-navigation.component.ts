@@ -19,13 +19,8 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   @Input('lastlogin') last_login: any;
   name: any;
   user: any;
-<<<<<<< HEAD
-  pcp: any ;
-  text = 'Welcome';
-=======
   pcp: any;
   text = 'welcome';
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
   loggedIn = false;
   presentLogin: any;
   data: any;

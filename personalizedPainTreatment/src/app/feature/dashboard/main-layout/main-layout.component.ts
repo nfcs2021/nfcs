@@ -16,5 +16,6 @@ export class MainLayoutComponent implements OnInit {
     this.pcp_Name = localStorage.getItem('PCP_Name');
     this.lastlogin = localStorage.getItem('lastLogin');
     console.log('main', this.name);
+    // alert(this.lastlogin)
   }
 }

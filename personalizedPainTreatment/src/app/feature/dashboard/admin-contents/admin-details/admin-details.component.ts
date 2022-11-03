@@ -1,19 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { ThisReceiver } from '@angular/compiler';
-import { data } from 'jquery';
-// import * as FileSaver from 'file-saver';
 import { FrontdeskService } from '../../services/frontdesk.service';
 
 @Component({
-  selector: 'app-frontdesk-details',
-  templateUrl: './frontdesk-details.component.html',
-  styleUrls: ['./frontdesk-details.component.css'],
+  selector: 'app-admin-details',
+  templateUrl: './admin-details.component.html',
+  styleUrls: ['./admin-details.component.css']
 })
-export class FrontdeskDetailsComponent implements OnInit {
+export class AdminDetailsComponent implements OnInit {
   pcp: string;
-  frontDeskData: any;
+  adminData: any;
   routerId: any;
   retrivalId: any;
   constructor(
@@ -32,7 +29,7 @@ export class FrontdeskDetailsComponent implements OnInit {
       this.dataService.getUserData(localStorage.getItem('id')).subscribe(
         (data) => {
           console.log('frontdeskdetails..................' + data);
-          this.frontDeskData = data;
+          this.adminData = data;
         },
         (err) => {
           console.log(err);
@@ -43,7 +40,7 @@ export class FrontdeskDetailsComponent implements OnInit {
   retrvieFrontdekList(id: any) {
     this.dataService.getUserData(id).subscribe((data) => {
       console.log(data);
-      this.frontDeskData = data;
+      this.adminData = data;
     });
   }
   retriveLoginData(id: any) {}
@@ -61,7 +58,8 @@ export class FrontdeskDetailsComponent implements OnInit {
   // }
   resetPassword() {
     this.router.navigate([
-      '/frontdesk/changepassword' + this.frontDeskData.Email,
+      '/frontdesk/changepassword' + this.adminData.Email,
     ]);
   }
+
 }

@@ -8,30 +8,17 @@ import { identifierName } from '@angular/compiler';
   providedIn: 'root',
 })
 export class DataService {
-<<<<<<< HEAD
-  
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
+
+
  
  
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
+
  
  
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
+
  
- 
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+
+
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
     localStorage.setItem('loginEmail', data.email);
@@ -41,15 +28,9 @@ export class DataService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-<<<<<<< HEAD
-    return this.http.get<any>(environment.apiUrl+'register/'+id, {
-=======
-<<<<<<< HEAD
 
-    return this.http.get<any>(environment.apiUrl + 'register/' + id, {
-=======
     return this.http.get<any>(environment.apiUrl+'register/'+id, {
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
+
       headers: httpheaders,
     });
   }
@@ -62,7 +43,7 @@ getFrontDeskData(email:any){
   });
 }
 
-<<<<<<< HEAD
+
   downloadFile(data: any):Observable<any> {
     alert(1)
     const httpheaders = new HttpHeaders({
@@ -73,7 +54,7 @@ getFrontDeskData(email:any){
       observe: 'response',
     });
   }
-=======
+
   frontDeskLoginInfromation(loginData:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -83,36 +64,31 @@ getFrontDeskData(email:any){
     });
   }
   
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   changePassword(data:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
     return this.http.put<any>(environment.apiUrl+'updatePassword',data,{
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
+
       headers: httpheaders,
     });
   }
 
-<<<<<<< HEAD
+
   create(data:any){
     // const httpheaders = new HttpHeaders({
     //   Authorization: 'Bearer ' + localStorage.getItem('token'),
     // });
     return this.http.post(environment.apiUrl+'getmail',data
     );
+  //   return this.http.get(environment.apiUrl+'getcontact',data)
     
-  }
-  requestotp(data:any){
-    return this.http.post(environment.apiUrl+'request_otp',data)
-  }
+   }
+ 
 
-  verifyOtp(otp:any) {
-    return this.http.post(environment.apiUrl+'verify_otp',otp)
-  }
-=======
+  
+
 requestotp(data:any){
  return this.http.post(environment.apiUrl+'request_otp',data)
 }
@@ -125,17 +101,7 @@ requestotp(data:any){
     return this.http.put(environment.apiUrl+'updatePassword',data);
   }
 
-=======
+
   
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
-  
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
-  
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
+
 }

@@ -25,28 +25,28 @@ export class ContactComponent implements OnInit {
   }
   formInitilization() {
     this.contactForm = this.formBuilder.group({
-      firstName: ['', 
+      First_Name: ['', 
       [
         Validators.required, 
         Validators.minLength(2),
         Validators.pattern('^[a-zA-Z]+$')
       ]],
-      lastName: ['', 
+      Subject: ['', 
       [
         Validators.required,
         Validators.pattern('^[a-zA-Z]+$')
       ]],
       
-      contactNumber: ['', 
+      Contact_number: ['', 
       [
         Validators.required,
         Validators.pattern('^[0-9 ()-]+$')
       ]],
-      email: ['', 
+      Email: ['', 
       [
         Validators.required
       ]],
-      textarea:['']
+      Message:['']
     });
    
 }
@@ -93,15 +93,15 @@ onClick(){
     return ;
   }
   const formData  = new FormData();
+console.log(formData);
 
   
 
-  formData.append('firstName',this.contactForm.value['firstName']);
-
-  formData.append('lastName',this.contactForm.value['lastName']);
-  formData.append('email',this.contactForm.value['email']);
-  formData.append('contactNumber',this.contactForm.value['contactNumber']);
-  formData.append('textarea',this.contactForm.value['textarea']);
+  formData.append('First_Name',this.contactForm.value['First_Name']);
+  formData.append('Subject',this.contactForm.value['Subject']);
+  formData.append('Email',this.contactForm.value['Email']);
+  formData.append('Contact_number',this.contactForm.value['Contact_number']);
+  formData.append('Message',this.contactForm.value['Message']);
   Swal.fire({
     text: 'Succefully.',
     icon: 'success'

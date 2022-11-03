@@ -1,0 +1,114 @@
+<div class="container col-md-11 " style="color: #712C6B">
+    <div class="row">
+      <div class="col col-md-2 para1 mt-5 font-weight-bold">
+        User Profile
+      </div>
+      <dt class="col-sm-3 ml-md-auto d-md-flex text-end mt-5"
+        (click)="resetPassword()"><u>Change
+          Password</u></dt>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-sm-1">
+        <img
+          src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
+          alt="profile" class="mt-1 profile-image ">
+      </div>
+      <div class="col-sm-2 mr-1">
+        <p class="h6">{{adminData.First_Name | uppercase}} </p>
+        <p class="h6">{{adminData.Emp_designation}}</p>
+      </div>
+      <div class="col-md-2 text-center pb-1">
+        <button class="btn btn-block fa-lg
+          gradient-custom-1 text-light "
+          style="background-color: #712C6B;font-weight:
+          bold;" type="submit" routerLink="/frontdesk/frontdesk-registration/{{adminData.id}}">Edit</button>
+      </div>
+      <hr>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm-3">
+        <ul>
+          <dd>First Name</dd>
+          <dt class="mb-4">{{adminData.First_Name}}</dt>
+          <dd>Date Of Birth</dd>
+          <dt class="mb-4">{{adminData.Date_of_birth}}</dt>
+          <dd>E-mail address</dd>
+          <dt class="mb-4">{{adminData.Email}}</dt>
+          <dd>Employee ID</dd>
+          <dt class="mb-4">00{{adminData.Emp_id}}</dt>
+          <dd>Employee Designation</dd>
+          <dt class="mb-4">{{adminData.Emp_designation}}</dt>
+          <dd>PCP Name</dd>
+          <dt class="mb-3">{{adminData.PCP_Name}}</dt>
+          <dd>Immediate Manager</dd>
+          <dt class="">{{adminData.Immidiate_manager}}</dt>
+        </ul>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-4">
+            <ul>
+              <dd>Last Name</dd>
+              <dt class="mb-4">{{adminData.Last_Name}}</dt>
+              <dd>Contact Number</dd>
+              <dt class="mb-4">{{adminData.Contact_number}}</dt>
+              <dd>Address</dd>
+              <dt class="mb-5">{{adminData.Address_Line1}},{{adminData.Address_Line2}},<br>
+                {{adminData.Country}},{{adminData.State}}.{{adminData.City}}</dt>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul>
+              <dd>Gender</dd>
+              <dt class="mb-4">{{adminData.Gender}}</dt>
+              <dd>SSN</dd>
+              <dt>{{adminData.Ssn}}</dt>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <ul>
+              <dd>Created On</dd>
+              <dt class="mb-4">{{adminData.created_at}}</dt>
+              <dd>Created By</dd>
+              <dt class="mb-4">{{adminData.Created_by}}</dt>
+              <dd>Last Updated On</dd>
+              <dt class="mb-4">{{adminData.updated_at}}</dt>
+              <dd>Last Updated By</dd>
+              <dt class="mb-4">{{adminData.created_at}}</dt>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-10 card-border">
+          <div class="col text-center">
+            <div class="row mt-3">
+              <div class="col-sm-7 text-end"><b>Employee ID Document :</b></div>
+              <span class="col-sm-5" hidden>{{adminData.Emp_id_doc}}</span>
+              <span
+                class="text-end"><img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+            </div>
+            <div class="row mt-3">
+              <div class="col-sm-7 text-end"><b>ID Proof(Drivers Licence/State
+                  ID):</b></div>
+              <span class="col-sm-5" hidden>{{adminData.Id_proof}}</span>
+              <span class="text-end"><img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+            </div>
+            <div class="row mt-3 mb-3">
+              <div class="col-sm-7 text-end mt-2"><b>Profile Image:</b></div>
+              <span class="col-sm-5" hidden>{{adminData.Profile_image}}</span><span
+                class="text-end"><img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"
+                 ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

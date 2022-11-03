@@ -26,28 +26,22 @@ import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
-<<<<<<< HEAD
+
 import { ContactComponent } from './frontdesk-contents/contact/contact.component';
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
+
+
 import { FrontdeskResetPasswordComponent } from './frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
-
-
-
-
-
-<<<<<<< HEAD
-import { DateSearchPipe } from './pipes/date-search.pipe';
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
 import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
+import { AdminMainComponent } from './admin-contents/admin-main/admin-main.component';
+import { AdminListComponent } from './admin-contents/admin-list/admin-list.component';
+import { AdminDetailsComponent } from './admin-contents/admin-details/admin-details.component';
+
+
+
+
+
+
+
 
 
 @NgModule({
@@ -73,41 +67,14 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
    ForgetpasswordComponent,
    OtpComponent,
     DateSearchPipe,
-<<<<<<< HEAD
-
     FrontdeskRegistrationComponent,
-      ContactComponent
- 
-
-
-=======
-<<<<<<< HEAD
+      ContactComponent,
     FrontdeskResetPasswordComponent,
-=======
-<<<<<<< HEAD
-    FrontdeskRegistrationComponent,
-    FrontdesklistComponent,
-    FrontdeskPasswordChangeComponent
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    FrontdeskResetPasswordComponent,
-=======
-<<<<<<< HEAD
-    FrontdeskRegistrationComponent,
-    FrontdesklistComponent,
-    FrontdeskPasswordChangeComponent
-=======
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
-=======
->>>>>>> f2688e6484124b9ba1467097f7342ae2703aedfa
->>>>>>> 33a4ce61c45c4da48ebd771e64a35a29d0e45602
->>>>>>> 9f893030e902c7a28acd39b6ac8c86e0ff969a8c
+    FrontdeskPasswordChangeComponent,
+    AdminMainComponent,
+    AdminListComponent,
+    AdminDetailsComponent
+
 
   ],
   imports: [
