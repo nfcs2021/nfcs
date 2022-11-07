@@ -26,14 +26,9 @@ import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
-import { FrontdeskResetPasswordComponent } from './frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
 import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
-
-
-
-
-
-
+import { FrontdeskResetPasswordComponent } from './frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
+import { ContactComponent } from './frontdesk-contents/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -54,16 +49,15 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
     AdvanceSearchPipe,
     FrontdeskRegistrationComponent,
     FrontdesklistComponent,
-   FrontdeskpipePipe,
-   ForgetpasswordComponent,
-   OtpComponent,
+    FrontdeskpipePipe,
+    ForgetpasswordComponent,
+    OtpComponent,
     DateSearchPipe,
-    FrontdeskResetPasswordComponent,
     FrontdeskRegistrationComponent,
     FrontdesklistComponent,
-    FrontdeskPasswordChangeComponent
-
-
+    FrontdeskPasswordChangeComponent,
+    FrontdeskResetPasswordComponent,
+    ContactComponent,
   ],
   imports: [
     CommonModule,
@@ -72,10 +66,8 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-   NgxPaginationModule,
-   NgOtpInputModule
-
-
+    NgxPaginationModule,
+    NgOtpInputModule,
   ],
 })
 export class DashboardModule {}

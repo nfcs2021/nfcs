@@ -8,15 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class MainLayoutComponent implements OnInit {
   name: any;
   pcp_Name: any;
-  lastlogin: any;
+  lastLogin: any;
   constructor() {}
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
-
     this.pcp_Name = localStorage.getItem('PCP_Name');
-    this.lastlogin = localStorage.getItem('lastLogin');
-    // alert(this.lastlogin)
+    this.lastLogin = localStorage.getItem('lastLogin');
+    // alert(this.lastLogin);
     console.log('main', this.name);
   }
 }

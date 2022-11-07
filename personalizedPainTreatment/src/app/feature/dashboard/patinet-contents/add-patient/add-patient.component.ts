@@ -5,8 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { AppService } from '../../services/app.service';
 import { PatientService } from '../../services/patient.service';
-
-
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -45,7 +43,6 @@ export class AddPatientComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     // const phoneInputField = document.querySelector("#phone");
     // const phoneInput = (<any>window).intlTelInput(phoneInputField, {
     //   utilsScript:
@@ -59,8 +56,6 @@ export class AddPatientComponent implements OnInit {
       this.getByPatientId(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
-
-
   }
 
   getByPatientId(id: any) {
@@ -90,9 +85,7 @@ export class AddPatientComponent implements OnInit {
       }
     )
   }
-
   onPhoneChange(event: any) {
-
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.paceHolder.length; i++) {
@@ -121,15 +114,11 @@ export class AddPatientComponent implements OnInit {
           this.phoneNumberEntered = this.phoneNumberEntered + getactualSpecialChar[i + 1];
         }
       }
-
     }
     console.log(event.target.value);
 
   }
-
-
   onSsnChange(event: any) {
-
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
     for (let i = 0; i < this.ssnPlaceholder.length; i++) {
@@ -140,8 +129,6 @@ export class AddPatientComponent implements OnInit {
     }
     console.log(getactualSpecialChar);
     console.log(getIndexSpecialChar);
-
-
     let len = event.target.value.length;
     let backspace = event.keyCode;
 
@@ -158,12 +145,9 @@ export class AddPatientComponent implements OnInit {
           this.ssnNumberEntered = this.ssnNumberEntered + getactualSpecialChar[i + 1];
         }
       }
-
     }
     console.log(event.target.value);
-
   }
-
   onChangeCountry(countryValue: any) {
     let countryIso: any;
     for (let data of this.countryInfo) {
@@ -177,10 +161,8 @@ export class AddPatientComponent implements OnInit {
       data => {
         console.log(data);
         this.stateInfo = data;
-
       }
     )
-
   }
   onChangeCountryUpdateData(countryValue: any) {
     alert(countryValue)
@@ -198,9 +180,7 @@ export class AddPatientComponent implements OnInit {
         this.onChangeStateUpdateData(this.patientDataById.State);
       }
     )
-
   }
-
   onChangeStateUpdateData(stateValue: any) {
     alert(stateValue)
     let stateId: any;
@@ -217,7 +197,6 @@ export class AddPatientComponent implements OnInit {
       }
     )
   }
-
   onChangeState(stateValue: any) {
     let stateId: any;
     for (let data of this.stateInfo) {
@@ -405,8 +384,7 @@ export class AddPatientComponent implements OnInit {
     this.patientService.savePatientData(data).subscribe(
       data => {
         console.log(data);
-        this.route.navigate(['/patient/data/'+data.id])
-        alert(data.id)
+        this.route.navigate(['/patient/data/' + data.id])
       }, error => {
         console.log(error);
 

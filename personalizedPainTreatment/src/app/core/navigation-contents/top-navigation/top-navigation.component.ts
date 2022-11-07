@@ -16,7 +16,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   // name = localStorage.getItem('registrationData');
   @Input('data1') data1: any;
   @Input('pcp_Name') pcp_Name: any;
-  @Input('lastlogin') last_login: any;
+  @Input('lastlogin') Last_Login: any;
   name: any;
   user: any;
   pcp: any;
@@ -34,13 +34,12 @@ export class TopNavigationComponent implements OnInit, OnChanges {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    // alert(this.last_login);
-  }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     this.name = this.data1;
     this.pcp = this.pcp_Name;
+    // alert(this.Last_Login);
   }
 
   logOut() {

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-frontdesk-password-change',
@@ -10,12 +13,21 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
 
   loginFormGroup: FormGroup;
   submitted = false;
-  
-  constructor(private fromBuilder: FormBuilder) { }
+  userName:any;
+  error:boolean;
+  errorMessage:any;
+  constructor(private fromBuilder: FormBuilder,
+    private dataService:DataService,
+    private route:Router,
+    private auth:AuthService,
+    private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+   this.userName = this.router.snapshot.paramMap.get('userName');
+   console.log(this.userName);
+   
     this.loginFormGroup = this.fromBuilder.group({
-      email: ['', Validators.required],
+      // UserName: ['', Validators.required],
       oldPassword: ['', Validators.required],
       NewPassword: ['', Validators.required],
       ConfirmPassword: ['', Validators.required],
@@ -50,7 +62,21 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
     if (this.loginFormGroup.invalid) {
       return;
     }
-    console.log(this.loginFormGroup.value);
+    
+    const data ={
+      User_Name:this.userName,
+      oldPassword:this.loginFormGroup.value['oldPassword'],
+      Password:this.loginFormGroup.value['NewPassword']
+    }
+   this.dataService.changePassword(data).subscribe(
+    data =>{
+     this.auth.logout();
+      
+    },err =>{
+      console.log(err);
+      this.error=true;
+    }
+   );
     
   }
 }

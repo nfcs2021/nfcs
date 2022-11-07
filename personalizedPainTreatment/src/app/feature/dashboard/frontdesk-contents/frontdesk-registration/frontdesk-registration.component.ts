@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
-import { FrontdeskService } from '../../services/frontdesk.service';
+import { FrontdeskService } from '../../services/frodesk.service';
 
 @Component({
   selector: 'app-frontdesk-registration',
@@ -32,13 +32,18 @@ export class FrontdeskRegistrationComponent implements OnInit {
   frontDeskId: any;
   updateData: boolean;
   frontDeskDataById: any;
-  existedUserName:any=new Array();
+  existedUserName: any = new Array();
   createdBy: any;
   frontdeskData: any;
   file: any;
   email: any;
   popup = false;
   simillarFrontdeskData: any;
+  employeeIdDoc: any;
+  idproofdoc: any;
+  profileImageDoc: any;
+  heading: string;
+  submit: boolean = false;
   constructor(
     private service: AppService,
     private formBuilder: FormBuilder,
@@ -47,53 +52,38 @@ export class FrontdeskRegistrationComponent implements OnInit {
     private router: ActivatedRoute,
     private dataService: DataService,
     private frontdeskService: FrontdeskService
-
   ) {}
 
   ngOnInit(): void {
-    // this.getFrontdeskData();
     this.formInitilization();
     this.getCountries();
-
     this.frontDeskData();
-
-    this.frontDeskId = this.router.snapshot.paramMap.get('id')
-
+    this.frontDeskId = this.router.snapshot.paramMap.get('id');
     if (this.frontDeskId) {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
   }
-  frontDeskData(){
+  frontDeskData() {
     this.authService.getAllRegistrationData().subscribe(
-      data =>{
+      (data) => {
         console.log(data);
-        for(let singledata of data)
-        {
-
-          this.existedUserName.push(singledata .UserName);
+        for (let singledata of data) {
+          this.existedUserName.push(singledata.UserName);
         }
         console.log(this.existedUserName);
       },
-      err =>{
+      (err) => {
         console.log(err);
-
       }
-    )
-
-
-    alert(localStorage.getItem('createdBy'));
+    );
     this.createdBy = localStorage.getItem('createdBy');
-
     this.frontDeskId = this.router.snapshot.paramMap.get('id');
-
     if (this.frontDeskId) {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
     }
-
   }
-
   getForntDeskDataById(id: any) {
     this.dataService.getUserData(id).subscribe(
       (data) => {
@@ -107,10 +97,9 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-
   onChangeCountryUpdateData(countryValue: any) {
-    alert(countryValue);
-    alert(this.frontDeskDataById.State);
+    // alert(countryValue);
+    // alert(this.frontDeskDataById.State);
     let countryIso: any;
     for (let data of this.countryInfo) {
       if (countryValue === data.name) {
@@ -126,7 +115,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
   }
 
   onChangeStateUpdateData(stateValue: any) {
-    alert(stateValue);
+    // alert(stateValue);
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {
@@ -246,25 +235,54 @@ export class FrontdeskRegistrationComponent implements OnInit {
     console.log(obj);
     obj.setCountry('in');
   }
+  employeeIdDocument(event: any) {
+    this.employeeIdDoc = event.srcElement.files[0];
+    console.log(this.employeeIdDoc);
+  }
+  idProofDocument(event: any) {
+    this.idproofdoc = event.srcElement.files[0];
+    console.log(this.idproofdoc);
+  }
+  profileImageDocument(event: any) {
+    this.profileImageDoc = event.srcElement.files[0];
+    console.log(this.profileImageDoc);
+  }
   get f() {
     return this.frontDeskRegesterForm.controls;
   }
   formInitilization() {
+    this.heading = 'Add New Front Desk Employee';
     this.frontDeskRegesterForm = this.formBuilder.group(
       {
-        firstName: ['', [Validators.required, Validators.minLength(2)]],
-        lastName: ['', [Validators.required]],
+        firstName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.pattern('^[a-zA-Z]+$'),
+          ],
+        ],
+        lastName: [
+          '',
+          [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+        ],
         userName: ['', [Validators.required]],
         dob: ['', [Validators.required]],
-        contactNumber: ['', [Validators.required]],
+        contactNumber: [
+          '',
+          [Validators.required, Validators.pattern('^[0-9 ()-]+$')],
+        ],
         email: ['', [Validators.required]],
-        socialSecurityNumber: ['', [Validators.required]],
+        socialSecurityNumber: [
+          '',
+          [Validators.required, Validators.pattern('^[0-9 -]+$')],
+        ],
         address1: ['', [Validators.required]],
         address2: ['', []],
         country: ['', [Validators.required]],
         state: ['', [Validators.required]],
         city: ['', [Validators.required]],
-        zipcode: ['', [Validators.required]],
+        zipcode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
         gender: ['', [Validators.required]],
         pcp: ['', [Validators.required]],
         employeePostion: ['', [Validators.required]],
@@ -273,39 +291,50 @@ export class FrontdeskRegistrationComponent implements OnInit {
         employeeIdDocument: [''],
         idproof: [''],
         profileImage: [''],
-        // password: ['', Validators.required],
         createBy: [''],
-        // confirmPassword: ['', Validators.required],
       },
       // {
       //   validator: this.ConfirmPasswordValidator('password', 'confirmPassword'),
       // }
-       {
-      validator: this.userNameValidation('userName'),
-       }
+      {
+        validator: this.userNameValidation('userName'),
+      }
     );
   }
-
   updateFrontDeskRegistrationForm() {
     this.frontDeskRegesterForm = this.formBuilder.group({
       firstName: [
         this.frontDeskDataById.First_Name,
-        [Validators.required, Validators.minLength(2)],
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern('^[a-zA-Z]+$'),
+        ],
       ],
-      lastName: [this.frontDeskDataById.Last_Name, [Validators.required]],
+      lastName: [
+        this.frontDeskDataById.Last_Name,
+        [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+      ],
+      userName: [this.frontDeskDataById.User_Name, [Validators.required]],
       dob: [this.frontDeskDataById.Date_of_birth, [Validators.required]],
       contactNumber: [
         this.frontDeskDataById.Contact_number,
-        [Validators.required],
+        [Validators.required, Validators.pattern('^[0-9 ()-]+$')],
       ],
       email: [this.frontDeskDataById.Email, [Validators.required]],
-      socialSecurityNumber: [this.frontDeskDataById.Ssn, [Validators.required]],
+      socialSecurityNumber: [
+        this.frontDeskDataById.Ssn,
+        [Validators.required, Validators.pattern('^[0-9 -]+$')],
+      ],
       address1: [this.frontDeskDataById.Address_Line1, [Validators.required]],
       address2: [this.frontDeskDataById.Address_Line2, []],
       country: [this.frontDeskDataById.Country, [Validators.required]],
       state: [this.frontDeskDataById.State, [Validators.required]],
       city: [this.frontDeskDataById.City, [Validators.required]],
-      zipcode: [this.frontDeskDataById.Zipcode, [Validators.required]],
+      zipcode: [
+        this.frontDeskDataById.Zipcode,
+        [Validators.required, Validators.pattern('^[0-9]+$')],
+      ],
       gender: [this.frontDeskDataById.Gender, [Validators.required]],
       pcp: [this.frontDeskDataById.PCP_Name, [Validators.required]],
       employeePostion: [
@@ -317,16 +346,16 @@ export class FrontdeskRegistrationComponent implements OnInit {
         [Validators.required],
       ],
       employeeId: [this.frontDeskDataById.Emp_id, [Validators.required]],
-      employeeIdDocument: [this.frontDeskDataById.Emp_id_doc],
+      employeeIdDocument: [this.frontDeskDataById.Emp_id_doc_Name],
       idproof: [this.frontDeskDataById.Id_proof],
       profileImage: [this.frontDeskDataById.Profile_image],
     });
   }
-
   updateRegistrationData() {
     const data = {
       First_Name: this.frontDeskRegesterForm.value['firstName'],
       Last_Name: this.frontDeskRegesterForm.value['lastName'],
+      User_Name: this.frontDeskRegesterForm.value['userName'],
       Date_of_birth: this.frontDeskRegesterForm.value['dob'],
       Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
       Gender: this.frontDeskRegesterForm.value['gender'],
@@ -353,16 +382,13 @@ export class FrontdeskRegistrationComponent implements OnInit {
     this.frontdeskService.updateFrontdeskData(data, this.frontDeskId).subscribe(
       (data) => {
         console.log(data);
+        this.heading = 'Update Registration From';
         this.route.navigate(['/frontdesk/frontdetails/' + data.id]);
       },
       (err) => {
         console.log(err);
       }
     );
-  }
-  upload(fakepath: any) {
-    var splits = fakepath.split('fakepath\\');
-    alert(splits[1]);
   }
   getFrontdeskData() {
     // alert(1);
@@ -393,7 +419,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-
   onSubmit() {
     console.log(this.frontDeskRegesterForm.value['socialSecurityNumber']);
     this.submitted = true;
@@ -402,81 +427,63 @@ export class FrontdeskRegistrationComponent implements OnInit {
     }
     this.getFrontdeskData();
   }
-  ConfirmPasswordValidator(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) => {
-      let control = formGroup.controls[password];
-      let matchingControl = formGroup.controls[confirmPassword];
-      if (
-        matchingControl.errors &&
-        !matchingControl.errors?.['confirmPasswordValidator']
-      ) {
-        return;
-      }
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmPasswordValidator: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
-  }
-
   savefrondeskData() {
-    const data = {
-      First_Name: this.frontDeskRegesterForm.value['firstName'],
-      Last_Name: this.frontDeskRegesterForm.value['lastName'],
-      UserName: this.frontDeskRegesterForm.value['userName'],
-      Date_of_birth: this.frontDeskRegesterForm.value['dob'],
-      Contact_number: this.frontDeskRegesterForm.value['contactNumber'],
-      Gender: this.frontDeskRegesterForm.value['gender'],
-      Email: this.frontDeskRegesterForm.value['email'],
-      Ssn: this.frontDeskRegesterForm.value['socialSecurityNumber'],
-      Address_Line1: this.frontDeskRegesterForm.value['address1'],
-      Address_Line2: this.frontDeskRegesterForm.value['address2'],
-      Country: this.frontDeskRegesterForm.value['country'],
-      State: this.frontDeskRegesterForm.value['state'],
-      City: this.frontDeskRegesterForm.value['city'],
-      Zipcode: this.frontDeskRegesterForm.value['zipcode'],
-      PCP_Name: this.frontDeskRegesterForm.value['pcp'],
-      Emp_designation: this.frontDeskRegesterForm.value['employeePostion'],
-      Immidiate_manager: this.frontDeskRegesterForm.value['immediateManager'],
-      Emp_id: this.frontDeskRegesterForm.value['employeeId'],
-      Emp_id_doc: this.frontDeskRegesterForm.value['employeeIdDocument'],
-      Id_proof: this.frontDeskRegesterForm.value['idproof'],
-      Profile_image: this.frontDeskRegesterForm.value['profileImage'],
-      Password: this.frontDeskRegesterForm.value['password'],
-      confirmPassword: this.frontDeskRegesterForm.value['confirmPassword'],
-      Created_by: localStorage.getItem('name'),
-
-    };
-    this.authService.saveFrontDeskData(data).subscribe(
-      (data) => {
-        console.log('frontdeskData :', data);
-        this.route.navigate(['/frontdesk/frontdetails/' + data.data.id]);
-        alert(data.data.First_Name);
+    const fileData2 = new FormData();
+    fileData2.append(
+      'First_Name',
+      this.frontDeskRegesterForm.value['firstName']
+    );
+    fileData2.append('Last_Name', this.frontDeskRegesterForm.value['lastName']);
+    fileData2.append('User_Name', this.frontDeskRegesterForm.value['userName']);
+    fileData2.append('Date_of_birth', this.frontDeskRegesterForm.value['dob']);
+    fileData2.append(
+      'Contact_number',
+      this.frontDeskRegesterForm.value['contactNumber']
+    );
+    fileData2.append('Gender', this.frontDeskRegesterForm.value['gender']);
+    fileData2.append('Email', this.frontDeskRegesterForm.value['email']);
+    fileData2.append(
+      'Ssn',
+      this.frontDeskRegesterForm.value['socialSecurityNumber']
+    );
+    fileData2.append(
+      'Address_Line1',
+      this.frontDeskRegesterForm.value['address1']
+    );
+    fileData2.append(
+      'Address_Line2',
+      this.frontDeskRegesterForm.value['address2']
+    );
+    fileData2.append('Country', this.frontDeskRegesterForm.value['country']);
+    fileData2.append('State', this.frontDeskRegesterForm.value['state']);
+    fileData2.append('City', this.frontDeskRegesterForm.value['city']);
+    fileData2.append('Zipcode', this.frontDeskRegesterForm.value['zipcode']);
+    fileData2.append('PCP_Name', this.frontDeskRegesterForm.value['pcp']);
+    fileData2.append(
+      'Emp_designation',
+      this.frontDeskRegesterForm.value['employeePostion']
+    );
+    fileData2.append(
+      'Immidiate_manager',
+      this.frontDeskRegesterForm.value['immediateManager']
+    );
+    fileData2.append('Emp_id', this.frontDeskRegesterForm.value['employeeId']);
+    fileData2.append('Emp_id_doc', this.employeeIdDoc);
+    fileData2.append('Id_proof', this.idproofdoc);
+    fileData2.append('Profile_image', this.profileImageDoc);
+    fileData2.append('Created_by', this.createdBy);
+    fileData2.append('otp', 'null');
+    console.log(fileData2);
+    this.authService.saveFrontDeskData(fileData2).subscribe(
+      (res) => {
+        console.log(res);
+        this.route.navigate(['/frontdesk/frontdetails/' + res.data.id]);
       },
-      (error) => {
-        console.log(error);
+      (err) => {
+        console.log(err);
       }
     );
   }
-
-  // ConfirmPasswordValidator(password: string, confirmPassword: string) {
-  //   return (formGroup: FormGroup) => {
-  //     let control = formGroup.controls[password];
-  //     let matchingControl = formGroup.controls[confirmPassword];
-  //     if (
-  //       matchingControl.errors &&
-  //       !matchingControl.errors?.['confirmPasswordValidator']
-  //     ) {
-  //       return;
-  //     }
-  //     if (control.value !== matchingControl.value) {
-  //       matchingControl.setErrors({ confirmPasswordValidator: true });
-  //     } else {
-  //       matchingControl.setErrors(null);
-  //     }
-  //   };
-  // }
   userNameValidation(UserName: string) {
     return (formGroup: FormGroup) => {
       let matchingControl = formGroup.controls[UserName];
@@ -486,8 +493,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
       ) {
         return;
       }
-      for(let control of this.existedUserName)
-      {
+      for (let control of this.existedUserName) {
         if (control === matchingControl.value) {
           matchingControl.setErrors({ UserNameValidator: true });
           break;
@@ -495,8 +501,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
           matchingControl.setErrors(null);
         }
       }
-
     };
   }
-
 }

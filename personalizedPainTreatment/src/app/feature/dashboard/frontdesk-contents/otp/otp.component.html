@@ -1,81 +1,73 @@
+<div class="container d-flex justify-content-center align-items-center ">
+  <div class="position-relative">
+    <div class="card p-2 text-center mt-1 mb-3">
+      <h6>Please enter the one time password <br> to verify your account</h6>
+      <ng-otp-input (onInputChange)="onOtpChange($event)"
+        *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+      <button class="btn mt-3 border validate" (click)="onValidate()">Validate</button><br>
+      <p> <span>{{transform(counter)}}</span>
 
-<div class="container  d-flex justify-content-center align-items-center "> 
-    <div class="position-relative"> 
-        <div class="card p-2 text-center mt-1 mb-3">
-         <h6>Please enter the one time password <br> to verify your account</h6> 
-         <div> <span>A code has been sent </span>
-             <!-- <small>*******9897</small>   -->
-           </div>
-            <ng-otp-input  (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
-            <button class="btn mt-3 border">Validate</button>
-              <div class="card-2"> <div class="content d-flex justify-content-center align-items-center">
-                 <span>Didn't get the code</span> <a  class="text-decoration-none ms-3">Resend(1/3)</a>
-                
-                 </div> 
-                </div> </div>
-</div> 
-
-<!-- <div class="sidebar">
-    <div class="a-o-i-t">
-      Angular Otp Input
-    </div>
-    <ul class="list">
-      <li>
-        <input type="checkbox" name="number-only" id="number-only" [(ngModel)]="config.allowNumbersOnly"
-          (change)="onConfigChange()">
-        <span class="s-t">Allow number only</span>
-      </li>
-      <li>
-        <input type="checkbox" name="pass-input" id="pass-input" [(ngModel)]="config.isPasswordInput"
-          (change)="onConfigChange()">
-        <span class="s-t">Password input</span>
-      </li>
-      <li>
-        <input type="checkbox" name="disable-focus" id="disable-focus" [(ngModel)]="config.disableAutoFocus"
-          (change)="onConfigChange()">
-        <span class="s-t">Disable auto focus</span>
-      </li>
-      <li>
-        <span class="s-t">Number of inputs</span>
-        <input type="number" name="input-length" class="f-c" [(ngModel)]="config.length" min="1" max="10"
-          (ngModelChange)="onConfigChange()">
-      </li>
-      <li>
-        <span class="s-t">Placeholder</span>
-        <input type="text" name="input-placeholder" [(ngModel)]="config.placeholder" class="f-c" maxlength="1"  (change)="onConfigChange()">
-      </li>
-      <li>
-        <span class="s-t">Letter Case</span>
-        <select [(ngModel)]="config.letterCase" (change)="onConfigChange()" class="f-c">
-          <option>--Select--</option>
-          <option value="Upper">Upper</option>
-          <option value="Lower">Lower</option>
-        </select>
-      </li>
-      <li>
-        <span class="s-t">Update value to</span>
-        <input type="text" #valInput name="input-update-val" placeholder="Focus out to change" (change)="setVal(valInput.value)" class="f-c" min="1" max="10">
-      </li>
-      <li>
-        <button class="btn" (click)="toggleDisable()">Toogle Disable</button>
-      </li>
-    </ul>
-  </div>
-  <div class="content">
-    <div class="o-c">
-      <div>
-        <div class="card">
-          <p class="a-o-i">Enter verification code</p>
-          
-          <span  class="o-t-p">
-            <ng-container *ngIf="otp">
-              Entered otp :-{{otp}}
-            </ng-container>
-            </span>
-        </div>
-      </div>
+        <a (click)="resendOtp()" class="text-decoration-none ms-3 ">Resend</a></p>
     </div>
   </div>
-  
-   -->
-  
+
+
+  <div class="overlay " *ngIf="popup">
+    <div class="popup mt-5" class="reveal-modal">
+
+
+      <div class="content ">
+        <div class="container col-md-8 ">
+          <h2 class=" mt-5 mb-3 form-title border-bottom"> Reset Password </h2>
+          <div class=" container col-md-12 fixed">
+            <div class="row justify-content-center align-items-center ">
+              <div class="col-md-10 ">
+                <form style="margin-bottom: 100px;"
+                  [formGroup]="ResetpasswordForm"
+                  (ngSubmit)="onSubmit()">
+
+                  <label for="password" class="form-label h6"
+                    style="color: #712C6B;">Password</label>
+                  <input type="password" class="form-control"
+                    id="password"
+                    style="border: 1px solid #712C6B;color:
+                    #712C6B;"
+                    formControlName="password"
+                    placeholder="Enter password"
+                    [ngClass]="{'is-invalid':submitted && f['password'].errors}"
+                    />
+                  <div *ngIf="submitted && f['password'].errors"
+                    class="invalid-feedback">
+                    <div *ngIf="f['password'].errors['required']">
+                      Password is required
+                    </div>
+                  </div>
+                  <label for="name" class="form-label h6 mt-3" style="color:
+                    #712C6B;">Confirm
+                    Password</label>
+                  <input type="password" class="form-control"
+                    formControlName="confirmPassword" style="border: 1px solid
+                    #712C6B;color:
+                    #712C6B;">
+                  <div *ngIf="submitted && f['confirmPassword'].errors"
+                    class="alert
+                    alert-danger">
+                    <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm
+                      Password is required</div>
+                    <div
+                      *ngIf="f['confirmPassword'].errors?.['confirmPasswordValidator']">Passsword
+                      and
+                      Confirm Password didn't match. </div>
+                  </div>
+
+
+                  <br>
+                  <button class="btn btn-primary ml-5" type="submit">Save
+                    Password</button>
+
+                </form>
+              </div>
+            </div>
+          </div></div></div>
+
+    </div>

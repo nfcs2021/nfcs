@@ -5,21 +5,22 @@
   </a>
   <div class="ml-md-auto d-none d-md-flex mt-1" style="color:
     #712C6B;">
+    <button class=" mr-5 rounded-1 cos" routerLink="/frontdesk/contact"  >Contact us</button>
     <div class="row">
-      <div class="col mt-2 h4" *ngIf="name">
+      <div class="col mt-2 h4">
         <p class="">{{text | uppercase}}</p>
-        <p class="">{{last_login}}</p>
+        <p>{{Last_Login}}</p>
       </div>
     </div>
     <div class="col-1 dropdown show mt-1 mr-5 ">
       <img
         src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
-        alt="profile" class="mt-1 " style="width: 40px;
-        border-radius:
-        5px;"
+        alt="profile" class="mt-1" style="width: 40px; border-radius: 5px;"
         role="button"
         id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false" (click)="false">
+
+
       <div class="dropdown-menu dropdown-menu-right mt-2"
         aria-labelledby="dropdownMenuLink" style="color:
         #712C6B;border-radius: 10px;width: 300px;">

@@ -19,7 +19,7 @@ export class FrontdeskService {
       headers: httpheaders,
     });
   }
-  getLoginData(email: any): Observable<any> {
+  getLogiData(email: any): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
@@ -41,6 +41,38 @@ export class FrontdeskService {
     });
     return this.http.get<any>(environment.apiUrl + 'register', {
       headers: httpHeaders,
+    });
+  }
+  downloadEmpIdDocument(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'EmpId/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
+    });
+  }
+
+  idProofDoc(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'Idproof/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
+    });
+  }
+
+  profileDoc(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'Images/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
     });
   }
 }

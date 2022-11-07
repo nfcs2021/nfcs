@@ -14,7 +14,7 @@ import {
 export class NavnsideWrapperComponent implements OnInit, OnChanges {
   @Input('data') data: any;
   @Input('pcp_Name') pcp_Name: any;
-  @Input('lastlogin') last_login: any;
+  @Input('lastlogin') Last_login: any;
 
   constructor() {}
   ngOnChanges(changes: SimpleChanges) {
@@ -22,6 +22,6 @@ export class NavnsideWrapperComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // alert(this.last_login);
+    // alert(this.Last_login);
   }
 }

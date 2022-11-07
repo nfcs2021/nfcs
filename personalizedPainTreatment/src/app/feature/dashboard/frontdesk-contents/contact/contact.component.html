@@ -1,0 +1,62 @@
+<div class="row custom ">
+  <div class="form-content">
+    <form name="form" class="mx-auto col-md-8  offset-md-3 form-box form-horizontal" [formGroup]="contactForm"
+    (ngSubmit)="onClick()" >
+
+      <h2 class=" mt-3 mb-2  form-title border-bottom"> Contact Us </h2>
+      <div class="row mt-3 ">
+        <div class="form-group col-sm-5 ml-5 p-3">
+          <label for="First_Name">First Name  </label>
+          <input type="text" class="form-control " id="First_Name" placeholder="First Name" formControlName="First_Name"
+            [ngClass]="{ 'is-invalid': submitted && f['First_Name'].errors }">
+          <div *ngIf="submitted && f['First_Name'].errors" class="invalid-feedback">
+            <div *ngIf="f['First_Name'].errors['required']" class="text-danger">First Name is required</div>
+            <div *ngIf="f['First_Name'].errors['minlength']" class="text-danger">First Name must be at least 2
+              characters</div>
+              <div *ngIf="f['First_Name'].errors['pattern']" class="text-danger">Numbers Not allowed
+              </div>
+          </div>
+
+
+          <label for="Email" class="mt-3">E-mail address</label>
+          <input type="Email" class="form-control" id="Email" placeholder="Email Address" formControlName="Email"
+            [ngClass]="{ 'is-invalid': submitted && f['Email'].errors }">
+          <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
+            <div *ngIf="f['Email'].errors['required']" class="text-danger">Email
+              Address is required</div>
+          </div>
+
+          <label for="phone" class="mt-3">Contact Number </label>
+          <input type="tel" class="form-control" placeholder={{paceHolder}} formControlName="Contact_number"
+            value={{phoneNumberEntered}} (keydown)="onPhoneChange($event)" maxlength="14"
+            [ngClass]="{ 'is-invalid': submitted && f['Contact_number'].errors }">
+
+          <div *ngIf="submitted && f['Contact_number'].errors" class="invalid-feedback">
+            <div *ngIf="f['Contact_number'].errors['required']" class="text-danger">Contact Number is required</div>
+            <div *ngIf="f['Contact_number'].errors['pattern']" class="text-danger">Characters Not allowed
+          </div>
+          </div>
+<br>
+          <label for="Subject">Subject  </label>
+          <input type="text" class="form-control " id="Subject" placeholder=".." formControlName="Subject"
+           >
+          <!-- <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors['required']" class="text-danger">First Name is required</div>
+            <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First Name must be at least 2
+              characters</div>
+              <div *ngIf="f['firstName'].errors['pattern']" class="text-danger">Numbers Not allowed
+              </div>
+          </div> -->
+        </div>
+        <div class="form-group col-5 p-3 ml-5  ">
+          <label for="exampleFormControlTextarea1">Message</label>
+<textarea class="form-control rounded"  id="Textarea" formControlName="Message"  rows="11"></textarea>
+          </div>
+      </div>
+      <div class=" container offset-md-4">
+          <button type="submit" class="btn  w-25"  >Submit</button>
+
+        </div>
+    </form>
+  </div>
+</div>
