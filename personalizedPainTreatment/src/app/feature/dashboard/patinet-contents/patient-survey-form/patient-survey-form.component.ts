@@ -151,6 +151,7 @@ export class PatientSurveyFormComponent implements OnInit {
       Patient_id:this.routerId,
       Sub_question_id:data1.subQuestionId,
       Answers:data1.p_Options,
+      Answer1:data1.text1,
       Created_by:'test',
       Updated_By:'test'
      }

@@ -263,10 +263,7 @@ export class AddPatientComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[0-9 ()-]+$')
       ]],
-      email: ['',
-      [
-        Validators.required
-      ]],
+      email: [''],
       socialSecurityNumber: ['',
       [
         Validators.required,
@@ -307,10 +304,7 @@ export class AddPatientComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[0-9 ()-]+$')
       ]],
-      email: [this.patientDataById.Email_address,
-      [
-        Validators.required
-      ]],
+      email: [this.patientDataById.Email_address],
       socialSecurityNumber: [this.patientDataById.Ssn,
       [
         Validators.required,
@@ -413,6 +407,11 @@ export class AddPatientComponent implements OnInit {
     )
   }
   update(){
+    this.submitted = true;
+    // // stop here if form is invalid
+    if (this.patientRegesterForm.invalid) {
+      return;
+    }
     const data={
       "First_Name":this.patientRegesterForm.value['firstName'],
         "Last_Name": this.patientRegesterForm.value['lastName'],

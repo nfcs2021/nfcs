@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Patient, PatientRecord, SearchDate, SearchModel } from '../../patinet-contents/module/Patient';
+import { AdminService } from '../../services/admin.service';
 import { PatientService } from '../../services/patient.service';
 
 @Component({
@@ -19,22 +20,21 @@ export class AdminListComponent implements OnInit {
   tatalRec: string;
   patientRecordData: PatientRecord[];
   constructor(
-    private service:PatientService
+    private service:AdminService
   ) { }
 
   ngOnInit(): void {
-    // this.getAllPatient();
+   this.getAllAdmin();
   }
   troggle(i:any){
     this.dropdown[i]=!this.dropdown[i];
   }
-  getAllPatient(){
-    this.service.getAllPatientsData().subscribe(
+  getAllAdmin(){
+    this.service.getAllAdminData().subscribe(
       res =>{
         console.log(res);
         this.posts=res
         this.adminData=res;
-        this.getAllPatientRecords();
       },err =>{
         console.log(err);
 
@@ -42,16 +42,5 @@ export class AdminListComponent implements OnInit {
     )
   }
 
-  getAllPatientRecords(){
-    this.service.getAllPatientRecords().subscribe(
-      data =>{
-        this.patientRecordData=data;
-    console.log(data);
 
-      },err =>{
-        console.log(err);
-
-      }
-    )
-  }
 }

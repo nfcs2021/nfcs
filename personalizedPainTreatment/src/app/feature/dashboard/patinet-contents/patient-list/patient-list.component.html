@@ -92,7 +92,7 @@
     </div>
   </div>
 
-   <ng-container *ngFor="let patientsRecordData of patientRecordData | dateSearch:dateModel | paginate:{id:'listing_pagination1',itemsPerPage:5,currentPage:page,totalItems:tatalRec}">
+   <ng-container *ngFor="let patientsRecordData of patientRecordData | slice:0:1 | dateSearch:dateModel ">
     <div class="row mt-2 mx-5 border " *ngIf="patientsRecordData.Patient_id===patientList.id">
     
       <div class="col-md-1 ml-5  mt-3" >

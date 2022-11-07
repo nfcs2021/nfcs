@@ -5,7 +5,9 @@ import { ThisReceiver } from '@angular/compiler';
 import { data } from 'jquery';
 // import * as FileSaver from 'file-saver';
 import { FrontdeskService } from '../../services/frontdesk.service';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-frontdesk-details',
   templateUrl: './frontdesk-details.component.html',
@@ -20,7 +22,8 @@ export class FrontdeskDetailsComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute,
     private frontdeskService: FrontdeskService,
-    private router: Router
+    private router: Router,
+    private http:HttpClient
   ) {}
   id: any;
   ngOnInit(): void {
@@ -40,6 +43,44 @@ export class FrontdeskDetailsComponent implements OnInit {
       );
     }
   }
+  
+
+  download(data:any){
+console.log("data");
+return this.http.get('http://127.0.0.1:8000/api/Idproof/download/'+data.id,{responseType:'arraybuffer'})
+  .subscribe(res => {
+    const blob = new Blob([res], {type: 'application/octet-stream'});
+    FileSaver.saveAs(blob, data.Id_proof_Name);
+  }, err => {
+    console.log(err);
+});
+
+  }
+
+  downloadEmployeeID(data:any){
+    console.log("data");
+    return this.http.get('http://127.0.0.1:8000/api/EmpId/download/'+data.id,{responseType:'arraybuffer'})
+      .subscribe(res => {
+        const blob = new Blob([res], {type: 'application/octet-stream'});
+        FileSaver.saveAs(blob, data.Emp_id_doc_Name);
+      }, err => {
+        console.log(err);
+    });
+    
+      }
+
+      downloadProfileImage(data:any){
+        console.log("data");
+        return this.http.get('http://127.0.0.1:8000/api/Images/download/'+data.id,{responseType:'arraybuffer'})
+          .subscribe(res => {
+            const blob = new Blob([res], {type: 'application/octet-stream'});
+            FileSaver.saveAs(blob, data.Profile_image_Name);
+          }, err => {
+            console.log(err);
+        });
+        
+          }
+
   retrvieFrontdekList(id: any) {
     this.dataService.getUserData(id).subscribe((data) => {
       console.log(data);
@@ -60,8 +101,22 @@ export class FrontdeskDetailsComponent implements OnInit {
   //     });
   // }
   resetPassword() {
-    this.router.navigate([
-      '/frontdesk/changepassword' + this.frontDeskData.Email,
-    ]);
+    console.log(this.frontDeskData.User_Name);
+    console.log(this.frontDeskData.Email);
+    alert(this.frontDeskData.User_Name);
+    const data = {
+      User_Name: this.frontDeskData.User_Name,
+    };
+    this.dataService.requestotp(data).subscribe(
+      (data) => {
+        console.log(data);
+        this.router.navigate([
+          '/frontdesk/resetpassword/' + this.frontDeskData.User_Name,
+        ]);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

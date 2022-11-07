@@ -28,6 +28,7 @@ import { FrontdeskResetPasswordComponent } from '../frontdesk-contents/frontdesk
 import { AdminMainComponent } from '../admin-contents/admin-main/admin-main.component';
 import { AdminListComponent } from '../admin-contents/admin-list/admin-list.component';
 import { AdminDetailsComponent } from '../admin-contents/admin-details/admin-details.component';
+import { AdminRegistrationComponent } from '../admin-contents/admin-registration/admin-registration.component';
 
 
 
@@ -138,7 +139,10 @@ const routes: Routes = [
             component: FrontdeskRegistrationComponent,
             canActivate: [AuthRouteGaurdService]
           },
-          
+          {
+            path: 'resetpassword/:userName',
+            component: FrontdeskResetPasswordComponent,
+          },
           { path: 'frontdesklist/:id', component: FrontdesklistComponent },
           { path: 'frontdesklist', component: FrontdesklistComponent },
 
@@ -160,7 +164,6 @@ const routes: Routes = [
             path: 'changepassword/:id',
             component: FrontdeskResetPasswordComponent,
           },
-
           {path:'forgetpassword',component:ForgetpasswordComponent},
           {path:'otp',component:OtpComponent},
           {path:'contact',component:ContactComponent}
@@ -172,6 +175,7 @@ const routes: Routes = [
         component: AdminMainComponent,
         children: [
           { path: '', redirectTo: 'admindetails', pathMatch: 'full' },
+          {path:'admin-registration',component:AdminRegistrationComponent},
           {path:'adminlist',component:AdminListComponent},
           {path:'admin-details',component:AdminDetailsComponent}
         ]

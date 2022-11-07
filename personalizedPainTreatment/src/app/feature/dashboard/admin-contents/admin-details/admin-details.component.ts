@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminService } from '../../services/admin.service';
 import { DataService } from '../../services/data.service';
 import { FrontdeskService } from '../../services/frontdesk.service';
 
@@ -14,7 +15,7 @@ export class AdminDetailsComponent implements OnInit {
   routerId: any;
   retrivalId: any;
   constructor(
-    private dataService: DataService,
+    private service: AdminService,
     private route: ActivatedRoute,
     private frontdeskService: FrontdeskService,
     private router: Router
@@ -24,9 +25,9 @@ export class AdminDetailsComponent implements OnInit {
     console.log(localStorage.getItem('name'));
     this.id = localStorage.getItem('id');
     if (this.route.snapshot.paramMap.get('id')) {
-      this.retrvieFrontdekList(this.route.snapshot.paramMap.get('id'));
+      this.retrvieAdminList(this.route.snapshot.paramMap.get('id'));
     } else {
-      this.dataService.getUserData(localStorage.getItem('id')).subscribe(
+      this.service.getAdminData(localStorage.getItem('id')).subscribe(
         (data) => {
           console.log('frontdeskdetails..................' + data);
           this.adminData = data;
@@ -37,8 +38,8 @@ export class AdminDetailsComponent implements OnInit {
       );
     }
   }
-  retrvieFrontdekList(id: any) {
-    this.dataService.getUserData(id).subscribe((data) => {
+  retrvieAdminList(id: any) {
+    this.service.getAdminData(id).subscribe((data) => {
       console.log(data);
       this.adminData = data;
     });

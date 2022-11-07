@@ -1,0 +1,359 @@
+<div class="row custom ">
+    <div class="form-content">
+      <form name="form" class="mx-auto col-md-6 offset-md-3 form-box
+        form-horizontal" [formGroup]="adminRegesterForm"
+        (ngSubmit)="onSubmit()">
+        <h2 class=" mt-3 mb-2 form-title"> Add New Admin
+           <hr></h2>
+        <div class="row mt-3 ">
+          <div class="form-group col-sm-5 ml-5">
+            <label for="firstName">First Name <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control " id="firstName"
+              placeholder="First Name" formControlName="firstName"
+              [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+            <div *ngIf="submitted && f['firstName'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['firstName'].errors['required']" class="text-danger">First
+                Name is required</div>
+              <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First
+                Name must be at least 2
+                characters</div>
+            </div>
+            <label for="lastName" class="mt-3">Last Name <span
+                class="text-danger">*</span></label>
+            <input type="text" class="form-control " id="lastName"
+              placeholder="Last Name" formControlName="lastName"
+              [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+            <div *ngIf="submitted && f['lastName'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last
+                Name is required</div>
+            </div>
+  
+            <label for="userName" class="mt-3">User Name <span
+              class="text-danger">*</span></label>
+          <input type="text" class="form-control " id="userName"
+            placeholder="User Name" formControlName="userName"
+            [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+          <div *ngIf="submitted && f['userName'].errors"
+            class="invalid-feedback">
+            <div *ngIf="f['userName'].errors['required']" class="text-danger">User
+              Name is required</div>
+              <div
+                *ngIf="f['userName'].errors?.['UserNameValidator']" class="text-danger">User Name already exist. </div>
+            
+          </div>
+  
+            <label for="lastName" class="mt-3">Date Of Birth <span
+                class="text-danger">*</span></label>
+            <input type="date" class="form-control " id="dob"
+              formControlName="dob" [max]="getToday()"
+              [ngClass]="{ 'is-invalid': submitted && f['dob'].errors }">
+            <div *ngIf="submitted && f['dob'].errors" class="invalid-feedback">
+              <div *ngIf="f['dob'].errors['required']" class="text-danger">Date Of
+                Birth is required</div>
+            </div>
+            <label for="gender" class="mt-2 col-form-label text-right">Gender
+              &nbsp;<span class="text-danger">*</span></label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio1"
+                formControlName="gender" value="Male"
+                [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio2"
+                formControlName="gender" value="Female"
+                [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+              <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio3"
+                formControlName="gender" value="Others"
+                [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }"/>
+              <label class="form-check-label" for="inlineRadio3">Others</label>
+            </div>
+            <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
+              <div *ngIf="f['gender'].errors['required']" class="text-danger">Gender
+                is required</div>
+            </div>
+            <label for="phone" class="mt-3">Contact Number <span
+                class="text-danger">*</span></label>
+            <input type="tel" class="form-control" placeholder={{paceHolder}}
+              formControlName="contactNumber" value={{phoneNumberEntered}}
+              (keydown)="onPhoneChange($event)"
+              maxlength="14" [ngClass]="{ 'is-invalid': submitted &&
+              f['contactNumber'].errors }">
+            <div *ngIf="submitted && f['contactNumber'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['contactNumber'].errors['required']"
+                class="text-danger">Contact Number is required</div>
+            </div>
+            <label for="email" class="mt-3">E-mail address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email
+              Address" formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']" class="text-danger">Email
+                Address is required</div>
+            </div>
+            <label for="phone" class="mt-3">Social Security Number <span
+                class="text-danger">*</span></label>
+            <input type="tel" class="form-control" placeholder={{ssnPlaceholder}}
+              formControlName="socialSecurityNumber" value={{ssnNumberEntered}}
+              (keydown)="onSsnChange($event)"
+              maxlength="11" [ngClass]="{ 'is-invalid': submitted &&
+              f['socialSecurityNumber'].errors }">
+            <div *ngIf="submitted && f['socialSecurityNumber'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['socialSecurityNumber'].errors['required']"
+                class="text-danger">Social Security Number is required</div>
+            </div>
+            <label for="Address" class="mt-3">Address </label>
+            <input type="text" class="form-control " id="Address"
+              placeholder="Adress Line 1 *" formControlName="address1"
+              [ngClass]="{ 'is-invalid': submitted && f['address1'].errors }">
+            <div *ngIf="submitted && f['address1'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['address1'].errors['required']" class="text-danger">address
+                is required</div>
+            </div>
+            <input type="text" class="form-control mt-3 mb-3" id="Address2"
+              placeholder="Adress Line 2" formControlName="address2">
+            <select class="form-control form-select"
+              (change)="onChangeCountry($event)"
+              formControlName="country" [ngClass]="{ 'is-invalid': submitted &&
+              f['country'].errors }">
+              <option disabled value="">Country<span class="text-danger">*</span></option>
+              <option *ngFor="let country of countryInfo; let i= index"
+                value="{{country.name}}">{{country.name}}</option>
+            </select>
+            <div *ngIf="submitted && f['country'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['country'].errors['required']" class="text-danger">Country
+                is required</div>
+            </div>
+            <select class="form-control mt-3 form-select"
+              (change)="onChangeState($event)"
+              formControlName="state" [ngClass]="{ 'is-invalid': submitted &&
+              f['state'].errors }">
+              <option disabled value="" class="option">State <span
+                  class="text-danger">*</span></option>
+              <option *ngFor="let state of stateInfo; let j= index"
+                value="{{state.name}}">{{state.name}}</option>
+            </select>
+            <div *ngIf="submitted && f['state'].errors" class="invalid-feedback">
+              <div *ngIf="f['state'].errors['required']" class="text-danger">State
+                is required</div>
+            </div>
+            <select class="form-control mt-3 form-select"
+              formControlName="city" [ngClass]="{ 'is-invalid': submitted &&
+              f['city'].errors }">
+              <option disabled value="" class="option">city <span
+                  class="text-danger">*</span></option>
+              <option *ngFor="let city of cityInfo; let j= index"
+                value="{{city.name}}">{{city.name}}</option>
+            </select>
+            <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
+              <div *ngIf="f['city'].errors['required']" class="text-danger">city
+                is required</div>
+            </div>
+            <input type="text" class="form-control mt-3" id="zipcode"
+              placeholder="Zip Code *" formControlName="zipcode"
+              [ngClass]="{ 'is-invalid': submitted && f['zipcode'].errors }">
+            <div *ngIf="submitted && f['zipcode'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode
+                is required</div>
+            </div>
+          </div>
+          <div class="form-group col-sm-5 ml-5">
+            <label for="firstName">PCP Name<span class="text-danger">*</span>
+            </label>
+            <select class="form-control form-select"
+              formControlName="pcp" [ngClass]="{ 'is-invalid': submitted &&
+              f['pcp'].errors }">
+              <option selected disabled>Choose...</option>
+              <option>Upmc</option>
+              <option>Apolo</option>
+              <option>Medicover</option>
+            </select>
+            <label for="firstName" class="mt-3">Employee Position<span
+                class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control " id="firstName"
+              placeholder="First Name" formControlName="employeePostion">
+            <!-- <select class="form-control form-select"
+              formControlName="employeePostion" [ngClass]="{ 'is-invalid':
+              submitted &&
+              f['city'].errors }">
+              <option selected disabled>Choose...</option>
+              <option>Upmc</option>
+              <option>Apolo</option>
+              <option>Medicover</option>
+            </select> -->
+            <label for="immediateManager" class="mt-3">Immediate Manager<span
+                class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control " id="immediateManager"
+              placeholder="" formControlName="immediateManager"
+              [ngClass]="{ 'is-invalid': submitted && f['immediateManager'].errors
+              }">
+            <div *ngIf="submitted && f['immediateManager'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['immediateManager'].errors['required']"
+                class="text-danger">Immediate Manager is required</div>
+              <div *ngIf="f['immediateManager'].errors['minlength']"
+                class="text-danger">Immediate Manager
+                Name must be at least 2
+                characters</div>
+            </div>
+            <label for="firstName" class="mt-3">Employee ID <span
+                class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control " id="firstName"
+              placeholder="" formControlName="employeeId"
+              [ngClass]="{ 'is-invalid': submitted && f['employeeId'].errors }">
+            <div *ngIf="submitted && f['employeeId'].errors"
+              class="invalid-feedback">
+              <div *ngIf="f['employeeId'].errors['required']" class="text-danger">First
+                Name is required</div>
+            </div>
+            <div class="mt-3">
+              <label for="employeeIdDocument">Employee ID Document</label>
+              <input class="form-control" id="formFileLg"
+                type="file" formControlName="employeeIdDocument" (change)="onSelectImage($event)"/>
+            </div>
+            <div class="mt-3">
+              <label for="idproof">ID Proof(Drivers Licence/State ID)</label>
+              <input class="form-control" id="formFileLg"
+                type="file" formControlName="idproof"/>
+            </div>
+            <div class="mt-3 mb-5">
+              <label for="profileImage">Profile Image</label>
+              <input class="form-control" id=""
+                type="file" formControlName="profileImage" />
+            </div>
+            <button class="mb-3 mt-5 p-2 btn col-sm-12 " type="submit">Submit
+            </button>
+            <a class="mb-3 mt-3 p-2 btn col-sm-12" routerLink="/patient/nav"
+              style="background-color: #712C6B; color:white ;">Cancle </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="overlay mt-5" *ngIf="popup">
+    <div class="popup">
+      <h2 class="text-center border-bottom" style="color: rgb(83, 4, 83);
+        font-weight: bold;">Admin user with similar data
+        already exit</h2>
+  
+      <div class="content">
+        <div class="container col-md-11 ">
+          <table class="table table-borderless border">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Dob</th>
+                <th>SocialSecurityNumber</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{this.adminRegesterForm.value['firstName']}}</td>
+                <td>{{this.adminRegesterForm.value['lastName']}}</td>
+                <td>{{this.adminRegesterForm.value['dob'] |
+                  date:"MM-dd-YYYY"}} </td>
+                <td>{{this.adminRegesterForm.value['socialSecurityNumber']}}
+                </td>
+              </tr>
+              <tr>
+                <th>Email </th>
+                <th>contactNumber</th>
+                <th>Address</th>
+              </tr>
+              <tr>
+                <td>{{this.adminRegesterForm.value['email']}}</td>
+                <td>{{this.adminRegesterForm.value['contactNumber']}}</td>
+                <td>{{this.adminRegesterForm.value['address1']}},
+                  {{this.adminRegesterForm.value['address2']}},
+                  {{this.adminRegesterForm.value['city']}},
+                  {{this.adminRegesterForm.value['state']}},
+                  {{this.adminRegesterForm.value['country']}} -
+                  {{this.adminRegesterForm.value['zipcode']}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+  
+        <h2 class="text-center " style="color: rgb(83, 4, 83); font-weight:
+          bold;">Simillar To</h2>
+        <div class="container col-md-11 ">
+          <table class="table table-borderless border">
+            <thead>
+              <tr>
+                <th>Admin ID</th>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Date Of Birth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{simillarAdminData.id}}</td>
+                <td>{{simillarAdminData.First_Name}}</td>
+                <td>{{simillarAdminData.Last_Name}}</td>
+                <td>{{simillarAdminData.Date_of_birth | date:"MM-dd-YYYY"}}</td>
+              </tr>
+              <tr>
+                <th>Gender</th>
+                <th>SocialSecurityNumber</th>
+                <th>E-mail address</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+              </tr>
+              <tr>
+                <td>{{simillarAdminData.Gender}}</td>
+                <td>{{simillarAdminData.Ssn}}</td>
+                <td>{{simillarAdminData.Email}}</td>
+                <td>{{simillarAdminData.Contact_Number}}</td>
+                <td>{{simillarAdminData.Address_Line1}},{{simillarAdminData.Address_Line2}}
+                  {{simillarAdminData.City}},
+                  {{simillarAdminData.State}}
+                  <br>{{simillarAdminData.Country}} -
+                  {{simillarAdminData.Zipcode}}
+                </td>
+  
+              </tr>
+              <tr>
+                <th>Created On</th>
+                <th>Created By</th>
+                <th>Last Updated On</th>
+                <th>Last Updated By</th>
+              </tr>
+              <tr>
+                <td>{{simillarAdminData.created_at}}</td>
+                <td>{{simillarAdminData.Created_by}}</td>
+                <td>{{simillarAdminData.updated_at}}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+        <div class=" container offset-md-2 w-50">
+          <button class="btn btn-primary ml-3 mr-5"
+            (click)="savefrondeskData()">Save as New Admin</button>
+          <button class="btn btn-primary ml-5" routerLink="/patient/nav">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

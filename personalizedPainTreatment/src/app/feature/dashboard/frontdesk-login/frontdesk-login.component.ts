@@ -34,8 +34,9 @@ export class FrontdeskLoginComponent implements OnInit {
     private fromBuilder: FormBuilder,
     private route: Router,
     private authservice: AuthService,
-    private activateroute: ActivatedRoute,private dataService:DataService,private frontdeskService:FrontdeskService
-  ) { }
+    private frontdeskService: FrontdeskService,
+    private dataService:DataService
+  ) {}
 
   ngOnInit(): void {
     this.url = this.route.url;
@@ -94,7 +95,7 @@ export class FrontdeskLoginComponent implements OnInit {
                 this.dataService.getFrontDeskData(data.data.User_Name).subscribe(
                   data =>{
                     console.log(data);
-                   
+                    
                     console.log(data.length);
                     if(data.length==1){
                       this.route.navigateByUrl('/frontdesk/frontdeskpasswordChange/'+this.userName);
@@ -106,7 +107,7 @@ export class FrontdeskLoginComponent implements OnInit {
                     }
                   },err =>{
                     console.log(err);
-                   
+                    
                   }
                  );
                   Swal.fire({
@@ -133,8 +134,6 @@ export class FrontdeskLoginComponent implements OnInit {
         //   window.location.reload();
         // });
         // this.route.navigateByUrl('/patient/nav');
-     
+      
   }
-
-
 }

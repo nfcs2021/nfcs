@@ -72,7 +72,14 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
     
    this.dataService.changePassword(data).subscribe(
     data =>{
-     this.auth.logout();
+
+    console.log(data.message);
+    if(data.message==='Invalid'){
+      this.error=true;
+    }else{
+      this.auth.logout();
+    }
+    
       
     },err =>{
       console.log(err);

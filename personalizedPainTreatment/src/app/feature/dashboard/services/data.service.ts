@@ -38,7 +38,7 @@ getFrontDeskData(email:any){
   const httpheaders = new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token'),
   });
-  return this.http.get<any>(environment.apiUrl+'registerBymail/'+email, {
+  return this.http.get<any>(environment.apiUrl+'registerByUser/'+email, {
     headers: httpheaders,
   });
 }

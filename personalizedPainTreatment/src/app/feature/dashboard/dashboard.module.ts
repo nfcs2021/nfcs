@@ -35,6 +35,9 @@ import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk
 import { AdminMainComponent } from './admin-contents/admin-main/admin-main.component';
 import { AdminListComponent } from './admin-contents/admin-list/admin-list.component';
 import { AdminDetailsComponent } from './admin-contents/admin-details/admin-details.component';
+import { AdminRegistrationComponent } from './admin-contents/admin-registration/admin-registration.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -73,7 +76,8 @@ import { AdminDetailsComponent } from './admin-contents/admin-details/admin-deta
     FrontdeskPasswordChangeComponent,
     AdminMainComponent,
     AdminListComponent,
-    AdminDetailsComponent
+    AdminDetailsComponent,
+    AdminRegistrationComponent
 
 
   ],
@@ -85,7 +89,8 @@ import { AdminDetailsComponent } from './admin-contents/admin-details/admin-deta
     ReactiveFormsModule,
     MaterialModule,
    NgxPaginationModule,
-   NgOtpInputModule
+   NgOtpInputModule,
+   HttpClientModule,
 
 
   ],

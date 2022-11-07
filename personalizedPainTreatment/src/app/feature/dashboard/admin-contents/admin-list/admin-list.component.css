@@ -42,6 +42,9 @@ hr{
     
     color: #712C6B;
 }
+a{
+    cursor: pointer;
+}
 
 .input-group{
     outline:1px black;

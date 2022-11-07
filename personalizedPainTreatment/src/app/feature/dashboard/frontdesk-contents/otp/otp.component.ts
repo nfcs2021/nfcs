@@ -34,6 +34,7 @@ export class OtpComponent implements OnInit {
     // placeholder: ''
   };
   response: any = new Array();
+  error: boolean;
 
   constructor(private dataService:DataService,
     private route:ActivatedRoute, private formBuilder: FormBuilder,private router:Router
@@ -185,12 +186,13 @@ export class OtpComponent implements OnInit {
     console.log(data);
 
     this.dataService.forgotPassword(data).subscribe(
-      (data) => {
-        console.log('frontdeskData :', data);
-        this.router.navigate(['']);
+      (data1) => {
+        console.log('frontdeskData :', data1);
+        this.router.navigateByUrl('');
       },
       (error) => {
         console.log(error);
+        this.error=true;
       }
     );
   }
@@ -198,7 +200,7 @@ export class OtpComponent implements OnInit {
 
   
     const data = {
-      Email:this.email,
+      User_Name:this.email,
         otp:this.otp
       }
     this.dataService.requestotp(data).subscribe(

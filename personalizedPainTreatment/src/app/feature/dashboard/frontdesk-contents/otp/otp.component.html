@@ -28,7 +28,10 @@
       <div class="col-md-10  " >
         <form style="margin-bottom: 100px;"  [formGroup]="ResetpasswordForm"
         (ngSubmit)="onSubmit()">
- 
+         
+        <div class="mb-3 text-danger col-8" *ngIf="error">
+          Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.
+         </div>
          
         <label for="password" class="form-label h6"
         style="color: #712C6B;">Password</label>

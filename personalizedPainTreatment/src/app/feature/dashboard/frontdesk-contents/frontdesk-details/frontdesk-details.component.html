@@ -83,28 +83,32 @@
       <div class="col-md-10 card-border">
         <div class="col text-center">
           <div class="row mt-3">
-            <div class="col-sm-7 text-end"><b>Employee ID Document :</b></div>
-            <span class="col-sm-5" hidden>{{frontDeskData.Emp_id_doc}}</span>
-            <span
-              class="text-end"><img
+            <div class="col-10 text-end"><b>Employee ID Document :</b> 
+              <span  (click)="downloadEmployeeID(frontDeskData)"
+              class="text-end ml-5">{{frontDeskData.Emp_id_doc_Name}}<img
                 src="\assets\images\bxs_download.png" role="button"
                 style="width:30px" class="ml-2 border-0"></span>
+            </div>
+            <span  ></span>
+            
           </div>
           <div class="row mt-3">
-            <div class="col-sm-7 text-end"><b>ID Proof(Drivers Licence/State
-                ID):</b></div>
-            <span class="col-sm-5" hidden>{{frontDeskData.Id_proof}}</span>
-            <span class="text-end"><img
-                src="\assets\images\bxs_download.png" role="button"
-                style="width:30px" class="ml-2 border-0"></span>
+            <div class="col-sm-10 text-end"><b>ID Proof(Drivers Licence/State
+                ID):</b>
+                <span class="text-end ml-5" (click)="download(frontDeskData)">{{frontDeskData.Id_proof_Name}}<img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+              </div>
           </div>
           <div class="row mt-3 mb-3">
-            <div class="col-sm-7 text-end mt-2"><b>Profile Image:</b></div>
-            <span class="col-sm-5" hidden>{{frontDeskData.Profile_image}}</span><span
-              class="text-end"><img
+            <div class="col-sm-10 text-end mt-2"><b>Profile Image:</b>
+              <span (click)="downloadProfileImage(frontDeskData)"
+              class="text-end ml-5">{{frontDeskData.Profile_image_Name}}<img
                 src="\assets\images\bxs_download.png" role="button"
                 style="width:30px" class="ml-2 border-0"
                ></span>
+            </div>
+            
           </div>
         </div>
       </div>

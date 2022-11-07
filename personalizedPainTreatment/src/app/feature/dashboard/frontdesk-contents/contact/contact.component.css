@@ -4,8 +4,9 @@
 }
 
 .custom{
-  width: 90%;
-    height: 800px;
+  width: 100%;
+  overflow-y: scroll;
+    height: 780px;
     background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
 }
 
@@ -17,9 +18,6 @@
   button{
     background-color:  rgb(83, 4, 83);
     color: aliceblue;
-  }
-  .form-content{
-    margin-left: 100px;
   }
    optgroup{
     font-size: 3px;
