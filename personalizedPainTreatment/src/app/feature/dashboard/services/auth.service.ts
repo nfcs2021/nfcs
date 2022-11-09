@@ -39,7 +39,7 @@ export class AuthService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(this.apiUrl + 'register', {
+    return this.http.get<any>(this.apiUrl + 'allregisterData', {
       headers: httpheaders,
     });
   }

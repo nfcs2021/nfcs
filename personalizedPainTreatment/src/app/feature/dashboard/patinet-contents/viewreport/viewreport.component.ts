@@ -10,10 +10,12 @@ import { PatientService } from '../../services/patient.service';
 export class ViewreportComponent implements OnInit {
   routerId: any;
   patientsRecordData: any;
+  role:any;
   constructor(private route: ActivatedRoute, private service: PatientService) {}
 
   ngOnInit(): void {
     this.routeId();
+    this.role=localStorage.getItem('role');
   }
   routeId() {
     this.route.params.subscribe((params) => {

@@ -43,6 +43,10 @@ export class AdminRegistrationComponent implements OnInit {
   popup = false;
   simillarAdminData: any;
   SelectImage: any;
+  employeeIdDoc: any;
+  idproofdoc: any;
+  profileImageDoc: any;
+  tracking:any;
   constructor(
     private service: AppService,
     private formBuilder: FormBuilder,
@@ -62,8 +66,10 @@ export class AdminRegistrationComponent implements OnInit {
     this.adminId = this.router.snapshot.paramMap.get('id')
 
     if (this.adminId) {
+      alert("1")
       this.getAdminDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
+      
     }
   }
   getAllAdminData(){
@@ -73,7 +79,7 @@ export class AdminRegistrationComponent implements OnInit {
         for(let singledata of data)
         {
 
-          this.existedUserName.push(singledata .UserName);
+          this.existedUserName.push(singledata .User_Name);
         }
         console.log(this.existedUserName);
       },
@@ -93,6 +99,7 @@ export class AdminRegistrationComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
 
   onSelectImage(event:any) {
     this.SelectImage = event.srcElement.files[0];
@@ -100,13 +107,26 @@ export class AdminRegistrationComponent implements OnInit {
 
 
  }
+=======
+  employeeIdDocument(event: any) {
+    this.employeeIdDoc = event.srcElement.files[0];
+    console.log(this.employeeIdDoc);
+  }
+  idProofDocument(event: any) {
+    this.idproofdoc = event.srcElement.files[0];
+    console.log(this.idproofdoc);
+  }
+  profileImageDocument(event: any) {
+    this.profileImageDoc = event.srcElement.files[0];
+    console.log(this.profileImageDoc);
+  }
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   getAdminDataById(id: any) {
     this.adminService.getAdminData(id).subscribe(
       (data) => {
         console.log(data);
         this.adminDataById = data;
-        this.updateFrontDeskRegistrationForm();
-        this.onChangeCountryUpdateData(data.Country);
+         this.onChangeCountryUpdateData(data.Country);
       },
       (err) => {
         console.log(err);
@@ -115,24 +135,26 @@ export class AdminRegistrationComponent implements OnInit {
   }
 
   onChangeCountryUpdateData(countryValue: any) {
-    alert(countryValue);
-    alert(this.adminDataById.State);
+    alert(countryValue)
     let countryIso: any;
     for (let data of this.countryInfo) {
-      if (countryValue === data.name) {
+      if (countryValue===data.name) {
         countryIso = data.iso2;
         this.countryId = data.iso2;
+        console.log(this.countryId);
+        
       }
     }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
-      console.log(data);
+    this.service.getStateOfSelectedCountry(this.countryId).subscribe((data) => {
+      console.log("selected country",data);
       this.stateInfo = data;
       this.onChangeStateUpdateData(this.adminDataById.State);
     });
+    
   }
 
   onChangeStateUpdateData(stateValue: any) {
-    alert(stateValue);
+    
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {
@@ -144,9 +166,17 @@ export class AdminRegistrationComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         this.cityInfo = data;
+        this.tracking = setInterval(() => {
+          this.updateFrontDeskRegistrationForm();
+      }, 1000);
+         
       });
+    
   }
-
+  show(){
+    let imageBinary = `data:application/pdf;base64,${this.adminDataById.Emp_id_doc}`;
+    window.open(imageBinary);
+  }
   getToday(): string {
     return new Date().toISOString().split('T')[0];
   }
@@ -229,7 +259,7 @@ export class AdminRegistrationComponent implements OnInit {
         this.countryId = data.iso2;
       }
     }
-    this.service.getStateOfSelectedCountry(countryIso).subscribe((data) => {
+    this.service.getStateOfSelectedCountry(this.countryId).subscribe((data) => {
       console.log(data);
       this.stateInfo = data;
     });
@@ -258,19 +288,19 @@ export class AdminRegistrationComponent implements OnInit {
   formInitilization() {
     this.adminRegesterForm = this.formBuilder.group(
       {
-        firstName: ['', [Validators.required, Validators.minLength(2)]],
-        lastName: ['', [Validators.required]],
-        userName: ['', [Validators.required]],
+        firstName: ['', [Validators.required, Validators.minLength(2),Validators.pattern('^[a-zA-Z]+$')]],
+        lastName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+        userName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
         dob: ['', [Validators.required]],
-        contactNumber: ['', [Validators.required]],
+        contactNumber: ['', [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
         email: ['', [Validators.required]],
-        socialSecurityNumber: ['', [Validators.required]],
+        socialSecurityNumber: ['', [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
         address1: ['', [Validators.required]],
         address2: ['', []],
         country: ['', [Validators.required]],
         state: ['', [Validators.required]],
         city: ['', [Validators.required]],
-        zipcode: ['', [Validators.required]],
+        zipcode: ['', [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
         gender: ['', [Validators.required]],
         pcp: ['', [Validators.required]],
         employeePostion: ['', [Validators.required]],
@@ -293,6 +323,9 @@ export class AdminRegistrationComponent implements OnInit {
   }
 
   updateFrontDeskRegistrationForm() {
+    clearInterval(this.tracking);
+    this.tracking = null;
+    let imageBinary = this.adminDataById.Profile_image;
     this.adminRegesterForm = this.formBuilder.group({
       firstName: [
         this.adminDataById.First_Name,
@@ -325,7 +358,7 @@ export class AdminRegistrationComponent implements OnInit {
       employeeId: [this.adminDataById.Emp_id, [Validators.required]],
       employeeIdDocument: [this.adminDataById.Emp_id_doc],
       idproof: [this.adminDataById.Id_proof],
-      profileImage: [this.adminDataById.Profile_image],
+      profileImage: [this.adminDataById.profileImage_Name],
     });
 
   }
@@ -435,13 +468,13 @@ export class AdminRegistrationComponent implements OnInit {
   fileData2.append('Emp_designation', this.adminRegesterForm.value['employeePostion']);
   fileData2.append('Immidiate_manager', this.adminRegesterForm.value['immediateManager']);
   fileData2.append('Emp_id', this.adminRegesterForm.value['employeeId']);
-  fileData2.append('Emp_id_doc', this.SelectImage);
-  fileData2.append('Id_proof', this.SelectImage);
-  fileData2.append('Profile_image', this.SelectImage);
+  fileData2.append('Emp_id_doc', this.employeeIdDoc);
+  fileData2.append('Id_proof', this.idproofdoc);
+  fileData2.append('Profile_image', this.profileImageDoc);
   fileData2.append('Created_by', this.createdBy);
-  fileData2.append('otp', 'null');
-
+  fileData2.append('Last_updated_by', this.createdBy);
     console.log(this.SelectImage);
+<<<<<<< HEAD
 
     const data = {
       First_Name: this.adminRegesterForm.value['firstName'],
@@ -468,6 +501,9 @@ export class AdminRegistrationComponent implements OnInit {
       Created_by: this.createdBy,
       otp:"null"
     };
+=======
+  
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     console.log(fileData2);
     this.adminService.saveAdminData(fileData2).subscribe(
       (res) => {

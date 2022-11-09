@@ -6,26 +6,46 @@ import { ActivatedRoute } from '@angular/router';
 import { NgOtpInputComponent, NgOtpInputConfig } from 'ng-otp-input';
 import { Subscription, take, timer } from 'rxjs';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD
+=======
+import { PasswordValidators } from '../validators/password-validators';
+
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
 @Component({
   selector: 'app-frontdesk-reset-password',
   templateUrl: './frontdesk-reset-password.component.html',
   styleUrls: ['./frontdesk-reset-password.component.css'],
 })
 export class FrontdeskResetPasswordComponent implements OnInit {
+<<<<<<< HEAD
+=======
+
+  otptimer:true;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   name: any;
   submitted = false;
   userName: any;
   error: boolean;
   errorMessage: any;
-  popup = false;
+  popup = true;
   otp: any;
   showOtpComponent = true;
   email: any;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
+<<<<<<< HEAD
   counter = 60;
+=======
+  counter = 59;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   tick = 1000;
   isAuth = false;
+  showPassword: boolean;
+  showPasswordOnPress: boolean;
+  showPassword1: boolean;
+  showPasswordOnPress1: boolean;
+  showPassword2: boolean;
+  showPasswordOnPress2: boolean;
   @ViewChild(NgOtpInputComponent, { static: false })
   ngOtpInput: NgOtpInputComponent;
   config: NgOtpInputConfig = {
@@ -44,14 +64,30 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.email = this.router.snapshot.paramMap.get('userName');
     // this.email=this.route.snapshot.paramMap.get('userName')
-    alert(this.email);
     this.name = localStorage.getItem('name');
 
     this.ResetpasswordForm = this.fromBuilder.group(
       {
         // UserName: ['', Validators.required],
         oldPassword: ['', Validators.required],
-        NewPassword: ['', Validators.required],
+        NewPassword: ['', 
+        [
+          Validators.required,
+        Validators.minLength(8),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+          requiresDigit: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+          requiresUppercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+          requiresLowercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+          requiresSpecialChars: true
+        })
+        ]
+      ],
         ConfirmPassword: ['', Validators.required],
       },
       // {
@@ -80,6 +116,34 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   }
   get f() {
     return this.ResetpasswordForm.controls;
+  }
+  get passwordValid() {
+    return this.ResetpasswordForm.controls["NewPassword"].errors === null;
+  }
+
+  get requiredValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("required");
+  }
+
+  get requiresDigitValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresDigit");
+  }
+
+  get minLengthValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("minlength");
+  }
+  
+  
+  get requiresUppercaseValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresUppercase");
+  }
+  
+  get requiresLowercaseValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresLowercase");
+  }
+  
+  get requiresSpecialCharsValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresSpecialChars");
   }
   onOtpChange(otp: any) {
     this.otp = otp;
@@ -143,7 +207,11 @@ export class FrontdeskResetPasswordComponent implements OnInit {
     this.dataService.requestotp(data).subscribe(
       (data2) => {
         console.log(data2);
+<<<<<<< HEAD
         window.location.reload();
+=======
+       window.location.reload();
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
       },
       (err) => {
         console.log(err);
@@ -178,7 +246,7 @@ export class FrontdeskResetPasswordComponent implements OnInit {
       oldPassword: this.ResetpasswordForm.value['oldPassword'],
       Password: this.ResetpasswordForm.value['NewPassword'],
     };
-    this.dataService.changePassword(data).subscribe(
+    this.dataService.changePasswordAfterLogin(data).subscribe(
       (data) => {
         this.auth.logout();
       },

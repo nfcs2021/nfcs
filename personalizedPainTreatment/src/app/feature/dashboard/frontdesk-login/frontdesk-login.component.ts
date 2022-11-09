@@ -29,20 +29,40 @@ export class FrontdeskLoginComponent implements OnInit {
   login_user_msg: string;
   has_error = false;
   data: any;
+<<<<<<< HEAD
   username: any;
   login_time_msg: string = 'First time Login...';
   userName: any;
 
+=======
+  userName:any;
+  email: any;
+  login_time_msg: string = 'First Time login';
+   // variable
+  
+   showPassword: boolean;
+   showPasswordOnPress: boolean;
+  
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   constructor(
     private fromBuilder: FormBuilder,
     private dataservices: DataService,
     private route: Router,
     private authservice: AuthService,
     private frontdeskService: FrontdeskService,
+<<<<<<< HEAD
     private dataService: DataService
   ) {}
 
+=======
+    private dataService:DataService
+  ) {
+   
+  }
+  
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   ngOnInit(): void {
+   
     this.url = this.route.url;
     this.activated = true;
     this.loginFormGroup = this.fromBuilder.group({
@@ -50,10 +70,19 @@ export class FrontdeskLoginComponent implements OnInit {
       password: ['', Validators.required],
       pcp: ['', Validators.required],
     });
+    if(localStorage.getItem('id')){
+     this.authservice.logout();
+    }
   }
+  
+  
   get f() {
     return this.loginFormGroup.controls;
   }
+  // showPassword() {
+  //   this.show_button = !this.show_button;
+  //   this.show_eye = !this.show_eye;
+  // }
 
   onSubmit() {
     this.submitted = true;
@@ -73,11 +102,15 @@ export class FrontdeskLoginComponent implements OnInit {
         console.log(data.access_token);
         console.log(data.data);
         localStorage.setItem('role', data.data.roles.role);
+<<<<<<< HEAD
         console.log(data.role);
         localStorage.setItem(
           'name',
           data.data.First_Name + data.data.Last_Name
         );
+=======
+        localStorage.setItem('name',data.data.First_Name +' '+ data.data.Last_Name);
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('createdBy', data.data.First_Name);
         localStorage.setItem('PCP_Name', data.data.PCP_Name);
@@ -120,6 +153,7 @@ export class FrontdeskLoginComponent implements OnInit {
                   },
                   (err) => {
                     console.log(err);
+<<<<<<< HEAD
                   }
                 );
                 Swal.fire({
@@ -132,7 +166,32 @@ export class FrontdeskLoginComponent implements OnInit {
               });
           },
           (error) => {
+=======
+                    
+                  });
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sucessfully Login',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                },error =>{
+                  console.log(error);
+                  
+                }
+                );
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          },(error) => {
+            this.has_error=true;
+            this.login_user_msg='Invalid Credentials'
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
             console.log(error);
+           
           }
         );
       },

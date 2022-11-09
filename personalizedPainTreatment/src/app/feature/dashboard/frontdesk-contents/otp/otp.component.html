@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container d-flex justify-content-center align-items-center ">
   <div class="position-relative">
     <div class="card p-2 text-center mt-1 mb-3">
@@ -64,7 +65,148 @@
 
                 </form>
               </div>
+=======
+<div class="container  d-flex justify-content-center align-items-center "> 
+  <div class="position-relative"> 
+      <div class="card p-2 text-center mt-1 mb-3">
+       <h6>Please enter the one time password <br> to verify your account</h6> 
+       
+          <ng-otp-input  (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+          <button class="btn mt-3 border validate" (click)="onValidate()">Validate</button><br>
+         
+          <p > <span *ngIf="this.counter!==00" >{{transform(counter)}}</span> 
+         
+                <a *ngIf="this.counter==00" (click)="resendOtp()"  class="text-decoration-none ms-3 "   >Resend</a></p>
+             
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
             </div>
           </div></div></div>
 
+<<<<<<< HEAD
     </div>
+=======
+
+ <div class="overlay " *ngIf="popup">
+  <div class="popup mt-5" class="reveal-modal">
+   
+
+    <div class="content ">
+      <div class="container col-md-8  ">
+        <h2 class=" mt-5 mb-3  form-title border-bottom"> Reset Password </h2>
+ 
+         
+   <div class=" container col-md-12 fixed">
+    <div class="row justify-content-center align-items-center ">
+      <div class="col-md-10  " >
+        <form style="margin-bottom: 100px;"  [formGroup]="ResetpasswordForm"
+        (ngSubmit)="onSubmit()">
+         
+        <div class="mb-3 text-danger col-8" *ngIf="error">
+          Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the domain.
+         </div>
+         
+        <label for="password-field" class="form-label h6"
+        style="color: #712C6B;">Password</label>
+        <div class="form-group inner-addon right-addon row mb-3">
+          <div class="input-group col-10 ">
+            
+      <input  [type]="showPassword ? 'text' : 'password'" class="form-control"
+        id="password-field"
+        style="border: 1px solid #712C6B;color:
+        #712C6B;"
+        formControlName="password"
+        placeholder="Enter password"
+        [ngClass]="{ 'is-valid': (f['password'].dirty || submitted) && passwordValid, 'is-invalid': (f['password'].dirty || submitted) && !passwordValid }"
+        >
+        <div>
+          <i alt="show" class="far fa-eye eye-show" 
+          (click)="showPassword = !showPassword"
+          [class.hide]="showPassword"></i>
+          <i alt="hide" class="far fa-eye-slash eye-hide" 
+          (click)="showPassword = !showPassword"
+          [class.hide]="!showPassword"></i>
+        </div>
+        
+        <div class="invalid-feedback">
+          <!-- required -->
+          <span class="text-danger" *ngIf="(f['password'].dirty || submitted) && !requiredValid">Password is required</span>
+      
+          <!-- password validation rules -->
+          <div class="mt-3" *ngIf="requiredValid">
+            <!-- minlength -->
+            <div [ngClass]="{ 'text-success': minLengthValid, 'text-danger': !minLengthValid }">
+              <i [attr.class]="minLengthValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+              Must be at least 8 characters long
+            </div>
+      
+            <!-- requires digit -->
+            <div [ngClass]="{ 'text-success': requiresDigitValid, 'text-danger': !requiresDigitValid }">
+              <i [attr.class]="requiresDigitValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+              Must contain at least 1 digit
+            </div>
+      
+            <!-- requires uppercase -->
+            <div [ngClass]="{ 'text-success': requiresUppercaseValid, 'text-danger': !requiresUppercaseValid }">
+              <i [attr.class]="requiresUppercaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+              Must contain at least 1 uppercase character
+            </div>
+      
+            <!-- requires lowercase -->
+            <div [ngClass]="{ 'text-success': requiresLowercaseValid, 'text-danger': !requiresLowercaseValid }">
+              <i [attr.class]="requiresLowercaseValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+              Must contain at least 1 lowercase character
+            </div>
+      
+            <!-- requires special characters -->
+            <div [ngClass]="{ 'text-success': requiresSpecialCharsValid, 'text-danger': !requiresSpecialCharsValid }">
+              <i [attr.class]="requiresSpecialCharsValid ? 'bi-check-square-fill' : 'bi-x-square'"></i>
+              Must contain at least 1 special character
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+     
+      <label for="name" class="form-label h6 mt-3" style="color: #712C6B;">Confirm
+        Password</label>
+        <div class="form-group inner-addon right-addon row mb-3">
+          <div class="input-group col-10 ">
+      <input  [type]="showPassword1 ? 'text' : 'password'" class="form-control"
+        formControlName="confirmPassword" style="border: 1px solid
+        #712C6B;color:
+        #712C6B;">
+        <div>
+          <i alt="show" class="far fa-eye eye-show" 
+          (click)="showPassword1 = !showPassword1"
+          [class.hide]="showPassword1"></i>
+          <i alt="hide" class="far fa-eye-slash eye-hide" 
+          (click)="showPassword1 = !showPassword1"
+          [class.hide]="!showPassword1"></i>
+        </div>
+      <div *ngIf="submitted && f['confirmPassword'].errors" class="alert
+        alert-danger">
+        
+
+        <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm
+          Password is required</div>
+        <div
+          *ngIf="f['confirmPassword'].errors?.['confirmPasswordValidator']">Passsword
+          and
+          Confirm Password didn't match. </div>
+      </div>
+      </div>
+      </div>
+ 
+       
+        <br>
+        <button  class="btn btn-primary ml-5" type="submit">Save Password</button>
+     
+        </form>
+      </div>
+      </div>
+        </div></div></div>
+       
+        </div>
+   
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52

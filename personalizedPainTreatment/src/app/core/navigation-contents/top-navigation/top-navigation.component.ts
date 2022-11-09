@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Input } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, Input, ViewChild } from '@angular/core';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
@@ -26,11 +26,21 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   data: any;
   frontdeskData: any;
   firstName: any;
+<<<<<<< HEAD
   btndisable: boolean;
   id: any;
   imageUrl: string;
   localData: any;
   src: any;
+=======
+  btndisable:boolean;
+  src: string;
+  role:any;
+  @ViewChild('imgRef') img:ElementRef;
+  imageUrl: string;
+  localData: any;
+  loginUserData:any;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -40,6 +50,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+<<<<<<< HEAD
     this.localData = localStorage.getItem('id');
     this.dataService.getUserData(localStorage.getItem('id')).subscribe(
       (res) => {
@@ -53,6 +64,24 @@ export class TopNavigationComponent implements OnInit, OnChanges {
         console.log(err);
       }
     );
+=======
+    this.localData=localStorage.getItem('id');
+    this.role=localStorage.getItem('role');
+    this.dataService.getUserData(localStorage.getItem('id')).subscribe(
+      res =>{
+         console.log(res);
+         this.loginUserData=res;
+         let imageBinary = res.Profile_image; //image binary data response from api
+        //  let imageBase64String= btoa(imageBinary);
+          this.imageUrl = 'data:image/jpeg;base64,' + imageBinary;
+         console.log(this.src);
+         
+      },err =>{
+        console.log(err);
+        
+      }
+    )
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   }
 
   ngOnChanges() {

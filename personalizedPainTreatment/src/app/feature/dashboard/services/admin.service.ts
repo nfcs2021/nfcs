@@ -15,34 +15,32 @@ export class AdminService {
       Authorization: 'Bearer' + localStorage.getItem('token'),
     });
     return this.http.get<any>(environment.apiUrl + 'getadminregister', {
-      headers: httpHeaders,
+      headers: httpHeaders
     });
   }
   getAdminData(id: any) {
-    const httpHeaders = new HttpHeaders({
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl + 'adminregister/'+id, {
-      headers: httpHeaders,
+
+    return this.http.get<any>(environment.apiUrl+'register/'+id, {
+
+      headers: httpheaders,
     });
   }
  
 
   getAllRegistrationData() {
     const httpHeaders = new HttpHeaders({
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl + 'getadminregister', {
+    return this.http.get<any>(environment.apiUrl + 'allregisterData', {
       headers: httpHeaders,
     });
   }
   saveAdminData(fileData2: any) {
-    const httpHeaders = new HttpHeaders({
-      Authorization: 'Bearer' + localStorage.getItem('token'),
-    });
-    return this.http.post<any>(environment.apiUrl + 'adminregister', {
-      headers: httpHeaders,
-    });
+  
+    return this.http.post<any>(environment.apiUrl + 'adminregister',fileData2);
   }
 
 

@@ -19,6 +19,8 @@
               <div *ngIf="f['firstName'].errors['minlength']" class="text-danger">First
                 Name must be at least 2
                 characters</div>
+                <div *ngIf="f['firstName'].errors['pattern']" class="text-danger">
+                  Numbers Not allowed</div>
             </div>
             <label for="lastName" class="mt-3">Last Name <span
                 class="text-danger">*</span></label>
@@ -29,6 +31,8 @@
               class="invalid-feedback">
               <div *ngIf="f['lastName'].errors['required']" class="text-danger">Last
                 Name is required</div>
+                <div *ngIf="f['lastName'].errors['pattern']" class="text-danger">Numbers Not allowed
+                </div>
             </div>
 
             <label for="userName" class="mt-3">User Name <span
@@ -90,6 +94,8 @@
               class="invalid-feedback">
               <div *ngIf="f['contactNumber'].errors['required']"
                 class="text-danger">Contact Number is required</div>
+                <div *ngIf="f['contactNumber'].errors['pattern']" class="text-danger">Characters Not allowed
+                </div>
             </div>
             <label for="email" class="mt-3">E-mail address</label>
             <input type="email" class="form-control" id="email" placeholder="Email
@@ -110,6 +116,7 @@
               class="invalid-feedback">
               <div *ngIf="f['socialSecurityNumber'].errors['required']"
                 class="text-danger">Social Security Number is required</div>
+                <div *ngIf="f['socialSecurityNumber'].errors['pattern']" class="text-danger">Characters Not allowed </div>  
             </div>
             <label for="Address" class="mt-3">Address </label>
             <input type="text" class="form-control " id="Address"
@@ -135,6 +142,7 @@
               <div *ngIf="f['country'].errors['required']" class="text-danger">Country
                 is required</div>
             </div>
+
             <select class="form-control mt-3 form-select"
               (change)="onChangeState($event)"
               formControlName="state" [ngClass]="{ 'is-invalid': submitted &&
@@ -167,6 +175,8 @@
               class="invalid-feedback">
               <div *ngIf="f['zipcode'].errors['required']" class="text-danger">Zipcode
                 is required</div>
+                <div *ngIf="f['zipcode'].errors['pattern']" class="text-danger">Characters Not allowed
+                </div>
             </div>
           </div>
           <div class="form-group col-sm-5 ml-5">
@@ -181,7 +191,7 @@
               <option>Medicover</option>
             </select>
             <label for="firstName" class="mt-3">Employee Position<span
-                class="text-danger">*</span>
+                class="text-danger"></span>
             </label>
             <input type="text" class="form-control " id="firstName"
               placeholder="First Name" formControlName="employeePostion">
@@ -224,17 +234,18 @@
             <div class="mt-3">
               <label for="employeeIdDocument">Employee ID Document</label>
               <input class="form-control" id="formFileLg"
-                type="file" formControlName="employeeIdDocument" (change)="onSelectImage($event)"/>
+                type="file" formControlName="employeeIdDocument" (change)="employeeIdDocument($event)"/>
+                <a (click)="show()">show</a>
             </div>
             <div class="mt-3">
               <label for="idproof">ID Proof(Drivers Licence/State ID)</label>
               <input class="form-control" id="formFileLg"
-                type="file" formControlName="idproof"/>
+                type="file" formControlName="idproof" (change)="idProofDocument($event)"/>
             </div>
             <div class="mt-3 mb-5">
               <label for="profileImage">Profile Image</label>
               <input class="form-control" id=""
-                type="file" formControlName="profileImage" />
+                type="file" formControlName="profileImage" (change)="profileImageDocument($event)"/>
             </div>
             <button class="mb-3 mt-5 p-2 btn col-sm-12 " type="submit">Submit
             </button>

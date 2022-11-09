@@ -79,6 +79,7 @@ const routes: Routes = [
           {
             path: 'new/:id', component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService]
+<<<<<<< HEAD
           },
           { path: 'survey-form/:id', component: PatientSurveyFormComponent },
           { path: 'list', component: PatientListComponent },
@@ -90,6 +91,9 @@ const routes: Routes = [
           { path: 'new/:id', component: AddPatientComponent },
 
         ],
+=======
+          }],
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
       },
       {
         path: 'frontdesk',
@@ -97,13 +101,19 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
 
+<<<<<<< HEAD
           { path: 'frontdetails', component: FrontdeskDetailsComponent },
           { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
+=======
+          { path: 'frontdetails', component: FrontdeskDetailsComponent, canActivate: [AuthRouteGaurdService] },
+          { path: 'frontdetails/:id', component: FrontdeskDetailsComponent, canActivate: [AuthRouteGaurdService] },
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
           {
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
             canActivate: [AuthRouteGaurdService]
           },
+<<<<<<< HEAD
           {
             path: 'frontdeskregistration/:id',
             component: FrontdeskRegistrationComponent,
@@ -117,6 +127,23 @@ const routes: Routes = [
             path: 'frontdeskregistration/:id',
             component: FrontdeskRegistrationComponent,
           },
+=======
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
+          //   canActivate: [AuthRouteGaurdService]
+          // },
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
+          //   canActivate: [AuthRouteGaurdService],
+          // },
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
+
+          // },
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
           {
             path: 'frontdesk-registration/:id',
             component: FrontdeskRegistrationComponent,
@@ -125,20 +152,33 @@ const routes: Routes = [
           {
             path: 'resetpassword/:userName',
             component: FrontdeskResetPasswordComponent,
+            canActivate: [AuthRouteGaurdService]
           },
-          { path: 'frontdesklist/:id', component: FrontdesklistComponent },
-          { path: 'frontdesklist', component: FrontdesklistComponent },
+          {
+            path: 'frontdesklist/:id',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesklist',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
 
-          {path:'frontdeskpasswordChange/:userName',component:FrontdeskPasswordChangeComponent},
-          {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp/:userName',component:OtpComponent},
-
-          {path:'frontdeskpasswordChange',component:FrontdeskPasswordChangeComponent},
-
-          { path: 'frontdesklist', component: FrontdesklistComponent },
-
+          {
+            path: 'frontdeskpasswordChange/:userName',
+            component: FrontdeskPasswordChangeComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
           { path: 'forgetpassword', component: ForgetpasswordComponent },
           { path: 'otp/:userName', component: OtpComponent },
+<<<<<<< HEAD
+=======
+          {
+            path: 'frontdeskpasswordChange',
+            component: FrontdeskPasswordChangeComponent
+          },
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
           {
             path: 'resetpassword/:userName',
             component: FrontdeskResetPasswordComponent,
@@ -147,9 +187,7 @@ const routes: Routes = [
             path: 'changepassword/:id',
             component: FrontdeskResetPasswordComponent,
           },
-          {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp',component:OtpComponent},
-          {path:'contact',component:ContactComponent}
+          { path: 'contact', component: ContactComponent }
 
         ],
       },
@@ -158,11 +196,34 @@ const routes: Routes = [
         component: AdminMainComponent,
         children: [
           { path: '', redirectTo: 'admindetails', pathMatch: 'full' },
-          {path:'admin-registration',component:AdminRegistrationComponent},
-          {path:'adminlist',component:AdminListComponent},
-          {path:'admin-details',component:AdminDetailsComponent}
+          {
+            path: 'admin-registration',
+            component: AdminRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+        
+          {
+            path: 'admin-registration/:id',
+            component: AdminRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'adminlist',
+            component: AdminListComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'admin-details',
+            component: AdminDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'admin-details/:id',
+            component: AdminDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          }
         ]
-        }
+      }
     ],
   },
 ];
@@ -171,4 +232,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }

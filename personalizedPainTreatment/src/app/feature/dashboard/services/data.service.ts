@@ -12,7 +12,7 @@ export class DataService {
     localStorage.setItem('loginEmail', data.email);
     return this.http.post<any>(environment.apiUrl + 'login', data);
   }
-  getUserData(id: any): Observable<any> {
+  getUserData(id: any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
@@ -56,6 +56,20 @@ getFrontDeskData(email:any){
       headers: httpheaders,
     });
   }
+<<<<<<< HEAD
+=======
+  changePasswordAfterLogin(data:any) {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.put<any>(environment.apiUrl+'changePassword',data,{
+
+      headers: httpheaders,
+    });
+  }
+
+
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   create(data:any){
     // const httpheaders = new HttpHeaders({
     //   Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -74,4 +88,18 @@ requestotp(data:any){
   forgotPassword(data: any) {
     return this.http.put(environment.apiUrl + 'updatePassword', data);
   }
+<<<<<<< HEAD
+=======
+
+  getFrontdeskData(): Observable<any> {
+    const httpheaders = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this.http.get<any>(environment.apiUrl + 'register', {
+      headers: httpheaders,
+    });
+  }
+  
+
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
 }

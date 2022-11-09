@@ -7,6 +7,7 @@ import { Subscription, take, timer } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthRouteGaurdService } from '../../services/auth-route-gaurd.service';
 import { DataService } from '../../services/data.service';
+import { PasswordValidators } from '../validators/password-validators';
 
 @Component({
   selector: 'app-otp',
@@ -21,10 +22,22 @@ export class OtpComponent implements OnInit {
   submitted = false;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
+<<<<<<< HEAD
   counter = 30;
   tick = 1000;
   isAuth=false
   @ViewChild(NgOtpInputComponent, { static: false})
+=======
+  counter = 59;
+  tick = 1000; 
+  isAuth=false
+  showPassword: boolean;
+  showPasswordOnPress: boolean;
+  showPassword1: boolean;
+  showPasswordOnPress1: boolean;
+
+  @ViewChild(NgOtpInputComponent, { static: false}) 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   ngOtpInput:NgOtpInputComponent;
   config :NgOtpInputConfig = {
     allowNumbersOnly: true,
@@ -145,9 +158,32 @@ export class OtpComponent implements OnInit {
   formInitilization() {
     this.ResetpasswordForm = this.formBuilder.group(
       {
+<<<<<<< HEAD
 
         password: ['', Validators.required],
 
+=======
+       
+        password: ['', 
+        [
+          Validators.required,
+          Validators.minLength(8),
+          PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+            requiresDigit: true
+          }),
+          PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+            requiresUppercase: true
+          }),
+          PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+            requiresLowercase: true
+          }),
+          PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+            requiresSpecialChars: true
+          })
+        ]
+      ],
+       
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
         confirmPassword: ['', Validators.required],
       },
       {
@@ -155,6 +191,34 @@ export class OtpComponent implements OnInit {
       }
     );
   }
+  get passwordValid() {
+    return this.ResetpasswordForm.controls["password"].errors === null;
+  }
+
+  get requiredValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("required");
+  }
+
+  get minLengthValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("minlength");
+  }
+
+  get requiresDigitValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("requiresDigit");
+  }
+
+  get requiresUppercaseValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("requiresUppercase");
+  }
+
+  get requiresLowercaseValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("requiresLowercase");
+  }
+
+  get requiresSpecialCharsValid() {
+    return !this.ResetpasswordForm.controls["password"].hasError("requiresSpecialChars");
+  }
+
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
       let control = formGroup.controls[password];
@@ -206,8 +270,12 @@ export class OtpComponent implements OnInit {
     this.dataService.requestotp(data).subscribe(
       data2=>{
         console.log(data2);
+<<<<<<< HEAD
 
         this.transform(this.counter);
+=======
+        window.location.reload();
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
       },err =>{
         console.log(err);
 

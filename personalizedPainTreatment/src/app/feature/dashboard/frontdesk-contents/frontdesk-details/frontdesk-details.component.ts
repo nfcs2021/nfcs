@@ -126,9 +126,9 @@ export class FrontdeskDetailsComponent implements OnInit {
     this.dataService.requestotp(data).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate([
+        this.router.navigateByUrl(
           '/frontdesk/resetpassword/' + this.frontDeskData.User_Name,
-        ]);
+        );
       },
       (err) => {
         console.log(err);

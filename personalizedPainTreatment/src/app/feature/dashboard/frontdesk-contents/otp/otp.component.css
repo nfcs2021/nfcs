@@ -90,3 +90,24 @@ p{
 a{
   text-decoration: underline;
 }
+<<<<<<< HEAD
+=======
+
+.hide {
+  display: none;
+}
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon .far, .inner-addon .fas {
+  position: absolute;
+  padding: 10px 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+.left-addon .far, .left-addon .fas  { left:  0px; }
+.right-addon .far, .right-addon .fas { right: 0px; }
+
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
