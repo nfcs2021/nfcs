@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Input } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, Input, ViewChild } from '@angular/core';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/feature/dashboard/services/auth.service';
@@ -27,6 +27,12 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   frontdeskData: any;
   firstName: any;
   btndisable:boolean;
+  src: string;
+  role:any;
+  @ViewChild('imgRef') img:ElementRef;
+  imageUrl: string;
+  localData: any;
+  loginUserData:any;
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -36,6 +42,22 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+    this.localData=localStorage.getItem('id');
+    this.role=localStorage.getItem('role');
+    this.dataService.getUserData(localStorage.getItem('id')).subscribe(
+      res =>{
+         console.log(res);
+         this.loginUserData=res;
+         let imageBinary = res.Profile_image; //image binary data response from api
+        //  let imageBase64String= btoa(imageBinary);
+          this.imageUrl = 'data:image/jpeg;base64,' + imageBinary;
+         console.log(this.src);
+         
+      },err =>{
+        console.log(err);
+        
+      }
+    )
   }
 
   ngOnChanges() {

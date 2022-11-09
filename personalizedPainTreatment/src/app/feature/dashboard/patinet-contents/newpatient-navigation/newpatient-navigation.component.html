@@ -1,6 +1,6 @@
-<div class="container col-md-10 text-center">
+<div class="container col-md-12 text-center ">
   <div class="row ml-5 ">
-    <div class="col" style="margin-top: 100px;margin-left: 300px;">
+    <div class="col mt-4" style="margin-left: 300px;">
       <button class="btn btn-block border fa-lg col-md-5 p-2
         gradient-custom-2 text-light"
         style="background-color: #712C6B;font-weight:
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row ml-5">
-    <div class="col" style="margin-top: 70px;margin-left:
+    <div class="col" style="margin-top: 60px;margin-left:
       300px;"[ngStyle]="{'margin-bottom':(role!=='admin') ? '40%':'0%'}">
       <button class="btn btn-block border fa-lg col-md-5 p-2
         gradient-custom-2 text-light"
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="row ml-5" *ngIf="role==='admin'">
-    <div class="col " style="margin-top: 70px; margin-bottom: 7%;margin-left:
+    <div class="col " style="margin-top: 60px; margin-bottom: 7%;margin-left:
       300px;">
       <button class="btn btn-block border fa-lg col-md-5 p-2
         gradient-custom-2 text-light"
@@ -44,10 +44,10 @@
             style="width: 20%;"></div></button>
     </div>
   </div>
-  <div class="row ml-5" *ngIf="role==='admin'">
+  <div class="row ml-5 " *ngIf="role==='admin'">
     <div class="col" style="margin-left:
       300px;">
-      <button class="btn btn-block border fa-lg col-md-5 p-2
+      <button class="btn btn-block  fa-lg col-md-5 p-1
         gradient-custom-2 text-light"
         style="background-color: #712C6B;font-weight:
         bold;" type="button"

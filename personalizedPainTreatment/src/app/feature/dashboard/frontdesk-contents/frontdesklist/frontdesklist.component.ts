@@ -5,6 +5,7 @@ import {
   FrontdeskEmployee,
   SearchModel1,
 } from '../frontdesk-model/frontdesk-model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-frontdesklist',
@@ -17,7 +18,7 @@ export class FrontdesklistComponent implements OnInit {
   dropdown: boolean[] = [];
   page: number = 1;
   totalRec: string;
-  constructor(private authService: AuthService) {}
+  constructor(private service: DataService) {}
 
   ngOnInit(): void {
     this.getRegisterData();
@@ -26,8 +27,13 @@ export class FrontdesklistComponent implements OnInit {
     this.dropdown[i] = !this.dropdown[i];
   }
   getRegisterData() {
-    this.authService.getAllRegistrationData().subscribe((data) => {
+    this.service.getFrontdeskData().subscribe((data) => {
       this.frontDesKList = data;
+      console.log(data);
+      
+    },err =>{
+      console.log(err);
+      
     });
   }
 }

@@ -183,7 +183,6 @@ export class AddPatientComponent implements OnInit {
 
   }
   onChangeCountryUpdateData(countryValue: any) {
-    alert(countryValue)
     let countryIso: any;
     for (let data of this.countryInfo) {
       if (countryValue === data.name) {
@@ -202,7 +201,6 @@ export class AddPatientComponent implements OnInit {
   }
 
   onChangeStateUpdateData(stateValue: any) {
-    alert(stateValue)
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {
@@ -394,7 +392,8 @@ export class AddPatientComponent implements OnInit {
       "City": this.patientRegesterForm.value['city'],
       "Zipcode": this.patientRegesterForm.value['zipcode'],
       "Insurance_Number": 234567,
-      "Created_by": localStorage.getItem('name')
+      "Created_by":localStorage.getItem('name'),
+      "Last_updated_by":localStorage.getItem('name')
     }
     this.patientService.savePatientData(data).subscribe(
       data => {
@@ -427,7 +426,8 @@ export class AddPatientComponent implements OnInit {
         "City": this.patientRegesterForm.value['city'],
         "Zipcode": this.patientRegesterForm.value['zipcode'],
         "Insurance_Number": 234567,
-        "Created_by":localStorage.getItem('name')
+        "Created_by":this.patientDataById.Created_by,
+        "Last_updated_by":localStorage.getItem('name')
   }
   console.log(data);
   this.patientService.updatePatientData(data,this.patientId).subscribe(

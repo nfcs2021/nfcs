@@ -110,9 +110,9 @@ return this.http.get('http://127.0.0.1:8000/api/Idproof/download/'+data.id,{resp
     this.dataService.requestotp(data).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate([
+        this.router.navigateByUrl(
           '/frontdesk/resetpassword/' + this.frontDeskData.User_Name,
-        ]);
+        );
       },
       (err) => {
         console.log(err);

@@ -1,5 +1,7 @@
 .container {
-  background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
+  height: calc(80vh);
+  width: 100%;
+  /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
 }
 p {
   font-family: Lato;
@@ -10,3 +12,22 @@ p {
 input.ng-touched.ng-invalid {
   border: 1px solid red;
 }
+
+
+.hide {
+  display: none;
+}
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon .far, .inner-addon .fas {
+  position: absolute;
+  padding: 10px 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+.left-addon .far, .left-addon .fas  { left:  0px; }
+.right-addon .far, .right-addon .fas { right: 0px; }
+
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }

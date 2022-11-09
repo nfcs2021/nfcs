@@ -16,6 +16,8 @@ export class PatientListComponent implements OnInit {
   dropdown:boolean[]=[];
   page: number = 1;
   tatalRec: string;
+  role:any;
+  report=false;
   patientRecordData: PatientRecord[];
   constructor(
     private service:PatientService
@@ -23,7 +25,18 @@ export class PatientListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPatient();
+    this.role=localStorage.getItem('role');
+   
   }
+
+  checkCurrentLesson1() {
+    if (this.role==='admin') { 
+     return false;
+    }
+    else {
+     return true;
+    }
+    }
   troggle(i:any){
     this.dropdown[i]=!this.dropdown[i];
   }

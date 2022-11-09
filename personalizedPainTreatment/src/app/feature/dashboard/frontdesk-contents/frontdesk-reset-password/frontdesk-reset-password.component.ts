@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgOtpInputComponent, NgOtpInputConfig } from 'ng-otp-input';
 import { Subscription, take, timer } from 'rxjs';
 import Swal from 'sweetalert2';
+import { PasswordValidators } from '../validators/password-validators';
 
 @Component({
   selector: 'app-frontdesk-reset-password',
@@ -14,20 +15,27 @@ import Swal from 'sweetalert2';
 })
 export class FrontdeskResetPasswordComponent implements OnInit {
 
+  otptimer:true;
   name: any;
   submitted = false;
   userName: any;
   error: boolean;
   errorMessage: any;
-  popup = false;
+  popup = true;
   otp: any;
   showOtpComponent = true;
   email: any;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
-  counter = 30;
+  counter = 59;
   tick = 1000;
   isAuth = false;
+  showPassword: boolean;
+  showPasswordOnPress: boolean;
+  showPassword1: boolean;
+  showPasswordOnPress1: boolean;
+  showPassword2: boolean;
+  showPasswordOnPress2: boolean;
   @ViewChild(NgOtpInputComponent, { static: false })
   ngOtpInput: NgOtpInputComponent;
   config: NgOtpInputConfig = {
@@ -46,14 +54,30 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.email = this.router.snapshot.paramMap.get('userName');
     // this.email=this.route.snapshot.paramMap.get('userName')
-    alert(this.email);
     this.name = localStorage.getItem('name');
 
     this.ResetpasswordForm = this.fromBuilder.group(
       {
         // UserName: ['', Validators.required],
         oldPassword: ['', Validators.required],
-        NewPassword: ['', Validators.required],
+        NewPassword: ['', 
+        [
+          Validators.required,
+        Validators.minLength(8),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+          requiresDigit: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+          requiresUppercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+          requiresLowercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+          requiresSpecialChars: true
+        })
+        ]
+      ],
         ConfirmPassword: ['', Validators.required],
       },
       {
@@ -76,6 +100,34 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   }
   get f() {
     return this.ResetpasswordForm.controls;
+  }
+  get passwordValid() {
+    return this.ResetpasswordForm.controls["NewPassword"].errors === null;
+  }
+
+  get requiredValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("required");
+  }
+
+  get requiresDigitValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresDigit");
+  }
+
+  get minLengthValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("minlength");
+  }
+  
+  
+  get requiresUppercaseValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresUppercase");
+  }
+  
+  get requiresLowercaseValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresLowercase");
+  }
+  
+  get requiresSpecialCharsValid() {
+    return !this.ResetpasswordForm.controls["NewPassword"].hasError("requiresSpecialChars");
   }
   onOtpChange(otp: any) {
     this.otp = otp;
@@ -133,13 +185,13 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   }
   resendOtp() {
     const data = {
-      Email: this.email,
+      User_Name: this.email,
       otp: this.otp,
     };
     this.dataService.requestotp(data).subscribe(
       (data2) => {
         console.log(data2);
-        this.transform(this.counter);
+       window.location.reload();
       },
       (err) => {
         console.log(err);
@@ -174,7 +226,7 @@ export class FrontdeskResetPasswordComponent implements OnInit {
       oldPassword: this.ResetpasswordForm.value['oldPassword'],
       Password: this.ResetpasswordForm.value['NewPassword'],
     };
-    this.dataService.changePassword(data).subscribe(
+    this.dataService.changePasswordAfterLogin(data).subscribe(
       (data) => {
         this.auth.logout();
       },

@@ -29,6 +29,10 @@ export class FrontdeskLoginComponent implements OnInit {
   userName:any;
   email: any;
   login_time_msg: string = 'First Time login';
+   // variable
+  
+   showPassword: boolean;
+   showPasswordOnPress: boolean;
   
   constructor(
     private fromBuilder: FormBuilder,
@@ -36,9 +40,12 @@ export class FrontdeskLoginComponent implements OnInit {
     private authservice: AuthService,
     private frontdeskService: FrontdeskService,
     private dataService:DataService
-  ) {}
-
+  ) {
+   
+  }
+  
   ngOnInit(): void {
+   
     this.url = this.route.url;
     this.activated = true;
     this.loginFormGroup = this.fromBuilder.group({
@@ -46,10 +53,19 @@ export class FrontdeskLoginComponent implements OnInit {
       password: ['', Validators.required],
       pcp: ['', Validators.required],
     });
+    if(localStorage.getItem('id')){
+     this.authservice.logout();
+    }
   }
+  
+  
   get f() {
     return this.loginFormGroup.controls;
   }
+  // showPassword() {
+  //   this.show_button = !this.show_button;
+  //   this.show_eye = !this.show_eye;
+  // }
 
   onSubmit() {
     this.submitted = true;
@@ -67,7 +83,7 @@ export class FrontdeskLoginComponent implements OnInit {
       (data) => {
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('role', data.data.roles.role);
-        localStorage.setItem('name',data.data.First_Name + data.data.Last_Name);
+        localStorage.setItem('name',data.data.First_Name +' '+ data.data.Last_Name);
         localStorage.setItem('id', data.data.id);
         localStorage.setItem('createdBy', data.data.First_Name);
         localStorage.setItem('PCP_Name', data.data.PCP_Name);
@@ -108,8 +124,7 @@ export class FrontdeskLoginComponent implements OnInit {
                   },err =>{
                     console.log(err);
                     
-                  }
-                 );
+                  });
                   Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -117,14 +132,21 @@ export class FrontdeskLoginComponent implements OnInit {
                     showConfirmButton: false,
                     timer: 1500,
                   });
-                });
+                },error =>{
+                  console.log(error);
+                  
+                }
+                );
               },
               (error) => {
                 console.log(error);
               }
             );
           },(error) => {
+            this.has_error=true;
+            this.login_user_msg='Invalid Credentials'
             console.log(error);
+           
           }
         );
 

@@ -27,23 +27,26 @@
     paginate:{id:'listing_pagination',itemsPerPage:1,currentPage:page,totalItems:tatalRec}
     let i= index ">
     <a (click)="troggle(adminList.id)">
-      <table class="table table-borderless">
+      <table class="table table-borderless ">
         <thead>
           <tr>
+            <th>Admin ID</th>
             <th>First Name</th>
             <th>LastName</th>
-            <th>Dob</th>
-            <th>SocialSecurityNumber</th>
+            <th>Gender</th>
+            <th>Immediate Manager</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>{{adminList.id }}</td>
             <td>{{adminList.First_Name }}</td>
             <td>{{adminList.Last_Name }}</td>
-            <td>{{adminList.Date_of_birth }}</td>
-            <td>{{adminList.Ssn }}</td>
+            <td>{{adminList.Gender }}</td>
+            <td>{{adminList.Immidiate_manager }}</td>
           </tr>
-          <tr>
+          
+          <!-- <tr>
             <th>Email </th>
             <th>contactNumber</th>
             <th>Address</th>
@@ -51,30 +54,32 @@
 
           </tr>
           <tr>
-            <td>{{adminList.Email_address | uppercase}}</td>
-            <td>{{adminList.Contact_Number}}</td>
+            <td>{{adminList.Email | uppercase}}</td>
+            <td>{{adminList.Contact_number}}</td>
             <td class="col-3">{{adminList.Address_Line1 | uppercase}},{{adminList.Address_Line1}}<br>{{adminList.City}},
               {{adminList.State}} <br> {{adminList.Country}} -
               {{adminList.Zipcode}}</td>
             <td>{{adminList.created_at }}</td>
-          </tr>
-          <tr>
-          </tr>
+          </tr> -->
+         
         </tbody>
       </table>
     </a>
-    <div class="row mb-5" *ngIf="dropdown[adminList.id]">
-      <div class="ml-3 col-2">
-      <button  class="btn btn-primary" routerLink="/patient/new/{{adminList.id}}" >Edit Patient Details</button>
-      </div>
-      <div class="col-6">
-      <!-- <button  class="btn btn-primary ml-md-auto  d-md-flex" routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button> -->
-    </div>
+
     
-      
-   
-<!-- </div> -->
-</div>
+    <!-- <div class="row mb-5" *ngIf="dropdown[adminList.id]">
+       <div class="ml-3 col-2">
+      <button  class="btn btn-primary" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Patient Details</button>
+      </div> 
+
+    <div *ngIf="dropdown[adminList.id]">
+      <div class="buttons  ">
+          <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/admin/admin-registration/{{adminList.id}}" >Edit Front Desk Employee</a><br>
+          <br>
+        </div>
+  </div>
+
+  </div> -->
   <pagination-controls id="listing_pagination" [maxSize]="5 "
     [directionLinks]="true" (pageChange)="page= $event">
   </pagination-controls>

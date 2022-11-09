@@ -88,52 +88,36 @@ const routes: Routes = [
 
             path: 'new/:id', component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService]
-          },
-
-            
-
-
-          { path: 'survey-form/:id', component: PatientSurveyFormComponent },
-          { path: 'list', component: PatientListComponent },
-          { path: 'view', component: ViewreportComponent },
-          { path: 'view/:id', component: ViewreportComponent },
-          { path: 'nav', component: NewpatientNavigationComponent },
-          { path: 'data/:id', component: PatientdataComponent },
-          { path: 'patient-report/:id', component: PatientReportComponent },
-          { path: 'new/:id', component: AddPatientComponent },
-
-        ],
+          }],
       },
       {
         path: 'frontdesk',
         component: FrontdeskMainComponent,
         children: [
           { path: '', redirectTo: 'frontdeskdetails', pathMatch: 'full' },
-          
-          { path: 'frontdetails', component: FrontdeskDetailsComponent },
-          { path: 'frontdetails/:id', component: FrontdeskDetailsComponent },
+
+          { path: 'frontdetails', component: FrontdeskDetailsComponent, canActivate: [AuthRouteGaurdService] },
+          { path: 'frontdetails/:id', component: FrontdeskDetailsComponent, canActivate: [AuthRouteGaurdService] },
           {
             path: 'frontdesk-registration',
             component: FrontdeskRegistrationComponent,
-
             canActivate: [AuthRouteGaurdService]
+          },
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
+          //   canActivate: [AuthRouteGaurdService]
+          // },
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
+          //   canActivate: [AuthRouteGaurdService],
+          // },
+          // {
+          //   path: 'frontdeskregistration/:id',
+          //   component: FrontdeskRegistrationComponent,
 
-           
-          },
-          {
-            path: 'frontdeskregistration/:id',
-            component: FrontdeskRegistrationComponent,
-          },
-          {
-            path: 'frontdeskregistration/:id',
-            component: FrontdeskRegistrationComponent,
-            canActivate: [AuthRouteGaurdService],
-          },
-          {
-            path: 'frontdeskregistration/:id',
-            component: FrontdeskRegistrationComponent,
-
-          },
+          // },
           {
             path: 'frontdesk-registration/:id',
             component: FrontdeskRegistrationComponent,
@@ -142,20 +126,30 @@ const routes: Routes = [
           {
             path: 'resetpassword/:userName',
             component: FrontdeskResetPasswordComponent,
+            canActivate: [AuthRouteGaurdService]
           },
-          { path: 'frontdesklist/:id', component: FrontdesklistComponent },
-          { path: 'frontdesklist', component: FrontdesklistComponent },
+          {
+            path: 'frontdesklist/:id',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'frontdesklist',
+            component: FrontdesklistComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
 
-          {path:'frontdeskpasswordChange/:userName',component:FrontdeskPasswordChangeComponent},
-          {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp/:userName',component:OtpComponent},
-
-          {path:'frontdeskpasswordChange',component:FrontdeskPasswordChangeComponent},
-
-          { path: 'frontdesklist', component: FrontdesklistComponent },
-
+          {
+            path: 'frontdeskpasswordChange/:userName',
+            component: FrontdeskPasswordChangeComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
           { path: 'forgetpassword', component: ForgetpasswordComponent },
-          { path: 'otp', component: OtpComponent },
+          { path: 'otp/:userName', component: OtpComponent },
+          {
+            path: 'frontdeskpasswordChange',
+            component: FrontdeskPasswordChangeComponent
+          },
           {
             path: 'changepassword',
             component: FrontdeskResetPasswordComponent,
@@ -164,9 +158,7 @@ const routes: Routes = [
             path: 'changepassword/:id',
             component: FrontdeskResetPasswordComponent,
           },
-          {path:'forgetpassword',component:ForgetpasswordComponent},
-          {path:'otp',component:OtpComponent},
-          {path:'contact',component:ContactComponent}
+          { path: 'contact', component: ContactComponent }
 
         ],
       },
@@ -175,11 +167,34 @@ const routes: Routes = [
         component: AdminMainComponent,
         children: [
           { path: '', redirectTo: 'admindetails', pathMatch: 'full' },
-          {path:'admin-registration',component:AdminRegistrationComponent},
-          {path:'adminlist',component:AdminListComponent},
-          {path:'admin-details',component:AdminDetailsComponent}
+          {
+            path: 'admin-registration',
+            component: AdminRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+        
+          {
+            path: 'admin-registration/:id',
+            component: AdminRegistrationComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'adminlist',
+            component: AdminListComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'admin-details',
+            component: AdminDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          },
+          {
+            path: 'admin-details/:id',
+            component: AdminDetailsComponent,
+            canActivate: [AuthRouteGaurdService]
+          }
         ]
-        }
+      }
     ],
   },
 ];
@@ -188,4 +203,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }

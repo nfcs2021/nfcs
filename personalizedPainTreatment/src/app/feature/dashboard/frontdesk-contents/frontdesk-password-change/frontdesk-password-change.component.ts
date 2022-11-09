@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+import { PasswordValidators } from '../validators/password-validators';
 
 @Component({
   selector: 'app-frontdesk-password-change',
@@ -16,6 +17,12 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
   userName:any;
   error:boolean;
   errorMessage:any;
+  showPassword: boolean;
+  showPasswordOnPress: boolean;
+  showPassword1: boolean;
+  showPasswordOnPress1: boolean;
+  showPassword2: boolean;
+  showPasswordOnPress2: boolean;
   constructor(private fromBuilder: FormBuilder,
     private dataService:DataService,
     private route:Router,
@@ -29,7 +36,24 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
     this.loginFormGroup = this.fromBuilder.group({
       // UserName: ['', Validators.required],
       oldPassword: ['', Validators.required],
-      NewPassword: ['', Validators.required],
+      NewPassword: ['', 
+      [
+        Validators.required,
+        Validators.minLength(8),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[0-9])"), {
+          requiresDigit: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[A-Z])"), {
+          requiresUppercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[a-z])"), {
+          requiresLowercase: true
+        }),
+        PasswordValidators.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+          requiresSpecialChars: true
+        })
+      ]
+    ],
       ConfirmPassword: ['', Validators.required],
       
     },
@@ -40,6 +64,35 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
   get f() {
     return this.loginFormGroup.controls;
   }
+  get passwordValid() {
+    return this.loginFormGroup.controls["NewPassword"].errors === null;
+  }
+
+  get requiredValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("required");
+  }
+
+  get requiresDigitValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("requiresDigit");
+  }
+
+  get minLengthValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("minlength");
+  }
+  
+  
+  get requiresUppercaseValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("requiresUppercase");
+  }
+  
+  get requiresLowercaseValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("requiresLowercase");
+  }
+  
+  get requiresSpecialCharsValid() {
+    return !this.loginFormGroup.controls["NewPassword"].hasError("requiresSpecialChars");
+  }
+  
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
       let control = formGroup.controls[password];
