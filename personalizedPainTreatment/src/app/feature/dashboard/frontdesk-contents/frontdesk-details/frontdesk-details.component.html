@@ -3,22 +3,22 @@
     <div class="col col-md-2 para1 mt-5 font-weight-bold">
       User Profile
     </div>
-    <dt class="col-sm-3 ml-md-auto d-md-flex text-end mt-5"
+    <dt class="col-sm-3 ml-md-auto d-md-flex text-end mt-5" *ngIf="!id"
       (click)="resetPassword()"><u><img class="image" src="\assets\images\change password icon.png" alt="image"> Change
         Password</u></dt>
     <hr>
   </div>
   <div class="row">
-    <div class="col col-sm-1">
+    <div class="col-sm-1">
       <img
         src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
-        alt="profile" class="mt-1 profile-image">
+        alt="profile" class="mt-1 profile-image ">
     </div>
-    <div class="col-sm-2">
-      <p class="h6">{{frontDeskData.First_Name|uppercase}}</p>
+    <div class="col-sm-2 mr-1">
+      <p class="h6">{{frontDeskData.First_Name | uppercase}} </p>
       <p class="h6">{{frontDeskData.Emp_designation}}</p>
     </div>
-    <div class="col-md-5 text-center pb-1">
+    <div class="col-md-2 text-center pb-1">
       <button class="btn btn-block fa-lg
         gradient-custom-1 text-light "
         style="background-color: #712C6B;font-weight:
@@ -77,38 +77,36 @@
             <dd>Last Updated On</dd>
             <dt class="mb-4">{{frontDeskData.updated_at}}</dt>
             <dd>Last Updated By</dd>
-            <dt class="mb-4">{{frontDeskData.created_at}}</dt>
+            <dt class="mb-4">{{frontDeskData.Created_by}}</dt>
           </ul>
         </div>
       </div>
       <div class="col-md-10 card-border">
         <div class="col text-center">
           <div class="row mt-3">
-            <div class="col-sm-7 text-end"><b>{{frontDeskData.Emp_id_doc_Name}}
-                :</b></div>
-            <!-- <div class="col-sm-5" hidden>{{frontDeskData.Emp_id_doc}}</div> -->
-            <div
-              class="col-sm-4 text-end"><img
-                src="\assets\images\bxs_download.png" role="button"
-                style="width:30px" class="ml-2 border-0"
-                (click)="downloadEmployeeIdDoc()"></div>
+            <div class="col-10 text-end"><b>Employee ID Document :</b>
+              <span (click)="downloadEmployeeID(frontDeskData)"
+                class="text-end ml-5">{{frontDeskData.Emp_id_doc_Name}}<img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+            </div>
+            <span></span>
           </div>
           <div class="row mt-3">
-            <div class="col-sm-7 text-end"><b>{{frontDeskData.Id_proof_Name}} :</b></div>
-            <!-- <div class="col-sm-5" hidden>{{frontDeskData.Id_proof}}</div> -->
-            <div class="col-sm-4 text-end"><img
-                src="\assets\images\bxs_download.png" role="button"
-                style="width:30px" class="ml-2 border-0"
-                (click)="downloadIdProofDoc()"></div>
+            <div class="col-sm-10 text-end"><b>ID Proof(Drivers Licence/State
+                ID):</b>
+              <span class="text-end ml-5" (click)="download(frontDeskData)">{{frontDeskData.Id_proof_Name}}<img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+            </div>
           </div>
           <div class="row mt-3 mb-3">
-            <div class="col-sm-7 text-end mt-2"><b>{{frontDeskData.Profile_image_Name}}:</b></div>
-            <!-- <div class="col-sm-5" hidden>{{frontDeskData.Profile_image}}</div> -->
-            <div
-              class="col-sm-4 text-end"><img
-                src="\assets\images\bxs_download.png" role="button"
-                style="width:30px" class="ml-2 border-0"
-                (click)="profileImgDoc()"></div>
+            <div class="col-sm-10 text-end mt-2"><b>Profile Image:</b>
+              <span (click)="downloadProfileImage(frontDeskData)"
+                class="text-end ml-5">{{frontDeskData.Profile_image_Name}}<img
+                  src="\assets\images\bxs_download.png" role="button"
+                  style="width:30px" class="ml-2 border-0"></span>
+            </div>
           </div>
         </div>
       </div>

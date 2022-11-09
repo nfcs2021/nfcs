@@ -31,14 +31,15 @@ export class FrontdeskLoginComponent implements OnInit {
   data: any;
   username: any;
   login_time_msg: string = 'First time Login...';
+  userName: any;
 
   constructor(
     private fromBuilder: FormBuilder,
     private dataservices: DataService,
     private route: Router,
     private authservice: AuthService,
-    private activateroute: ActivatedRoute,
-    private frontdeskService: FrontdeskService
+    private frontdeskService: FrontdeskService,
+    private dataService: DataService
   ) {}
 
   ngOnInit(): void {
@@ -82,12 +83,12 @@ export class FrontdeskLoginComponent implements OnInit {
         localStorage.setItem('PCP_Name', data.data.PCP_Name);
         this.login_user_msg = 'Login in, Please wait... !!!';
         this.authservice.sentEvent();
-        this.username = data.data.User_Name;
+        this.userName = data.data.User_Name;
         // alert(data.data.User_Name);
-        this.frontdeskService.getLogiData(this.username).subscribe(
+        this.frontdeskService.getLogiData(this.userName).subscribe(
           (logindata) => {
             console.log(logindata);
-            if (logindata.Last_login_time === undefined) {
+            if (logindata.Last_login_time == undefined) {
               localStorage.setItem('lastLogin', this.login_time_msg);
             } else {
               localStorage.setItem('lastLogin', logindata.Last_login_time);
@@ -102,13 +103,14 @@ export class FrontdeskLoginComponent implements OnInit {
               .saveLoginDetails(loginData)
               .subscribe((savedata) => {
                 console.log(savedata);
-                this.dataservices.getFrontDeskData(this.username).subscribe(
+                this.dataService.getFrontDeskData(this.userName).subscribe(
                   (data) => {
                     console.log(data);
+
                     console.log(data.length);
                     if (data.length == 1) {
                       this.route.navigateByUrl(
-                        '/frontdesk/frontdeskpasswordChange/' + this.username
+                        '/frontdesk/frontdeskpasswordChange/' + this.userName
                       );
                     } else {
                       this.route.navigate(['/patient/nav']).then(() => {
@@ -116,8 +118,8 @@ export class FrontdeskLoginComponent implements OnInit {
                       });
                     }
                   },
-                  (error) => {
-                    console.log(error);
+                  (err) => {
+                    console.log(err);
                   }
                 );
                 Swal.fire({
@@ -129,16 +131,21 @@ export class FrontdeskLoginComponent implements OnInit {
                 });
               });
           },
-          (err) => {
-            console.log(err);
+          (error) => {
+            console.log(error);
           }
         );
       },
-      (err) => {
+      (error) => {
+        this.login_user_msg = 'invalid credentials!!';
         this.has_error = true;
-        this.login_user_msg = 'Invalid Username and Password !!!';
-        console.log(err);
+        console.log(error);
       }
     );
+
+    // this.route.navigate(['/patient/nav']).then(() => {
+    //   window.location.reload();
+    // });
+    // this.route.navigateByUrl('/patient/nav');
   }
 }

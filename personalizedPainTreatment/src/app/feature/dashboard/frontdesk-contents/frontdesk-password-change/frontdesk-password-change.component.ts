@@ -68,9 +68,18 @@ export class FrontdeskPasswordChangeComponent implements OnInit {
       oldPassword:this.loginFormGroup.value['oldPassword'],
       Password:this.loginFormGroup.value['NewPassword']
     }
+    console.log(data);
+    
    this.dataService.changePassword(data).subscribe(
     data =>{
-     this.auth.logout();
+
+    console.log(data.message);
+    if(data.message==='Invalid'){
+      this.error=true;
+    }else{
+      this.auth.logout();
+    }
+    
       
     },err =>{
       console.log(err);

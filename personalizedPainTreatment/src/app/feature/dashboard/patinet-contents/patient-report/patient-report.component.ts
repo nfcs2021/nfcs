@@ -6,6 +6,8 @@ import { PatientService } from '../../services/patient.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { QuestionaryService } from '../../services/questionary.service';
 import { Patient } from '../module/Patient';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-patient-report',
   templateUrl: './patient-report.component.html',
@@ -186,4 +188,62 @@ export class PatientReportComponent implements OnInit {
     lumbar_Epidural_Injections() {
       return { width: this.Lumbar_Epidural_Injections - 5 + '%' };
     }
+
+    downloadPDF() {
+      this.pdf = new jsPDF('p', 'em', 'a4') // A4 size page of PDF
+      this.length = 5
+      this.counter = 0
+  
+      this.generatePDF()
+    }
+  
+    generatePDF(){
+  
+      var data = document.getElementById('pdf' + this.counter)!
+  
+      html2canvas(data, {
+        scale: 3 // make better quality ouput
+      }).then(async (canvas) => {
+        this.counter++
+  
+        // Few necessary setting options
+        var imgWidth = this.pdf.internal.pageSize.getWidth();
+        var imgHeight = this.pdf.internal.pageSize.getHeight();
+  
+        const contentDataURL = canvas.toDataURL('image/png')
+        var position = 4
+        this.pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight - 8)
+        // this.pdf.addImage(contentDataURL,'JPEG', 10, 10);
+        // Control if new page needed, else generate the pdf
+        if (this.counter < this.length) {
+  
+          this.pdf.addPage()
+          this.generatePDF()
+        } else {
+          var file:any =window.open(this.pdf.output('bloburi'), '_blank');
+          console.log(file);
+  
+          // this.pdf.save(this.patientData.patient_Name + '.pdf'); // Generated PDF
+          // var pdfBase64 = this.pdf.output('save', 'filename.pdf');
+          //  console.log(pdfBase64);
+          //  const uploadResponse = await fetch( '/pdf-upload-handler', { method: 'PUT', body: blob } );
+          //  console.log( uploadResponse );
+       
+          // window.open("mailto:example@domain.com?subject=Test&body=Test&attachments='" + blob + "'");
+          // this.dataservice.sendReportByEmail("D:/Work/Angulardemo/angular-imp-questions.pdf").subscribe(res => {
+          //   console.log(res);
+          // },
+          // err =>{
+          //   console.log(err);
+          // }
+          // );
+          console.log(this.pdf.output('datauristring'));
+          this.base64code=this.pdf.output('datauristring');
+          this.pdf.save(this.patientData.patient_Name + '.pdf'); // Generated PDF
+             
+        }
+       
+      });
+      
+    } 
 }

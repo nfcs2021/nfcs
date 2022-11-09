@@ -16,20 +16,30 @@ export class DataService {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl + 'register/' + id, {
+
+    return this.http.get<any>(environment.apiUrl+'register/'+id, {
+
       headers: httpheaders,
     });
   }
-  getFrontDeskData(email: any) {
+getFrontDeskData(email:any){
+  const httpheaders = new HttpHeaders({
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
+  });
+  return this.http.get<any>(environment.apiUrl+'registerByUser/'+email, {
+    headers: httpheaders,
+  });
+}
+  downloadFile(data: any):Observable<any> {
+    alert(1)
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.get<any>(environment.apiUrl + 'registerByUser/' + email, {
+    return this.http.get<any>(environment.apiUrl + 'registerByUser/' + data, {
       headers: httpheaders,
     });
   }
-
-  frontDeskLoginInfromation(loginData: any) {
+  frontDeskLoginInfromation(loginData:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
@@ -37,34 +47,31 @@ export class DataService {
       headers: httpheaders,
     });
   }
-
-  changePassword(data: any) {
+  changePassword(data:any) {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     });
-    return this.http.put<any>(environment.apiUrl + 'updatePassword', data, {
+    return this.http.put<any>(environment.apiUrl+'updatePassword',data,{
+
       headers: httpheaders,
     });
   }
-
-  requestotp(data: any) {
-    return this.http.post(environment.apiUrl + 'request_otp', data);
-  }
-
-  verifyOtp(otp: any) {
-    return this.http.post(environment.apiUrl + 'verify_otp', otp);
-  }
-
-  forgotPassword(data: any) {
-    return this.http.put(environment.apiUrl + 'updatePassword', data);
-  }
-  create(data: any) {
+  create(data:any){
     // const httpheaders = new HttpHeaders({
     //   Authorization: 'Bearer ' + localStorage.getItem('token'),
     // });
-    return this.http.post(environment.apiUrl + 'getmail', data
+    return this.http.post(environment.apiUrl+'getmail',data
     );
-    //   return this.http.get(environment.apiUrl+'getcontact',data)
+  //   return this.http.get(environment.apiUrl+'getcontact',data)
 
+   }
+requestotp(data:any){
+ return this.http.post(environment.apiUrl+'request_otp',data)
+}
+ verifyOtp(otp:any) {
+  return this.http.post(environment.apiUrl+'verify_otp',otp)
+  }
+  forgotPassword(data: any) {
+    return this.http.put(environment.apiUrl + 'updatePassword', data);
   }
 }

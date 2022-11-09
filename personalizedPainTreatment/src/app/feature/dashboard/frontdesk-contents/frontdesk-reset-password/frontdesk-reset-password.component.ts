@@ -23,7 +23,7 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   email: any;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
-  counter = 30;
+  counter = 60;
   tick = 1000;
   isAuth = false;
   @ViewChild(NgOtpInputComponent, { static: false })
@@ -33,7 +33,6 @@ export class FrontdeskResetPasswordComponent implements OnInit {
     length: 4,
   };
   response: any = new Array();
-  oldpassword: any;
 
   constructor(
     private dataService: DataService,
@@ -55,12 +54,17 @@ export class FrontdeskResetPasswordComponent implements OnInit {
         NewPassword: ['', Validators.required],
         ConfirmPassword: ['', Validators.required],
       },
+      // {
+      //   validator: this.ConfirmPasswordValidator(
+      //     'NewPassword',
+      //     'ConfirmPassword'
+      //   ),
+      // },
       {
-        // validator: this.ConfirmPasswordValidator(
-        //   'NewPassword',
-        //   'ConfirmPassword'
-        // ),
-        validator: this.oldPasswordValidator('oldPassword', 'NewPassword'),
+        validator: [
+          this.ConfirmPasswordValidator('NewPassword', 'ConfirmPassword'),
+          this.oldPasswordValidator('oldPassword', 'NewPassword'),
+        ],
       }
     );
 
@@ -133,56 +137,18 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   }
   resendOtp() {
     const data = {
-      Email: this.email,
+      User_Name: this.email,
       otp: this.otp,
     };
     this.dataService.requestotp(data).subscribe(
       (data2) => {
         console.log(data2);
-        this.transform(this.counter);
+        window.location.reload();
       },
       (err) => {
         console.log(err);
       }
     );
-  }
-
-  // userNameValidation(UserName: string) {
-  //   return (formGroup: FormGroup) => {
-  //     let matchingControl = formGroup.controls[UserName];
-  //     if (
-  //       matchingControl.errors &&
-  //       !matchingControl.errors?.['UserNameValidator']
-  //     ) {
-  //       return;
-  //     }
-  //     for (let control of this.oldpassword) {
-  //       if (control === matchingControl.value) {
-  //         matchingControl.setErrors({ UserNameValidator: true });
-  //         break;
-  //       } else {
-  //         matchingControl.setErrors(null);
-  //       }
-  //     }
-  //   };
-  // }
-
-  oldPasswordValidator(password: string, newPassword: string) {
-    return (formGroup: FormGroup) => {
-      let control = formGroup.controls[password];
-      let matchingControl = formGroup.controls[newPassword];
-      if (
-        matchingControl.errors &&
-        !matchingControl.errors?.['OldPasswordValidator']
-      ) {
-        return;
-      }
-      if (control.value == matchingControl.value) {
-        matchingControl.setErrors({ OldPasswordValidator: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
   }
   ConfirmPasswordValidator(password: string, confirmPassword: string) {
     return (formGroup: FormGroup) => {
@@ -212,7 +178,6 @@ export class FrontdeskResetPasswordComponent implements OnInit {
       oldPassword: this.ResetpasswordForm.value['oldPassword'],
       Password: this.ResetpasswordForm.value['NewPassword'],
     };
-    this.oldpassword = this.ResetpasswordForm.value['oldPassword'];
     this.dataService.changePassword(data).subscribe(
       (data) => {
         this.auth.logout();
@@ -222,5 +187,23 @@ export class FrontdeskResetPasswordComponent implements OnInit {
         this.error = true;
       }
     );
+  }
+
+  oldPasswordValidator(password: string, newPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[newPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['OldPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value == matchingControl.value) {
+        matchingControl.setErrors({ OldPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 }

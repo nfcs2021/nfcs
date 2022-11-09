@@ -1,6 +1,6 @@
-<div class=" container col-md-10 ">
+<div class=" container col-md-10">
   <div class="row justify-content-center align-items-center">
-    <div class="col-md-8 col-lg-6 " style="margin-top: 100px; margin-bottom:
+    <div class="col-md-8 col-lg-6" style="margin-top: 100px; margin-bottom:
       105px;margin-left: 300px;">
       <form style="margin-bottom: 100px;" (ngSubmit)="onSubmit()"
         class="needs-validation ml-5 " novalidate
@@ -81,7 +81,7 @@
               in</button>
           </div>
         </div>
-        <div *ngIf="!!login_user_msg"
+        <div *ngIf="!!login_user_msg" class="col-8"
           [ngClass]="has_error ? 'alert alert-danger': 'alert alert-info'">{{login_user_msg}}</div>
       </form>
     </div>

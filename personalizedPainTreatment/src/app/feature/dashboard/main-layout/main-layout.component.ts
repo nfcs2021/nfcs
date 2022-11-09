@@ -17,5 +17,6 @@ export class MainLayoutComponent implements OnInit {
     this.lastLogin = localStorage.getItem('lastLogin');
     // alert(this.lastLogin);
     console.log('main', this.name);
+    // alert(this.lastlogin)
   }
 }

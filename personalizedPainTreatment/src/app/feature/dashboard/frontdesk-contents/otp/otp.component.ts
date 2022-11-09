@@ -34,14 +34,14 @@ export class OtpComponent implements OnInit {
     // placeholder: ''
   };
   response: any = new Array();
+  error: boolean;
 
   constructor(private dataService:DataService,
-    private route:ActivatedRoute, private formBuilder: FormBuilder,
-    private router:Router
+    private route:ActivatedRoute, private formBuilder: FormBuilder,private router:Router
     ) { }
 
   ngOnInit(): void {
-    this.email=this.route.snapshot.paramMap.get('userName')
+    this.email=this.route.snapshot.paramMap.get('userName');
     // this.generateOtp();
     this.formInitilization();
     this.countDown = timer(0, this.tick)
@@ -94,8 +94,6 @@ export class OtpComponent implements OnInit {
 
   onValidate(){
     console.log(this.otp);
-    console.log(this.email);
-
   const data = {
     User_Name:this.email,
       otp:this.otp
@@ -188,21 +186,21 @@ export class OtpComponent implements OnInit {
     console.log(data);
 
     this.dataService.forgotPassword(data).subscribe(
-      (data) => {
-        console.log('frontdeskData :', data);
-        this.router.navigate(['']);
+      (data1) => {
+        console.log('frontdeskData :', data1);
+        this.router.navigateByUrl('');
       },
       (error) => {
         console.log(error);
+        this.error=true;
       }
     );
   }
-
   resendOtp(){
 
 
     const data = {
-      Email:this.email,
+      User_Name:this.email,
         otp:this.otp
       }
     this.dataService.requestotp(data).subscribe(
@@ -218,5 +216,5 @@ export class OtpComponent implements OnInit {
 
   }
 
-
 }
+

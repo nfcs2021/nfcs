@@ -3,6 +3,7 @@
     <img src="base64code" alt="">
 
 </div>
+<button class="btn btn-success m-5 float-right" (click)="downloadPDF()">Download</button>
 <div [id]="'pdf'+0">
     <div class="container mt-5">
         <h3 class="heading">Patient Information</h3>
@@ -928,7 +929,7 @@
                             <div class="col-1">
                                 <label class="font-weight-bold " for="months">Months:</label>
                                 <input type="text" id="months" class="form-control form-control-sm" name="months1"
-                                    #months1="ngModel" [(ngModel)]="data.p_Options" required pattern="[0-9]+" maxlength="2" appMonthValidator [ngClass]="{ 'is-invalid': saveForm.submitted && months1.errors }">
+                                    #months1="ngModel" [(ngModel)]="data.text1" required pattern="[0-9]+" maxlength="2" appMonthValidator [ngClass]="{ 'is-invalid': saveForm.submitted && months1.errors }">
                                 <span class="text-danger "
                                     *ngIf="(months1.touched || saveForm.submitted) && months1.errors?.['required']">
                                     Months are required

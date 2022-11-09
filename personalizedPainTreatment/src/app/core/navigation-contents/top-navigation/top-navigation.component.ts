@@ -26,6 +26,11 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   data: any;
   frontdeskData: any;
   firstName: any;
+  btndisable: boolean;
+  id: any;
+  imageUrl: string;
+  localData: any;
+  src: any;
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -34,7 +39,21 @@ export class TopNavigationComponent implements OnInit, OnChanges {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.localData = localStorage.getItem('id');
+    this.dataService.getUserData(localStorage.getItem('id')).subscribe(
+      (res) => {
+        console.log(res);
+        let imageBinary = res.Profile_image; //image binary data response from api
+        //  let imageBase64String= btoa(imageBinary);
+        this.imageUrl = 'data:image/jpeg;base64,' + imageBinary;
+        console.log(this.src);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   ngOnChanges() {
     this.name = this.data1;

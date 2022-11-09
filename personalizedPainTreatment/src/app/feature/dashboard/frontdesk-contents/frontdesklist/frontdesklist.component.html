@@ -73,6 +73,13 @@
         </tbody>
       </table>
     </a>
+
+
+    <div class="row mb-5" *ngIf="dropdown[frontdeskData.id]">
+      <!-- <div class="ml-3 col-2">
+      <button  class="btn btn-primary" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Patient Details</button>
+      </div> -->
+
     <div *ngIf="dropdown[frontdeskData.id]">
       <div class="buttons  ">
           <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/frontdesk/frontdesk-registration/{{frontdeskData.id}}" >Edit Front Desk Employee</a><br>

@@ -6,6 +6,8 @@ import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import { FrontdeskService } from '../../services/frodesk.service';
 
+
+
 @Component({
   selector: 'app-frontdesk-registration',
   templateUrl: './frontdesk-registration.component.html',
@@ -43,7 +45,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
   idproofdoc: any;
   profileImageDoc: any;
   heading: string;
-  submit: boolean = false;
   constructor(
     private service: AppService,
     private formBuilder: FormBuilder,
@@ -69,7 +70,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
       (data) => {
         console.log(data);
         for (let singledata of data) {
-          this.existedUserName.push(singledata.UserName);
+          this.existedUserName.push(singledata.User_Name);
         }
         console.log(this.existedUserName);
       },
@@ -77,8 +78,11 @@ export class FrontdeskRegistrationComponent implements OnInit {
         console.log(err);
       }
     );
+
     this.createdBy = localStorage.getItem('createdBy');
+
     this.frontDeskId = this.router.snapshot.paramMap.get('id');
+
     if (this.frontDeskId) {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
@@ -254,35 +258,19 @@ export class FrontdeskRegistrationComponent implements OnInit {
     this.heading = 'Add New Front Desk Employee';
     this.frontDeskRegesterForm = this.formBuilder.group(
       {
-        firstName: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(2),
-            Validators.pattern('^[a-zA-Z]+$'),
-          ],
-        ],
-        lastName: [
-          '',
-          [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
-        ],
-        userName: ['', [Validators.required]],
+        firstName: ['', [Validators.required, Validators.minLength(2),Validators.pattern('^[a-zA-Z]+$')]],
+        lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+        userName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
         dob: ['', [Validators.required]],
-        contactNumber: [
-          '',
-          [Validators.required, Validators.pattern('^[0-9 ()-]+$')],
-        ],
+        contactNumber: ['', [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
         email: ['', [Validators.required]],
-        socialSecurityNumber: [
-          '',
-          [Validators.required, Validators.pattern('^[0-9 -]+$')],
-        ],
+        socialSecurityNumber: ['', [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
         address1: ['', [Validators.required]],
         address2: ['', []],
         country: ['', [Validators.required]],
         state: ['', [Validators.required]],
         city: ['', [Validators.required]],
-        zipcode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+        zipcode: ['', [Validators.required,Validators.pattern('^[0-9]+$')]],
         gender: ['', [Validators.required]],
         pcp: ['', [Validators.required]],
         employeePostion: ['', [Validators.required]],
@@ -305,36 +293,23 @@ export class FrontdeskRegistrationComponent implements OnInit {
     this.frontDeskRegesterForm = this.formBuilder.group({
       firstName: [
         this.frontDeskDataById.First_Name,
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.pattern('^[a-zA-Z]+$'),
-        ],
+        [Validators.required, Validators.minLength(2),Validators.pattern('^[a-zA-Z]+$')],
       ],
-      lastName: [
-        this.frontDeskDataById.Last_Name,
-        [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
-      ],
-      userName: [this.frontDeskDataById.User_Name, [Validators.required]],
+      lastName: [this.frontDeskDataById.Last_Name, [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+      userName: [this.frontDeskDataById.User_Name, [Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
       dob: [this.frontDeskDataById.Date_of_birth, [Validators.required]],
       contactNumber: [
         this.frontDeskDataById.Contact_number,
-        [Validators.required, Validators.pattern('^[0-9 ()-]+$')],
+        [Validators.required],Validators.pattern('^[0-9 ()-]+$')
       ],
       email: [this.frontDeskDataById.Email, [Validators.required]],
-      socialSecurityNumber: [
-        this.frontDeskDataById.Ssn,
-        [Validators.required, Validators.pattern('^[0-9 -]+$')],
-      ],
+      socialSecurityNumber: [this.frontDeskDataById.Ssn, [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
       address1: [this.frontDeskDataById.Address_Line1, [Validators.required]],
       address2: [this.frontDeskDataById.Address_Line2, []],
       country: [this.frontDeskDataById.Country, [Validators.required]],
       state: [this.frontDeskDataById.State, [Validators.required]],
       city: [this.frontDeskDataById.City, [Validators.required]],
-      zipcode: [
-        this.frontDeskDataById.Zipcode,
-        [Validators.required, Validators.pattern('^[0-9]+$')],
-      ],
+      zipcode: [this.frontDeskDataById.Zipcode, [Validators.required,Validators.pattern('^[0-9 ()-]+$')]],
       gender: [this.frontDeskDataById.Gender, [Validators.required]],
       pcp: [this.frontDeskDataById.PCP_Name, [Validators.required]],
       employeePostion: [
@@ -352,6 +327,10 @@ export class FrontdeskRegistrationComponent implements OnInit {
     });
   }
   updateRegistrationData() {
+    this.submitted = true;
+    if (this.frontDeskRegesterForm.invalid) {
+      return;
+    }
     const data = {
       First_Name: this.frontDeskRegesterForm.value['firstName'],
       Last_Name: this.frontDeskRegesterForm.value['lastName'],
@@ -427,6 +406,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
     }
     this.getFrontdeskData();
   }
+
   savefrondeskData() {
     const fileData2 = new FormData();
     fileData2.append(
@@ -477,6 +457,7 @@ export class FrontdeskRegistrationComponent implements OnInit {
     this.authService.saveFrontDeskData(fileData2).subscribe(
       (res) => {
         console.log(res);
+
         this.route.navigate(['/frontdesk/frontdetails/' + res.data.id]);
       },
       (err) => {

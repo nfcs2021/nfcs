@@ -1,13 +1,14 @@
 * {
   color: #712C6B;
+
 }
 
 .navbar {
-  height: 74px;
+  height: 70px;
   margin-top: 8px;
   margin-left: 10%;
-}
 
+}
 .dropdown {
   margin-right: 80px;
 }

@@ -26,9 +26,14 @@ import { FrontdeskpipePipe } from './frontdesk-contents/pipes/frontdeskpipe.pipe
 import { ForgetpasswordComponent } from './frontdesk-contents/forgetpassword/forgetpassword.component';
 import { OtpComponent } from './frontdesk-contents/otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
-import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
-import { FrontdeskResetPasswordComponent } from './frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
 import { ContactComponent } from './frontdesk-contents/contact/contact.component';
+import { FrontdeskResetPasswordComponent } from './frontdesk-contents/frontdesk-reset-password/frontdesk-reset-password.component';
+import { FrontdeskPasswordChangeComponent } from './frontdesk-contents/frontdesk-password-change/frontdesk-password-change.component';
+import { AdminMainComponent } from './admin-contents/admin-main/admin-main.component';
+import { AdminListComponent } from './admin-contents/admin-list/admin-list.component';
+import { AdminDetailsComponent } from './admin-contents/admin-details/admin-details.component';
+import { AdminRegistrationComponent } from './admin-contents/admin-registration/admin-registration.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -54,10 +59,15 @@ import { ContactComponent } from './frontdesk-contents/contact/contact.component
     OtpComponent,
     DateSearchPipe,
     FrontdeskRegistrationComponent,
-    FrontdesklistComponent,
-    FrontdeskPasswordChangeComponent,
+      ContactComponent,
     FrontdeskResetPasswordComponent,
-    ContactComponent,
+    FrontdeskPasswordChangeComponent,
+    AdminMainComponent,
+    AdminListComponent,
+    AdminDetailsComponent,
+    AdminRegistrationComponent
+
+
   ],
   imports: [
     CommonModule,
@@ -66,8 +76,11 @@ import { ContactComponent } from './frontdesk-contents/contact/contact.component
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxPaginationModule,
-    NgOtpInputModule,
+   NgxPaginationModule,
+   NgOtpInputModule,
+   HttpClientModule,
+
+
   ],
 })
 export class DashboardModule {}

@@ -10,17 +10,14 @@ import { DataService } from '../../services/data.service';
 })
 export class ForgetpasswordComponent implements OnInit {
   submitted = false;
+  otp: any
+  USFormat = '(000) 123-4567';
+  placeHolder = this.USFormat;
+  phoneNumberEntered = '';
 
-USFormat = '(000) 123-4567';
-placeHolder=this.USFormat;
-phoneNumberEntered = '';
-
-ForgetpasswordForm: FormGroup;
-
-
-  constructor( private formBuilder: FormBuilder,
-    private route:Router,
-    private dataService:DataService) { }
+  ForgetpasswordForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private dataservice: DataService,
+    private route:Router) { }
 
   ngOnInit(): void {
     this.formInitilization();
@@ -30,7 +27,12 @@ ForgetpasswordForm: FormGroup;
   }
   formInitilization() {
     this.ForgetpasswordForm = this.formBuilder.group({
-      User_Name: ['', [Validators.required]]
+      // firstName: ['', [Validators.required, Validators.minLength(2)]],
+      // lastName: ['', [Validators.required]],
+
+      // contactNumber: ['', [Validators.required]],
+      User_Name: ['', [Validators.required]],
+      // pcp: ['', [Validators.required]]
     });
   }
     // onPhoneChange(event: any) {
@@ -49,40 +51,60 @@ ForgetpasswordForm: FormGroup;
     //   }
     //   console.log(getactualSpecialChar);
     //   console.log(getIndexSpecialChar);
-
-    //   let len = event.target.value.length;
-    //   let backspace = event.keyCode;
-
-    //   if (backspace === 8) {
-    //     len = len - 1;
-    //   } else {
-    //     len = event.target.value.length;
-    //   }
-    //   let eventTargetValue = event.target.value;
-    //   for (let i = 0; i < this.placeHolder.length; i++) {
-    //     if (len === getIndexSpecialChar[i]) {
-    //       this.phoneNumberEntered = eventTargetValue + getactualSpecialChar[i];
-    //       if (this.phoneNumberEntered.length === getIndexSpecialChar[i + 1]) {
-    //         this.phoneNumberEntered =
-    //           this.phoneNumberEntered + getactualSpecialChar[i + 1];
-    //       }
-    //     }
-    //   }
-    //   console.log(event.target.value);
-    // }
-    onSubmit() {
-      this.submitted = true;
-      if (this.ForgetpasswordForm.invalid) {
-        return;
+  onPhoneChange(event: any) {
+    let getIndexSpecialChar = [];
+    let getactualSpecialChar = [];
+    for (let i = 0; i < this.placeHolder.length; i++) {
+      if (
+        this.placeHolder[i] === ' ' ||
+        this.placeHolder[i] === '(' ||
+        this.placeHolder[i] === ')' ||
+        this.placeHolder[i] === '-'
+      ) {
+        getIndexSpecialChar.push(i);
+        getactualSpecialChar.push(this.placeHolder[i]);
       }
-      console.log(this.ForgetpasswordForm.value);
-      this.dataService.requestotp(this.ForgetpasswordForm.value).subscribe(data => {
-        console.log(data);
-        this.route.navigateByUrl('/frontdesk/otp/'+this.ForgetpasswordForm.value['User_Name']);
-      },
-        error => {
-          console.log(error);
-        });
     }
+    console.log(getactualSpecialChar);
+    console.log(getIndexSpecialChar);
 
+    let len = event.target.value.length;
+    let backspace = event.keyCode;
+
+    if (backspace === 8) {
+      len = len - 1;
+    } else {
+      len = event.target.value.length;
+    }
+    let eventTargetValue = event.target.value;
+    for (let i = 0; i < this.placeHolder.length; i++) {
+      if (len === getIndexSpecialChar[i]) {
+        this.phoneNumberEntered = eventTargetValue + getactualSpecialChar[i];
+        if (this.phoneNumberEntered.length === getIndexSpecialChar[i + 1]) {
+          this.phoneNumberEntered =
+            this.phoneNumberEntered + getactualSpecialChar[i + 1];
+        }
+      }
+    }
+    console.log(event.target.value);
+  }
+  onSubmit() {
+    this.submitted = true;
+    if (this.ForgetpasswordForm.invalid) {
+      return;
+    }
+    console.log(this.ForgetpasswordForm.value);
+
+    this.dataservice.requestotp(this.ForgetpasswordForm.value).subscribe(data => {
+      console.log(data);
+      this.route.navigateByUrl('/frontdesk/otp/'+this.ForgetpasswordForm.value['User_Name']);
+    },
+      error => {
+        console.log(error);
+      }
+
+    );
+
+
+  }
 }
