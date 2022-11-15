@@ -21,7 +21,7 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   userName: any;
   error: boolean;
   errorMessage: any;
-  popup = true;
+  popup = false;
   otp: any;
   showOtpComponent = true;
   email: any;

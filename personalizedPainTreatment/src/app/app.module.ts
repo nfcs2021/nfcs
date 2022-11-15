@@ -9,7 +9,7 @@ import { CoreModule } from './core/core.module';
 import { FeatureModule } from './feature/feature.module';
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import {HttpClientModule} from "@angular/common/http";
-
+import { NgxSpinnerModule } from "ngx-spinner"; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
     FeatureModule,
     Ng2TelInputModule,
     HttpClientModule,
-  
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

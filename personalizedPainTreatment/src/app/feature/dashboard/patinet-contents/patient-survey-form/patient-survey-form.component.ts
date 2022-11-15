@@ -5,6 +5,7 @@ import { QuestionaryService } from '../../services/questionary.service';
 import * as $ from 'jquery';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
+import { NgxSpinnerService } from "ngx-spinner";  
 @Component({
   selector: 'app-patient-survey-form',
   templateUrl: './patient-survey-form.component.html',
@@ -22,6 +23,7 @@ export class PatientSurveyFormComponent implements OnInit {
   patientUserData: any;
   age: number;
   routerId: any;
+  typeSelected: string;
   private unsubscribeQuetionaryData: Subscription;
   private unsubscribeSelectedParts: Subscription;
   constructor(
@@ -29,10 +31,12 @@ export class PatientSurveyFormComponent implements OnInit {
     private questionarydata: QuestionaryService,
     private router: Router,
     private route: ActivatedRoute,
-    private service: PatientService
+    private service: PatientService,
+    private SpinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.typeSelected = 'ball-fussion';
     this.questions = this.questionarydata.questions;
     this.disabledData(this.disabled);
     this.routeId();
@@ -105,6 +109,7 @@ export class PatientSurveyFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.SpinnerService.show();
     console.log(this.questions);
     const patientdata = {
       Patient_id: this.routerId,
@@ -140,11 +145,7 @@ export class PatientSurveyFormComponent implements OnInit {
 
   createQuestiondata(id: any) {
     var reportId: any;
-
     var recordId:any;
-
-
-
     for (let data1 of this.questions) {
      const data={
       Record_id:id,
@@ -179,13 +180,18 @@ export class PatientSurveyFormComponent implements OnInit {
       this.service.saveSelectedParts(data1).subscribe(
         (data) => {
           console.log(data);
-
+          this.router.navigate(['/patient/view/' + this.patientid]);
+          setTimeout(() => {
+            this.SpinnerService.hide();
+          }, 5);
         },
         (error) => {
           console.log(error);
         }
       );
     }
-    this.router.navigate(['/patient/view/' + this.patientid]);
+   
   }
+
+  
  }

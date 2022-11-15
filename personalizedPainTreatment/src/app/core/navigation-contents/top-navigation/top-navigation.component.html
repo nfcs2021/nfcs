@@ -22,14 +22,13 @@
       </div>
     </div>
     <div class="col-1 dropdown show mt-1 mr-5 " *ngIf="localData">
+      <a  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <img src={{imageUrl}} alt="profile" class="mt-1 " style="width: 40px;height: 40px;
         border-radius:
-        5px;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-        (click)="false">
+        5px;" >
+      </a>
 
-
-      <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="dropdownMenuLink" style="color:
-        #712C6B;border-radius: 10px;width: 300px;">
+      <div class="dropdown-menu drop mt-2" aria-labelledby="dropdownMenuLink" >
         <div class="text-center">
           <img src={{imageUrl}} alt="profile" class="mt-1" style="width:
             40px; height: 40px; border-radius: 5px;">
@@ -38,6 +37,7 @@
           <p class="h6 mt-2">{{role | uppercase}}</p>
 
         </div>
+        <hr style="background-color:#712C6B; height: 1px;">
         <div>
           <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
             <div class="text-center pt-0 mb-4 pb-1">

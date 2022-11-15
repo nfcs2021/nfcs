@@ -29,6 +29,7 @@ import { AdminMainComponent } from '../admin-contents/admin-main/admin-main.comp
 import { AdminListComponent } from '../admin-contents/admin-list/admin-list.component';
 import { AdminDetailsComponent } from '../admin-contents/admin-details/admin-details.component';
 import { AdminRegistrationComponent } from '../admin-contents/admin-registration/admin-registration.component';
+import { PatientProfileComponent } from '../patinet-contents/patient-profile/patient-profile.component';
 
 
 
@@ -88,7 +89,11 @@ const routes: Routes = [
 
             path: 'new/:id', component: AddPatientComponent,
             canActivate: [AuthRouteGaurdService]
-          }],
+          }, {
+
+            path: 'patient-profile/:id', component: PatientProfileComponent
+          },
+        ],
       },
       {
         path: 'frontdesk',

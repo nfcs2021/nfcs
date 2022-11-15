@@ -37,6 +37,8 @@ import { AdminListComponent } from './admin-contents/admin-list/admin-list.compo
 import { AdminDetailsComponent } from './admin-contents/admin-details/admin-details.component';
 import { AdminRegistrationComponent } from './admin-contents/admin-registration/admin-registration.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { PatientProfileComponent } from './patinet-contents/patient-profile/patient-profile.component';
 
 
 
@@ -77,7 +79,8 @@ import { HttpClientModule } from '@angular/common/http';
     AdminMainComponent,
     AdminListComponent,
     AdminDetailsComponent,
-    AdminRegistrationComponent
+    AdminRegistrationComponent,
+    PatientProfileComponent
 
 
   ],
@@ -91,6 +94,7 @@ import { HttpClientModule } from '@angular/common/http';
    NgxPaginationModule,
    NgOtpInputModule,
    HttpClientModule,
+   NgxSpinnerModule
 
 
   ],

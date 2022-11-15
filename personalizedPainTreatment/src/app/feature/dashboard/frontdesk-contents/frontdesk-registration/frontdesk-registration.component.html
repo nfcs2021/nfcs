@@ -1,3 +1,20 @@
+<ngx-spinner   bdOpacity = 0.9
+bdColor="rgba(0,0,0,0.10)"
+size = "medium"
+color = "#1010ee"
+type = "ball-clip-rotate"
+[fullScreen] = "false">
+    <div class="la-ball-spin-clockwise la-3x" >
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+  </ngx-spinner>
 <div class="row custom ">
   <div class="form-content">
     <form name="form" class="mx-auto col-md-7 offset-md-3 form-box
@@ -234,18 +251,50 @@
           <div class="mt-3">
             <label for="employeeIdDocument">Employee ID Document</label>
             <input class="form-control" id="formFileLg"
-              type="file" formControlName="employeeIdDocument" (change)="employeeIdDocument($event)"/>
+              type="file" formControlName="employeeIdDocument" (change)="employeeIdDocument($event)"
+              [ngClass]="{ 'is-invalid': submitted && f['employeeIdDocument'].errors }"/>
+              Required Format - pdf, jpeg, jpg, png
+              <div *ngIf="employeeIdDocSize" class="text-danger">
+                  File Is Too Long Minimum 3Mb
+              </div>
+              <div *ngIf="submitted && f['employeeIdDocument'].errors"
+            class="invalid-feedback">
+            <div *ngIf="f['employeeIdDocument'].errors['inValidExt']" class="text-danger">
+              Invalid file type
+            </div>
+          </div>
           </div>
           <div class="mt-3">
             <label for="idproof">ID Proof(Drivers Licence/State ID)</label>
             <input class="form-control" id="formFileLg"
-              type="file" formControlName="idproof" (change)="idProofDocument($event)"/>
+              type="file" formControlName="idproof" (change)="idProofDocument($event)"
+              [ngClass]="{ 'is-invalid': submitted && f['idproof'].errors }"/>
+              Required Format - pdf, jpeg, jpg, png
+              <div *ngIf="idproofdocSize" class="text-danger">
+                File Is Too Long Minimum 3Mb
+            </div>
+              <div *ngIf="submitted && f['idproof'].errors"
+            class="invalid-feedback">
+            <div *ngIf="f['idproof'].errors['inValidExt']" class="text-danger">
+              Invalid file type
+            </div>
+          </div>
           </div>
           <div class="mt-3 mb-5">
-            <label for="profileImage">Profile Image</label>
-            <input class="form-control" id=""
+            <label for="profile-Image">Profile Image</label>
+            <input class="form-control" id="profile-Image"
               type="file" formControlName="profileImage"  (change)="profileImageDocument($event)"
-              />
+              [ngClass]="{ 'is-invalid': submitted && f['profileImage'].errors }"/>
+              Required Format - jpeg, jpg, png
+              <div *ngIf="profileImageDocSize" class="text-danger">
+                File Is Too Long Minimum 3Mb
+            </div>
+              <div *ngIf="submitted && f['profileImage'].errors"
+            class="invalid-feedback">
+            <div *ngIf="f['profileImage'].errors['inValidExt']" class="text-danger">
+              Invalid file type
+            </div>
+          </div>
               <!-- <div *ngIf="f['profileImage'].errors['']">Please upload Excel file.</div> -->
           </div>
           <!-- <label for="password" class="form-label h6"

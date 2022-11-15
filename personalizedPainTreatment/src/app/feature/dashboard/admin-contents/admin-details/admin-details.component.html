@@ -1,3 +1,20 @@
+<ngx-spinner   bdOpacity = 0.9
+bdColor="rgba(0,0,0,0.10)"
+size = "medium"
+color = "#1010ee"
+type = "ball-clip-rotate"
+[fullScreen] = "false">
+    <div class="la-ball-spin-clockwise la-3x" style="color: #712C6B;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+  </ngx-spinner>
 <div class="container col-md-11 " style="color: #712C6B">
     <div class="row">
       <div class="col col-md-2 para1 mt-5 font-weight-bold">
@@ -81,28 +98,32 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-10 card-border">
-          <div class="col text-center">
+        <div class="col-md-8 card-border">
+          <div class="col ">
             <div class="row mt-3">
-              <div class="col-sm-7 text-end"><b>Employee ID Document :</b></div>
-              <span class="col-sm-5" hidden>{{adminData.Emp_id_doc}}</span>
               <span (click)="downloadEmployeeID(adminData)"
-                class="text-end"><img
+                class=""><b>Employee ID Document : </b>  {{adminData.Emp_id_doc_Name}}<img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span>
             </div>
             <div class="row mt-3">
-              <div class="col-sm-7 text-end"><b>ID Proof(Drivers Licence/State
-                  ID):</b></div>
-              <span class="col-sm-5" hidden>{{adminData.Id_proof}}</span>
-              <span class="text-end" (click)="download(adminData)"><img
+              <div class="col-sm-7 text-end"></div>
+              <span class="col-sm-5" hidden></span>
+              <span class="" (click)="download(adminData)">
+                <b>ID Proof(Drivers Licence/State
+                  ID) : </b>
+                  {{adminData.Id_proof_Name}}
+                  <img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"></span>
             </div>
             <div class="row mt-3 mb-3">
-              <div class="col-sm-7 text-end mt-2"><b>Profile Image:</b></div>
-              <span class="col-sm-5" hidden>{{adminData.Profile_image}}</span><span
-                class="text-end" (click)="downloadProfileImage(adminData)"><img
+              <div class="col-sm-7 text-end mt-2"></div>
+              <span class="col-sm-5" hidden></span><span
+                class="" (click)="downloadProfileImage(adminData)">
+                <b>Profile Image : </b>
+                {{adminData.Profile_image_Name}}
+                <img
                   src="\assets\images\bxs_download.png" role="button"
                   style="width:30px" class="ml-2 border-0"
                  ></span>

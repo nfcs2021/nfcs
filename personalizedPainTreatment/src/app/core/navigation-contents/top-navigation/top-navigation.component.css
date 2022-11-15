@@ -10,9 +10,6 @@
  
 }
 
-.dropdown {
-  margin-right: 80px;
-}
 
 .cos{
   font-size: 20px;
@@ -24,4 +21,10 @@
 .ll{
   font-size: 13px;
 }
-
+.drop{
+  left: -110px;
+  border: #712C6B 1px solid;
+  color:#712C6B;
+  border-radius: 10px;
+  width: 300px;
+}

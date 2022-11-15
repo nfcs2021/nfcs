@@ -8,17 +8,7 @@ import { identifierName } from '@angular/compiler';
   providedIn: 'root',
 })
 export class DataService {
-
-
  
- 
-
- 
- 
-
- 
-
-
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
     localStorage.setItem('loginEmail', data.email);
@@ -41,8 +31,12 @@ getFrontDeskData(email:any){
   return this.http.get<any>(environment.apiUrl+'registerByUser/'+email, {
     headers: httpheaders,
   });
-}
 
+  
+}
+getdataByUserName(userName:any) {
+  return this.http.get<any>(environment.apiUrl+'registerByUserName/'+userName,);
+}
 
   downloadFile(data: any):Observable<any> {
     alert(1)

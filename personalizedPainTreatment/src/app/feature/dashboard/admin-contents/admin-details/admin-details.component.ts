@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from '../../services/admin.service';
 import { DataService } from '../../services/data.service';
 import { FrontdeskService } from '../../services/frontdesk.service';
@@ -23,7 +24,8 @@ export class AdminDetailsComponent implements OnInit {
     private frontdeskService: FrontdeskService,
     private router: Router,
     private http:HttpClient,
-    private dataService:DataService
+    private dataService:DataService,
+    private SpinnerService: NgxSpinnerService
   ) {}
   id: any;
   ngOnInit(): void {
@@ -92,6 +94,7 @@ export class AdminDetailsComponent implements OnInit {
             });
           }
   resetPassword() {
+    this.SpinnerService.show();
     const data = {
       User_Name: this.adminData.User_Name,
     };
@@ -106,6 +109,9 @@ export class AdminDetailsComponent implements OnInit {
         console.log(err);
       }
     );
+    setTimeout(() => {
+      this.SpinnerService.hide();
+    }, 5000);
   }
 
 }

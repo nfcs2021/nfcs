@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {  NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from '../../services/admin.service';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import { FrontdeskService } from '../../services/frontdesk.service';
-import { fileTypeValidator } from '../validators/password-validators';
+import { fileExtensionValidator, fileTypeValidator } from '../validators/password-validators';
 
 
 @Component({
@@ -46,6 +47,12 @@ export class FrontdeskRegistrationComponent implements OnInit {
   idproofdoc: any;
   profileImageDoc: any;
   heading: string;
+  testDataFileType = "jpeg,jpg,png";
+  testDataFileType1 = "pdf,jpeg,jpg,png";
+  fileSize: number;
+  employeeIdDocSize: boolean;
+  idproofdocSize:boolean;
+  profileImageDocSize:boolean;
   constructor(
     private service: AppService,
     private formBuilder: FormBuilder,
@@ -54,7 +61,8 @@ export class FrontdeskRegistrationComponent implements OnInit {
     private router: ActivatedRoute,
     private dataService: DataService,
     private frontdeskService: FrontdeskService,
-    private adminService:AdminService
+    private adminService:AdminService,
+    private SpinnerService:NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -243,14 +251,36 @@ export class FrontdeskRegistrationComponent implements OnInit {
   employeeIdDocument(event: any) {
     this.employeeIdDoc = event.srcElement.files[0];
     console.log(this.employeeIdDoc);
+    let fileSize = 0;
+    fileSize = (Math.round(this.employeeIdDoc.size*100/(1024*1024))/100);
+  
+    if(fileSize>3){
+       this.employeeIdDocSize=true;
+    }else{
+      this.employeeIdDocSize=false;
+    }
   }
   idProofDocument(event: any) {
     this.idproofdoc = event.srcElement.files[0];
     console.log(this.idproofdoc);
+    let fileSize = 0;
+    fileSize = (Math.round(this.idproofdoc.size*100/(1024*1024))/100);
+    if(fileSize>3){
+       this.idproofdocSize=true;
+    }else{
+      this.idproofdocSize=false;
+    }
   }
   profileImageDocument(event: any) {
     this.profileImageDoc = event.srcElement.files[0];
     console.log(this.profileImageDoc);
+    let fileSize = 0;
+    fileSize = (Math.round(this.profileImageDoc.size*100/(1024*1024))/100);
+    if(fileSize>3){
+       this.profileImageDocSize=true;
+    }else{
+      this.profileImageDocSize=false;
+    }
   }
   get f() {
     return this.frontDeskRegesterForm.controls;
@@ -277,9 +307,9 @@ export class FrontdeskRegistrationComponent implements OnInit {
         employeePostion: ['', [Validators.required]],
         immediateManager: ['', [Validators.required]],
         employeeId: ['', [Validators.required]],
-        employeeIdDocument: [''],
-        idproof: [''],
-        profileImage: ['',fileTypeValidator()],
+        employeeIdDocument: ['',[fileExtensionValidator(this.testDataFileType1)]],
+        idproof: ['',[fileExtensionValidator(this.testDataFileType1)]],
+        profileImage: ['',[fileExtensionValidator(this.testDataFileType)]],
         createBy: [''],
       },
       // {
@@ -410,10 +440,15 @@ export class FrontdeskRegistrationComponent implements OnInit {
     if (this.frontDeskRegesterForm.invalid) {
       return;
     }
+    if(this.employeeIdDocSize && this.profileImageDocSize && this.idproofdocSize)
+    {
+      return
+    }
     this.getFrontdeskData();
   }
 
   savefrondeskData() {
+    this.SpinnerService.show();
     const fileData2 = new FormData();
     fileData2.append(
       'First_Name',
@@ -465,6 +500,9 @@ export class FrontdeskRegistrationComponent implements OnInit {
         console.log(res);
 
         this.route.navigate(['/frontdesk/frontdetails/' + res.data.id]);
+        setTimeout(() => {
+          this.SpinnerService.hide();
+        }, 5);
       },
       (err) => {
         console.log(err);

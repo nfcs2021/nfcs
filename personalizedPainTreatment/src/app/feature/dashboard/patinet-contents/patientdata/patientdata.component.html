@@ -6,43 +6,7 @@
     <div class="col para1 mt-5">
       New Patient data has been Added
     </div>
-
-
   </div><hr>
-
-  <!-- <div class="row mt-2 mx-5   row1" >
-        <div class="col-md-2 ml-5  mt-3">
-            <p>Patient Id</p><p class="mt-0">12345</p>
-        </div>
-        <div class="col-md-2 mt-3">
-            <p>  Visited On</p><p>12/3/2021</p>
-        </div>
-        <div class="col-md-3 mt-4 ml-5 ">
-            <a   class="   btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
-          <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
-        </div> -->
-  <!-- <div class="col-md-2 ">
-
-                <span>dob</span><input class="form-control border-end-1 border" type="date" placeholder="dob" >
-
-
-        </div>
-        <div class="   col-md-3 mt-4 ml-5">
-            <a  class="   btn-lg active border" role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
-            <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
-
-          </div>
-          <div class="   col-md-4 ml-5">
-            <p>PCP</p>
-
-          </div>
-          <div class="col-md-4 ">
-            <p>Apolo Hospital,Bangalore</p>
-        </div>
-        <div class="col-md-2 ml-5 ">
-            <p>  Patient Id:1234</p>
-        </div>
-    </div> -->
   <table class="table table-borderless  row1 ">
     <thead>
       <tr>
@@ -87,13 +51,11 @@
     <div class="ml-3 col-3">
     <button  class="btn btn-primary" routerLink="/patient/new/{{patientList.id}}" >Edit Patient Details</button>
     </div>
-    <div class="col-6">
-    <button  class="btn btn-primary ml-md-auto  d-md-flex" routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button>
+    <div class="col-6 ">
+    <button  class="btn btn-primary ml-md-auto  d-md-flex col-7 d-flex justify-content-center " routerLink="/patient/survey-form/{{patientList.id}}">Add New PPT Survey Form</button>
+    <button  class="btn btn-primary ml-md-auto  d-md-flex mt-3 col-7 d-flex justify-content-center" routerLink="/patient/patient-profile/{{patientList.id}}">View in Patient Profile</button>
+    <button  class="btn btn-primary ml-md-auto  d-md-flex mt-3 col-7 d-flex justify-content-center " routerLink="/patient/new">Cancel</button>
   </div>
-      <!-- <div class="buttons  ">
-          <a  class="btn  ml-md-auto d-none d-md-flex col-md-3 active p-3  mx-5" role="button" aria-pressed="true" routerLink="/patient/survey-form/{{patientList.id}}" >Add New PPT Survey Form</a><br>
-          <br>
-        </div> -->
   </div>
 
   <!-- <div class="buttons mt-5">

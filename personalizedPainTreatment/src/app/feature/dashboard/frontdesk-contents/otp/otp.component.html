@@ -1,6 +1,8 @@
 <div class="container  d-flex justify-content-center align-items-center "> 
   <div class="position-relative"> 
+    <!-- <h3>OTP Sent To Registered <br> Email : {{getData.Email.substring(0,4)}}****{{getData.Email.substr(getData.Email.length - 9)}} <br> Mobile Number : ******{{getData.Contact_number.substr(getData.Contact_number.length - 4)}}</h3> -->
       <div class="card p-2 text-center mt-1 mb-3">
+       
        <h6>Please enter the one time password <br> to verify your account</h6> 
        
           <ng-otp-input  (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
@@ -9,6 +11,8 @@
           <p > <span *ngIf="this.counter!==00" >{{transform(counter)}}</span> 
          
                 <a *ngIf="this.counter==00" (click)="resendOtp()"  class="text-decoration-none ms-3 "   >Resend</a></p>
+    <br>
+                <h3 style="color:#712C6B ;">OTP Sent To Registered <br> Email : {{getData.Email.substring(0,4)}}****{{getData.Email.substr(getData.Email.length - 9)}} <br> Mobile Number : ******{{getData.Contact_number.substr(getData.Contact_number.length - 4)}}</h3>
              
             </div>
 </div> 

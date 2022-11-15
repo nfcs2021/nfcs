@@ -1,11 +1,28 @@
+<ngx-spinner   bdOpacity = 0.9
+bdColor="rgba(0,0,0,0.10)"
+size = "medium"
+color = "#1010ee"
+type = "ball-clip-rotate"
+[fullScreen] = "false">
+    <div class="la-ball-spin-clockwise la-3x" style="color: #712C6B;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+  </ngx-spinner>
 <div class="container col-md-11 " style="color: #712C6B">
   <div class="row">
     <div class="col col-md-2 para1 mt-5 font-weight-bold">
       User Profile
     </div>
-    <dt class="col-sm-3 ml-md-auto d-md-flex text-end mt-5"
-      (click)="resetPassword()"><u>Change
-        Password</u></dt>
+    <a *ngIf="!this.routerId" class="col-sm-3 ml-md-auto d-md-flex text-end mt-5"
+      (click)="resetPassword()">Change
+        Password</a>
     <hr>
   </div>
   <div class="row">
@@ -16,7 +33,7 @@
     </div>
     <div class="col-sm-2 mr-1">
       <p class="h6">{{frontDeskData.First_Name | uppercase}} </p>
-      <p class="h6">{{frontDeskData.Emp_designation}}</p>
+      <p class="h6">{{frontDeskData.roles.role | uppercase}}</p>
     </div>
     <div class="col-md-2 text-center pb-1">
       <button class="btn btn-block fa-lg

@@ -8,6 +8,7 @@ import { FrontdeskService } from '../../services/frontdesk.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-frontdesk-details',
   templateUrl: './frontdesk-details.component.html',
@@ -18,17 +19,20 @@ export class FrontdeskDetailsComponent implements OnInit {
   frontDeskData: any;
   routerId: any;
   retrivalId: any;
+  id: any;
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
     private frontdeskService: FrontdeskService,
     private router: Router,
-    private http:HttpClient
+    private http:HttpClient,
+    private SpinnerService: NgxSpinnerService
   ) {}
-  id: any;
+ 
   ngOnInit(): void {
     console.log(localStorage.getItem('name'));
     this.id = localStorage.getItem('id');
+this.routerId=this.route.snapshot.paramMap.get('id');
     if (this.route.snapshot.paramMap.get('id')) {
       this.retrvieFrontdekList(this.route.snapshot.paramMap.get('id'));
     } else {
@@ -101,9 +105,9 @@ return this.http.get('http://127.0.0.1:8000/api/Idproof/download/'+data.id,{resp
   //     });
   // }
   resetPassword() {
+    this.SpinnerService.show();
     console.log(this.frontDeskData.User_Name);
     console.log(this.frontDeskData.Email);
-    alert(this.frontDeskData.User_Name);
     const data = {
       User_Name: this.frontDeskData.User_Name,
     };
@@ -118,5 +122,8 @@ return this.http.get('http://127.0.0.1:8000/api/Idproof/download/'+data.id,{resp
         console.log(err);
       }
     );
+    setTimeout(() => {
+      this.SpinnerService.hide();
+    }, 5000);
   }
 }

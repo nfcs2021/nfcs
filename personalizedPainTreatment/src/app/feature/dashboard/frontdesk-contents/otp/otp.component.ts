@@ -29,7 +29,7 @@ export class OtpComponent implements OnInit {
   showPasswordOnPress: boolean;
   showPassword1: boolean;
   showPasswordOnPress1: boolean;
-
+  getData:any;
   @ViewChild(NgOtpInputComponent, { static: false}) 
   ngOtpInput:NgOtpInputComponent;
   config :NgOtpInputConfig = {
@@ -48,6 +48,7 @@ export class OtpComponent implements OnInit {
 
   ngOnInit(): void {
     this.email=this.route.snapshot.paramMap.get('userName');
+    this.data();
     // this.generateOtp();
     this.formInitilization();
     this.countDown = timer(0, this.tick)
@@ -61,7 +62,17 @@ export class OtpComponent implements OnInit {
       });
   }
  
-  
+   data(){
+    this.dataService.getdataByUserName(this.email).subscribe(
+      res =>{
+
+    this.getData=res[0];
+    console.log(this.getData);
+      },err => {
+console.log(err);
+
+      });
+   }
 
   onOtpChange(otp:any) {
    this.otp=otp;

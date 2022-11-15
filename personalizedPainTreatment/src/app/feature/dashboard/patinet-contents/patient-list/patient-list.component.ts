@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
 import { Patient, PatientRecord, SearchDate, SearchModel } from '../module/Patient';
 
@@ -20,7 +21,8 @@ export class PatientListComponent implements OnInit {
   report=false;
   patientRecordData: PatientRecord[];
   constructor(
-    private service:PatientService
+    private service:PatientService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -37,8 +39,8 @@ export class PatientListComponent implements OnInit {
      return true;
     }
     }
-  troggle(i:any){
-    this.dropdown[i]=!this.dropdown[i];
+    click(id:any){
+    this.router.navigateByUrl('/patient/patient-profile/'+id);
   }
   getAllPatient(){
     this.service.getAllPatientsData().subscribe(
@@ -46,7 +48,6 @@ export class PatientListComponent implements OnInit {
         console.log(res);
         this.posts=res
         this.patientsData=res;
-        this.getAllPatientRecords();
       },err =>{
         console.log(err);
 
@@ -54,16 +55,5 @@ export class PatientListComponent implements OnInit {
     )
   }
 
-  getAllPatientRecords(){
-    this.service.getAllPatientRecords().subscribe(
-      data =>{
-        this.patientRecordData=data;
-    console.log(data);
-
-      },err =>{
-        console.log(err);
-
-      }
-    )
-  }
+  
 }
