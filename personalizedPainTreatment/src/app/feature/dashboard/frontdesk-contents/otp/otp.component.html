@@ -1,5 +1,5 @@
-<div class="container  d-flex justify-content-center align-items-center "> 
-  <div class="position-relative"> 
+<div class="container  d-flex justify-content-center align-items-center mt-5 " > 
+  <div class="position-relative" *ngIf="!popup"> 
     <!-- <h3>OTP Sent To Registered <br> Email : {{getData.Email.substring(0,4)}}****{{getData.Email.substr(getData.Email.length - 9)}} <br> Mobile Number : ******{{getData.Contact_number.substr(getData.Contact_number.length - 4)}}</h3> -->
       <div class="card p-2 text-center mt-1 mb-3">
        
@@ -22,7 +22,7 @@
   <div class="popup mt-5" class="reveal-modal">
    
 
-    <div class="content ">
+    <div class="content  " >
       <div class="container col-md-8  ">
         <h2 class=" mt-5 mb-3  form-title border-bottom"> Reset Password </h2>
  
@@ -140,4 +140,6 @@
         </div></div></div>
        
         </div>
+        </div>
    
+</div>

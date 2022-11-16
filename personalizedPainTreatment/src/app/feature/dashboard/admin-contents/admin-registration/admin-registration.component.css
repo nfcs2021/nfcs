@@ -2,13 +2,29 @@
     color: rgb(83, 4, 83);
   
   }
-  
+  .header{ 
+    position: sticky;
+    top: 0;
+    height: 50px;
+    z-index: 999;
+    /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
+    margin-top: 0px;
+    background-color: #fff;
+    margin-left: 20%;
+    }
+    .para1{
+      font-family: 'Arial';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 23px;
+      letter-spacing: 0.05em;
+      
+      color: #712C6B;
+  }
   .custom {
     width: 100%;
-    height: calc(90vh);
-    overflow-y: scroll;
-    /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
-  }
+    }
   
   ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */

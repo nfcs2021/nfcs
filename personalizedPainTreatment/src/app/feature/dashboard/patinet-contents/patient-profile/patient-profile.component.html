@@ -1,17 +1,17 @@
-<div class="custom">
- <div class="row  w-100 ">
-  <div class="col para1 mt-5 ml-5">
+<div class="row  w-100 p-2 header">
+  <div class="col para1 ">
     Patient Profile
   </div>
 
-  <div class="col-4 mt-5">
+  <div class="col-4 ">
     <a routerLink="/patient/new"><h3 class="style ml-5"><img
       src="\assets\images\ant-design_plus-circle-outlined.png"
       style="width: 25px; border-radius: 5px;">AddNew Patient</h3></a>
+      
   </div>
+  <hr>
 </div>
-
-
+<div class="custom mt-2">
 <div class=" container col-md-11">
    
     <!-- <div class="row">
@@ -26,7 +26,7 @@
     </div> -->
    
    
-    <hr>
+  
  
         <table class="table table-borderless">
           <thead>
@@ -99,7 +99,7 @@
             <p>  Visited On</p><p>{{patientsRecordData.Visit_time}}</p>
         </div>
         <div class="col-md-3 mt-4 ml-5 ">
-            <a routerLink="/patient/patient-report/{{patientsRecordData.id}}"  class="btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</a>
+            <button routerLink="/patient/patient-report/{{patientsRecordData.id}}"  class="btn-lg active border " role="button" aria-pressed="true" style="color: #712C6B;">Patient Report</button>
           <img src="\assets\images\bxs_download.png"role="button" style="width:30px" class="ml-2 border-0">
         </div>
         <div class="col-md-3 mt-4 ml-3 ">

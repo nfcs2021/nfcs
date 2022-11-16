@@ -7,12 +7,6 @@ body{background-color:red}.height-100{height:100vh}
 .card-2 .content a{color: rgb(83, 4, 83);}.form-control:focus{box-shadow:none;border:2px solidrgb(83, 4, 83)}
 .validate{border-radius:10px;height:40px;background-color:rgb(83, 4, 83);;width:140px;color:white ;}
 
-.container{
- 
-    height: 800px;
-    background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
-}
-
 .overlay {
     position: absolute;
     top: 0;
@@ -89,6 +83,7 @@ p{
 
 a{
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .hide {

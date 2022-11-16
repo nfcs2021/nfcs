@@ -1,7 +1,4 @@
 .container {
-  /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
-overflow-y: scroll;
-height: calc(90vh);
 width: 100%;
 }
 

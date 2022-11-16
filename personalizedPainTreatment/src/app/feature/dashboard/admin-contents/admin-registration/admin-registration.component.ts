@@ -13,7 +13,6 @@ import { FrontdeskService } from '../../services/frontdesk.service';
   styleUrls: ['./admin-registration.component.css']
 })
 export class AdminRegistrationComponent implements OnInit {
-
   indianFormat = '12345 67890';
   USFormat = '(000) 123-4567';
   ssnNumberFormate = '123-45-6789';
@@ -63,7 +62,7 @@ export class AdminRegistrationComponent implements OnInit {
     this.getAllAdminData();
 
     this.adminId = this.router.snapshot.paramMap.get('id')
-
+    this.createdBy = localStorage.getItem('createdBy');
     if (this.adminId) {
       alert("1")
       this.getAdminDataById(this.router.snapshot.paramMap.get('id'));
@@ -85,17 +84,7 @@ export class AdminRegistrationComponent implements OnInit {
       err =>{
         console.log(err);
         
-      }
-    )
-
-    this.createdBy = localStorage.getItem('createdBy');
-
-    this.adminId = this.router.snapshot.paramMap.get('id');
-
-    if (this.adminId) {
-      this.getAdminDataById(this.router.snapshot.paramMap.get('id'));
-      this.updateData = true;
-    }
+      });
   }
 
   employeeIdDocument(event: any) {

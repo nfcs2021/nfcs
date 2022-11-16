@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -18,8 +19,11 @@ export class ForgetpasswordComponent implements OnInit {
   ForgetpasswordForm: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder, private dataservice: DataService,
-    private route:Router) { }
+  constructor(private formBuilder: FormBuilder,
+     private dataservice: DataService,
+    private route:Router,
+    private SpinnerService: NgxSpinnerService
+    ) { }
 
   ngOnInit(): void {
     this.formInitilization();
@@ -82,10 +86,14 @@ export class ForgetpasswordComponent implements OnInit {
     if (this.ForgetpasswordForm.invalid) {
       return;
     }
+    this.SpinnerService.show();
     console.log(this.ForgetpasswordForm.value);
     
     this.dataservice.requestotp(this.ForgetpasswordForm.value).subscribe(data => {
       console.log(data);
+      setTimeout(() => {
+        this.SpinnerService.hide();
+      }, 5000); 
       this.route.navigateByUrl('/frontdesk/otp/'+this.ForgetpasswordForm.value['User_Name']);
     },
       error => {

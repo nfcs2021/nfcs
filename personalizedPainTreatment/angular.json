@@ -71,6 +71,8 @@
           "configurations": {
             "production": {
               "browserTarget": "personalizedPainTreatment:build:production"
+              
+
             },
             "development": {
               "browserTarget": "personalizedPainTreatment:build:development"

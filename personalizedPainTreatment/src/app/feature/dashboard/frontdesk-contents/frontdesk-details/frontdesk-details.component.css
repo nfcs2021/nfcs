@@ -1,16 +1,3 @@
-.container {
-  /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
-  height: 780px;
-}
-@media only screen and (max-width:1400px) {
-    /* For tablets: */
-    .custom{
-      width: 80%;
-      overflow-y: scroll;
-        height: 100%;
-    }
-  }
-
 .profile-image {
   width: 40px;
   border-radius: 5px;

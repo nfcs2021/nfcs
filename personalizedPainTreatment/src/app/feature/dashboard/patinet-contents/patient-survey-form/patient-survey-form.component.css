@@ -3,12 +3,18 @@
     
 }
 .custom{
-  /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
-    overflow-y: scroll;
-    height: calc(75vh);
     width: 100%;
   }
-  
+  .header{
+    margin-left: 33%;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  z-index: 999;
+  /* background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%); */
+  margin-top: 0px;
+  background-color: #fff;
+  }
 
 /* input[type=radio] {
     padding: 0.4em;
@@ -325,11 +331,9 @@ button{
   line-height: 23px;
   letter-spacing: 0.05em;
   color: #712C6B;
-  margin-left: 33%;
+  
 }
 hr{
-  margin-left: 33%;
-  margin-right:5% ;
   border: 1px solid #712C6B;
   font-weight: 1000;
 }
