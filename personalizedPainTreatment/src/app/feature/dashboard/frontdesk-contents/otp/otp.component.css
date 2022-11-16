@@ -7,6 +7,15 @@ body{background-color:red}.height-100{height:100vh}
 .card-2 .content a{color: rgb(83, 4, 83);}.form-control:focus{box-shadow:none;border:2px solidrgb(83, 4, 83)}
 .validate{border-radius:10px;height:40px;background-color:rgb(83, 4, 83);;width:140px;color:white ;}
 
+<<<<<<< HEAD
+=======
+.container{
+
+    height: 800px;
+    background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
+}
+
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 .overlay {
     position: absolute;
     top: 0;
@@ -18,18 +27,18 @@ body{background-color:red}.height-100{height:100vh}
   visibility: visible;
     opacity: 1;
   }
- 
- 
+
+
   .popup {
     margin: 70px auto;
     padding: 20px;
-    background: #fff; 
+    background: #fff;
     border-radius: 5px;
     width: 80%;
     position: relative;
     transition: all 5s ease-in-out;
   }
- 
+
   .popup h2 {
     margin-top: 0;
     /* color: #333; */
@@ -44,7 +53,7 @@ body{background-color:red}.height-100{height:100vh}
     font-weight: bold;
     text-decoration: none;
     /* color: black; */
-   
+
   }
   /* .popup .close:hover {
     color: #06D85F;
@@ -54,23 +63,23 @@ body{background-color:red}.height-100{height:100vh}
     max-height: 30%;
     overflow: auto;
   }
- 
+
   @media screen and (max-width: 700px){
-   
+
     .popup{
       width: 70%;
     }
   }
   .reveal-modal {
     top: 10;
-    background:#e1e1e1; 
+    background:#e1e1e1;
     margin: 0 auto;
-    width:50%; 
+    width:50%;
     height: 50%;
-    position:relative; 
+    position:relative;
     z-index:41;
     top: 15%;
-   
+
     /* -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
     -moz-box-shadow:0 0 10px rgba(0,0,0,0.4);  */
     /* box-shadow:0 0 10px rgba(0,0,0,0.4); */
@@ -85,6 +94,8 @@ a{
   text-decoration: underline;
   cursor: pointer;
 }
+<<<<<<< HEAD
+=======
 
 .hide {
   display: none;
@@ -103,3 +114,4 @@ a{
 
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52

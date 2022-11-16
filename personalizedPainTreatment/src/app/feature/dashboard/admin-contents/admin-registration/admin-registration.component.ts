@@ -5,7 +5,8 @@ import { AdminService } from '../../services/admin.service';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
-import { FrontdeskService } from '../../services/frontdesk.service';
+import { FrontdeskService } from '../../services/frodesk.service';
+
 
 @Component({
   selector: 'app-admin-registration',
@@ -83,10 +84,34 @@ export class AdminRegistrationComponent implements OnInit {
       },
       err =>{
         console.log(err);
+<<<<<<< HEAD
         
       });
+=======
+
+      }
+    )
+
+    this.createdBy = localStorage.getItem('createdBy');
+
+    this.adminId = this.router.snapshot.paramMap.get('id');
+
+    if (this.adminId) {
+      this.getAdminDataById(this.router.snapshot.paramMap.get('id'));
+      this.updateData = true;
+    }
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
   }
 
+<<<<<<< HEAD
+
+  onSelectImage(event:any) {
+    this.SelectImage = event.srcElement.files[0];
+    console.log(this.SelectImage);
+
+
+ }
+=======
   employeeIdDocument(event: any) {
     this.employeeIdDoc = event.srcElement.files[0];
     console.log(this.employeeIdDoc);
@@ -99,6 +124,7 @@ export class AdminRegistrationComponent implements OnInit {
     this.profileImageDoc = event.srcElement.files[0];
     console.log(this.profileImageDoc);
   }
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   getAdminDataById(id: any) {
     this.adminService.getAdminData(id).subscribe(
       (data) => {
@@ -379,7 +405,7 @@ export class AdminRegistrationComponent implements OnInit {
       }
     );
   }
-  
+
   getAdminData() {
     // alert(1);
     this.adminService.getAllRegistrationData().subscribe(
@@ -418,7 +444,7 @@ export class AdminRegistrationComponent implements OnInit {
     }
     this.getAdminData();
   }
-  
+
 
   savefrondeskData() {
   //   const fileData = new FormData();
@@ -452,7 +478,36 @@ export class AdminRegistrationComponent implements OnInit {
   fileData2.append('Created_by', this.createdBy);
   fileData2.append('Last_updated_by', this.createdBy);
     console.log(this.SelectImage);
+<<<<<<< HEAD
+
+    const data = {
+      First_Name: this.adminRegesterForm.value['firstName'],
+      Last_Name: this.adminRegesterForm.value['lastName'],
+      User_Name: this.adminRegesterForm.value['userName'],
+      Date_of_birth: this.adminRegesterForm.value['dob'],
+      Contact_number: this.adminRegesterForm.value['contactNumber'],
+      Gender: this.adminRegesterForm.value['gender'],
+      Email: this.adminRegesterForm.value['email'],
+      Ssn: this.adminRegesterForm.value['socialSecurityNumber'],
+      Address_Line1: this.adminRegesterForm.value['address1'],
+      Address_Line2: this.adminRegesterForm.value['address2'],
+      Country: this.adminRegesterForm.value['country'],
+      State: this.adminRegesterForm.value['state'],
+      City: this.adminRegesterForm.value['city'],
+      Zipcode: this.adminRegesterForm.value['zipcode'],
+      PCP_Name: this.adminRegesterForm.value['pcp'],
+      Emp_designation: this.adminRegesterForm.value['employeePostion'],
+      Immidiate_manager: this.adminRegesterForm.value['immediateManager'],
+      Emp_id: this.adminRegesterForm.value['employeeId'],
+      Emp_id_doc: fileData2,
+      Id_proof:fileData2,
+      Profile_image: fileData2,
+      Created_by: this.createdBy,
+      otp:"null"
+    };
+=======
   
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     console.log(fileData2);
     this.adminService.saveAdminData(fileData2).subscribe(
       (res) => {
@@ -464,7 +519,7 @@ export class AdminRegistrationComponent implements OnInit {
       }
     );
   }
- 
+
 
   // ConfirmPasswordValidator(password: string, confirmPassword: string) {
   //   return (formGroup: FormGroup) => {
@@ -501,7 +556,7 @@ export class AdminRegistrationComponent implements OnInit {
           matchingControl.setErrors(null);
         }
       }
-      
+
     };
   }
 

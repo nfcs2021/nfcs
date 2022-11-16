@@ -33,8 +33,11 @@
     "ng-otp-input": "^1.8.5",
     "ng2-search-filter": "^0.5.1",
     "ng2-tel-input": "^2.3.0",
+<<<<<<< HEAD
     "ng4-loading-spinner": "^1.2.3",
     "ngx-filesaver": "^14.0.0",
+=======
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
     "ngx-mat-intl-tel-input": "^5.0.0",
     "ngx-otp-input": "^0.11.2",
     "ngx-pagination": "^6.0.2",
@@ -52,6 +55,7 @@
     "@angular/cli": "~14.2.3",
     "@angular/compiler-cli": "^14.2.0",
     "@types/angular": "^1.8.4",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~4.0.0",
     "@types/jquery": "^3.5.14",
     "jasmine-core": "~4.3.0",

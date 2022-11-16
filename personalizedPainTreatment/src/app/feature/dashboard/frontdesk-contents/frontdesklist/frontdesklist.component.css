@@ -6,6 +6,7 @@ table{
     background-color: #712C6B;
     color: #FFFFFF;
     width: 1050px;
+<<<<<<< HEAD
     
 }  
 @media screen and (max-width: 1400px) {
@@ -15,17 +16,21 @@ table{
         width: 850px;
         }
   } 
+=======
+
+}
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 h3 {
-    
+
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    
+
     /* identical to box height */
     letter-spacing: 0.05em;
-    
+
     color: #712C6B;
 }
 hr{
@@ -42,7 +47,7 @@ hr{
     font-size: 25px;
     line-height: 23px;
     letter-spacing: 0.05em;
-    
+
     color: #712C6B;
 }
 
@@ -53,12 +58,12 @@ hr{
 /* input[type="search"], button, date {
 
     outline: 1px solid #712C6B;
-  
+
   }
   input[type="date"] {
 
     outline: 1px solid #712C6B;
-  
+
   } */
 
   /* enable absolute positioning */

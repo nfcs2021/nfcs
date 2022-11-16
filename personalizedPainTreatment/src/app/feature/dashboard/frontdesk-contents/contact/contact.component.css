@@ -1,6 +1,6 @@
 *{
     color: rgb(83, 4, 83);
-    
+
 }
 
 .custom{
@@ -19,7 +19,7 @@
   }
    optgroup{
     font-size: 3px;
-  } 
+  }
   option:first-of-type {
     display: none;
   }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content{
     position: absolute;
   left: 0px;
@@ -8,6 +9,14 @@
     transform: rotate(360deg);
     height: calc(89.6vh);
     background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
+=======
+.content {
+  margin-left: 30%;
+  padding-top: 5%;
+  transform: rotate(360deg);
+  height: calc(100vh);
+  background: linear-gradient(270deg, #FFFFFF 69.85%, rgba(255, 255, 255, 0.65) 88.24%, rgba(217, 217, 217, 0) 111.76%);
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 }
 /* @media screen and (max-width: 1400px) {
   .content{

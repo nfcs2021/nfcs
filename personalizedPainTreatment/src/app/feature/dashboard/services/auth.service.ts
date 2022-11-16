@@ -23,17 +23,10 @@ export class AuthService {
 
   loginUser(data: any) {
     localStorage.removeItem('token');
+    alert(1)
     return this.http.post<any>(environment.apiUrl + 'login', data);
   }
-  saveLoginData(data: any) {
-    const httpheaders = new HttpHeaders({
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-    });
-    alert(1)
-    return this.http.post<any>(environment.apiUrl + 'logindet', data, {
-      headers: httpheaders,
-    });
-  }
+
   saveFrontDeskData(data: any): Observable<any> {
     const httpheaders = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -65,7 +58,5 @@ export class AuthService {
   getEvent() {
     return this.getUserData.asObservable();
   }
-
-
 
 }

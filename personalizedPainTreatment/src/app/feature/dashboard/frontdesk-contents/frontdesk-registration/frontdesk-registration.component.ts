@@ -6,8 +6,17 @@ import { AdminService } from '../../services/admin.service';
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+<<<<<<< HEAD
+import { FrontdeskService } from '../../services/frodesk.service';
+
+=======
 import { FrontdeskService } from '../../services/frontdesk.service';
+<<<<<<< HEAD
 import { fileExtensionValidator, fileTypeValidator } from '../validators/password-validators';
+=======
+import { fileTypeValidator } from '../validators/password-validators';
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 
 
 @Component({
@@ -66,13 +75,14 @@ export class FrontdeskRegistrationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getFrontdeskData();
     this.formInitilization();
     this.getCountries();
     this.frontDeskData();
+<<<<<<< HEAD
+=======
     this.createdBy = localStorage.getItem('createdBy');
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     this.frontDeskId = this.router.snapshot.paramMap.get('id');
-
     if (this.frontDeskId) {
       this.getForntDeskDataById(this.router.snapshot.paramMap.get('id'));
       this.updateData = true;
@@ -96,9 +106,13 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
     }
+<<<<<<< HEAD
+  }
+=======
    
   
 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   getForntDeskDataById(id: any) {
     this.adminService.getAdminData(id).subscribe(
       (data) => {
@@ -110,8 +124,12 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-
   onChangeCountryUpdateData(countryValue: any) {
+<<<<<<< HEAD
+    // alert(countryValue);
+    // alert(this.frontDeskDataById.State);
+=======
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     let countryIso: any;
     for (let data of this.countryInfo) {
       if (countryValue === data.name) {
@@ -127,6 +145,10 @@ export class FrontdeskRegistrationComponent implements OnInit {
   }
 
   onChangeStateUpdateData(stateValue: any) {
+<<<<<<< HEAD
+    // alert(stateValue);
+=======
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     let stateId: any;
     for (let data of this.stateInfo) {
       if (stateValue === data.name) {
@@ -247,7 +269,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
     console.log(obj);
     obj.setCountry('in');
   }
-
   employeeIdDocument(event: any) {
     this.employeeIdDoc = event.srcElement.files[0];
     console.log(this.employeeIdDoc);
@@ -320,7 +341,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-
   updateFrontDeskRegistrationForm() {
    
 
@@ -355,12 +375,11 @@ export class FrontdeskRegistrationComponent implements OnInit {
         [Validators.required],
       ],
       employeeId: [this.frontDeskDataById.Emp_id, [Validators.required]],
-      employeeIdDocument: [this.frontDeskDataById.Emp_id_doc],
+      employeeIdDocument: [this.frontDeskDataById.Emp_id_doc_Name],
       idproof: [this.frontDeskDataById.Id_proof],
       profileImage: [this.frontDeskDataById.Profile_image]
     });
   }
-
   updateRegistrationData() {
     this.submitted = true;
     if (this.frontDeskRegesterForm.invalid) {
@@ -404,7 +423,6 @@ export class FrontdeskRegistrationComponent implements OnInit {
       }
     );
   }
-
   getFrontdeskData() {
     // alert(1);
     this.authService.getAllRegistrationData().subscribe(

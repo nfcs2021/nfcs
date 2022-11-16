@@ -43,4 +43,36 @@ export class FrontdeskService {
       headers: httpHeaders,
     });
   }
+  downloadEmpIdDocument(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'EmpId/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
+    });
+  }
+
+  idProofDoc(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'Idproof/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
+    });
+  }
+
+  profileDoc(id: any): Observable<any> {
+    const httpHeaders = new HttpHeaders({
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    });
+    alert(localStorage.getItem('token'));
+    return this.http.get(environment.apiUrl + 'Images/download/' + id, {
+      headers: httpHeaders,
+      responseType: 'blob',
+    });
+  }
 }

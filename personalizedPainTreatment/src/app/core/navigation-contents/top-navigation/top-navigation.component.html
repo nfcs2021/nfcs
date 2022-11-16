@@ -1,26 +1,82 @@
 <span class="fixed-top"> <span class="ml-2" ><i class="fa fa-phone fa-rotate-90" aria-hidden="true"></i>18005006(Toll Free)</span> <span class="ml-5 ">@support@ppt.com</span></span>
 <nav class="navbar fixed-top ">
+<<<<<<< HEAD
+
+  <a routerLink="/patient/nav"><img src="assets\images\PPT-logo 1000px.png"
+      alt="" style="width: 150px;"
+      class="ml-5 "></a>
+=======
   <!-- <div>
     <img src={{imageUrl}} style="width: 100px; height: 100px;"> 
   </div> -->
   
   <a routerLink="/patient/nav"><img src="assets\images\PPT-logo 1000px.png" alt="" style="width: 150px;"
       class="ml-5 mt-2 "></a>
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
 
 
   <div class="ml-md-auto d-none d-md-flex mt-1" style="color:
     #712C6B;">
+<<<<<<< HEAD
+    <div>
+      <button class=" mr-5 rounded-1 p-2" routerLink="/frontdesk/contact">Contact
+        us</button>
+    </div>
+=======
 
     <div>
       <button class=" mr-5 rounded-1 p-2" routerLink="/frontdesk/contact">Contact us</button>
     </div>
 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     <div class="row" *ngIf="localData">
       <div class="col mt-2 h4">
         <p class="">{{text | uppercase}}</p>
-        <small class="h6 ll">Last Login:{{last_login}}</small>
+        <small class="h6 ll">Last Login:{{Last_Login}}</small>
       </div>
     </div>
+<<<<<<< HEAD
+    <div>
+      <div class="col-1 dropdown show mt-1 mr-5 " *ngIf="localData">
+        <img
+          src={{imageUrl}}
+          alt="profile" class="mt-1" style="width: 40px; border-radius: 5px; height: 40px;"
+          role="button"
+          id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" (click)="false">
+        <div class="dropdown-menu dropdown-menu-right mt-2"
+          aria-labelledby="dropdownMenuLink" style="color:
+          #712C6B;border-radius: 10px;width: 300px;">
+          <div class="text-center">
+            <img
+              src="\assets\images\thumbnail_healthicons_ui-user-profile-negative.png"
+              alt="profile" class="mt-1"
+              style="width:
+              40px; border-radius: 5px;">
+            <p class="h6">{{name | uppercase}}</p>
+          </div>
+          <div>
+            <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
+              <div class="text-center pt-0 mb-4 pb-1">
+                <button class="btn btn-block fa-lg
+                  gradient-custom-2 text-light p-2"
+                  style="background-color: #712C6B;font-weight:
+                  bold;" [routerLink]="['/frontdesk/frontdetails']">View Profile</button>
+              </div>
+            </div>
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-0 ml-2 mr-2">
+            <div class="text-center pt-0 mb-1 pb-1">
+              <button class="btn btn-block fa-lg
+                gradient-custom-2 text-light p-2"
+                style="background-color: #712C6B;font-weight:
+                bold;" (click)="logOut()">Log
+                Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+=======
     <div class="col-1 dropdown show mt-1 mr-5 " *ngIf="localData">
       <a  role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <img src={{imageUrl}} alt="profile" class="mt-1 " style="width: 40px;height: 40px;
@@ -61,10 +117,15 @@
 
       </div>
 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
     </div>
     <span class="mr-5">
       <p class="text mt-1 h6">{{name | uppercase}}</p>
       <p class="h6">{{pcp}}</p>
     </span>
   </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
 </nav>

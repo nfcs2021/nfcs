@@ -5,7 +5,8 @@ import * as FileSaver from 'file-saver';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from '../../services/admin.service';
 import { DataService } from '../../services/data.service';
-import { FrontdeskService } from '../../services/frontdesk.service';
+import { FrontdeskService } from '../../services/frodesk.service';
+
 
 @Component({
   selector: 'app-admin-details',

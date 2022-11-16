@@ -22,6 +22,12 @@ export class OtpComponent implements OnInit {
   submitted = false;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
+<<<<<<< HEAD
+  counter = 30;
+  tick = 1000;
+  isAuth=false
+  @ViewChild(NgOtpInputComponent, { static: false})
+=======
   counter = 59;
   tick = 1000; 
   isAuth=false
@@ -31,11 +37,12 @@ export class OtpComponent implements OnInit {
   showPasswordOnPress1: boolean;
   getData:any;
   @ViewChild(NgOtpInputComponent, { static: false}) 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   ngOtpInput:NgOtpInputComponent;
   config :NgOtpInputConfig = {
     allowNumbersOnly: true,
     length: 4,
-    
+
     // disableAutoFocus: false,
     // placeholder: ''
   };
@@ -61,6 +68,7 @@ export class OtpComponent implements OnInit {
         }
       });
   }
+<<<<<<< HEAD
  
    data(){
     this.dataService.getdataByUserName(this.email).subscribe(
@@ -73,11 +81,15 @@ console.log(err);
 
       });
    }
+=======
+
+
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 
   onOtpChange(otp:any) {
    this.otp=otp;
-   
-   
+
+
   }
   transform(value: number): string {
     const minutes: number = Math.floor(value / 60);
@@ -86,18 +98,18 @@ console.log(err);
       ':' +
       ('00' + Math.floor(value - minutes * 60)).slice(-2)
     );
-   
+
   }
   setVal(val:any) {
     this.ngOtpInput.setValue(val);
   }
 
-  
+
 
   onConfigChange() {
     this.showOtpComponent = false;
     this.otp = null;
-    
+
   }
   // generateOtp=()=>{
   //   let otp="";
@@ -105,8 +117,8 @@ console.log(err);
   //     otp+=Math.floor(Math.random()*10);
 
   //   }
-  //   return Number(otp);        
-  
+  //   return Number(otp);
+
   // }
 
   onValidate(){
@@ -120,7 +132,7 @@ console.log(err);
         console.log(data1);
         this.response.push(data1);
         console.log(this.response);
-        
+
         console.log(this.response[0].message);
         if(this.response[0].message==='Success'){
           Swal.fire({
@@ -136,15 +148,15 @@ console.log(err);
           });
           this.response.pop();
         }
-       
+
       },err =>{
         console.log(err);
-        
+
       }
 
     )
 
-    
+
   }
 
   // startTimer() {
@@ -162,6 +174,11 @@ console.log(err);
   formInitilization() {
     this.ResetpasswordForm = this.formBuilder.group(
       {
+<<<<<<< HEAD
+
+        password: ['', Validators.required],
+
+=======
        
         password: ['', 
         [
@@ -182,6 +199,7 @@ console.log(err);
         ]
       ],
        
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
         confirmPassword: ['', Validators.required],
       },
       {
@@ -260,22 +278,27 @@ console.log(err);
   }
   resendOtp(){
 
-  
+
     const data = {
       User_Name:this.email,
         otp:this.otp
       }
     this.dataService.requestotp(data).subscribe(
-      data2=>{  
+      data2=>{
         console.log(data2);
+<<<<<<< HEAD
+
+        this.transform(this.counter);
+=======
         window.location.reload();
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
       },err =>{
         console.log(err);
-        
+
       }
     )
-   
+
   }
- 
+
 }
 

@@ -21,7 +21,7 @@ export class NewpatientNavigationComponent implements OnInit {
 
     // console.log(this.role);
     // console.log(localStorage.getItem('id'))
-    
+
 
     console.log("ng.........",this.role);
 

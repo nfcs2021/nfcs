@@ -18,44 +18,39 @@ export class ContactComponent implements OnInit {
   constructor( private formBuilder: FormBuilder,private dataservice:DataService,
     private router:Router
     ) { }
-
   ngOnInit(): void {
     this.formInitilization();
-   
   }
   get f() {
     return this.contactForm.controls;
   }
   formInitilization() {
     this.contactForm = this.formBuilder.group({
-      First_Name: ['', 
+      First_Name: ['',
       [
-        Validators.required, 
+        Validators.required,
         Validators.minLength(2),
         Validators.pattern('^[a-zA-Z]+$')
       ]],
-      Subject: ['', 
+      Subject: ['',
       [
         Validators.required,
         Validators.pattern('^[a-zA-Z]+$')
       ]],
-      
-      Contact_number: ['', 
+
+      Contact_number: ['',
       [
         Validators.required,
         Validators.pattern('^[0-9 ()-]+$')
       ]],
-      Email: ['', 
+      Email: ['',
       [
         Validators.required
       ]],
       Message:['']
     });
-   
 }
-
 onPhoneChange(event: any) {
-
   let getIndexSpecialChar = [];
   let getactualSpecialChar = [];
   for (let i = 0; i < this.paceHolder.length; i++) {
@@ -66,11 +61,8 @@ onPhoneChange(event: any) {
   }
   console.log(getactualSpecialChar);
   console.log(getIndexSpecialChar);
-
-
   let len = event.target.value.length;
   let backspace = event.keyCode;
-
   if (backspace === 8) {
     len = len - 1;
   } else {
@@ -87,19 +79,14 @@ onPhoneChange(event: any) {
 
   }
   console.log(event.target.value);
-
 }
 onClick(){
-
   this.submitted = true;
   if (this.contactForm.invalid) {
     return ;
   }
   const formData  = new FormData();
 console.log(formData);
-
-  
-
   formData.append('First_Name',this.contactForm.value['First_Name']);
   formData.append('Subject',this.contactForm.value['Subject']);
   formData.append('Email',this.contactForm.value['Email']);
@@ -111,22 +98,14 @@ console.log(formData);
   });
  this.dataservice.create(formData).subscribe(
   data => {
-      
-   
   },
   error =>{
       console.log(error);}
-
 );
 this.router.navigateByUrl('');
  console.log(this.contactForm)
-
-   
-    
-    
-  
 }
 
-  
+
 // }
 }

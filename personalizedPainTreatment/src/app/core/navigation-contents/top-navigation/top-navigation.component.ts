@@ -16,7 +16,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   // name = localStorage.getItem('registrationData');
   @Input('data1') data1: any;
   @Input('pcp_Name') pcp_Name: any;
-  @Input('lastlogin') last_login: any;
+  @Input('lastlogin') Last_Login: any;
   name: any;
   user: any;
   pcp: any;
@@ -26,6 +26,13 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   data: any;
   frontdeskData: any;
   firstName: any;
+<<<<<<< HEAD
+  btndisable: boolean;
+  id: any;
+  imageUrl: string;
+  localData: any;
+  src: any;
+=======
   btndisable:boolean;
   src: string;
   role:any;
@@ -33,6 +40,7 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   imageUrl: string;
   localData: any;
   loginUserData:any;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   constructor(
     private dataService: DataService,
     private authService: AuthService,
@@ -42,6 +50,21 @@ export class TopNavigationComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+<<<<<<< HEAD
+    this.localData = localStorage.getItem('id');
+    this.dataService.getUserData(localStorage.getItem('id')).subscribe(
+      (res) => {
+        console.log(res);
+        let imageBinary = res.Profile_image; //image binary data response from api
+        //  let imageBase64String= btoa(imageBinary);
+        this.imageUrl = 'data:image/jpeg;base64,' + imageBinary;
+        console.log(this.src);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+=======
     this.localData=localStorage.getItem('id');
     this.role=localStorage.getItem('role');
     this.dataService.getUserData(localStorage.getItem('id')).subscribe(
@@ -58,15 +81,16 @@ export class TopNavigationComponent implements OnInit, OnChanges {
         
       }
     )
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   }
 
   ngOnChanges() {
     this.name = this.data1;
     this.pcp = this.pcp_Name;
+    // alert(this.Last_Login);
   }
 
   logOut() {
     this.authService.logout();
   }
-  
 }

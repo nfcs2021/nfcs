@@ -17,6 +17,7 @@ hr {
   width: 100%;
   background-color: #712C6B;
 }
+<<<<<<< HEAD
 .la-ball-spin-clockwise,
 .la-ball-spin-clockwise > div {
     position: relative;
@@ -220,4 +221,9 @@ hr {
              -o-transform: scale(0);
                 transform: scale(0);
     }
+=======
+
+.image {
+  width: 20px;
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 }

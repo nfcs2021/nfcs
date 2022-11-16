@@ -17,6 +17,7 @@ export class ForgetpasswordComponent implements OnInit {
   phoneNumberEntered = '';
 
   ForgetpasswordForm: FormGroup;
+<<<<<<< HEAD
 
 
   constructor(private formBuilder: FormBuilder,
@@ -24,6 +25,10 @@ export class ForgetpasswordComponent implements OnInit {
     private route:Router,
     private SpinnerService: NgxSpinnerService
     ) { }
+=======
+  constructor(private formBuilder: FormBuilder, private dataservice: DataService,
+    private route:Router) { }
+>>>>>>> 406d7c7e8c24334b66e3aaad3f856b67f74f1757
 
   ngOnInit(): void {
     this.formInitilization();
@@ -41,9 +46,22 @@ export class ForgetpasswordComponent implements OnInit {
       // pcp: ['', [Validators.required]]
     });
   }
-
-
-
+    // onPhoneChange(event: any) {
+    //   let getIndexSpecialChar = [];
+    //   let getactualSpecialChar = [];
+    //   for (let i = 0; i < this.placeHolder.length; i++) {
+    //     if (
+    //       this.placeHolder[i] === ' ' ||
+    //       this.placeHolder[i] === '(' ||
+    //       this.placeHolder[i] === ')' ||
+    //       this.placeHolder[i] === '-'
+    //     ) {
+    //       getIndexSpecialChar.push(i);
+    //       getactualSpecialChar.push(this.placeHolder[i]);
+    //     }
+    //   }
+    //   console.log(getactualSpecialChar);
+    //   console.log(getIndexSpecialChar);
   onPhoneChange(event: any) {
     let getIndexSpecialChar = [];
     let getactualSpecialChar = [];
@@ -88,7 +106,7 @@ export class ForgetpasswordComponent implements OnInit {
     }
     this.SpinnerService.show();
     console.log(this.ForgetpasswordForm.value);
-    
+
     this.dataservice.requestotp(this.ForgetpasswordForm.value).subscribe(data => {
       console.log(data);
       setTimeout(() => {

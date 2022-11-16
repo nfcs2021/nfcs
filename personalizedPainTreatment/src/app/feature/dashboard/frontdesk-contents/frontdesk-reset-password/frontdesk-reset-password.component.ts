@@ -6,16 +6,22 @@ import { ActivatedRoute } from '@angular/router';
 import { NgOtpInputComponent, NgOtpInputConfig } from 'ng-otp-input';
 import { Subscription, take, timer } from 'rxjs';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD
+=======
 import { PasswordValidators } from '../validators/password-validators';
 
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
 @Component({
   selector: 'app-frontdesk-reset-password',
   templateUrl: './frontdesk-reset-password.component.html',
-  styleUrls: ['./frontdesk-reset-password.component.css']
+  styleUrls: ['./frontdesk-reset-password.component.css'],
 })
 export class FrontdeskResetPasswordComponent implements OnInit {
+<<<<<<< HEAD
+=======
 
   otptimer:true;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   name: any;
   submitted = false;
   userName: any;
@@ -27,7 +33,11 @@ export class FrontdeskResetPasswordComponent implements OnInit {
   email: any;
   ResetpasswordForm: FormGroup;
   countDown: Subscription;
+<<<<<<< HEAD
+  counter = 60;
+=======
   counter = 59;
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
   tick = 1000;
   isAuth = false;
   showPassword: boolean;
@@ -80,11 +90,17 @@ export class FrontdeskResetPasswordComponent implements OnInit {
       ],
         ConfirmPassword: ['', Validators.required],
       },
+      // {
+      //   validator: this.ConfirmPasswordValidator(
+      //     'NewPassword',
+      //     'ConfirmPassword'
+      //   ),
+      // },
       {
-        validator: this.ConfirmPasswordValidator(
-          'NewPassword',
-          'ConfirmPassword'
-        ),
+        validator: [
+          this.ConfirmPasswordValidator('NewPassword', 'ConfirmPassword'),
+          this.oldPasswordValidator('oldPassword', 'NewPassword'),
+        ],
       }
     );
 
@@ -191,7 +207,11 @@ export class FrontdeskResetPasswordComponent implements OnInit {
     this.dataService.requestotp(data).subscribe(
       (data2) => {
         console.log(data2);
+<<<<<<< HEAD
+        window.location.reload();
+=======
        window.location.reload();
+>>>>>>> 9130a70c9e69368cffcfbcecbe455856aabd3d52
       },
       (err) => {
         console.log(err);
@@ -235,5 +255,23 @@ export class FrontdeskResetPasswordComponent implements OnInit {
         this.error = true;
       }
     );
+  }
+
+  oldPasswordValidator(password: string, newPassword: string) {
+    return (formGroup: FormGroup) => {
+      let control = formGroup.controls[password];
+      let matchingControl = formGroup.controls[newPassword];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors?.['OldPasswordValidator']
+      ) {
+        return;
+      }
+      if (control.value == matchingControl.value) {
+        matchingControl.setErrors({ OldPasswordValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 }
